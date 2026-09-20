@@ -7,6 +7,7 @@ import {
     resolveBookmark,
     routeLetters,
     selectArrivals,
+    selectCitybusArrivals,
     validateUserData,
 } from '../utils/transit'
 
@@ -128,5 +129,72 @@ describe('theme preference migration', () => {
         expect(() =>
             validateUserData({ version: 1, language: 'en', theme, bookmarks: [] }),
         ).toThrow()
+    })
+})
+
+describe('Citybus direction-specific sequence mismatches', () => {
+    const inbound: Route = {
+        ...route,
+        id: 'CTB:N8P:I:1',
+        provider: 'CTB',
+        number: 'N8P',
+        bound: 'I',
+        stops: [
+            { id: 'CTB:002424', seq: 1 },
+            { id: 'CTB:001223', seq: 12 },
+        ],
+    }
+    const row = {
+        co: 'CTB',
+        route: 'N8P',
+        dir: 'I',
+        stop: '002424',
+        seq: 12,
+        eta: '2026-09-21T03:35:42+08:00',
+        rmk_en: 'Scheduled',
+        rmk_tc: '預定班次',
+    }
+    it('accepts N8P inbound ETA sequence 12 for unique catalogue stop 1', () => {
+        expect(selectCitybusArrivals([row], inbound, '002424', 1, 'tc')).toEqual([
+            { time: Date.parse(row.eta), remark: '預定班次' },
+        ])
+        expect(
+            selectCitybusArrivals(
+                [{ ...row, stop: '001223', seq: 23 }],
+                inbound,
+                '001223',
+                12,
+                'en',
+            ),
+        ).toHaveLength(1)
+    })
+    it('does not mix direction, route, stop or company even with matching sequence', () => {
+        const wrong = [
+            { ...row, dir: 'O' },
+            { ...row, route: '8P' },
+            { ...row, stop: '001223' },
+            { ...row, co: 'KMB' },
+        ]
+        expect(selectCitybusArrivals(wrong, inbound, '002424', 1, 'en')).toEqual([])
+    })
+    it('retains strict sequence matching for repeated visits and incomplete stop lists', () => {
+        const repeated = { ...inbound, stops: [...inbound.stops, { id: 'CTB:002424', seq: 12 }] }
+        expect(selectCitybusArrivals([row], repeated, '002424', 1, 'en')).toEqual([])
+        expect(selectCitybusArrivals([row], repeated, '002424', 12, 'en')).toHaveLength(1)
+        expect(selectCitybusArrivals([row], { ...inbound, stops: [] }, '002424', 1, 'en')).toEqual(
+            [],
+        )
+    })
+    it('preserves normal outbound sequences and null-ETA remarks', () => {
+        const outbound = { ...inbound, bound: 'O' as const }
+        expect(
+            selectCitybusArrivals(
+                [{ ...row, dir: 'O', seq: 1, eta: null }],
+                outbound,
+                '002424',
+                1,
+                'en',
+            ),
+        ).toEqual([{ time: null, remark: 'Scheduled' }])
     })
 })

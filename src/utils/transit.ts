@@ -61,6 +61,32 @@ export function selectArrivals(
         }))
 }
 
+// Citybus ETA sequences may continue across directions (N8P inbound is offset by 11).
+// A unique stop is unambiguous without sequence; repeated visits still require it.
+export function selectCitybusArrivals(
+    rows: Record<string, unknown>[],
+    route: Route,
+    stopCode: string,
+    seq: number,
+    lang: 'en' | 'tc',
+): Arrival[] {
+    const visits = route.stops.filter((stop) => stop.id === `CTB:${stopCode}`)
+    const uniqueVisit = visits.length === 1 && visits[0].seq === seq
+    return rows
+        .filter(
+            (row) =>
+                row.dir === route.bound &&
+                (row.co == null || row.co === 'CTB') &&
+                (row.route == null || row.route === route.number) &&
+                (row.stop == null || row.stop === stopCode) &&
+                (uniqueVisit || Number(row.seq) === seq),
+        )
+        .map((row) => ({
+            time: row.eta ? hkTime(String(row.eta)) : null,
+            remark: String(row[`rmk_${lang}`] || ''),
+        }))
+}
+
 export function validateUserData(input: unknown): UserData {
     if (!input || typeof input !== 'object') throw new Error('Invalid backup')
     const data = input as UserData

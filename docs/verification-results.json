@@ -91,5 +91,18 @@
         "mobileScreenshot": "visually inspected",
         "liveAPIsRetested": false,
         "physicalIPhoneTested": false
+    },
+    "n8pEtaVerification": {
+        "verifiedAt": "2026-09-21",
+        "liveAudit": "citybus-n8p-audit.json",
+        "inboundStopsWithOffset": 18,
+        "offset": 11,
+        "unitTests": 27,
+        "browserTests": 22,
+        "build": "passed",
+        "lint": "passed",
+        "formatCheck": "passed",
+        "dataMigrationRequired": false,
+        "scope": "Targeted N8P live audit; all-route ETA correctness not exhaustively audited"
     }
 }

@@ -114,3 +114,13 @@ src/
 ```
 
 Existing data is preserved when upgrading to IndexedDB schema version 2. Complete operator snapshots remain separate from the lightweight Citybus route index and individually downloaded route details.
+
+## Updating the installed iPhone app
+
+Deploy the complete new `dist/` build to the same HTTPS origin. The production app checks for a new service worker at startup, on return to the foreground, on reconnection, and hourly while active (automatic resume checks are throttled to once per minute). Settings also has **Check for app updates**. When the new version has downloaded, tap **Update and reload**. This reloads the app without clearing bookmarks, preferences or route data. Unsaved form edits are not retained across reload, so finish them first.
+
+The Home Screen app has its own running page and offline cache; opening Safari does not reload that page. Older installations without the new update controls need a one-time bootstrap: after deployment, open the Home Screen app online, allow time for the new worker to download, fully close it from the app switcher, then reopen it. Close any other windows of the same installed app too. If the old screen persists, repeat after the download has had time to complete and check hosting cache headers. Do not clear website data or delete the installed app as an update procedure.
+
+Configure hosting/CDN response headers: `/sw.js`, `/index.html`, `/` and the manifest should revalidate (`Cache-Control: no-cache`); hashed `/assets/*` files can use `public, max-age=31536000, immutable`. Serve `/sw.js` as JavaScript, never the HTML fallback. Deploy atomically and retain old hashed assets during rollout. Purge stale CDN copies of HTML/service-worker files when needed. These are hosting instructions; this repository cannot configure an unspecified external hosting provider.
+
+Run `npm run build && node scripts/update-smoke.mjs` to exercise a three-release production update in isolated Chromium and WebKit profiles. `npm run test:offline` verifies offline reload independently. Physical Home Screen lifecycle behavior still needs an iPhone check.

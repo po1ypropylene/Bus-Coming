@@ -1,5 +1,5 @@
 import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
-import { hkTime, selectArrivals } from '../utils/transit'
+import { hkTime, selectArrivals, selectCitybusArrivals } from '../utils/transit'
 
 export const BASE = {
     KMB: 'https://data.etabus.gov.hk/v1/transport/kmb',
@@ -64,7 +64,9 @@ export function getArrivals(
                       time: hkTime(a.estimatedArrivalTime),
                       remark: a.routeVariantName || data.message || '',
                   }))
-                : selectArrivals(data.data ?? [], route, seq, lang)
+                : route.provider === 'CTB'
+                  ? selectCitybusArrivals(data.data ?? [], route, stop.code, seq, lang)
+                  : selectArrivals(data.data ?? [], route, seq, lang)
         if (!arrivals.length && data.message) arrivals.push({ time: null, remark: data.message })
         const result = { arrivals, fetchedAt: Date.now() }
         recent.set(key, result)

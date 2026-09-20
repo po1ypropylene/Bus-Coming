@@ -52,7 +52,7 @@ Settings offers Green (default), Blue, Yellow, Red and Purple through a native r
 - `src/styles/themes.css` defines paired light/dark accent, background, foreground and soft surface tokens. Application decoration uses those tokens; operator badges and success/error indicators retain their semantic colours.
 - `src/i18n/index.ts` supplies colour labels for both languages.
 
-To add a palette, add its identifier, both translated labels, both CSS token sets, and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon and manifest retain the app's fixed green brand; the running app's browser chrome follows the selected palette where the browser supports it.
+To add a palette, add its identifier, both translated labels, both complete CSS token sets (including surface, border `--line`, secondary text `--muted` and shadow), and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon and manifest retain the app's fixed green brand; the running app's browser chrome follows the selected palette where the browser supports it.
 
 ## Verification and release workflow
 
@@ -63,3 +63,15 @@ Run `npm run test:offline` for startup, persistence or PWA changes. Vite develop
 Live API audits/imports are separate, potentially lengthy network checks. Do not run them just to verify colour or formatting changes. The API research and previous live results are dated evidence, not a promise of current counts.
 
 Update requirements/status with what was actually tested. Hardware-only checks still include iPhone installation, safe areas, real GPS permission, VoiceOver and large text. Do not publish/deploy solely because local checks pass unless deployment is part of the request.
+
+## Operator-specific ETA matching
+
+Do not apply KMB's sequence semantics indiscriminately to Citybus. The N8P live audit in `API-RESEARCH.md` demonstrates inbound ETA sequences offset from the route-stop catalogue. `selectCitybusArrivals` matches a unique stop by identity and direction, retaining exact sequence checks for repeated or unknown visits. Keep these regression tests when changing adapters. Never fall back to the opposite direction just because no matching ETA is available. Run `node scripts/audit-citybus-route.mjs ROUTE` to capture a targeted public-data reproduction before changing assumptions.
+
+## Installed-app update lifecycle
+
+`useAppUpdate` owns production-only native service-worker registration, using `updateViaCache: 'none'`. Vite PWA uses `registerType: 'prompt'` and `injectRegister: false`; do not reintroduce a second generated registration script. Workbox retains precaching and `clientsClaim`, with `SKIP_WAITING` activated only by the user's update button. The app checks at startup, foreground/pageshow/reconnection (one-minute throttle), hourly while active, and on demand in Settings. A downloaded update shows a bilingual reload notice; first installation does not force a reload. Failed/offline checks retain the working cache and display a retryable Settings status.
+
+Update activation never deletes localStorage or IndexedDB. The reload replaces in-memory UI state, so users choose when to apply it. An older deployed client cannot run this new updater until its existing service-worker lifecycle delivers the first new build; see README for close/reopen bootstrap and hosting cache headers. The same-origin service-worker URL and scope must remain stable.
+
+`node scripts/update-smoke.mjs` serves three revisions of the production shell without modifying `dist`, verifying waiting-worker detection, explicit activation/reload, preference persistence and the current-version check and simulated resume detection. Run this and the offline smoke check for registration changes; Vite dev does not install the worker. Automatic checks cannot execute while iOS suspends or closes the app.

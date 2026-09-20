@@ -17,7 +17,7 @@ const route = {
     destination: { en: 'Star Ferry', tc: '尖沙咀碼頭' },
     stops: [{ id: stop.id, seq: 1 }],
 }
-async function seed(page: Page, version = 2) {
+async function seed(page: Page, version = 2, fixture = { route, stop }) {
     await page.addInitScript(
         ({ stop, route, version }) => {
             const req = indexedDB.open('bus-coming-v1', version)
@@ -37,16 +37,20 @@ async function seed(page: Page, version = 2) {
                         provider,
                         updatedAt: Date.now(),
                         routes:
-                            provider === 'KMB'
-                                ? [route, { ...route, id: 'KMB:2:O:1', number: '2' }]
+                            provider === route.provider
+                                ? provider === 'KMB'
+                                    ? [route, { ...route, id: 'KMB:2:O:1', number: '2' }]
+                                    : [route]
                                 : [],
-                        stops: provider === 'KMB' ? { [stop.id]: stop } : {},
+                        stops: provider === route.provider ? { [stop.id]: stop } : {},
                         stopRoutes:
-                            provider === 'KMB'
+                            provider === route.provider
                                 ? {
                                       [stop.id]: [
                                           { routeId: route.id, seq: 1 },
-                                          { routeId: 'KMB:2:O:1', seq: 1 },
+                                          ...(provider === 'KMB'
+                                              ? [{ routeId: 'KMB:2:O:1', seq: 1 }]
+                                              : []),
                                       ],
                                   }
                                 : {},
@@ -54,7 +58,7 @@ async function seed(page: Page, version = 2) {
                 tx.oncomplete = () => req.result.close()
             }
         },
-        { stop, route, version },
+        { ...fixture, version },
     )
     await page.route('**/eta/**', (request) =>
         request.fulfill({
@@ -514,4 +518,67 @@ test('theme colours persist, support both appearances and survive backup import'
         path: `test-results/theme-${test.info().project.name}.png`,
         fullPage: true,
     })
+})
+
+test('N8P inbound offset sequences display ETAs in route details and saved stops', async ({
+    page,
+}) => {
+    const inbound = {
+        ...route,
+        id: 'CTB:N8P:I:1',
+        provider: 'CTB',
+        number: 'N8P',
+        bound: 'I',
+        origin: { en: 'Wan Chai (Harbour Road)', tc: '灣仔 (港灣道)' },
+        destination: { en: 'Siu Sai Wan (Island Resort)', tc: '小西灣 (藍灣半島)' },
+        stops: [{ id: 'CTB:002424', seq: 1 }],
+    }
+    const cityStop = {
+        ...stop,
+        id: 'CTB:002424',
+        code: '002424',
+        provider: 'CTB',
+        name: inbound.origin,
+    }
+    await seed(page, 2, { route: inbound, stop: cityStop })
+    await page.route('**/eta/CTB/002424/N8P', (req) =>
+        req.fulfill({
+            json: {
+                data: [
+                    {
+                        co: 'CTB',
+                        route: 'N8P',
+                        stop: '002424',
+                        dir: 'I',
+                        seq: 12,
+                        eta: new Date(Date.now() + 300000).toISOString(),
+                        rmk_en: 'Inbound service',
+                    },
+                    {
+                        co: 'CTB',
+                        route: 'N8P',
+                        stop: '002424',
+                        dir: 'O',
+                        seq: 1,
+                        eta: new Date(Date.now() + 600000).toISOString(),
+                        rmk_en: 'Wrong direction',
+                    },
+                ],
+            },
+        }),
+    )
+    await page.reload()
+    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await page.getByRole('textbox', { name: 'Route number' }).fill('N8P')
+    await page.locator('.route-row').click()
+    await page.locator('.stop-main').click()
+    await expect(page.locator('.arrival-time')).toHaveCount(1)
+    await expect(page.locator('.arrival-panel')).toContainText('Inbound service')
+    await expect(page.locator('.arrival-panel')).not.toContainText('Wrong direction')
+    await page.getByRole('button', { name: 'Save stop', exact: true }).click()
+    await page.getByRole('button', { name: 'Done', exact: true }).click()
+    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await expect(page.locator('.arrival-time')).toHaveCount(1)
+    await page.reload()
+    await expect(page.locator('.arrival-time')).toHaveCount(1)
 })

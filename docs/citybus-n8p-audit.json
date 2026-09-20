@@ -1,0 +1,2715 @@
+{
+    "checkedAt": "2026-09-20T19:28:19.275Z",
+    "route": {
+        "type": "Route",
+        "version": "2.0",
+        "generated_timestamp": "2026-09-21T03:28:20+08:00",
+        "data": {
+            "co": "CTB",
+            "route": "N8P",
+            "orig_tc": "小西灣 (藍灣半島)",
+            "orig_en": "Siu Sai Wan (Island Resort)",
+            "dest_tc": "灣仔 (港灣道)",
+            "dest_en": "Wan Chai (Harbour Road)",
+            "orig_sc": "小西湾 (蓝湾半岛)",
+            "dest_sc": "湾仔 (港湾道)",
+            "data_timestamp": "2026-09-20T05:00:02+08:00"
+        }
+    },
+    "directions": [
+        {
+            "direction": "inbound",
+            "stops": {
+                "type": "RouteStop",
+                "version": "2.0",
+                "generated_timestamp": "2026-09-21T03:28:21+08:00",
+                "data": [
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 1,
+                        "stop": "002424",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 2,
+                        "stop": "002434",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 3,
+                        "stop": "002435",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 4,
+                        "stop": "002437",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 5,
+                        "stop": "002438",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 6,
+                        "stop": "002574",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 7,
+                        "stop": "001213",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 8,
+                        "stop": "001251",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 9,
+                        "stop": "003305",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 10,
+                        "stop": "001377",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 11,
+                        "stop": "001371",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 12,
+                        "stop": "001223",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 13,
+                        "stop": "001224",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 14,
+                        "stop": "001225",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 15,
+                        "stop": "001362",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 16,
+                        "stop": "002580",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 17,
+                        "stop": "001370",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "I",
+                        "seq": 18,
+                        "stop": "001382",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    }
+                ]
+            },
+            "checks": [
+                {
+                    "stop": "002424",
+                    "catalogueSequence": 1,
+                    "etaSequences": [12],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:35:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:41:46+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:02:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002434",
+                    "catalogueSequence": 2,
+                    "etaSequences": [13],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:37:52+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:43:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:04:19+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002435",
+                    "catalogueSequence": 3,
+                    "etaSequences": [14],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:39:17+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:45:18+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:05:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002437",
+                    "catalogueSequence": 4,
+                    "etaSequences": [15],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:40:43+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:46:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:07:09+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002438",
+                    "catalogueSequence": 5,
+                    "etaSequences": [16],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:41:43+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:47:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:08:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002574",
+                    "catalogueSequence": 6,
+                    "etaSequences": [17],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:42:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:48:35+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:08:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001213",
+                    "catalogueSequence": 7,
+                    "etaSequences": [18],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:43:47+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:49:49+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:10:13+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001251",
+                    "catalogueSequence": 8,
+                    "etaSequences": [19],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:28:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:44:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:51:01+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "003305",
+                    "catalogueSequence": 9,
+                    "etaSequences": [20],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 20,
+                                "stop": "003305",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:35:56+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 20,
+                                "stop": "003305",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:52:24+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 20,
+                                "stop": "003305",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:58:25+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001377",
+                    "catalogueSequence": 10,
+                    "etaSequences": [21],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 21,
+                                "stop": "001377",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:36:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 21,
+                                "stop": "001377",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:53:26+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 21,
+                                "stop": "001377",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:59:29+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001371",
+                    "catalogueSequence": 11,
+                    "etaSequences": [22],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 22,
+                                "stop": "001371",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:38:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 22,
+                                "stop": "001371",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:55:25+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 22,
+                                "stop": "001371",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:01:28+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001223",
+                    "catalogueSequence": 12,
+                    "etaSequences": [23],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 23,
+                                "stop": "001223",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:39:58+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 23,
+                                "stop": "001223",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:56:44+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 23,
+                                "stop": "001223",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:02:48+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001224",
+                    "catalogueSequence": 13,
+                    "etaSequences": [24],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:24+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 24,
+                                "stop": "001224",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:27:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 24,
+                                "stop": "001224",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:41:12+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 24,
+                                "stop": "001224",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:57:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001225",
+                    "catalogueSequence": 14,
+                    "etaSequences": [25],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:24+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 25,
+                                "stop": "001225",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:29:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 25,
+                                "stop": "001225",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:42:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 25,
+                                "stop": "001225",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:59:41+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001362",
+                    "catalogueSequence": 15,
+                    "etaSequences": [26],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:24+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 26,
+                                "stop": "001362",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:30:40+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 26,
+                                "stop": "001362",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:43:53+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 26,
+                                "stop": "001362",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:00:36+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002580",
+                    "catalogueSequence": 16,
+                    "etaSequences": [27],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:24+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 27,
+                                "stop": "002580",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:31:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 27,
+                                "stop": "002580",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:44:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 27,
+                                "stop": "002580",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:01:32+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001370",
+                    "catalogueSequence": 17,
+                    "etaSequences": [28],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:25+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 28,
+                                "stop": "001370",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:33:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 28,
+                                "stop": "001370",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:47:00+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 28,
+                                "stop": "001370",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:03:01+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001382",
+                    "catalogueSequence": 18,
+                    "etaSequences": [29],
+                    "strictMatches": 0,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:25+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:35:24+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:48:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:04:53+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:40:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:00:00+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:20:00+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "direction": "outbound",
+            "stops": {
+                "type": "RouteStop",
+                "version": "2.0",
+                "generated_timestamp": "2026-09-21T03:28:25+08:00",
+                "data": [
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 1,
+                        "stop": "001382",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 2,
+                        "stop": "001311",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 3,
+                        "stop": "001366",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 4,
+                        "stop": "001312",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 5,
+                        "stop": "001226",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 6,
+                        "stop": "001227",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 7,
+                        "stop": "001228",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 8,
+                        "stop": "001372",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 9,
+                        "stop": "002693",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 10,
+                        "stop": "002568",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 11,
+                        "stop": "002414",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 12,
+                        "stop": "002424",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 13,
+                        "stop": "002434",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 14,
+                        "stop": "002435",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 15,
+                        "stop": "002437",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 16,
+                        "stop": "002438",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 17,
+                        "stop": "002574",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 18,
+                        "stop": "001213",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    },
+                    {
+                        "co": "CTB",
+                        "route": "N8P",
+                        "dir": "O",
+                        "seq": 19,
+                        "stop": "001251",
+                        "data_timestamp": "2026-09-20T05:00:04+08:00"
+                    }
+                ]
+            },
+            "checks": [
+                {
+                    "stop": "001382",
+                    "catalogueSequence": 1,
+                    "etaSequences": [1],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:25+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:35:24+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:48:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 29,
+                                "stop": "001382",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:04:53+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:40:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:00:00+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 1,
+                                "stop": "001382",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:20:00+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001311",
+                    "catalogueSequence": 2,
+                    "etaSequences": [2],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 2,
+                                "stop": "001311",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:42:07+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 2,
+                                "stop": "001311",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:02:03+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 2,
+                                "stop": "001311",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:22:03+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001366",
+                    "catalogueSequence": 3,
+                    "etaSequences": [3],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 3,
+                                "stop": "001366",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:43:09+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 3,
+                                "stop": "001366",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:03:21+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 3,
+                                "stop": "001366",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:23:21+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001312",
+                    "catalogueSequence": 4,
+                    "etaSequences": [4],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:26+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 4,
+                                "stop": "001312",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:44:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 4,
+                                "stop": "001312",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:04:48+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 4,
+                                "stop": "001312",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:24:48+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001226",
+                    "catalogueSequence": 5,
+                    "etaSequences": [5],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 5,
+                                "stop": "001226",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:45:19+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 5,
+                                "stop": "001226",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:05:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 5,
+                                "stop": "001226",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:25:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001227",
+                    "catalogueSequence": 6,
+                    "etaSequences": [6],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 6,
+                                "stop": "001227",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:46:34+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 6,
+                                "stop": "001227",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:06:44+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 6,
+                                "stop": "001227",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:26:44+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001228",
+                    "catalogueSequence": 7,
+                    "etaSequences": [7],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 7,
+                                "stop": "001228",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:28:15+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 7,
+                                "stop": "001228",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:47:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 7,
+                                "stop": "001228",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:08:04+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001372",
+                    "catalogueSequence": 8,
+                    "etaSequences": [8],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:27+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 8,
+                                "stop": "001372",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:29:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 8,
+                                "stop": "001372",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:49:24+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 8,
+                                "stop": "001372",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:09:40+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002693",
+                    "catalogueSequence": 9,
+                    "etaSequences": [9],
+                    "strictMatches": 2,
+                    "arrivals": 2,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:28+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 9,
+                                "stop": "002693",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:33:43+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 9,
+                                "stop": "002693",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:53:37+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002568",
+                    "catalogueSequence": 10,
+                    "etaSequences": [10],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:28+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 10,
+                                "stop": "002568",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:33:50+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 10,
+                                "stop": "002568",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:39:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 10,
+                                "stop": "002568",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:00:19+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002414",
+                    "catalogueSequence": 11,
+                    "etaSequences": [11],
+                    "strictMatches": 3,
+                    "arrivals": 3,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:28+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 11,
+                                "stop": "002414",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:34:16+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 11,
+                                "stop": "002414",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T03:40:20+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "O",
+                                "seq": 11,
+                                "stop": "002414",
+                                "dest_tc": "灣仔(港灣道)",
+                                "dest_en": "Wan Chai (Harbour Road)",
+                                "eta": "2026-09-21T04:00:44+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "湾仔(港湾道)",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002424",
+                    "catalogueSequence": 12,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:35:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:41:46+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 12,
+                                "stop": "002424",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:02:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002434",
+                    "catalogueSequence": 13,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:37:52+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:43:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 13,
+                                "stop": "002434",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:04:19+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002435",
+                    "catalogueSequence": 14,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:39:17+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:45:18+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 14,
+                                "stop": "002435",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:05:42+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002437",
+                    "catalogueSequence": 15,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:40:43+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:46:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 15,
+                                "stop": "002437",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:07:09+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002438",
+                    "catalogueSequence": 16,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:41:43+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:47:45+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 16,
+                                "stop": "002438",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:08:10+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "002574",
+                    "catalogueSequence": 17,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:22+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:42:33+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:48:35+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 17,
+                                "stop": "002574",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:08:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001213",
+                    "catalogueSequence": 18,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:43:47+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:49:49+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 18,
+                                "stop": "001213",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T04:10:13+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "stop": "001251",
+                    "catalogueSequence": 19,
+                    "etaSequences": [],
+                    "strictMatches": 0,
+                    "arrivals": 0,
+                    "response": {
+                        "type": "ETA",
+                        "version": "2.0",
+                        "generated_timestamp": "2026-09-21T03:28:23+08:00",
+                        "data": [
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:28:55+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 1,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:44:59+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 2,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            },
+                            {
+                                "co": "CTB",
+                                "route": "N8P",
+                                "dir": "I",
+                                "seq": 19,
+                                "stop": "001251",
+                                "dest_tc": "小西灣藍灣半島",
+                                "dest_en": "Siu Sai Wan (Island Resort)",
+                                "eta": "2026-09-21T03:51:01+08:00",
+                                "rmk_tc": "",
+                                "eta_seq": 3,
+                                "dest_sc": "小西湾蓝湾半岛",
+                                "rmk_en": "",
+                                "rmk_sc": "",
+                                "data_timestamp": "2026-09-21T03:28:13+08:00"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

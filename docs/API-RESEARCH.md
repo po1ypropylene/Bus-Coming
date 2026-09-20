@@ -91,3 +91,16 @@ The initial live run also exercised download resumption across development reloa
 ## Progressive Citybus availability
 
 The complete offline snapshot can take many minutes. `route/CTB` is now saved immediately as a separate lightweight route index, so Citybus routes appear in search without waiting for the complete stop catalogue. The route-details service fetches the selected direction and its unique stop details on demand, reusing the background import's persisted responses. It saves that route independently for subsequent/offline visits. A provisional index includes both candidate directions; if the operator publishes an empty direction, the detail screen says so. The complete snapshot later removes empty directions. This does not mark an incomplete dataset as a completed offline download or advance its successful-download timestamp.
+
+## Citybus ETA sequence mismatch — N8P, 21 September 2026
+
+A targeted live audit around 03:28 HKT reproduced missing inbound ETAs. N8P's catalogue origin is Siu Sai Wan (Island Resort), destination Wan Chai (Harbour Road); the requested Wan Chai → Siu Sai Wan direction is **I**.
+
+- `/route-stop/CTB/N8P/inbound` numbers 18 stops from 1 to 18.
+- `/eta/CTB/002424/N8P` identifies the same Wan Chai origin stop with `dir: I`, but `seq: 12`, not catalogue sequence 1.
+- All 18 inbound stops returned three non-null ETAs with sequence **catalogue + 11** (12–29). The previous shared KMB/Citybus sequence filter dropped every row.
+- For outbound, the first 11 catalogue stops returned matching sequences and outbound ETAs. The catalogue additionally listed eight trailing stops for which the audit returned no outbound ETA rows. Do not relabel inbound rows as outbound or invent estimates for those entries. This observation is not enough to rewrite the operator's published stop list.
+
+Citybus selection now verifies direction and the route/stop/company fields when supplied by its stop-specific endpoint. For a stop that appears exactly once in the selected direction's catalogue, its stop ID determines the visit, so a different ETA sequence does not discard valid rows. Repeated stops, incomplete stop lists and invalid selected sequences retain exact sequence matching. KMB retains its exact direction/service/sequence filter; NLB is unchanged. No N8P-specific offset is hardcoded. Repeated-visit Citybus sequence inconsistencies remain conservative (may show no ETA rather than the wrong visit).
+
+Evidence: `citybus-n8p-audit.json` contains timestamps, complete route/stop responses and ETA responses for both directions. Reproduce with `node scripts/audit-citybus-route.mjs N8P`; this reads public operator data and replaces that route's audit file. ETA timestamps are historical observations, not current predictions. No route-data reset or bookmark migration is necessary for the fix.

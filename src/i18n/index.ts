@@ -1,5 +1,13 @@
 export const strings = {
     en: {
+        appUpdate: 'App updates',
+        checkAppUpdate: 'Check for app updates',
+        updateChecking: 'Checking for updates…',
+        updateCurrent: 'This app is up to date.',
+        updateReady: 'A new version is ready.',
+        updateReload: 'Update and reload',
+        updateError: 'Could not check for updates. Check your connection and try again.',
+
         theme: 'Theme colour',
         themeNames: {
             green: 'Green',
@@ -131,6 +139,14 @@ export const strings = {
         nlbEstimate: 'NLB estimates may be based on schedules and historical journey times.',
     },
     tc: {
+        appUpdate: '應用程式更新',
+        checkAppUpdate: '檢查應用程式更新',
+        updateChecking: '正在檢查更新…',
+        updateCurrent: '已是最新版本。',
+        updateReady: '新版本已準備就緒。',
+        updateReload: '更新並重新載入',
+        updateError: '無法檢查更新，請檢查網絡連線後重試。',
+
         theme: '主題顏色',
         themeNames: { green: '綠色', blue: '藍色', yellow: '黃色', red: '紅色', purple: '紫色' },
         citybusPending: '城巴路線已可搜尋，離線車站資料仍在下載。開啟路線即可立即載入沿途車站。',

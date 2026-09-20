@@ -1,3 +1,4 @@
+import { useAppUpdate } from './useAppUpdate'
 import { useEffect, useMemo, useState } from 'react'
 import { useCatalog } from './useCatalog.ts'
 import { strings } from '../i18n'
@@ -10,6 +11,7 @@ import { useTheme } from './useTheme'
 import { useUserData } from './useUserData'
 
 export function useAppController() {
+    const appUpdate = useAppUpdate()
     const { snapshots, catalogs, progress, busy, storageError, refresh } = useCatalog()
     const { user, saveError, updateUser } = useUserData()
     useTheme(user.theme)
@@ -86,6 +88,7 @@ export function useAppController() {
     const backups = useBackups(user, updateUser, setNotice, t)
     const currentRoute = selectedRoute ? (byRoute.get(selectedRoute.id) ?? selectedRoute) : null
     return {
+        appUpdate,
         snapshots,
         progress,
         busy,

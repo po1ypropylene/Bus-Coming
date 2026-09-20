@@ -110,3 +110,23 @@ Implemented five persisted theme colours with light/dark palettes, translated ac
 Four-space indentation observed in the source is now shared by Prettier, ESLint and EditorConfig. Formatting was normalized across project text. Future agents follow root `AGENTS.md`; `DEVELOPMENT.md` documents module ownership, WebStorm formatting, storage migrations, theme extension and verification.
 
 Verification for this update: production build, ESLint (including a deliberate invalid-format probe), Prettier check and 23 unit tests passed. All 20 browser cases passed across WebKit and Chromium (18 existing cases in the full run; two new theme cases passed after fixing an ambiguous test selector). Production offline reload checks passed in both engines. The purple Traditional Chinese mobile Settings screenshot was visually inspected. No new live API crawl or physical iPhone test was performed for this update.
+
+## N8P inbound ETA correction — 21 September 2026
+
+Live data reproduced valid Citybus ETAs being discarded because inbound route-stop sequences 1–18 differed from ETA sequences 12–29. All 18 inbound stops returned three ETAs during the audit. The Citybus adapter now uses stop identity for unique visits, while retaining direction filtering and strict sequence matching for repeated/unknown visits. KMB and NLB selection are unchanged. Existing cached routes and bookmarks work with this correction; no route refresh or data deletion is required.
+
+Regression coverage includes the two observed N8P sequence examples, wrong direction/route/stop/company rejection, repeated visits, incomplete stop lists, ordinary outbound sequences and null-ETA remarks. Browser coverage exercises inbound route details, bookmarking and reload. See `API-RESEARCH.md` and `citybus-n8p-audit.json` for evidence and the remaining upstream outbound-list anomaly. This was a targeted N8P audit, not an exhaustive all-route data review.
+
+N8P correction verification: production build, lint, formatting, 27 unit tests and all 22 browser tests passed (mobile WebKit and desktop Chromium). Persistence schema and offline caching were unchanged.
+
+## Keypad theme correction — 21 September 2026
+
+Completed each palette with light/dark border and secondary-text colours, explicit surfaces and theme-derived shadows. The keypad mixes its background from `--line` and `--bg`; previously `--line` and action-key `--muted` inherited the original green palette even when blue or another theme was selected. All five themes now supply these tokens.
+
+Verification: blue keypad screenshots and computed background/border/action colours checked in mobile WebKit in both light and dark appearance. Production build, lint, formatting, 27 unit tests and 22 existing browser tests passed.
+
+## Home Screen app update correction — 21 September 2026
+
+Previously the generated registration script registered the offline worker, but the app had no foreground update checks, update UI or controller-change handling to refresh the running page. Safari loading a new page did not refresh an already running installed app. Replaced the generated registration with a production-only lifecycle hook: startup/foreground/reconnection/hourly checks, manual Settings check, bilingual update notice and user-triggered activation/reload. Existing localStorage and IndexedDB data remain untouched. Deployment/header requirements and one-time upgrade instructions for older installed clients are in README. The external hosting configuration and physical iPhone behavior have not been inspected.
+
+Verification: build, lint, formatting, 27 unit tests and 22 browser tests passed. Production update activation/reload and saved preference preservation passed in Chromium and WebKit; production offline reload/bookmarks/search passed in both engines. Physical installed-iPhone verification remains manual.

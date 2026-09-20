@@ -15,6 +15,7 @@ import { type Lang, PROVIDERS } from '../types/transit'
 
 export function SettingsPage() {
     const {
+        appUpdate,
         t,
         tc,
         user,
@@ -31,6 +32,34 @@ export function SettingsPage() {
     return (
         <div className="settings-layout">
             <div>
+                {appUpdate.supported && (
+                    <>
+                        <div className="section-heading">
+                            <h2>{t.appUpdate}</h2>
+                        </div>
+                        <section className="list-card">
+                            <button
+                                className="setting-action"
+                                disabled={appUpdate.status === 'checking'}
+                                onClick={() => void appUpdate.check()}
+                            >
+                                <RefreshCw size={18} />
+                                {appUpdate.status === 'checking'
+                                    ? t.updateChecking
+                                    : t.checkAppUpdate}
+                            </button>
+                        </section>
+                        <p className="setting-description" role="status">
+                            {appUpdate.status === 'current'
+                                ? t.updateCurrent
+                                : appUpdate.status === 'error'
+                                  ? t.updateError
+                                  : appUpdate.status === 'ready'
+                                    ? t.updateReady
+                                    : ''}
+                        </p>
+                    </>
+                )}
                 <div className="section-heading">
                     <h2>{t.preferences}</h2>
                 </div>

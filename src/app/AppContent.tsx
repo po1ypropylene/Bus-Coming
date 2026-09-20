@@ -12,6 +12,7 @@ import { SettingsPage } from '../pages/SettingsPage'
 
 export function AppContent() {
     const {
+        appUpdate,
         online,
         saveError,
         storageError,
@@ -32,6 +33,14 @@ export function AppContent() {
         <div className="app-shell">
             <AppHeader />
             <main id="main">
+                {appUpdate.status === 'ready' && (
+                    <div className="banner" role="status">
+                        <span>{t.updateReady}</span>
+                        <button className="text-button" onClick={appUpdate.applyUpdate}>
+                            {t.updateReload}
+                        </button>
+                    </div>
+                )}
                 {!online && (
                     <div className="banner">
                         <WifiOff size={17} />

@@ -1,29 +1,49 @@
 /* Accent palettes: light and dark values stay together for contrast review. */
 [data-theme='green'] {
+    --surface: #fff;
+    --line: #e8ede9;
+    --muted: #70807b;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --accent: #256c54;
     --bg: #f7f9f7;
     --ink: #223a36;
     --soft: #eaf2ec;
 }
 [data-theme='blue'] {
+    --surface: #fff;
+    --line: #e5ebf3;
+    --muted: #697b91;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --accent: #2464a5;
     --bg: #f6f8fc;
     --ink: #24364c;
     --soft: #e9f0fa;
 }
 [data-theme='yellow'] {
+    --surface: #fff;
+    --line: #eee8d9;
+    --muted: #807458;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --accent: #806000;
     --bg: #fcfaf3;
     --ink: #443b20;
     --soft: #f6efd6;
 }
 [data-theme='red'] {
+    --surface: #fff;
+    --line: #f0e5e7;
+    --muted: #8d7277;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --accent: #b13e4a;
     --bg: #fcf7f7;
     --ink: #492d32;
     --soft: #faebed;
 }
 [data-theme='purple'] {
+    --surface: #fff;
+    --line: #ece5f1;
+    --muted: #81718f;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --accent: #7950a4;
     --bg: #faf7fc;
     --ink: #3b2d49;
@@ -31,6 +51,9 @@
 }
 @media (prefers-color-scheme: dark) {
     [data-theme='green'] {
+        --line: #304039;
+        --muted: #9fb1a7;
+        --shadow: none;
         --accent: #91d5ae;
         --bg: #14231e;
         --surface: #1c2e27;
@@ -38,6 +61,9 @@
         --soft: #2a4034;
     }
     [data-theme='blue'] {
+        --line: #314157;
+        --muted: #a1b2c9;
+        --shadow: none;
         --accent: #9ac9ff;
         --bg: #151e2b;
         --surface: #1d2a3a;
@@ -45,6 +71,9 @@
         --soft: #293c55;
     }
     [data-theme='yellow'] {
+        --line: #47402d;
+        --muted: #bdb293;
+        --shadow: none;
         --accent: #efd16f;
         --bg: #242116;
         --surface: #302b1c;
@@ -52,6 +81,9 @@
         --soft: #443c25;
     }
     [data-theme='red'] {
+        --line: #4a343c;
+        --muted: #c6a7ae;
+        --shadow: none;
         --accent: #ffadb4;
         --bg: #291b1e;
         --surface: #36252a;
@@ -59,6 +91,9 @@
         --soft: #4b3037;
     }
     [data-theme='purple'] {
+        --line: #44344f;
+        --muted: #baa7cb;
+        --shadow: none;
         --accent: #d3b1f4;
         --bg: #241c2c;
         --surface: #30263b;

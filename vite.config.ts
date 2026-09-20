@@ -13,7 +13,8 @@ export default defineConfig({
     plugins: [
         react(),
         VitePWA({
-            registerType: 'autoUpdate',
+            registerType: 'prompt',
+            injectRegister: false,
             includeAssets: ['apple-touch-icon.png'],
             manifest: {
                 id: '/',
@@ -40,6 +41,7 @@ export default defineConfig({
                 globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
                 navigateFallback: '/index.html',
                 cleanupOutdatedCaches: true,
+                clientsClaim: true,
             },
         }),
     ],

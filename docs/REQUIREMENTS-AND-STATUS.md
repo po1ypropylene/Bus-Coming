@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 20 September 2026. This document describes the implemented app, verified behavior, and remaining limitations. API formats and observations are in `API-RESEARCH.md` and `api-audit.json`.
+Last updated: 21 September 2026. This document describes the implemented app, verified behavior, and remaining limitations. API formats and observations are in `API-RESEARCH.md` and `api-audit.json`.
 
 ## Requirement checklist
 
@@ -34,7 +34,7 @@ Last updated: 20 September 2026. This document describes the implemented app, ve
 - **Saved:** real empty state on first use, add-stop shortcut, group filters, live arrival cards, edit group and remove stop. No sample routes or invented arrival times are presented as live data.
 - **Routes:** custom keypad, operator filter, offline catalogue, direction/variant-specific route details, ordered stops. Tap a stop for ETA and bookmark it; choose an existing group or name a new one.
 - **Nearby:** tap to grant location access, then see up to 40 nearest stops within 1km. Expand a stop to see its routes, then open a route at that stop.
-- **Settings:** language, operator download progress/counts/timestamps, manual refresh, backup export/import and Home Screen instructions.
+- **Settings:** language, saved theme colour (green, blue, yellow, red or purple), operator download progress/counts/timestamps, manual refresh, backup export/import and Home Screen instructions.
 
 ## Correctness and resilience
 
@@ -49,8 +49,8 @@ Last updated: 20 September 2026. This document describes the implemented app, ve
 ## Verification
 
 - TypeScript production build and ESLint checks are run on the final code.
-- 13 unit tests cover direction/service/sequence filtering, null ETAs, Hong Kong time parsing, route indexes, missing references, dynamic keypad letters, distance calculations, validated backups and removed routes.
-- **18 browser tests passed.** Playwright runs against mobile WebKit (440×956, DPR 3) and desktop Chromium. It covers route search → stop ETA → grouped bookmark → reload → Traditional Chinese; simulated GPS; invalid/valid imports; offline errors; layout overflow; all-provider first-launch normalization with a missing KMB stop; and failed forced refresh preserving old snapshots.
+- 23 unit tests cover direction/service/sequence filtering, null ETAs, Hong Kong time parsing, route indexes, missing references, dynamic keypad letters, distance calculations, validated backups and removed routes.
+- **20 browser tests passed.** Playwright runs against mobile WebKit (440×956, DPR 3) and desktop Chromium. It covers route search → stop ETA → grouped bookmark → reload → Traditional Chinese; simulated GPS; invalid/valid imports; offline errors; layout overflow; all-provider first-launch normalization with a missing KMB stop; and failed forced refresh preserving old snapshots.
 - The live audit fetched real route lists, stop lists/details, and ETA responses for all three APIs and confirmed CORS support. Evidence is saved in `api-audit.json`.
 - Production offline reload, persisted bookmarks, offline route search and standalone manifest checks passed in both Chromium and WebKit with a dedicated local origin server stopped. Chromium also used browser offline mode. WebKit’s automated offline toggle returned an internal engine error, so its cache test used the stopped origin and aborted upstream requests instead; this limitation remains distinct from real iPhone validation.
 
@@ -101,4 +101,12 @@ A complete browser import on 20 September 2026 completed in approximately 640 se
 
 The real KMB 1A route and its first stop's ETA rendered successfully after this import. Full-page mobile screenshots were visually inspected. Raw verification summaries are in `docs/verification-results.json`; generated screenshots remain in the ignored `artifacts/` and `test-results/` folders.
 
-Final checks: strict TypeScript production build, ESLint, Prettier, 13 unit tests, 18 browser tests, and production offline-cache smoke tests in Chromium/WebKit passed. Physical iPhone installation and GPS checks remain manual as described above.
+Final checks: strict TypeScript production build, ESLint, Prettier, 23 unit tests, 20 browser tests, and production offline-cache smoke tests in Chromium/WebKit passed. Physical iPhone installation and GPS checks remain manual as described above.
+
+## Theme and contributor conventions update — 21 September 2026
+
+Implemented five persisted theme colours with light/dark palettes, translated accessible radio controls, selected checkmarks, and browser theme-colour metadata updates. Older user data/backups default to green; invalid supplied themes are rejected. Bookmark and language persistence are preserved. Fixed brand icons and manifest remain green.
+
+Four-space indentation observed in the source is now shared by Prettier, ESLint and EditorConfig. Formatting was normalized across project text. Future agents follow root `AGENTS.md`; `DEVELOPMENT.md` documents module ownership, WebStorm formatting, storage migrations, theme extension and verification.
+
+Verification for this update: production build, ESLint (including a deliberate invalid-format probe), Prettier check and 23 unit tests passed. All 20 browser cases passed across WebKit and Chromium (18 existing cases in the full run; two new theme cases passed after fixing an ambiguous test selector). Production offline reload checks passed in both engines. The purple Traditional Chinese mobile Settings screenshot was visually inspected. No new live API crawl or physical iPhone test was performed for this update.

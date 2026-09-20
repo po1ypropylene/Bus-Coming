@@ -1,119 +1,139 @@
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  color: #223a36;
-  background: #f7f9f7;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  --bg: #f7f9f7;
-  --surface: #fff;
-  --ink: #223a36;
-  --muted: #70807b;
-  --line: #e8ede9;
-  --accent: #256c54;
-  --soft: #eaf2ec;
-  --shadow: 0 6px 24px #24483705;
-  color-scheme: light dark;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    --bg: #f7f9f7;
+    --surface: #fff;
+    --ink: #223a36;
+    --muted: #70807b;
+    --line: #e8ede9;
+    --accent: #256c54;
+    --soft: #eaf2ec;
+    --shadow: 0 6px 24px #24483705;
+    color-scheme: light dark;
 }
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 body {
-  margin: 0;
-  min-width: 320px;
+    margin: 0;
+    min-width: 320px;
 }
+
 button,
 input,
 select {
-  font: inherit;
+    font: inherit;
 }
+
 button,
 a,
 input,
 select {
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
+
 button {
-  cursor: pointer;
-  color: inherit;
-  touch-action: manipulation;
+    cursor: pointer;
+    color: inherit;
+    touch-action: manipulation;
 }
+
 button {
-  border: 0;
-  background: none;
-  min-height: 44px;
+    border: 0;
+    background: none;
+    min-height: 44px;
 }
+
 button:disabled {
-  cursor: default;
-  opacity: 0.55;
+    cursor: default;
+    opacity: 0.55;
 }
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #619c81;
-  outline-offset: 3px;
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
 }
+
 input,
 select {
-  color: var(--ink);
-  background: var(--surface);
+    color: var(--ink);
+    background: var(--surface);
 }
+
 a {
-  color: var(--accent);
+    color: var(--accent);
 }
+
 h1,
 h2,
 h3,
 p {
-  margin-top: 0;
+    margin-top: 0;
 }
+
 button svg {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
+
 svg {
-  vertical-align: middle;
-  flex-shrink: 0;
+    vertical-align: middle;
+    flex-shrink: 0;
 }
+
 h1,
 h2,
 h3 {
-  letter-spacing: -0.035em;
+    letter-spacing: -0.035em;
 }
+
 p {
-  line-height: 1.6;
+    line-height: 1.6;
 }
+
 small {
-  line-height: 1.45;
+    line-height: 1.45;
 }
+
 ::selection {
-  background: #c7e4d4;
+    background: var(--soft);
 }
+
 button:active:not(:disabled) {
-  transform: scale(0.985);
+    transform: scale(0.985);
 }
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14231e;
-    --surface: #1c2e27;
-    --ink: #e6efe8;
-    --muted: #9fb1a7;
-    --line: #304039;
-    --accent: #91d5ae;
-    --soft: #2a4034;
-    --shadow: none;
-    color: var(--ink);
-    background: var(--bg);
-  }
+    :root {
+        --bg: #14231e;
+        --surface: #1c2e27;
+        --ink: #e6efe8;
+        --muted: #9fb1a7;
+        --line: #304039;
+        --accent: #91d5ae;
+        --soft: #2a4034;
+        --shadow: none;
+        color: var(--ink);
+        background: var(--bg);
+    }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }

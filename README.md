@@ -69,12 +69,18 @@ In Safari: Share → Add to Home Screen → leave **Open as Web App** enabled. L
 - Weekly age checks happen at launch, resume, reconnection and hourly while open. iOS cannot be relied on to execute weekly jobs while a web app is closed. The next active session performs overdue work.
 - Four requests per operator run concurrently for fan-out downloads. Retry/backoff handles transient failures. Checkpoints resume interrupted downloads; current snapshots stay untouched until replacements are complete.
 - ETA uses the network, updates every minute while visible, and is never cached by the service worker. KMB/Citybus results are filtered by direction and stop sequence; NLB timestamps are parsed in Hong Kong time.
-- Bookmarks and language are stored locally, separately from replaceable route snapshots. Export/import provides a portable backup. No cloud sync is implemented. Storage can still be removed by the user or operating system.
+- Bookmarks, language and theme colour are stored locally, separately from replaceable route snapshots. Export/import provides a portable backup. No cloud sync is implemented. Storage can still be removed by the user or operating system.
 - Group names are user-defined: add stops from any routes to the same named group to compare their ETAs together.
 - Nearby search requests location only after a tap, filters to 1 km, sorts by distance, and never transmits coordinates. Up to 40 closest stops are shown.
 
+## Theme colours
+
+Choose **Settings → Theme colour** for green, blue, yellow, red or purple. The choice is saved on this device and included in exported backups. Light/dark appearance follows your device. Older data keeps the original green theme.
+
 ## Documentation
 
+- [Development guide and formatting conventions](docs/DEVELOPMENT.md)
+- [Instructions for coding agents](AGENTS.md)
 - [API research and download strategy](docs/API-RESEARCH.md)
 - [Live API audit evidence](docs/api-audit.json)
 - [Requirements and implementation status](docs/REQUIREMENTS-AND-STATUS.md)

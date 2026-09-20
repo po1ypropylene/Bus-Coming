@@ -1,0 +1,65 @@
+# Development guide
+
+Last updated: 21 September 2026.
+
+## Starting points
+
+Read [README](../README.md) for setup, commands, HTTPS and iPhone testing; [requirements and status](REQUIREMENTS-AND-STATUS.md) for behavior and limitations; [API research](API-RESEARCH.md) for operator endpoints and normalization. [AGENTS.md](../AGENTS.md) is the repository instruction file for future coding agents.
+
+## Code style and editor setup
+
+The source convention is **four spaces**, not tab characters, with single quotes, no optional semicolons, trailing commas and a 100-column wrapping target. JSX attributes use double quotes. Prettier decides wrapping, JSX spacing and required defensive semicolons. Existing uneven JSX indentation has been normalized to the same convention.
+
+- `.prettierrc.json` is the canonical formatter configuration.
+- `eslint.config.js` includes `eslint-plugin-prettier/recommended` last: formatting differences fail lint and conflicting ESLint style rules are disabled by `eslint-config-prettier`.
+- `.editorconfig` supplies four-space indentation, UTF-8, LF and final newlines to WebStorm and other editors. Markdown retains intentional trailing spaces.
+- In WebStorm, enable EditorConfig support; under **Languages & Frameworks → JavaScript → Prettier**, select this project's installed Prettier and enable **Run on save** and **Run on Reformat Code**. Use automatic ESLint configuration. If editor defaults differ, the checked-in configuration wins.
+- `npm run format` normalizes tracked project text; `npm run format:check` checks it without editing. `npm run lint` checks code quality and JS/TS formatting. Generated assets, build output, test screenshots and dependency files are excluded where appropriate.
+
+## Module ownership
+
+| Folder                     | Responsibility                                    |
+| -------------------------- | ------------------------------------------------- |
+| `src/app`                  | Context, provider and screen composition          |
+| `src/pages`                | Screen-level markup                               |
+| `src/components/<feature>` | Reusable UI such as route keypad and theme picker |
+| `src/hooks`                | React state, user actions and side effects        |
+| `src/services/catalog`     | Operator imports and on-demand route loading      |
+| `src/services/api.ts`      | HTTP retries and live arrival adapters            |
+| `src/storage`              | Persistent user data and IndexedDB schema         |
+| `src/types`, `src/utils`   | Domain contracts and pure transformations         |
+| `src/i18n`                 | English and Traditional Chinese UI copy           |
+| `src/styles`               | Global, application and theme styles              |
+| `src/workers`              | Off-main-thread catalogue import orchestration    |
+
+Keep `App.tsx` as an entry point. Feature logic belongs in the modules above rather than growing the entry component again.
+
+## Persistence and upgrades
+
+`bus-coming-user-v1` in localStorage stores version 1 user data: language, theme and bookmarks. `validateUserData` is the boundary for both stored data and imported backups. Old records without `theme` normalize to `green`; all five known strings are accepted, while supplied unknown/null values are rejected. Adding this optional-on-input field does not require clearing data or changing the version/key. New writes and exports include the normalized theme. If storage writes fail, the current session still updates and the app reports the save failure.
+
+Backups merge bookmarks by ID, with imported entries winning conflicts, and restore imported preferences. An older backup defaults the theme to green. Invalid imports do not overwrite existing data. Imports remain limited to 10 MB and 1,000 bookmarks. Keep migration coverage when adding fields.
+
+IndexedDB `bus-coming-v1`, schema version 2, contains `snapshots`, `responses`, `generations`, `routeCatalogs` and `routeDetails`. Complete provider snapshots commit atomically; interrupted downloads resume checkpoints. Do not rename/delete stores or clear data to work around a migration. User bookmarks remain separate from replaceable route data.
+
+## Theme implementation and extension
+
+Settings offers Green (default), Blue, Yellow, Red and Purple through a native radio group with visible labels, selected checkmarks and keyboard focus. Preferences are translated and persist across reloads and backup export/import. Appearance continues to follow the device's light/dark setting.
+
+- `THEMES` and `Theme` in `src/types/transit.ts` define allowed identifiers.
+- `src/components/settings/ThemePicker.tsx` renders the choices.
+- `src/hooks/useTheme.ts` applies `data-theme` to the root before paint and updates the browser theme-colour metadata when either the palette or system appearance changes.
+- `src/styles/themes.css` defines paired light/dark accent, background, foreground and soft surface tokens. Application decoration uses those tokens; operator badges and success/error indicators retain their semantic colours.
+- `src/i18n/index.ts` supplies colour labels for both languages.
+
+To add a palette, add its identifier, both translated labels, both CSS token sets, and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon and manifest retain the app's fixed green brand; the running app's browser chrome follows the selected palette where the browser supports it.
+
+## Verification and release workflow
+
+Run `npm run format:check`, `npm run lint`, `npm test`, `npm run build` and `npm run test:e2e`. Browser tests cover Chromium desktop and 440×956 WebKit mobile. Theme regressions cover all five colours in both appearances, contrast, metadata, reload persistence, export/import and Chinese labels; unit tests cover old-data defaults and invalid preferences.
+
+Run `npm run test:offline` for startup, persistence or PWA changes. Vite development does not register a service worker; test offline behavior against a production build. A production preview uses the last built files, so rebuild it after source changes. Existing installed clients may need to close/reopen to activate a new service worker.
+
+Live API audits/imports are separate, potentially lengthy network checks. Do not run them just to verify colour or formatting changes. The API research and previous live results are dated evidence, not a promise of current counts.
+
+Update requirements/status with what was actually tested. Hardware-only checks still include iPhone installation, safe areas, real GPS permission, VoiceOver and large text. Do not publish/deploy solely because local checks pass unless deployment is part of the request.

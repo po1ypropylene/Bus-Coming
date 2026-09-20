@@ -1,4 +1,5 @@
-import { test, expect, type Page } from '@playwright/test'
+import { expect, type Page, test } from '@playwright/test'
+
 const stop = {
     id: 'KMB:ABC',
     code: 'ABC',
@@ -581,4 +582,35 @@ test('N8P inbound offset sequences display ETAs in route details and saved stops
     await expect(page.locator('.arrival-time')).toHaveCount(1)
     await page.reload()
     await expect(page.locator('.arrival-time')).toHaveCount(1)
+})
+
+test('mobile route matches remain visible above the keypad while typing', async ({ page }) => {
+    await seed(page)
+    for (const viewport of [
+        { width: 440, height: 956 },
+        { width: 320, height: 568 },
+    ]) {
+        await page.setViewportSize(viewport)
+        await page.getByRole('button', { name: 'Routes', exact: true }).click()
+        await page.getByRole('button', { name: 'Clear', exact: true }).last().click()
+        await page.getByRole('button', { name: '1', exact: true }).click()
+        await page.getByRole('button', { name: 'A', exact: true }).click()
+        await expect(page.locator('.route-row')).toHaveCount(1)
+        const result = await page.locator('.route-row').boundingBox()
+        const keypad = await page.locator('.keypad').boundingBox()
+        expect(result!.y).toBeGreaterThan(0)
+        expect(result!.y + result!.height).toBeLessThanOrEqual(keypad!.y)
+        expect(keypad!.y + keypad!.height).toBeLessThan(viewport.height)
+        expect(await page.evaluate(() => window.scrollY)).toBe(0)
+        const before = await page.locator('.search-results').boundingBox()
+        await page.getByRole('button', { name: 'Hide keypad', exact: true }).click()
+        const after = await page.locator('.search-results').boundingBox()
+        expect(after!.height).toBeGreaterThan(before!.height)
+        await page.getByRole('button', { name: 'Show keypad', exact: true }).click()
+    }
+    await page.setViewportSize({ width: 440, height: 956 })
+    await page.screenshot({ path: `test-results/route-keypad-${test.info().project.name}.png` })
+    await page.locator('.route-row').click()
+    await expect(page.locator('.stop-main')).toBeVisible()
+    await expect(page.locator('.route-search-shell')).toHaveCount(0)
 })

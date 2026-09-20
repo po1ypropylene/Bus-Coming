@@ -30,7 +30,9 @@ export function AppContent() {
         notice,
     } = useApp()
     return (
-        <div className="app-shell">
+        <div
+            className={`app-shell ${tab === 'search' && !currentRoute ? 'route-search-shell' : ''}`}
+        >
             <AppHeader />
             <main id="main">
                 {appUpdate.status === 'ready' && (

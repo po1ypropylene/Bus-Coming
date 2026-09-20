@@ -130,3 +130,16 @@ Verification: blue keypad screenshots and computed background/border/action colo
 Previously the generated registration script registered the offline worker, but the app had no foreground update checks, update UI or controller-change handling to refresh the running page. Safari loading a new page did not refresh an already running installed app. Replaced the generated registration with a production-only lifecycle hook: startup/foreground/reconnection/hourly checks, manual Settings check, bilingual update notice and user-triggered activation/reload. Existing localStorage and IndexedDB data remain untouched. Deployment/header requirements and one-time upgrade instructions for older installed clients are in README. The external hosting configuration and physical iPhone behavior have not been inspected.
 
 Verification: build, lint, formatting, 27 unit tests and 22 browser tests passed. Production update activation/reload and saved preference preservation passed in Chromium and WebKit; production offline reload/bookmarks/search passed in both engines. Physical installed-iPhone verification remains manual.
+
+## Route results visible while typing — 21 September 2026
+
+Reworked mobile Routes to keep search controls above a scrollable matching-route list and a compact keypad below it.
+Letters scroll alongside the numbers, similar to the supplied reference. The selected theme, operator filters, keypad
+show/hide and bottom navigation remain available. The large decorative page heading is visually hidden on mobile Routes
+to leave room for matches; it remains accessible. Desktop and route-detail scrolling retain their previous layout.
+Results reset to the top when query or operator changes.
+
+Verified build, lint, formatting and 27 unit tests. All 22 existing browser cases passed; the two new geometry cases
+passed after correcting grid stretching, covering full-row visibility while typing at 440×956 and 320×568, keypad
+show/hide expansion, and opening route details. Mobile WebKit screenshot inspected. On short phone viewports the brand
+header is hidden to preserve results space; navigation remains available. Physical iPhone testing remains manual.

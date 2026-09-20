@@ -75,3 +75,12 @@ Do not apply KMB's sequence semantics indiscriminately to Citybus. The N8P live 
 Update activation never deletes localStorage or IndexedDB. The reload replaces in-memory UI state, so users choose when to apply it. An older deployed client cannot run this new updater until its existing service-worker lifecycle delivers the first new build; see README for close/reopen bootstrap and hosting cache headers. The same-origin service-worker URL and scope must remain stable.
 
 `node scripts/update-smoke.mjs` serves three revisions of the production shell without modifying `dist`, verifying waiting-worker detection, explicit activation/reload, preference persistence and the current-version check and simulated resume detection. Run this and the offline smoke check for registration changes; Vite dev does not install the worker. Automatic checks cannot execute while iOS suspends or closes the app.
+
+## Mobile route search layout
+
+At widths up to 700px, `.route-search-shell` uses the dynamic viewport height and safe-area padding. Search controls, an
+independently scrollable result list, and the custom keypad occupy separate grid rows; the tab bar stays in normal flex
+flow below them. Numbers remain in a 3-column pad, with a separate 2-column scrolling letter list. Hiding the keypad
+expands the results. Query/operator changes reset only the results scroll position, so matches stay visible while
+typing. Route details leave this constrained shell and use normal page scrolling. Desktop retains its sidebar layout.
+Keep keyboard focus, 44px keys and the 320×568 / 440×956 geometry regression when changing this screen.

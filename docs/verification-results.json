@@ -1,0 +1,76 @@
+{
+  "verifiedAt": "2026-09-20",
+  "unitTests": 13,
+  "browserTests": 18,
+  "liveImport": {
+    "snapshots": [
+      {
+        "provider": "CTB",
+        "routes": 687,
+        "stops": 2584,
+        "updatedAt": 1789902500438
+      },
+      {
+        "provider": "KMB",
+        "routes": 1599,
+        "stops": 6741,
+        "updatedAt": 1789901940530
+      },
+      {
+        "provider": "NLB",
+        "routes": 64,
+        "stops": 290,
+        "updatedAt": 1789901866549
+      }
+    ],
+    "errors": []
+  },
+  "productionOffline": [
+    {
+      "engine": "Chromium",
+      "method": "origin stopped and browser offline",
+      "offlineReload": "passed",
+      "bookmarkPersistence": "passed",
+      "cachedRouteSearch": "passed",
+      "standaloneManifest": "passed",
+      "errors": []
+    },
+    {
+      "engine": "WebKit",
+      "method": "origin stopped; upstream requests aborted",
+      "offlineReload": "passed",
+      "bookmarkPersistence": "passed",
+      "cachedRouteSearch": "passed",
+      "standaloneManifest": "passed",
+      "errors": []
+    }
+  ],
+  "refactorVerification": {
+    "citybusBeforeBulkComplete": "passed on Chromium and WebKit with blocked bulk download",
+    "databaseV1Migration": "passed; snapshots and bookmarks retained",
+    "liveCitybus2X": {
+      "stops": 16,
+      "eta": "verified in UI during incomplete bulk download"
+    },
+    "productionOffline": [
+      {
+        "engine": "Chromium",
+        "method": "origin stopped and browser offline",
+        "offlineReload": "passed",
+        "bookmarkPersistence": "passed",
+        "cachedRouteSearch": "passed",
+        "standaloneManifest": "passed",
+        "errors": []
+      },
+      {
+        "engine": "WebKit",
+        "method": "origin stopped; upstream requests aborted",
+        "offlineReload": "passed",
+        "bookmarkPersistence": "passed",
+        "cachedRouteSearch": "passed",
+        "standaloneManifest": "passed",
+        "errors": []
+      }
+    ]
+  }
+}

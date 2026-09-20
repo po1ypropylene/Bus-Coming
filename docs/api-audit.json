@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-09-20T10:56:28.342Z",
+  "operators": {
+    "KMB": {
+      "url": "https://data.etabus.gov.hk/v1/transport/kmb/route/",
+      "cors": "*",
+      "count": 1599,
+      "letters": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "H",
+        "K",
+        "M",
+        "N",
+        "P",
+        "R",
+        "S",
+        "T",
+        "W",
+        "X"
+      ],
+      "example": {
+        "route": "1",
+        "bound": "O",
+        "service_type": "1",
+        "orig_en": "CHUK YUEN ESTATE",
+        "orig_tc": "竹園邨",
+        "orig_sc": "竹园邨",
+        "dest_en": "STAR FERRY",
+        "dest_tc": "尖沙咀碼頭",
+        "dest_sc": "尖沙咀码头"
+      }
+    },
+    "CTB": {
+      "url": "https://rt.data.gov.hk/v2/transport/citybus/route/CTB",
+      "cors": "*",
+      "count": 406,
+      "letters": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G",
+        "H",
+        "K",
+        "M",
+        "N",
+        "O",
+        "P",
+        "R",
+        "S",
+        "T",
+        "X"
+      ],
+      "example": {
+        "co": "CTB",
+        "route": "1",
+        "orig_tc": "中環 (港澳碼頭)",
+        "orig_en": "Central (Macao Ferry)",
+        "dest_tc": "跑馬地 (上)",
+        "dest_en": "Happy Valley (Upper)",
+        "orig_sc": "中环 (港澳码头)",
+        "dest_sc": "跑马地 (上)",
+        "data_timestamp": "2026-09-20T05:00:02+08:00"
+      }
+    },
+    "NLB": {
+      "url": "https://rt.data.gov.hk/v2/transport/nlb/route.php?action=list",
+      "cors": "*",
+      "count": 64,
+      "letters": [
+        "A",
+        "B",
+        "H",
+        "M",
+        "N",
+        "P",
+        "R",
+        "S",
+        "X"
+      ],
+      "example": {
+        "routeId": "2",
+        "routeNo": "1",
+        "routeName_c": "大澳 > 梅窩碼頭",
+        "routeName_s": "大澳 > 梅窝码头",
+        "routeName_e": "Tai O > Mui Wo Ferry Pier",
+        "overnightRoute": 0,
+        "specialRoute": 0
+      }
+    }
+  },
+  "samples": {
+    "kmbStop": {
+      "url": "https://data.etabus.gov.hk/v1/transport/kmb/stop",
+      "cors": "*",
+      "count": 6740,
+      "example": [
+        {
+          "stop": "18492910339410B1",
+          "name_en": "CHUK YUEN ESTATE BUS TERMINUS (WT916)",
+          "name_tc": "竹園邨總站 (WT916)",
+          "name_sc": "竹园邨总站 (WT916)",
+          "lat": "22.345415",
+          "long": "114.192640"
+        },
+        {
+          "stop": "9ED7E93749ABAE67",
+          "name_en": "WING YUEN HOUSE, CHUK YUEN SOUTH ESTATE (WT418)",
+          "name_tc": "竹園南邨榮園樓 (WT418)",
+          "name_sc": "竹园南邨荣园楼 (WT418)",
+          "lat": "22.345076",
+          "long": "114.190023"
+        }
+      ]
+    },
+    "kmbRouteStops": {
+      "url": "https://data.etabus.gov.hk/v1/transport/kmb/route-stop/1/outbound/1",
+      "cors": "*",
+      "count": 25,
+      "example": [
+        {
+          "route": "1",
+          "bound": "O",
+          "service_type": "1",
+          "seq": "1",
+          "stop": "18492910339410B1"
+        },
+        {
+          "route": "1",
+          "bound": "O",
+          "service_type": "1",
+          "seq": "2",
+          "stop": "9ED7E93749ABAE67"
+        }
+      ]
+    },
+    "kmbEta": {
+      "url": "https://data.etabus.gov.hk/v1/transport/kmb/eta/18492910339410B1/1/1",
+      "cors": "*",
+      "example": [
+        {
+          "co": "KMB",
+          "route": "1",
+          "dir": "O",
+          "service_type": 1,
+          "seq": 1,
+          "dest_tc": "尖沙咀碼頭",
+          "dest_sc": "尖沙咀码头",
+          "dest_en": "STAR FERRY",
+          "eta_seq": 1,
+          "eta": "2026-09-20T19:10:00+08:00",
+          "rmk_tc": "原定班次",
+          "rmk_sc": "原定班次",
+          "rmk_en": "Scheduled Bus",
+          "data_timestamp": "2026-09-20T18:55:58+08:00"
+        },
+        {
+          "co": "KMB",
+          "route": "1",
+          "dir": "O",
+          "service_type": 1,
+          "seq": 1,
+          "dest_tc": "尖沙咀碼頭",
+          "dest_sc": "尖沙咀码头",
+          "dest_en": "STAR FERRY",
+          "eta_seq": 2,
+          "eta": "2026-09-20T19:30:00+08:00",
+          "rmk_tc": "原定班次",
+          "rmk_sc": "原定班次",
+          "rmk_en": "Scheduled Bus",
+          "data_timestamp": "2026-09-20T18:55:58+08:00"
+        },
+        {
+          "co": "KMB",
+          "route": "1",
+          "dir": "O",
+          "service_type": 1,
+          "seq": 1,
+          "dest_tc": "尖沙咀碼頭",
+          "dest_sc": "尖沙咀码头",
+          "dest_en": "STAR FERRY",
+          "eta_seq": 3,
+          "eta": "2026-09-20T19:50:00+08:00",
+          "rmk_tc": "原定班次",
+          "rmk_sc": "原定班次",
+          "rmk_en": "Scheduled Bus",
+          "data_timestamp": "2026-09-20T18:55:58+08:00"
+        }
+      ]
+    },
+    "citybusStops": {
+      "url": "https://rt.data.gov.hk/v2/transport/citybus/route-stop/CTB/1/outbound",
+      "cors": "*",
+      "count": 20,
+      "example": [
+        {
+          "co": "CTB",
+          "route": "1",
+          "dir": "O",
+          "seq": 1,
+          "stop": "001027",
+          "data_timestamp": "2026-09-20T05:00:04+08:00"
+        },
+        {
+          "co": "CTB",
+          "route": "1",
+          "dir": "O",
+          "seq": 2,
+          "stop": "001044",
+          "data_timestamp": "2026-09-20T05:00:04+08:00"
+        }
+      ]
+    },
+    "citybusStop": {
+      "url": "https://rt.data.gov.hk/v2/transport/citybus/stop/002737",
+      "cors": "*",
+      "example": {
+        "type": "Stop",
+        "version": "2.0",
+        "generated_timestamp": "2026-09-20T18:56:37+08:00",
+        "data": {
+          "stop": "002737",
+          "name_tc": "砵典乍街, 德輔道中",
+          "name_en": "Pottinger Street, Des Voeux Road Central",
+          "lat": "22.283948002091",
+          "long": "114.15630946053",
+          "name_sc": "砵典乍街, 德辅道中",
+          "data_timestamp": "2026-09-20T05:00:03+08:00"
+        }
+      }
+    },
+    "citybusEta": {
+      "url": "https://rt.data.gov.hk/v2/transport/citybus/eta/CTB/002737/1",
+      "cors": "*",
+      "count": 0,
+      "example": []
+    },
+    "nlbStops": {
+      "url": "https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=list&routeId=1",
+      "cors": "*",
+      "count": 56,
+      "example": [
+        {
+          "stopId": "1",
+          "stopName_c": "梅窩碼頭",
+          "stopName_s": "梅窝码头",
+          "stopName_e": "Mui Wo Ferry Pier",
+          "stopLocation_c": "梅窩碼頭",
+          "stopLocation_s": "梅窝码头",
+          "stopLocation_e": "Mui Wo Ferry Pier",
+          "latitude": "22.26466400",
+          "longitude": "114.00155400",
+          "fare": "12.7",
+          "fareHoliday": "21.4",
+          "someDepartureObserveOnly": 0
+        },
+        {
+          "stopId": "2",
+          "stopName_c": "梅窩熟食市場",
+          "stopName_s": "梅窝熟食市场",
+          "stopName_e": "Mui Wo Cooked Food Market",
+          "stopLocation_c": "銀礦灣道",
+          "stopLocation_s": "银矿湾道",
+          "stopLocation_e": "Ngan Kwong Wan Road",
+          "latitude": "22.26614300",
+          "longitude": "114.00004900",
+          "fare": "12.7",
+          "fareHoliday": "21.4",
+          "someDepartureObserveOnly": 1
+        }
+      ]
+    },
+    "nlbEta": {
+      "url": "https://rt.data.gov.hk/v2/transport/nlb/stop.php?action=estimatedArrivals&routeId=1&stopId=1&language=en",
+      "cors": "*",
+      "count": 1,
+      "example": [
+        {
+          "estimatedArrivalTime": "2026-09-20 19:00:00",
+          "routeVariantName": "",
+          "departed": "0",
+          "noGPS": "0",
+          "wheelChair": 0,
+          "generateTime": "2026-09-20 18:56:40"
+        }
+      ]
+    }
+  }
+}

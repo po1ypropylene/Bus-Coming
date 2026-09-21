@@ -92,3 +92,13 @@ Read [JOINT-ROUTES.md](JOINT-ROUTES.md) before changing joint membership, journe
 partner-only stops without changing provider IDs or API sequences. Keep raw provider snapshots independent, never
 persist derived `jointPartners`, and resolve old bookmarks through their original route ID. There is no manual
 membership registry. Keep failures partial and explicit; do not merge by route number or O/I code alone.
+
+## Bookmark ordering
+
+The existing `user.bookmarks` array is the display order; no schema or storage-key change is needed.
+`utils/bookmarks.ts` contains immutable move/save helpers. Reordering swaps adjacent visible bookmarks; in a filtered
+group it swaps their original array slots so hidden bookmarks never move. `BookmarkOrder` provides a compact ordered
+list with translated 44px up/down controls, disabled boundaries and screen-reader position announcements. Each move
+uses the normal user-data persistence/error path. Editing a group preserves the bookmark's array position; new stops
+append. Export preserves array order. Import into an empty collection restores it; merging into an existing collection
+keeps existing positions and appends new IDs in imported order, as before. Do not change this silently.

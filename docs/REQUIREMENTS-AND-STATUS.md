@@ -176,3 +176,15 @@ checks passed in Chromium and WebKit, now including cached joint membership rest
 joint-route screenshot was inspected. Live checks verified the TD query/CORS and both operators’ 102/106 stop lists;
 retained fixtures exercise both directions. This was not an exhaustive live ETA audit. Physical iPhone validation
 remains manual.
+
+## Bookmark reordering — 21 September 2026
+
+Added **Saved → Reorder** with a compact list and up/down controls, available when at least two bookmarks exist. Moves
+save immediately and survive reload; **Done** returns to ETA cards. Reordering within a group leaves hidden bookmarks
+in their existing positions. Group edits now preserve the saved order instead of moving an edited item to the end.
+English/Traditional Chinese labels, keyboard controls, 44px touch targets, disabled boundary buttons and announced
+positions are included. Existing data and backup format remain compatible; no drag gesture is required or implemented.
+
+Verification: build, lint, 44 unit tests, all 28 browser tests (mobile WebKit and desktop Chromium), and production
+offline smoke checks passed. Browser coverage verifies group isolation, saved array order, reload persistence, keyboard
+activation and Chinese labels. Physical iPhone and VoiceOver testing remain manual.

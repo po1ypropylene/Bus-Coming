@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { BookmarkOrder } from '../components/bookmarks/BookmarkOrder'
+import { moveBookmark } from '../utils/bookmarks'
 import {
     ArrowUpRight,
     Bookmark as BookmarkIcon,
@@ -33,6 +36,8 @@ export function SavedPage() {
         setActiveGroup,
         groups,
     } = useApp()
+    const [reordering, setReordering] = useState(false)
+    const visibleBookmarks = user.bookmarks.filter((b) => !activeGroup || b.group === activeGroup)
     return (
         <div className="home-layout">
             <div>
@@ -63,7 +68,30 @@ export function SavedPage() {
                         <Plus size={21} />
                     </button>
                 </div>
-                {!user.bookmarks.length ? (
+                {user.bookmarks.length > 1 && (
+                    <div className="bookmark-order-toolbar">
+                        <button
+                            className="text-button"
+                            aria-pressed={reordering}
+                            onClick={() => setReordering((value) => !value)}
+                        >
+                            {reordering ? t.done : t.reorder}
+                        </button>
+                    </div>
+                )}
+                {reordering && user.bookmarks.length > 1 ? (
+                    <BookmarkOrder
+                        bookmarks={visibleBookmarks}
+                        lang={lang}
+                        t={t}
+                        onMove={(id, direction) =>
+                            updateUser({
+                                ...user,
+                                bookmarks: moveBookmark(user.bookmarks, id, direction, activeGroup),
+                            })
+                        }
+                    />
+                ) : !user.bookmarks.length ? (
                     <section className="empty-saved">
                         <JourneyArt />
                         <h2>{t.noSaved}</h2>

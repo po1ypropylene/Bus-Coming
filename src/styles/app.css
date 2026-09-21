@@ -2024,3 +2024,56 @@ progress {
         padding-block: 10px;
     }
 }
+
+.bookmark-order-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.bookmark-order-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bookmark-order-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+}
+
+.bookmark-order-list li + li {
+    border-top: 1px solid var(--line);
+}
+
+.bookmark-order-copy {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.bookmark-order-copy strong,
+.bookmark-order-copy small {
+    display: block;
+}
+
+.bookmark-order-copy small {
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.bookmark-order-actions {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.bookmark-order-actions button {
+    min-width: 44px;
+    min-height: 44px;
+}

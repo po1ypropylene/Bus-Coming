@@ -2,6 +2,11 @@ import type { Route } from '../types/transit'
 
 export const strings = {
     en: {
+        reorder: 'Reorder',
+        reorderHint: 'Use the arrows to move saved stops. Changes are saved automatically.',
+        moveUp: 'Move up',
+        moveDown: 'Move down',
+        position: 'Position',
         appUpdate: 'App updates',
         checkAppUpdate: 'Check for app updates',
         updateChecking: 'Checking for updates…',
@@ -144,6 +149,11 @@ export const strings = {
         nlbEstimate: 'NLB estimates may be based on schedules and historical journey times.',
     },
     tc: {
+        reorder: '重新排序',
+        reorderHint: '使用箭頭調整收藏車站的次序，變更會自動儲存。',
+        moveUp: '向上移動',
+        moveDown: '向下移動',
+        position: '位置',
         appUpdate: '應用程式更新',
         checkAppUpdate: '檢查應用程式更新',
         updateChecking: '正在檢查更新…',

@@ -1,3 +1,4 @@
+import { saveBookmark } from '../utils/bookmarks'
 import { Check, RefreshCw, WifiOff } from 'lucide-react'
 import { useApp } from './AppContext.ts'
 import { SaveDialog } from '../components/bookmarks/SaveDialog'
@@ -83,10 +84,7 @@ export function AppContent() {
                     onSave={(group) => {
                         updateUser({
                             ...user,
-                            bookmarks: [
-                                ...user.bookmarks.filter((b) => b.id !== saveItem.id),
-                                { ...saveItem, group },
-                            ],
+                            bookmarks: saveBookmark(user.bookmarks, { ...saveItem, group }),
                         })
                         setSaveItem(null)
                         setNotice(t.savedStop)

@@ -621,3 +621,58 @@ test('mobile route matches remain visible above the keypad while typing', async 
     await expect(page.locator('.stop-main')).toBeVisible()
     await expect(page.locator('.route-search-shell')).toHaveCount(0)
 })
+
+test('bookmarks reorder within groups, persist on reload and support keyboard and Chinese', async ({
+                                                                                                       page,
+                                                                                                   }) => {
+    await seed(page)
+    await page.evaluate(
+        ({ route, stop }) => {
+            localStorage.setItem(
+                'bus-coming-user-v1',
+                JSON.stringify({
+                    version: 1,
+                    language: 'en',
+                    theme: 'blue',
+                    bookmarks: ['a', 'b', 'c'].map((id, index) => ({
+                        id,
+                        routeId: route.id,
+                        stopId: stop.id,
+                        seq: 1,
+                        route,
+                        stop: { ...stop, name: { en: `Saved ${id}`, tc: `收藏${id}` } },
+                        group: index === 1 ? 'Home' : 'Work',
+                    })),
+                }),
+            )
+        },
+        { route, stop },
+    )
+    await page.reload()
+    await page.getByRole('button', { name: 'Work', exact: true }).click()
+    await page.getByRole('button', { name: 'Reorder', exact: true }).click()
+    const labels = () => page.locator('.bookmark-order-copy strong').allTextContents()
+    await expect(page.locator('.bookmark-order-list li')).toHaveCount(2)
+    await expect(page.getByRole('button', { name: /^Move up:.*Saved a/ })).toBeDisabled()
+    await page.getByRole('button', { name: /^Move up:.*Saved c/ }).click()
+    expect(await labels()).toEqual(['1A · Saved c', '1A · Saved a'])
+    const readOrder = () =>
+        page.evaluate(() =>
+            JSON.parse(localStorage.getItem('bus-coming-user-v1')!).bookmarks.map(
+                (b: { id: string }) => b.id,
+            ),
+        )
+    expect(await readOrder()).toEqual(['c', 'b', 'a'])
+    await page.getByRole('button', { name: 'Done', exact: true }).click()
+    await page.reload()
+    await page.getByRole('button', { name: 'Reorder', exact: true }).click()
+    expect(await labels()).toEqual(['1A · Saved c', '1A · Saved b', '1A · Saved a'])
+    const up = page.getByRole('button', { name: /^Move up:.*Saved b/ })
+    await up.focus()
+    await page.keyboard.press('Enter')
+    expect(await readOrder()).toEqual(['b', 'c', 'a'])
+    await page.getByRole('button', { name: 'Language', exact: true }).click()
+    await expect(page.getByRole('button', { name: /^向下移動/ }).first()).toBeVisible()
+    await expect(page.getByText('使用箭頭調整收藏車站的次序，變更會自動儲存。')).toBeVisible()
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})

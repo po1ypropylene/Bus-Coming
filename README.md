@@ -2,6 +2,10 @@
 
 A mobile-first React + TypeScript bus ETA app for Hong Kong. KMB / Long Win, Citybus and New Lantao Bus; English and Traditional Chinese. iOS-inspired interface with Home Screen installation, offline route search, grouped bookmarks and GPS nearby stops.
 
+**Live app:** [buscoming.peterpo.com](https://buscoming.peterpo.com)
+
+Open the live app in Safari on your iPhone and choose **Share → Add to Home Screen** to install it.
+
 ## Run locally
 
 Requires Node 22.12+ (or a current supported Node release) and npm.
@@ -18,7 +22,8 @@ npm run build
 npm run preview
 ```
 
-The production build in `dist/` includes the service worker; development deliberately does not register one. Host `dist/` at the root of an HTTPS origin. No backend, API key, account, paid service or environment secrets are needed. No hosting deployment has been performed.
+The production build in `dist/` includes the service worker; development deliberately does not register one. Host
+`dist/` at the root of an HTTPS origin. No backend, API key, account, paid service or environment secrets are needed.
 
 ## WebStorm and iPhone 17 Pro Max
 
@@ -70,6 +75,8 @@ In Safari: Share → Add to Home Screen → leave **Open as Web App** enabled. L
 - Four requests per operator run concurrently for fan-out downloads. Retry/backoff handles transient failures. Checkpoints resume interrupted downloads; current snapshots stay untouched until replacements are complete.
 - ETA uses the network, updates every minute while visible, and is never cached by the service worker. KMB/Citybus results are filtered by direction and stop sequence; NLB timestamps are parsed in Hong Kong time.
 - Bookmarks, language and theme colour are stored locally, separately from replaceable route snapshots. Export/import provides a portable backup. No cloud sync is implemented. Storage can still be removed by the user or operating system.
+- On **Saved**, tap **Reorder**, use the up/down arrows, then tap **Done**. Moves save automatically. In a group, only
+  that group’s bookmarks move; other bookmarks retain their positions.
 - Group names are user-defined: add stops from any routes to the same named group to compare their ETAs together.
 - Nearby search requests location only after a tap, filters to 1 km, sorts by distance, and never transmits coordinates. Up to 40 closest stops are shown.
 

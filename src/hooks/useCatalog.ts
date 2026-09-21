@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { db } from '../storage/catalogDb'
-import type { CatalogEvent, Progress, RouteCatalog, Snapshot } from '../types/transit'
+import { cachedJointCatalog, JOINT_CACHE_KEY } from '../services/joint/catalog'
+import type { CatalogEvent, JointCatalog, Progress, RouteCatalog, Snapshot } from '../types/transit'
 
 export function useCatalog() {
+    const [jointCatalog, setJointCatalog] = useState<JointCatalog | null>(null)
+    const [jointError, setJointError] = useState(false)
     const [catalogs, setCatalogs] = useState<RouteCatalog[]>([])
     const [snapshots, setSnapshots] = useState<Snapshot[]>([])
     const [progress, setProgress] = useState<Progress[]>([])
@@ -23,6 +26,11 @@ export function useCatalog() {
         worker.current = instance
         instance.onmessage = (event) => {
             const data = event.data as CatalogEvent
+            if (data.type === 'joint') {
+                setJointCatalog(data.catalog)
+                setJointError(false)
+            }
+            if (data.type === 'jointError') setJointError(true)
             if (data.type === 'catalog')
                 setCatalogs((old) => [
                     ...old.filter((c) => c.provider !== data.catalog.provider),
@@ -50,13 +58,15 @@ export function useCatalog() {
                     return await Promise.all([
                         database.getAll('snapshots'),
                         database.getAll('routeCatalogs'),
+                        database.get('responses', JOINT_CACHE_KEY),
                     ])
                 } finally {
                     database.close()
                 }
             })
-            .then(([saved, catalogs]) => {
+            .then(([saved, catalogs, joint]) => {
                 if (active) {
+                    setJointCatalog(cachedJointCatalog(joint?.data))
                     setSnapshots(saved)
                     setCatalogs(catalogs)
                     refresh(false)
@@ -80,5 +90,5 @@ export function useCatalog() {
             window.removeEventListener('online', resume)
         }
     }, [refresh])
-    return { snapshots, catalogs, progress, busy, storageError, refresh }
+    return { jointCatalog, jointError, snapshots, catalogs, progress, busy, storageError, refresh }
 }

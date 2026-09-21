@@ -1,0 +1,2010 @@
+{
+    "routes": [
+        {
+            "id": "KMB:102:O:1",
+            "number": "102",
+            "provider": "KMB",
+            "bound": "O",
+            "service": "1",
+            "origin": {
+                "en": "SHAU KEI WAN",
+                "tc": "筲箕灣"
+            },
+            "destination": {
+                "en": "MEI FOO",
+                "tc": "美孚"
+            },
+            "stops": [
+                {
+                    "id": "KMB:1E7D74AE0C8EDADC",
+                    "seq": 1
+                },
+                {
+                    "id": "KMB:3EAF33C37104D168",
+                    "seq": 2
+                },
+                {
+                    "id": "KMB:E433215F5B80E93C",
+                    "seq": 3
+                },
+                {
+                    "id": "KMB:B404A065F58A5F64",
+                    "seq": 4
+                },
+                {
+                    "id": "KMB:175CBF43CD330A0A",
+                    "seq": 5
+                },
+                {
+                    "id": "KMB:350EBC52D2ABF3D8",
+                    "seq": 6
+                },
+                {
+                    "id": "KMB:FD752B76C5C6517B",
+                    "seq": 7
+                },
+                {
+                    "id": "KMB:A334D0EC59D94F8D",
+                    "seq": 8
+                },
+                {
+                    "id": "KMB:51E6A73EBA9A0FF5",
+                    "seq": 9
+                },
+                {
+                    "id": "KMB:75CE4282D2043790",
+                    "seq": 10
+                },
+                {
+                    "id": "KMB:C00C986B85A2220E",
+                    "seq": 11
+                },
+                {
+                    "id": "KMB:D6E7443BD2222BD7",
+                    "seq": 12
+                },
+                {
+                    "id": "KMB:4E2C01EAE9535C14",
+                    "seq": 13
+                },
+                {
+                    "id": "KMB:E6735B26B2F1D68E",
+                    "seq": 14
+                },
+                {
+                    "id": "KMB:A6443C45124970B9",
+                    "seq": 15
+                },
+                {
+                    "id": "KMB:BB9D2A6E7E713664",
+                    "seq": 16
+                },
+                {
+                    "id": "KMB:D9E20788B8C9FF64",
+                    "seq": 17
+                },
+                {
+                    "id": "KMB:13C75FFFA2BB060D",
+                    "seq": 18
+                },
+                {
+                    "id": "KMB:D1D807234805DBF4",
+                    "seq": 19
+                },
+                {
+                    "id": "KMB:153D32217234A0F0",
+                    "seq": 20
+                },
+                {
+                    "id": "KMB:893BBB901005C3E6",
+                    "seq": 21
+                },
+                {
+                    "id": "KMB:BBE77B90CE43AEFA",
+                    "seq": 22
+                },
+                {
+                    "id": "KMB:246B98B8B9F002F0",
+                    "seq": 23
+                },
+                {
+                    "id": "KMB:38F0C9768AA2AF93",
+                    "seq": 24
+                },
+                {
+                    "id": "KMB:730AB612DCDF58C8",
+                    "seq": 25
+                },
+                {
+                    "id": "KMB:1A85A6C132C4197F",
+                    "seq": 26
+                },
+                {
+                    "id": "KMB:C3FD63E226246052",
+                    "seq": 27
+                },
+                {
+                    "id": "KMB:098AF67CBBB9FBA9",
+                    "seq": 28
+                },
+                {
+                    "id": "KMB:0BADB28A19C2E0BE",
+                    "seq": 29
+                },
+                {
+                    "id": "KMB:6188A6666E298598",
+                    "seq": 30
+                },
+                {
+                    "id": "KMB:A588A5F294B4BEFB",
+                    "seq": 31
+                }
+            ]
+        },
+        {
+            "id": "KMB:102:I:1",
+            "number": "102",
+            "provider": "KMB",
+            "bound": "I",
+            "service": "1",
+            "origin": {
+                "en": "MEI FOO",
+                "tc": "美孚"
+            },
+            "destination": {
+                "en": "SHAU KEI WAN",
+                "tc": "筲箕灣"
+            },
+            "stops": [
+                {
+                    "id": "KMB:A588A5F294B4BEFB",
+                    "seq": 1
+                },
+                {
+                    "id": "KMB:F01F8CF411A34AA7",
+                    "seq": 2
+                },
+                {
+                    "id": "KMB:AE9F399F5ACF4837",
+                    "seq": 3
+                },
+                {
+                    "id": "KMB:9DA9C859E574B8B4",
+                    "seq": 4
+                },
+                {
+                    "id": "KMB:A701BCC43DF54B6B",
+                    "seq": 5
+                },
+                {
+                    "id": "KMB:FC28F96F0BAF8FF7",
+                    "seq": 6
+                },
+                {
+                    "id": "KMB:1E29A8A8D3F6BABB",
+                    "seq": 7
+                },
+                {
+                    "id": "KMB:E553B839AD6A8C3D",
+                    "seq": 8
+                },
+                {
+                    "id": "KMB:889F84EBA6D9571A",
+                    "seq": 9
+                },
+                {
+                    "id": "KMB:028FA893A173A464",
+                    "seq": 10
+                },
+                {
+                    "id": "KMB:50FF703302734DFF",
+                    "seq": 11
+                },
+                {
+                    "id": "KMB:C0AA7F3501EFA657",
+                    "seq": 12
+                },
+                {
+                    "id": "KMB:337C68B5F413E04E",
+                    "seq": 13
+                },
+                {
+                    "id": "KMB:64E7A52D975DF3FF",
+                    "seq": 14
+                },
+                {
+                    "id": "KMB:1DD522300A4B9406",
+                    "seq": 15
+                },
+                {
+                    "id": "KMB:6418176FB389E363",
+                    "seq": 16
+                },
+                {
+                    "id": "KMB:BD0E2A233376612E",
+                    "seq": 17
+                },
+                {
+                    "id": "KMB:EAFC59DD23C39D5C",
+                    "seq": 18
+                },
+                {
+                    "id": "KMB:1A0BCDF4BDC3E1A9",
+                    "seq": 19
+                },
+                {
+                    "id": "KMB:A4EBD881BA65C831",
+                    "seq": 20
+                },
+                {
+                    "id": "KMB:05C0C27B083F2C00",
+                    "seq": 21
+                },
+                {
+                    "id": "KMB:E7A9A0C621301623",
+                    "seq": 22
+                },
+                {
+                    "id": "KMB:33D2B3AB9D2CCDF3",
+                    "seq": 23
+                },
+                {
+                    "id": "KMB:338E70093D993E7F",
+                    "seq": 24
+                },
+                {
+                    "id": "KMB:0B071FC4D33FC334",
+                    "seq": 25
+                },
+                {
+                    "id": "KMB:F5D2D669376286F9",
+                    "seq": 26
+                },
+                {
+                    "id": "KMB:633C082A94176ED0",
+                    "seq": 27
+                },
+                {
+                    "id": "KMB:7ADCBB1CA80611B0",
+                    "seq": 28
+                },
+                {
+                    "id": "KMB:BB8D798D19066A35",
+                    "seq": 29
+                },
+                {
+                    "id": "KMB:3408E0103E0757F3",
+                    "seq": 30
+                },
+                {
+                    "id": "KMB:170ED32B19DC1828",
+                    "seq": 31
+                },
+                {
+                    "id": "KMB:6ABBD9BC03DFAB0E",
+                    "seq": 32
+                },
+                {
+                    "id": "KMB:884300BD53E9D626",
+                    "seq": 33
+                },
+                {
+                    "id": "KMB:1E7D74AE0C8EDADC",
+                    "seq": 34
+                }
+            ]
+        },
+        {
+            "id": "CTB:102:O:1",
+            "number": "102",
+            "provider": "CTB",
+            "bound": "O",
+            "service": "1",
+            "origin": {
+                "en": "Shau Kei Wan",
+                "tc": "筲箕灣"
+            },
+            "destination": {
+                "en": "Mei Foo",
+                "tc": "美孚"
+            },
+            "stops": [
+                {
+                    "id": "CTB:001207",
+                    "seq": 1
+                },
+                {
+                    "id": "CTB:001389",
+                    "seq": 2
+                },
+                {
+                    "id": "CTB:002693",
+                    "seq": 3
+                },
+                {
+                    "id": "CTB:001301",
+                    "seq": 4
+                },
+                {
+                    "id": "CTB:001302",
+                    "seq": 5
+                },
+                {
+                    "id": "CTB:001303",
+                    "seq": 6
+                },
+                {
+                    "id": "CTB:001367",
+                    "seq": 7
+                },
+                {
+                    "id": "CTB:001288",
+                    "seq": 8
+                },
+                {
+                    "id": "CTB:001271",
+                    "seq": 9
+                },
+                {
+                    "id": "CTB:001365",
+                    "seq": 10
+                },
+                {
+                    "id": "CTB:001274",
+                    "seq": 11
+                },
+                {
+                    "id": "CTB:001276",
+                    "seq": 12
+                },
+                {
+                    "id": "CTB:001277",
+                    "seq": 13
+                },
+                {
+                    "id": "CTB:001280",
+                    "seq": 14
+                },
+                {
+                    "id": "CTB:001364",
+                    "seq": 15
+                },
+                {
+                    "id": "CTB:001283",
+                    "seq": 16
+                },
+                {
+                    "id": "CTB:001286",
+                    "seq": 17
+                },
+                {
+                    "id": "CTB:001251",
+                    "seq": 18
+                },
+                {
+                    "id": "CTB:002414",
+                    "seq": 19
+                },
+                {
+                    "id": "CTB:001475",
+                    "seq": 20
+                },
+                {
+                    "id": "CTB:001769",
+                    "seq": 21
+                },
+                {
+                    "id": "CTB:001547",
+                    "seq": 22
+                },
+                {
+                    "id": "CTB:001548",
+                    "seq": 23
+                },
+                {
+                    "id": "CTB:001552",
+                    "seq": 24
+                },
+                {
+                    "id": "CTB:001801",
+                    "seq": 25
+                },
+                {
+                    "id": "CTB:001426",
+                    "seq": 26
+                },
+                {
+                    "id": "CTB:001429",
+                    "seq": 27
+                },
+                {
+                    "id": "CTB:001430",
+                    "seq": 28
+                },
+                {
+                    "id": "CTB:001687",
+                    "seq": 29
+                },
+                {
+                    "id": "CTB:001434",
+                    "seq": 30
+                },
+                {
+                    "id": "CTB:001685",
+                    "seq": 31
+                }
+            ]
+        },
+        {
+            "id": "CTB:102:I:1",
+            "number": "102",
+            "provider": "CTB",
+            "bound": "I",
+            "service": "1",
+            "origin": {
+                "en": "Mei Foo",
+                "tc": "美孚"
+            },
+            "destination": {
+                "en": "Shau Kei Wan",
+                "tc": "筲箕灣"
+            },
+            "stops": [
+                {
+                    "id": "CTB:001685",
+                    "seq": 1
+                },
+                {
+                    "id": "CTB:001436",
+                    "seq": 2
+                },
+                {
+                    "id": "CTB:001437",
+                    "seq": 3
+                },
+                {
+                    "id": "CTB:001440",
+                    "seq": 4
+                },
+                {
+                    "id": "CTB:001441",
+                    "seq": 5
+                },
+                {
+                    "id": "CTB:001443",
+                    "seq": 6
+                },
+                {
+                    "id": "CTB:001444",
+                    "seq": 7
+                },
+                {
+                    "id": "CTB:001447",
+                    "seq": 8
+                },
+                {
+                    "id": "CTB:001556",
+                    "seq": 9
+                },
+                {
+                    "id": "CTB:001557",
+                    "seq": 10
+                },
+                {
+                    "id": "CTB:001559",
+                    "seq": 11
+                },
+                {
+                    "id": "CTB:001562",
+                    "seq": 12
+                },
+                {
+                    "id": "CTB:001564",
+                    "seq": 13
+                },
+                {
+                    "id": "CTB:001471",
+                    "seq": 14
+                },
+                {
+                    "id": "CTB:001411",
+                    "seq": 15
+                },
+                {
+                    "id": "CTB:001476",
+                    "seq": 16
+                },
+                {
+                    "id": "CTB:001335",
+                    "seq": 17
+                },
+                {
+                    "id": "CTB:001374",
+                    "seq": 18
+                },
+                {
+                    "id": "CTB:002561",
+                    "seq": 19
+                },
+                {
+                    "id": "CTB:001213",
+                    "seq": 20
+                },
+                {
+                    "id": "CTB:001259",
+                    "seq": 21
+                },
+                {
+                    "id": "CTB:001260",
+                    "seq": 22
+                },
+                {
+                    "id": "CTB:001261",
+                    "seq": 23
+                },
+                {
+                    "id": "CTB:001262",
+                    "seq": 24
+                },
+                {
+                    "id": "CTB:001264",
+                    "seq": 25
+                },
+                {
+                    "id": "CTB:001265",
+                    "seq": 26
+                },
+                {
+                    "id": "CTB:002677",
+                    "seq": 27
+                },
+                {
+                    "id": "CTB:001267",
+                    "seq": 28
+                },
+                {
+                    "id": "CTB:001268",
+                    "seq": 29
+                },
+                {
+                    "id": "CTB:001393",
+                    "seq": 30
+                },
+                {
+                    "id": "CTB:001270",
+                    "seq": 31
+                },
+                {
+                    "id": "CTB:001296",
+                    "seq": 32
+                },
+                {
+                    "id": "CTB:001297",
+                    "seq": 33
+                },
+                {
+                    "id": "CTB:001298",
+                    "seq": 34
+                },
+                {
+                    "id": "CTB:002694",
+                    "seq": 35
+                },
+                {
+                    "id": "CTB:001207",
+                    "seq": 36
+                }
+            ]
+        }
+    ],
+    "stops": {
+        "KMB:1E7D74AE0C8EDADC": {
+            "id": "KMB:1E7D74AE0C8EDADC",
+            "code": "1E7D74AE0C8EDADC",
+            "provider": "KMB",
+            "name": {
+                "en": "SHAU KEI WAN BUS TERMINUS",
+                "tc": "筲箕灣巴士總站"
+            },
+            "lat": 22.278542,
+            "lng": 114.228309
+        },
+        "KMB:3EAF33C37104D168": {
+            "id": "KMB:3EAF33C37104D168",
+            "code": "3EAF33C37104D168",
+            "provider": "KMB",
+            "name": {
+                "en": "OI YIN STREET",
+                "tc": "愛賢街"
+            },
+            "lat": 22.280782,
+            "lng": 114.228394
+        },
+        "KMB:E433215F5B80E93C": {
+            "id": "KMB:E433215F5B80E93C",
+            "code": "E433215F5B80E93C",
+            "provider": "KMB",
+            "name": {
+                "en": "PERFECT MOUNT GARDENS",
+                "tc": "峻峰花園"
+            },
+            "lat": 22.279044,
+            "lng": 114.228879
+        },
+        "KMB:B404A065F58A5F64": {
+            "id": "KMB:B404A065F58A5F64",
+            "code": "B404A065F58A5F64",
+            "provider": "KMB",
+            "name": {
+                "en": "SUN SHING STREET",
+                "tc": "新成街"
+            },
+            "lat": 22.279126,
+            "lng": 114.225982
+        },
+        "KMB:175CBF43CD330A0A": {
+            "id": "KMB:175CBF43CD330A0A",
+            "code": "175CBF43CD330A0A",
+            "provider": "KMB",
+            "name": {
+                "en": "HOI AN STREET",
+                "tc": "海晏街"
+            },
+            "lat": 22.280809,
+            "lng": 114.223237
+        },
+        "KMB:350EBC52D2ABF3D8": {
+            "id": "KMB:350EBC52D2ABF3D8",
+            "code": "350EBC52D2ABF3D8",
+            "provider": "KMB",
+            "name": {
+                "en": "SAI WAN HO CIVIC CENTRE",
+                "tc": "西灣河文娛中心"
+            },
+            "lat": 22.281715,
+            "lng": 114.222056
+        },
+        "KMB:FD752B76C5C6517B": {
+            "id": "KMB:FD752B76C5C6517B",
+            "code": "FD752B76C5C6517B",
+            "provider": "KMB",
+            "name": {
+                "en": "TAI FOO STREET",
+                "tc": "太富街"
+            },
+            "lat": 22.283116,
+            "lng": 114.220962
+        },
+        "KMB:A334D0EC59D94F8D": {
+            "id": "KMB:A334D0EC59D94F8D",
+            "code": "A334D0EC59D94F8D",
+            "provider": "KMB",
+            "name": {
+                "en": "KORNHILL PLAZA",
+                "tc": "康怡廣場"
+            },
+            "lat": 22.284508,
+            "lng": 114.216501
+        },
+        "KMB:51E6A73EBA9A0FF5": {
+            "id": "KMB:51E6A73EBA9A0FF5",
+            "code": "51E6A73EBA9A0FF5",
+            "provider": "KMB",
+            "name": {
+                "en": "BO FUNG GARDENS",
+                "tc": "寶峰園"
+            },
+            "lat": 22.284582,
+            "lng": 114.21463
+        },
+        "KMB:75CE4282D2043790": {
+            "id": "KMB:75CE4282D2043790",
+            "code": "75CE4282D2043790",
+            "provider": "KMB",
+            "name": {
+                "en": "SUNWAY GARDENS",
+                "tc": "新威園"
+            },
+            "lat": 22.285505,
+            "lng": 114.211081
+        },
+        "KMB:C00C986B85A2220E": {
+            "id": "KMB:C00C986B85A2220E",
+            "code": "C00C986B85A2220E",
+            "provider": "KMB",
+            "name": {
+                "en": "MANSION STREET",
+                "tc": "民新街"
+            },
+            "lat": 22.289658,
+            "lng": 114.209342
+        },
+        "KMB:D6E7443BD2222BD7": {
+            "id": "KMB:D6E7443BD2222BD7",
+            "code": "D6E7443BD2222BD7",
+            "provider": "KMB",
+            "name": {
+                "en": "HEALTHY VILLAGE",
+                "tc": "健康村"
+            },
+            "lat": 22.291893,
+            "lng": 114.206208
+        },
+        "KMB:4E2C01EAE9535C14": {
+            "id": "KMB:4E2C01EAE9535C14",
+            "code": "4E2C01EAE9535C14",
+            "provider": "KMB",
+            "name": {
+                "en": "HEALTHY GARDENS",
+                "tc": "健威花園"
+            },
+            "lat": 22.29176,
+            "lng": 114.203852
+        },
+        "KMB:E6735B26B2F1D68E": {
+            "id": "KMB:E6735B26B2F1D68E",
+            "code": "E6735B26B2F1D68E",
+            "provider": "KMB",
+            "name": {
+                "en": "METROPOLE BUILDING",
+                "tc": "新都城大廈"
+            },
+            "lat": 22.29091,
+            "lng": 114.199647
+        },
+        "KMB:A6443C45124970B9": {
+            "id": "KMB:A6443C45124970B9",
+            "code": "A6443C45124970B9",
+            "provider": "KMB",
+            "name": {
+                "en": "CHEUNG HONG STREET",
+                "tc": "長康街"
+            },
+            "lat": 22.290235,
+            "lng": 114.196382
+        },
+        "KMB:BB9D2A6E7E713664": {
+            "id": "KMB:BB9D2A6E7E713664",
+            "code": "BB9D2A6E7E713664",
+            "provider": "KMB",
+            "name": {
+                "en": "FORTRESS HILL STATION",
+                "tc": "炮台山站"
+            },
+            "lat": 22.288517,
+            "lng": 114.193775
+        },
+        "KMB:D9E20788B8C9FF64": {
+            "id": "KMB:D9E20788B8C9FF64",
+            "code": "D9E20788B8C9FF64",
+            "provider": "KMB",
+            "name": {
+                "en": "TSING FUNG STREET",
+                "tc": "清風街"
+            },
+            "lat": 22.284745,
+            "lng": 114.193009
+        },
+        "KMB:13C75FFFA2BB060D": {
+            "id": "KMB:13C75FFFA2BB060D",
+            "code": "13C75FFFA2BB060D",
+            "provider": "KMB",
+            "name": {
+                "en": "HING FAT STREET",
+                "tc": "興發街"
+            },
+            "lat": 22.283453,
+            "lng": 114.191069
+        },
+        "KMB:D1D807234805DBF4": {
+            "id": "KMB:D1D807234805DBF4",
+            "code": "D1D807234805DBF4",
+            "provider": "KMB",
+            "name": {
+                "en": "CANNON STREET",
+                "tc": "景隆街"
+            },
+            "lat": 22.28174,
+            "lng": 114.182919
+        },
+        "KMB:153D32217234A0F0": {
+            "id": "KMB:153D32217234A0F0",
+            "code": "153D32217234A0F0",
+            "provider": "KMB",
+            "name": {
+                "en": "CROSS HARBOUR TUNNEL BBI (HH602)",
+                "tc": "紅隧轉車站 (HH602)"
+            },
+            "lat": 22.302576,
+            "lng": 114.179914
+        },
+        "KMB:893BBB901005C3E6": {
+            "id": "KMB:893BBB901005C3E6",
+            "code": "893BBB901005C3E6",
+            "provider": "KMB",
+            "name": {
+                "en": "DIOCESAN GIRLS' SCHOOL (YT665)",
+                "tc": "拔萃女書院 (YT665)"
+            },
+            "lat": 22.307468,
+            "lng": 114.173055
+        },
+        "KMB:BBE77B90CE43AEFA": {
+            "id": "KMB:BBE77B90CE43AEFA",
+            "code": "BBE77B90CE43AEFA",
+            "provider": "KMB",
+            "name": {
+                "en": "PUBLIC SQUARE STREET YAU MA TEI (YT138)",
+                "tc": "油麻地眾坊街 (YT138)"
+            },
+            "lat": 22.310674,
+            "lng": 114.170957
+        },
+        "KMB:246B98B8B9F002F0": {
+            "id": "KMB:246B98B8B9F002F0",
+            "code": "246B98B8B9F002F0",
+            "provider": "KMB",
+            "name": {
+                "en": "DUNDAS STREET MONG KOK (MK159)",
+                "tc": "旺角登打士街 (MK159)"
+            },
+            "lat": 22.314943,
+            "lng": 114.170107
+        },
+        "KMB:38F0C9768AA2AF93": {
+            "id": "KMB:38F0C9768AA2AF93",
+            "code": "38F0C9768AA2AF93",
+            "provider": "KMB",
+            "name": {
+                "en": "SHANTUNG STREET, LANGHAM PLACE (MK166)",
+                "tc": "山東街,朗豪坊 (MK166)"
+            },
+            "lat": 22.316936,
+            "lng": 114.169721
+        },
+        "KMB:730AB612DCDF58C8": {
+            "id": "KMB:730AB612DCDF58C8",
+            "code": "730AB612DCDF58C8",
+            "provider": "KMB",
+            "name": {
+                "en": "ARRAN STREET, METROPARK HOTEL MONG KOK (MK183)",
+                "tc": "鴉蘭街,維景酒店 (MK183)"
+            },
+            "lat": 22.323288,
+            "lng": 114.168404
+        },
+        "KMB:1A85A6C132C4197F": {
+            "id": "KMB:1A85A6C132C4197F",
+            "code": "1A85A6C132C4197F",
+            "provider": "KMB",
+            "name": {
+                "en": "MAPLE STREET SHAM SHUI PO (SS201)",
+                "tc": "深水埗楓樹街 (SS201)"
+            },
+            "lat": 22.327897,
+            "lng": 114.1657
+        },
+        "KMB:C3FD63E226246052": {
+            "id": "KMB:C3FD63E226246052",
+            "code": "C3FD63E226246052",
+            "provider": "KMB",
+            "name": {
+                "en": "PEI HO STREET SHAM SHUI PO (SS209)",
+                "tc": "深水埗北河街 (SS209)"
+            },
+            "lat": 22.330756,
+            "lng": 114.162065
+        },
+        "KMB:098AF67CBBB9FBA9": {
+            "id": "KMB:098AF67CBBB9FBA9",
+            "code": "098AF67CBBB9FBA9",
+            "provider": "KMB",
+            "name": {
+                "en": "YEE KOK COURT (SS219)",
+                "tc": "怡閣苑 (SS219)"
+            },
+            "lat": 22.333466,
+            "lng": 114.158514
+        },
+        "KMB:0BADB28A19C2E0BE": {
+            "id": "KMB:0BADB28A19C2E0BE",
+            "code": "0BADB28A19C2E0BE",
+            "provider": "KMB",
+            "name": {
+                "en": "TRADE SQUARE (SS228)",
+                "tc": "貿易廣場 (SS228)"
+            },
+            "lat": 22.33674,
+            "lng": 114.154311
+        },
+        "KMB:6188A6666E298598": {
+            "id": "KMB:6188A6666E298598",
+            "code": "6188A6666E298598",
+            "provider": "KMB",
+            "name": {
+                "en": "CHEUNG LAI STREET CHEUNG SHA WAN (SS246a)",
+                "tc": "長沙灣長荔街 (SS246a)"
+            },
+            "lat": 22.336684,
+            "lng": 114.146749
+        },
+        "KMB:A588A5F294B4BEFB": {
+            "id": "KMB:A588A5F294B4BEFB",
+            "code": "A588A5F294B4BEFB",
+            "provider": "KMB",
+            "name": {
+                "en": "MEI FOO BUS TERMINUS (SS992)",
+                "tc": "美孚巴士總站 (SS992)"
+            },
+            "lat": 22.337223,
+            "lng": 114.140057
+        },
+        "KMB:F01F8CF411A34AA7": {
+            "id": "KMB:F01F8CF411A34AA7",
+            "code": "F01F8CF411A34AA7",
+            "provider": "KMB",
+            "name": {
+                "en": "LAI CHI KOK STATION (SS466)",
+                "tc": "荔枝角站 (SS466)"
+            },
+            "lat": 22.337559,
+            "lng": 114.14862
+        },
+        "KMB:AE9F399F5ACF4837": {
+            "id": "KMB:AE9F399F5ACF4837",
+            "code": "AE9F399F5ACF4837",
+            "provider": "KMB",
+            "name": {
+                "en": "CHEUNG WAH STREET (SS471)",
+                "tc": "昌華街 (SS471)"
+            },
+            "lat": 22.338579,
+            "lng": 114.152137
+        },
+        "KMB:9DA9C859E574B8B4": {
+            "id": "KMB:9DA9C859E574B8B4",
+            "code": "9DA9C859E574B8B4",
+            "provider": "KMB",
+            "name": {
+                "en": "CHEUNG SHA WAN STATION (SS476)",
+                "tc": "長沙灣站 (SS476)"
+            },
+            "lat": 22.336841,
+            "lng": 114.154597
+        },
+        "KMB:A701BCC43DF54B6B": {
+            "id": "KMB:A701BCC43DF54B6B",
+            "code": "A701BCC43DF54B6B",
+            "provider": "KMB",
+            "name": {
+                "en": "TONKIN STREET CHEUNG SHA WAN (SS480)",
+                "tc": "長沙灣東京街 (SS480)"
+            },
+            "lat": 22.335199,
+            "lng": 114.156697
+        },
+        "KMB:FC28F96F0BAF8FF7": {
+            "id": "KMB:FC28F96F0BAF8FF7",
+            "code": "FC28F96F0BAF8FF7",
+            "provider": "KMB",
+            "name": {
+                "en": "YEN CHOW STREET SHAM SHUI PO (SS485)",
+                "tc": "深水埗欽州街 (SS485)"
+            },
+            "lat": 22.332413,
+            "lng": 114.160366
+        },
+        "KMB:1E29A8A8D3F6BABB": {
+            "id": "KMB:1E29A8A8D3F6BABB",
+            "code": "1E29A8A8D3F6BABB",
+            "provider": "KMB",
+            "name": {
+                "en": "PEI HO STREET SHAM SHUI PO (SS488)",
+                "tc": "深水埗北河街 (SS488)"
+            },
+            "lat": 22.330875,
+            "lng": 114.162332
+        },
+        "KMB:E553B839AD6A8C3D": {
+            "id": "KMB:E553B839AD6A8C3D",
+            "code": "E553B839AD6A8C3D",
+            "provider": "KMB",
+            "name": {
+                "en": "MAPLE STREET SHAM SHUI PO (SS494)",
+                "tc": "深水埗楓樹街 (SS494)"
+            },
+            "lat": 22.328312,
+            "lng": 114.165629
+        },
+        "KMB:889F84EBA6D9571A": {
+            "id": "KMB:889F84EBA6D9571A",
+            "code": "889F84EBA6D9571A",
+            "provider": "KMB",
+            "name": {
+                "en": "PRINCE EDWARD STATION, FLOWER MARKET (MK501)",
+                "tc": "太子站,旺角花墟 (MK501)"
+            },
+            "lat": 22.325717,
+            "lng": 114.168181
+        },
+        "KMB:028FA893A173A464": {
+            "id": "KMB:028FA893A173A464",
+            "code": "028FA893A173A464",
+            "provider": "KMB",
+            "name": {
+                "en": "NULLAH ROAD, ALLIED PLAZA (MK507)",
+                "tc": "水渠道,聯合廣場 (MK507)"
+            },
+            "lat": 22.323471,
+            "lng": 114.168632
+        },
+        "KMB:50FF703302734DFF": {
+            "id": "KMB:50FF703302734DFF",
+            "code": "50FF703302734DFF",
+            "provider": "KMB",
+            "name": {
+                "en": "NELSON STREET MONG KOK (MK518)",
+                "tc": "旺角奶路臣街 (MK518)"
+            },
+            "lat": 22.317949,
+            "lng": 114.169738
+        },
+        "KMB:C0AA7F3501EFA657": {
+            "id": "KMB:C0AA7F3501EFA657",
+            "code": "C0AA7F3501EFA657",
+            "provider": "KMB",
+            "name": {
+                "en": "DUNDAS STREET MONG KOK (MK524)",
+                "tc": "旺角登打士街 (MK524)"
+            },
+            "lat": 22.314939,
+            "lng": 114.170396
+        },
+        "KMB:337C68B5F413E04E": {
+            "id": "KMB:337C68B5F413E04E",
+            "code": "337C68B5F413E04E",
+            "provider": "KMB",
+            "name": {
+                "en": "MAN MING LANE YAU MA TEI (YT541)",
+                "tc": "油麻地文明里 (YT541)"
+            },
+            "lat": 22.312166,
+            "lng": 114.170935
+        },
+        "KMB:64E7A52D975DF3FF": {
+            "id": "KMB:64E7A52D975DF3FF",
+            "code": "64E7A52D975DF3FF",
+            "provider": "KMB",
+            "name": {
+                "en": "LABOUR TRIBUNAL (YT330)",
+                "tc": "勞資審裁處 (YT330)"
+            },
+            "lat": 22.308172,
+            "lng": 114.172572
+        },
+        "KMB:1DD522300A4B9406": {
+            "id": "KMB:1DD522300A4B9406",
+            "code": "1DD522300A4B9406",
+            "provider": "KMB",
+            "name": {
+                "en": "HONG KONG POLYTECHNIC UNIVERSITY PHASE 8 (YT610)",
+                "tc": "香港理工大學第八期 (YT610)"
+            },
+            "lat": 22.306393,
+            "lng": 114.180068
+        },
+        "KMB:6418176FB389E363": {
+            "id": "KMB:6418176FB389E363",
+            "code": "6418176FB389E363",
+            "provider": "KMB",
+            "name": {
+                "en": "CROSS HARBOUR TUNNEL BBI (HH502)",
+                "tc": "紅隧轉車站 (HH502)"
+            },
+            "lat": 22.303216,
+            "lng": 114.180922
+        },
+        "KMB:BD0E2A233376612E": {
+            "id": "KMB:BD0E2A233376612E",
+            "code": "BD0E2A233376612E",
+            "provider": "KMB",
+            "name": {
+                "en": "VICTORIA PARK GLOUCESTER ROAD",
+                "tc": "告士打道維園"
+            },
+            "lat": 22.280362,
+            "lng": 114.187216
+        },
+        "KMB:EAFC59DD23C39D5C": {
+            "id": "KMB:EAFC59DD23C39D5C",
+            "code": "EAFC59DD23C39D5C",
+            "provider": "KMB",
+            "name": {
+                "en": "VICTORIA PARK",
+                "tc": "維多利亞公園"
+            },
+            "lat": 22.281066,
+            "lng": 114.189939
+        },
+        "KMB:1A0BCDF4BDC3E1A9": {
+            "id": "KMB:1A0BCDF4BDC3E1A9",
+            "code": "1A0BCDF4BDC3E1A9",
+            "provider": "KMB",
+            "name": {
+                "en": "NGAN MOK STREET",
+                "tc": "銀幕街"
+            },
+            "lat": 22.283562,
+            "lng": 114.192415
+        },
+        "KMB:A4EBD881BA65C831": {
+            "id": "KMB:A4EBD881BA65C831",
+            "code": "A4EBD881BA65C831",
+            "provider": "KMB",
+            "name": {
+                "en": "7 SEAS SHOPPING CENTRE",
+                "tc": "七海商業中心"
+            },
+            "lat": 22.287699,
+            "lng": 114.192943
+        },
+        "KMB:05C0C27B083F2C00": {
+            "id": "KMB:05C0C27B083F2C00",
+            "code": "05C0C27B083F2C00",
+            "provider": "KMB",
+            "name": {
+                "en": "TIN CHONG STREET",
+                "tc": "電廠街"
+            },
+            "lat": 22.289997,
+            "lng": 114.195036
+        },
+        "KMB:E7A9A0C621301623": {
+            "id": "KMB:E7A9A0C621301623",
+            "code": "E7A9A0C621301623",
+            "provider": "KMB",
+            "name": {
+                "en": "TONG SHUI ROAD",
+                "tc": "糖水道"
+            },
+            "lat": 22.290681,
+            "lng": 114.197985
+        },
+        "KMB:33D2B3AB9D2CCDF3": {
+            "id": "KMB:33D2B3AB9D2CCDF3",
+            "code": "33D2B3AB9D2CCDF3",
+            "provider": "KMB",
+            "name": {
+                "en": "ISLAND PLACE",
+                "tc": "港運城"
+            },
+            "lat": 22.291733,
+            "lng": 114.202568
+        },
+        "KMB:338E70093D993E7F": {
+            "id": "KMB:338E70093D993E7F",
+            "code": "338E70093D993E7F",
+            "provider": "KMB",
+            "name": {
+                "en": "HEALTHY VILLAGE",
+                "tc": "健康村"
+            },
+            "lat": 22.292185,
+            "lng": 114.206168
+        },
+        "KMB:0B071FC4D33FC334": {
+            "id": "KMB:0B071FC4D33FC334",
+            "code": "0B071FC4D33FC334",
+            "provider": "KMB",
+            "name": {
+                "en": "MODEL HOUSING ESTATE",
+                "tc": "模範邨"
+            },
+            "lat": 22.291653,
+            "lng": 114.207838
+        },
+        "KMB:F5D2D669376286F9": {
+            "id": "KMB:F5D2D669376286F9",
+            "code": "F5D2D669376286F9",
+            "provider": "KMB",
+            "name": {
+                "en": "NORTH POINT GOVERNMENT PRIMARY SCHOOL",
+                "tc": "北角官立小學"
+            },
+            "lat": 22.288706,
+            "lng": 114.209956
+        },
+        "KMB:633C082A94176ED0": {
+            "id": "KMB:633C082A94176ED0",
+            "code": "633C082A94176ED0",
+            "provider": "KMB",
+            "name": {
+                "en": "SUNWAY GARDENS",
+                "tc": "新威園"
+            },
+            "lat": 22.285925,
+            "lng": 114.211174
+        },
+        "KMB:7ADCBB1CA80611B0": {
+            "id": "KMB:7ADCBB1CA80611B0",
+            "code": "7ADCBB1CA80611B0",
+            "provider": "KMB",
+            "name": {
+                "en": "SHIPYARD LANE",
+                "tc": "船塢里"
+            },
+            "lat": 22.284791,
+            "lng": 114.214125
+        },
+        "KMB:BB8D798D19066A35": {
+            "id": "KMB:BB8D798D19066A35",
+            "code": "BB8D798D19066A35",
+            "provider": "KMB",
+            "name": {
+                "en": "CITYPLAZA",
+                "tc": "太古城中心"
+            },
+            "lat": 22.285357,
+            "lng": 114.21749
+        },
+        "KMB:3408E0103E0757F3": {
+            "id": "KMB:3408E0103E0757F3",
+            "code": "3408E0103E0757F3",
+            "provider": "KMB",
+            "name": {
+                "en": "TAI ON BUILDING",
+                "tc": "太安樓"
+            },
+            "lat": 22.282487,
+            "lng": 114.22181
+        },
+        "KMB:170ED32B19DC1828": {
+            "id": "KMB:170ED32B19DC1828",
+            "code": "170ED32B19DC1828",
+            "provider": "KMB",
+            "name": {
+                "en": "HOI AN STREET",
+                "tc": "海晏街"
+            },
+            "lat": 22.280796,
+            "lng": 114.223727
+        },
+        "KMB:6ABBD9BC03DFAB0E": {
+            "id": "KMB:6ABBD9BC03DFAB0E",
+            "code": "6ABBD9BC03DFAB0E",
+            "provider": "KMB",
+            "name": {
+                "en": "ALDRICH BAY ROAD",
+                "tc": "愛秩序灣道"
+            },
+            "lat": 22.280352,
+            "lng": 114.225182
+        },
+        "KMB:884300BD53E9D626": {
+            "id": "KMB:884300BD53E9D626",
+            "code": "884300BD53E9D626",
+            "provider": "KMB",
+            "name": {
+                "en": "OI YIN STREET",
+                "tc": "愛賢街"
+            },
+            "lat": 22.279636,
+            "lng": 114.227833
+        },
+        "CTB:001286": {
+            "id": "CTB:001286",
+            "code": "001286",
+            "provider": "CTB",
+            "name": {
+                "en": "Tsing Fung Street, King's Road",
+                "tc": "清風街, 英皇道"
+            },
+            "lat": 22.284713662091,
+            "lng": 114.19291666053
+        },
+        "CTB:001264": {
+            "id": "CTB:001264",
+            "code": "001264",
+            "provider": "CTB",
+            "name": {
+                "en": "Island Place, King's Road",
+                "tc": "港運城, 英皇道"
+            },
+            "lat": 22.291703622091,
+            "lng": 114.20248986053
+        },
+        "CTB:001213": {
+            "id": "CTB:001213",
+            "code": "001213",
+            "provider": "CTB",
+            "name": {
+                "en": "Victoria Park, Causeway Road",
+                "tc": "維多利亞公園, 高士威道"
+            },
+            "lat": 22.281133262091,
+            "lng": 114.19006592053
+        },
+        "CTB:001430": {
+            "id": "CTB:001430",
+            "code": "001430",
+            "provider": "CTB",
+            "name": {
+                "en": "Yee Kok Court, Cheung Sha Wan Road",
+                "tc": "怡閣苑, 長沙灣道"
+            },
+            "lat": 22.333565102091,
+            "lng": 114.15843488053
+        },
+        "CTB:001267": {
+            "id": "CTB:001267",
+            "code": "001267",
+            "provider": "CTB",
+            "name": {
+                "en": "North Point Government Primary School, King's Road",
+                "tc": "北角官立小學, 英皇道"
+            },
+            "lat": 22.288825782091,
+            "lng": 114.20986716053
+        },
+        "CTB:001556": {
+            "id": "CTB:001556",
+            "code": "001556",
+            "provider": "CTB",
+            "name": {
+                "en": "Prince Edward Station, Nathan Road",
+                "tc": "太子站, 彌敦道"
+            },
+            "lat": 22.325863322091,
+            "lng": 114.16808965053
+        },
+        "CTB:001288": {
+            "id": "CTB:001288",
+            "code": "001288",
+            "provider": "CTB",
+            "name": {
+                "en": "Kornhill Plaza, Kornhill Road",
+                "tc": "康怡廣場, 康山道"
+            },
+            "lat": 22.284499762091,
+            "lng": 114.21671745053
+        },
+        "CTB:001411": {
+            "id": "CTB:001411",
+            "code": "001411",
+            "provider": "CTB",
+            "name": {
+                "en": "Hong Kong Polytechnic University Phase 8, Chatham Road North",
+                "tc": "香港理工大學第八期, 漆咸道北"
+            },
+            "lat": 22.306388992091,
+            "lng": 114.17999535053
+        },
+        "CTB:001296": {
+            "id": "CTB:001296",
+            "code": "001296",
+            "provider": "CTB",
+            "name": {
+                "en": "Tai On Building, Shau Kei Wan Road",
+                "tc": "太安樓, 筲箕灣道"
+            },
+            "lat": 22.282504342091,
+            "lng": 114.22170603053
+        },
+        "CTB:001280": {
+            "id": "CTB:001280",
+            "code": "001280",
+            "provider": "CTB",
+            "name": {
+                "en": "Metropole Building, King's Road",
+                "tc": "新都城大廈, 英皇道"
+            },
+            "lat": 22.290876932091,
+            "lng": 114.19937984053
+        },
+        "CTB:001389": {
+            "id": "CTB:001389",
+            "code": "001389",
+            "provider": "CTB",
+            "name": {
+                "en": "Aldrich Garden, Oi Yin Street",
+                "tc": "愛蝶灣, 愛賢街"
+            },
+            "lat": 22.281199452091,
+            "lng": 114.22826243053
+        },
+        "CTB:001547": {
+            "id": "CTB:001547",
+            "code": "001547",
+            "provider": "CTB",
+            "name": {
+                "en": "Public Square Street, Nathan Road",
+                "tc": "眾坊街, 彌敦道"
+            },
+            "lat": 22.310731692091,
+            "lng": 114.17098889053
+        },
+        "CTB:002414": {
+            "id": "CTB:002414",
+            "code": "002414",
+            "provider": "CTB",
+            "name": {
+                "en": "Cannon Street, Gloucester Road",
+                "tc": "景隆街, 告士打道"
+            },
+            "lat": 22.281732142091,
+            "lng": 114.18280892053
+        },
+        "CTB:001268": {
+            "id": "CTB:001268",
+            "code": "001268",
+            "provider": "CTB",
+            "name": {
+                "en": "Sunway Gardens, King's Road",
+                "tc": "新威園, 英皇道"
+            },
+            "lat": 22.285544382091,
+            "lng": 114.21133814053
+        },
+        "CTB:001548": {
+            "id": "CTB:001548",
+            "code": "001548",
+            "provider": "CTB",
+            "name": {
+                "en": "Dundas Street, Nathan Road",
+                "tc": "登打士街, 彌敦道"
+            },
+            "lat": 22.314815892091,
+            "lng": 114.17018718053
+        },
+        "CTB:001426": {
+            "id": "CTB:001426",
+            "code": "001426",
+            "provider": "CTB",
+            "name": {
+                "en": "Maple Street, Cheung Sha Wan Road",
+                "tc": "楓樹街, 長沙灣道"
+            },
+            "lat": 22.328057822091,
+            "lng": 114.16552576053
+        },
+        "CTB:001364": {
+            "id": "CTB:001364",
+            "code": "001364",
+            "provider": "CTB",
+            "name": {
+                "en": "Cheung Hong Street, King's Road",
+                "tc": "長康街, 英皇道"
+            },
+            "lat": 22.290176642091,
+            "lng": 114.19594569053
+        },
+        "CTB:001276": {
+            "id": "CTB:001276",
+            "code": "001276",
+            "provider": "CTB",
+            "name": {
+                "en": "Healthy Village, King's Road",
+                "tc": "健康村, 英皇道"
+            },
+            "lat": 22.291912702091,
+            "lng": 114.20634072053
+        },
+        "CTB:001367": {
+            "id": "CTB:001367",
+            "code": "001367",
+            "provider": "CTB",
+            "name": {
+                "en": "Tai Foo Street, Shau Kei Wan Road",
+                "tc": "太富街, 筲箕灣道"
+            },
+            "lat": 22.283156802091,
+            "lng": 114.22094909053
+        },
+        "CTB:001769": {
+            "id": "CTB:001769",
+            "code": "001769",
+            "provider": "CTB",
+            "name": {
+                "en": "Diocesan Girls' School, Gascoigne Road",
+                "tc": "拔萃女書院, 加士居道"
+            },
+            "lat": 22.307534682091,
+            "lng": 114.17292169053
+        },
+        "CTB:001429": {
+            "id": "CTB:001429",
+            "code": "001429",
+            "provider": "CTB",
+            "name": {
+                "en": "Pei Ho Street, Cheung Sha Wan Road",
+                "tc": "北河街, 長沙灣道"
+            },
+            "lat": 22.330763912091,
+            "lng": 114.16206981053
+        },
+        "CTB:001801": {
+            "id": "CTB:001801",
+            "code": "001801",
+            "provider": "CTB",
+            "name": {
+                "en": "Arran Street, Nathan Road",
+                "tc": "鴉蘭街, 彌敦道"
+            },
+            "lat": 22.323441122091,
+            "lng": 114.16840353053
+        },
+        "CTB:001283": {
+            "id": "CTB:001283",
+            "code": "001283",
+            "provider": "CTB",
+            "name": {
+                "en": "Fortress Hill Station, King's Road",
+                "tc": "炮台山站, 英皇道"
+            },
+            "lat": 22.288146742091,
+            "lng": 114.19355472053
+        },
+        "CTB:001207": {
+            "id": "CTB:001207",
+            "code": "001207",
+            "provider": "CTB",
+            "name": {
+                "en": "Shau Kei Wan",
+                "tc": "筲箕灣"
+            },
+            "lat": 22.278421122091,
+            "lng": 114.22833128053
+        },
+        "CTB:001270": {
+            "id": "CTB:001270",
+            "code": "001270",
+            "provider": "CTB",
+            "name": {
+                "en": "Cityplaza, King's Road",
+                "tc": "太古城中心, 英皇道"
+            },
+            "lat": 22.285287892091,
+            "lng": 114.21758355053
+        },
+        "CTB:001301": {
+            "id": "CTB:001301",
+            "code": "001301",
+            "provider": "CTB",
+            "name": {
+                "en": "Sun Sing Street, Shau Kei Wan Road",
+                "tc": "新成街, 筲箕灣道"
+            },
+            "lat": 22.278724872091,
+            "lng": 114.22622512053
+        },
+        "CTB:001559": {
+            "id": "CTB:001559",
+            "code": "001559",
+            "provider": "CTB",
+            "name": {
+                "en": "Bank Centre, Nathan Road",
+                "tc": "銀行中心, 彌敦道"
+            },
+            "lat": 22.318424162091,
+            "lng": 114.16962058053
+        },
+        "CTB:001685": {
+            "id": "CTB:001685",
+            "code": "001685",
+            "provider": "CTB",
+            "name": {
+                "en": "Mei Foo",
+                "tc": "美孚"
+            },
+            "lat": 22.337238502091,
+            "lng": 114.14007882053
+        },
+        "CTB:001687": {
+            "id": "CTB:001687",
+            "code": "001687",
+            "provider": "CTB",
+            "name": {
+                "en": "Trade Square, Cheung Sha Wan Road",
+                "tc": "貿易廣場, 長沙灣道"
+            },
+            "lat": 22.336862472091,
+            "lng": 114.15420404053
+        },
+        "CTB:001471": {
+            "id": "CTB:001471",
+            "code": "001471",
+            "provider": "CTB",
+            "name": {
+                "en": "Labour Tribunal, Gascoigne Road",
+                "tc": "勞資審裁處, 加士居道"
+            },
+            "lat": 22.308028422091,
+            "lng": 114.17252808053
+        },
+        "CTB:001552": {
+            "id": "CTB:001552",
+            "code": "001552",
+            "provider": "CTB",
+            "name": {
+                "en": "Shantung Street, Nathan Road",
+                "tc": "山東街, 彌敦道"
+            },
+            "lat": 22.316744762091,
+            "lng": 114.16978326053
+        },
+        "CTB:002694": {
+            "id": "CTB:002694",
+            "code": "002694",
+            "provider": "CTB",
+            "name": {
+                "en": "Oi Yin Street, Aldrich Bay Road",
+                "tc": "愛賢街, 愛秩序灣道"
+            },
+            "lat": 22.279807302091,
+            "lng": 114.22720635053
+        },
+        "CTB:001441": {
+            "id": "CTB:001441",
+            "code": "001441",
+            "provider": "CTB",
+            "name": {
+                "en": "Tonkin Street, Cheung Sha Wan Road",
+                "tc": "東京街, 長沙灣道"
+            },
+            "lat": 22.335144032091,
+            "lng": 114.15680913053
+        },
+        "CTB:001562": {
+            "id": "CTB:001562",
+            "code": "001562",
+            "provider": "CTB",
+            "name": {
+                "en": "Dundas Street, Nathan Road",
+                "tc": "登打士街, 彌敦道"
+            },
+            "lat": 22.314748642091,
+            "lng": 114.17037382053
+        },
+        "CTB:001447": {
+            "id": "CTB:001447",
+            "code": "001447",
+            "provider": "CTB",
+            "name": {
+                "en": "Maple Street, Cheung Sha Wan Road",
+                "tc": "楓樹街, 長沙灣道"
+            },
+            "lat": 22.328333182091,
+            "lng": 114.16552917053
+        },
+        "CTB:001476": {
+            "id": "CTB:001476",
+            "code": "001476",
+            "provider": "CTB",
+            "name": {
+                "en": "Cross Harbour Tunnel Bus-Bus Interchange",
+                "tc": "海底隧道巴士轉乘站"
+            },
+            "lat": 22.303015922091,
+            "lng": 114.18084154053
+        },
+        "CTB:001436": {
+            "id": "CTB:001436",
+            "code": "001436",
+            "provider": "CTB",
+            "name": {
+                "en": "Lai Chi Kok Station, Cheung Sha Wan Road",
+                "tc": "荔枝角站, 長沙灣道"
+            },
+            "lat": 22.337482972091,
+            "lng": 114.14837354053
+        },
+        "CTB:002693": {
+            "id": "CTB:002693",
+            "code": "002693",
+            "provider": "CTB",
+            "name": {
+                "en": "Perfect Mount Gardens, Tung Hei Road",
+                "tc": "峻峰花園, 東喜道"
+            },
+            "lat": 22.279101962091,
+            "lng": 114.22878229053
+        },
+        "CTB:001302": {
+            "id": "CTB:001302",
+            "code": "001302",
+            "provider": "CTB",
+            "name": {
+                "en": "Hoi An Street, Shau Kei Wan Road",
+                "tc": "海晏街, 筲箕灣道"
+            },
+            "lat": 22.280716692091,
+            "lng": 114.22345551053
+        },
+        "CTB:001303": {
+            "id": "CTB:001303",
+            "code": "001303",
+            "provider": "CTB",
+            "name": {
+                "en": "Sai Wan Ho Civic Centre, Shau Kei Wan Road",
+                "tc": "西灣河文娛中心, 筲箕灣道"
+            },
+            "lat": 22.281794772091,
+            "lng": 114.22202073053
+        },
+        "CTB:001274": {
+            "id": "CTB:001274",
+            "code": "001274",
+            "provider": "CTB",
+            "name": {
+                "en": "Mansion Street, King's Road",
+                "tc": "民新街, 英皇道"
+            },
+            "lat": 22.289926312091,
+            "lng": 114.20930325053
+        },
+        "CTB:001260": {
+            "id": "CTB:001260",
+            "code": "001260",
+            "provider": "CTB",
+            "name": {
+                "en": "7 Seas Shopping Centre, King's Road",
+                "tc": "七海商業中心, 英皇道"
+            },
+            "lat": 22.287742812091,
+            "lng": 114.19296558053
+        },
+        "CTB:001262": {
+            "id": "CTB:001262",
+            "code": "001262",
+            "provider": "CTB",
+            "name": {
+                "en": "Tong Shui Road, King's Road",
+                "tc": "糖水道, 英皇道"
+            },
+            "lat": 22.290808072091,
+            "lng": 114.19810570053
+        },
+        "CTB:001297": {
+            "id": "CTB:001297",
+            "code": "001297",
+            "provider": "CTB",
+            "name": {
+                "en": "Hoi An Street, Shau Kei Wan Road",
+                "tc": "海晏街, 筲箕灣道"
+            },
+            "lat": 22.280776032091,
+            "lng": 114.22363882053
+        },
+        "CTB:001265": {
+            "id": "CTB:001265",
+            "code": "001265",
+            "provider": "CTB",
+            "name": {
+                "en": "Healthy Village, King's Road",
+                "tc": "健康村, 英皇道"
+            },
+            "lat": 22.292089592091,
+            "lng": 114.20652344053
+        },
+        "CTB:001564": {
+            "id": "CTB:001564",
+            "code": "001564",
+            "provider": "CTB",
+            "name": {
+                "en": "Man Ming Lane, Nathan Road",
+                "tc": "文明里, 彌敦道"
+            },
+            "lat": 22.312210192091,
+            "lng": 114.17088450053
+        },
+        "CTB:001437": {
+            "id": "CTB:001437",
+            "code": "001437",
+            "provider": "CTB",
+            "name": {
+                "en": "Cheung Wah Street, Cheung Sha Wan Road",
+                "tc": "昌華街, 長沙灣道"
+            },
+            "lat": 22.338601292091,
+            "lng": 114.15198567053
+        },
+        "CTB:001251": {
+            "id": "CTB:001251",
+            "code": "001251",
+            "provider": "CTB",
+            "name": {
+                "en": "Hing Fat Street",
+                "tc": "興發街"
+            },
+            "lat": 22.283573922091,
+            "lng": 114.19109346053
+        },
+        "CTB:001277": {
+            "id": "CTB:001277",
+            "code": "001277",
+            "provider": "CTB",
+            "name": {
+                "en": "Healthy Gardens, King's Road",
+                "tc": "健威花園, 英皇道"
+            },
+            "lat": 22.291810122091,
+            "lng": 114.20389006053
+        },
+        "CTB:001365": {
+            "id": "CTB:001365",
+            "code": "001365",
+            "provider": "CTB",
+            "name": {
+                "en": "Sunway Gardens, King's Road",
+                "tc": "新威園, 英皇道"
+            },
+            "lat": 22.285529212091,
+            "lng": 114.21108139053
+        },
+        "CTB:001443": {
+            "id": "CTB:001443",
+            "code": "001443",
+            "provider": "CTB",
+            "name": {
+                "en": "Yen Chow Street, Cheung Sha Wan Road",
+                "tc": "欽州街, 長沙灣道"
+            },
+            "lat": 22.332255142091,
+            "lng": 114.16045790053
+        },
+        "CTB:001298": {
+            "id": "CTB:001298",
+            "code": "001298",
+            "provider": "CTB",
+            "name": {
+                "en": "Aldrich Bay Road, Shau Kei Wan Road",
+                "tc": "愛秩序灣道, 筲箕灣道"
+            },
+            "lat": 22.280349712091,
+            "lng": 114.22504094053
+        },
+        "CTB:001557": {
+            "id": "CTB:001557",
+            "code": "001557",
+            "provider": "CTB",
+            "name": {
+                "en": "Allied Plaza, Nathan Road",
+                "tc": "聯合廣場, 彌敦道"
+            },
+            "lat": 22.323454062091,
+            "lng": 114.16858963053
+        },
+        "CTB:001259": {
+            "id": "CTB:001259",
+            "code": "001259",
+            "provider": "CTB",
+            "name": {
+                "en": "Ngan Mok Street, King's Road",
+                "tc": "銀幕街, 英皇道"
+            },
+            "lat": 22.283615512091,
+            "lng": 114.19246041053
+        },
+        "CTB:001440": {
+            "id": "CTB:001440",
+            "code": "001440",
+            "provider": "CTB",
+            "name": {
+                "en": "Cheung Sha Wan Station, Cheung Sha Wan Road",
+                "tc": "長沙灣站, 長沙灣道"
+            },
+            "lat": 22.336700112091,
+            "lng": 114.15486415053
+        },
+        "CTB:002561": {
+            "id": "CTB:002561",
+            "code": "002561",
+            "provider": "CTB",
+            "name": {
+                "en": "Victoria Park, Gloucester Road",
+                "tc": "維多利亞公園, 告士打道"
+            },
+            "lat": 22.279941672091,
+            "lng": 114.18746677053
+        },
+        "CTB:001271": {
+            "id": "CTB:001271",
+            "code": "001271",
+            "provider": "CTB",
+            "name": {
+                "en": "Bo Fung Gardens, King's Road",
+                "tc": "寶峰園, 英皇道"
+            },
+            "lat": 22.284594642091,
+            "lng": 114.21416959053
+        },
+        "CTB:001475": {
+            "id": "CTB:001475",
+            "code": "001475",
+            "provider": "CTB",
+            "name": {
+                "en": "Cross Harbour Tunnel Bus-Bus Interchange",
+                "tc": "海底隧道巴士轉乘站"
+            },
+            "lat": 22.302817792091,
+            "lng": 114.18008423053
+        },
+        "CTB:001374": {
+            "id": "CTB:001374",
+            "code": "001374",
+            "provider": "CTB",
+            "name": {
+                "en": "Wing Hing Street",
+                "tc": "永興街"
+            },
+            "lat": 22.285345432091,
+            "lng": 114.19236143053
+        },
+        "CTB:001434": {
+            "id": "CTB:001434",
+            "code": "001434",
+            "provider": "CTB",
+            "name": {
+                "en": "Cheung Lai Street, Cheung Sha Wan Road",
+                "tc": "長荔街, 長沙灣道"
+            },
+            "lat": 22.336811232091,
+            "lng": 114.14707641053
+        },
+        "CTB:001335": {
+            "id": "CTB:001335",
+            "code": "001335",
+            "provider": "CTB",
+            "name": {
+                "en": "Causeway Bay Typhoon Shelter, Victoria Park Road",
+                "tc": "銅鑼灣避風塘, 維園道"
+            },
+            "lat": 22.284074312091,
+            "lng": 114.18628546053
+        },
+        "CTB:001261": {
+            "id": "CTB:001261",
+            "code": "001261",
+            "provider": "CTB",
+            "name": {
+                "en": "Tin Chong Street, King's Road",
+                "tc": "電廠街, 英皇道"
+            },
+            "lat": 22.290056622091,
+            "lng": 114.19505769053
+        },
+        "CTB:001444": {
+            "id": "CTB:001444",
+            "code": "001444",
+            "provider": "CTB",
+            "name": {
+                "en": "Pei Ho Street, Cheung Sha Wan Road",
+                "tc": "北河街, 長沙灣道"
+            },
+            "lat": 22.330910012091,
+            "lng": 114.16219576053
+        },
+        "CTB:001393": {
+            "id": "CTB:001393",
+            "code": "001393",
+            "provider": "CTB",
+            "name": {
+                "en": "Shipyard Lane, King's Road",
+                "tc": "船塢里, 英皇道"
+            },
+            "lat": 22.284773752091,
+            "lng": 114.21420833053
+        },
+        "CTB:002677": {
+            "id": "CTB:002677",
+            "code": "002677",
+            "provider": "CTB",
+            "name": {
+                "en": "Model Housing Estate, King's Road",
+                "tc": "模範邨, 英皇道"
+            },
+            "lat": 22.291670382091,
+            "lng": 114.20785144053
+        }
+    }
+}

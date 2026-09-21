@@ -19,6 +19,13 @@ const route = {
     stops: [{ id: stop.id, seq: 1 }],
 }
 async function seed(page: Page, version = 2, fixture = { route, stop }) {
+    await page.context().route('https://portal.csdi.gov.hk/**', (request) =>
+        request.fulfill({
+            json: {
+                features: [{ attributes: { COMPANY_CODE: 'KMB+CTB', ROUTE_NAMEE: '106' } }],
+            },
+        }),
+    )
     await page.addInitScript(
         ({ stop, route, version }) => {
             const req = indexedDB.open('bus-coming-v1', version)

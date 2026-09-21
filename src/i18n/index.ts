@@ -1,3 +1,5 @@
+import type { Route } from '../types/transit'
+
 export const strings = {
     en: {
         appUpdate: 'App updates',
@@ -136,6 +138,9 @@ export const strings = {
         gpsUnsupported: 'Location is not supported by this browser.',
         showKeypad: 'Show keypad',
         hideKeypad: 'Hide keypad',
+        jointData: 'Joint routes · Transport Department',
+        partialEta:
+            'Some operator arrivals could not be matched or loaded. Showing available arrivals.',
         nlbEstimate: 'NLB estimates may be based on schedules and historical journey times.',
     },
     tc: {
@@ -264,6 +269,8 @@ export const strings = {
         gpsUnsupported: '此瀏覽器不支援定位功能。',
         showKeypad: '顯示鍵盤',
         hideKeypad: '隱藏鍵盤',
+        jointData: '聯營路線 · 運輸署',
+        partialEta: '部分巴士公司的到站資料未能配對或載入，現顯示可用的資料。',
         nlbEstimate: '新大嶼山巴士預報可能根據時間表及過往行車時間計算。',
     },
 }
@@ -280,3 +287,10 @@ export const company = (provider: string, tc: boolean) =>
           : tc
             ? '新大嶼山巴士'
             : 'New Lantao Bus'
+
+export const routeCompany = (route: Route, tc: boolean) =>
+    route.jointPartners?.length
+        ? tc
+            ? '九巴 / 龍運 + 城巴 · 聯營'
+            : 'KMB / LWB + Citybus · Joint route'
+        : company(route.provider, tc)

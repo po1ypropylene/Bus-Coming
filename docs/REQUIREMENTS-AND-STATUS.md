@@ -5,7 +5,7 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 ## Requirement checklist
 
 | Requirement                                  | Implementation                                                                                                                                     | Status                                                                     |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | React mobile web app                         | React 19, TypeScript, Vite; responsive mobile/desktop layouts                                                                                      | Implemented                                                                |
 | iOS Home Screen behavior                     | Standalone manifest, 192/512 PNG icons, Apple touch icon, safe-area spacing, production service worker                                             | Implemented; physical-device installation still requires manual validation |
 | Maintain user data                           | Local bookmark/language persistence, storage error reporting, JSON backup export and validated merging import, optional persistent-storage request | Implemented; local only                                                    |
@@ -27,6 +27,7 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 | Custom numpad with actual route letters      | 0–9, clear/backspace and 18 verified letters; dynamically re-derived from downloaded catalogues; native mobile keyboard suppressed                 | Implemented                                                                |
 | WebStorm setup / iPhone 17 Pro Max           | Shared npm run configuration, 440×956 @3x WebKit profile, README mobile/HTTPS instructions                                                         | Implemented                                                                |
 | Requirement and state documentation          | This file plus API research and README                                                                                                             | Completed                                                                  |
+| Jointly operated routes                      | Automatic TD membership; merged journeys, itineraries and ETAs; existing bookmarks preserved                                                       | Implemented with conservative matching; see joint-route limits below       |
 | Popular packages                             | React, Vite, TypeScript, idb, Lucide, vite-plugin-pwa/Workbox, Vitest, Playwright                                                                  | Implemented                                                                |
 
 ## User flows
@@ -49,8 +50,14 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 ## Verification
 
 - TypeScript production build and ESLint checks are run on the final code.
-- 23 unit tests cover direction/service/sequence filtering, null ETAs, Hong Kong time parsing, route indexes, missing references, dynamic keypad letters, distance calculations, validated backups and removed routes.
-- **20 browser tests passed.** Playwright runs against mobile WebKit (440×956, DPR 3) and desktop Chromium. It covers route search → stop ETA → grouped bookmark → reload → Traditional Chinese; simulated GPS; invalid/valid imports; offline errors; layout overflow; all-provider first-launch normalization with a missing KMB stop; and failed forced refresh preserving old snapshots.
+- 41 unit tests cover direction/service/sequence filtering, null ETAs, Hong Kong time parsing, route indexes, missing
+  references, dynamic keypad letters, distance calculations, validated backups and removed routes, plus joint
+  membership, pairing, ETA aggregation and refresh/cache failure handling.
+- **26 browser tests passed.** Playwright runs against mobile WebKit (440×956, DPR 3) and desktop Chromium. It covers
+  route search → stop ETA → grouped bookmark → reload → Traditional Chinese; simulated GPS; invalid/valid imports;
+  offline errors; layout overflow; all-provider first-launch normalization with a missing KMB stop; failed forced
+  refresh preserving old snapshots; joint-route search/arrivals, old Citybus bookmarks, partner-only stops and 2X
+  isolation.
 - The live audit fetched real route lists, stop lists/details, and ETA responses for all three APIs and confirmed CORS support. Evidence is saved in `api-audit.json`.
 - Production offline reload, persisted bookmarks, offline route search and standalone manifest checks passed in both Chromium and WebKit with a dedicated local origin server stopped. Chromium also used browser offline mode. WebKit’s automated offline toggle returned an internal engine error, so its cache test used the stopped origin and aborted upstream requests instead; this limitation remains distinct from real iPhone validation.
 
@@ -65,6 +72,10 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 7. **Hosting:** the production build is ready to serve at `/` over HTTPS; no public deployment or production domain has been configured.
 8. **Testing scope:** simulated GPS and API fixtures provide reproducible interaction tests. Real phone geolocation and every individual route/service variant have not been exhaustively validated. No claim of an accessibility certification is made.
 
+9. **Joint-route coverage:** official membership is necessary; event services absent from TD stay separate. Special
+   variants, repeated/ambiguous stops and insufficient journey overlap are deliberately not guessed. Routes with
+   different endpoint names may wait for full stop data before merging.
+
 ## Architecture / maintenance
 
 - `src/App.tsx`: 10-line entry point composing the app provider and shell.
@@ -73,6 +84,8 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 - `src/components/`: reusable arrivals, bookmarks, route keypad/rows/badges, download status, layout and illustration components.
 - `src/hooks/`: arrival polling, route search, route details, GPS, connectivity, backups, user preferences and catalogue lifecycle.
 - `src/services/api.ts`: request retry and arrival adapters. `src/services/catalog/`: separate KMB, Citybus and NLB importers, shared helpers, snapshot orchestration and on-demand route loading.
+- `src/services/joint/`: TD membership download/cache, journey and stop matching, and combined ETA requests.
+  `useJointItinerary` preserves partner-only stops.
 - `src/workers/catalog.worker.ts`: small worker message handler; delegates data import to services.
 - `src/storage/`: IndexedDB schema/migrations and local user-data reading. Existing database name and bookmark key are retained.
 - `src/types/`, `src/utils/`, `src/i18n/`, `src/styles/`: domain types, tested pure helpers, translation strings and styles.
@@ -143,3 +156,23 @@ Verified build, lint, formatting and 27 unit tests. All 22 existing browser case
 passed after correcting grid stretching, covering full-row visibility while typing at 440×956 and 320×568, keypad
 show/hide expansion, and opening route details. Mobile WebKit screenshot inspected. On short phone viewports the brand
 header is hidden to preserve results space; navigation remains available. Physical iPhone testing remains manual.
+
+## Joint-route aggregation — 21 September 2026
+
+Implemented automatic TD joint-route membership, cached independently and refreshed weekly/on demand. Removed the
+earlier manual registry and one-off evidence JSON. Joint journeys now use one search result under either operator
+filter, one itinerary including partner-only stops, and chronologically combined arrivals with source labels. Existing
+bookmarks retain their IDs and gain combined arrivals when matched; new bookmarks exclude derived membership. Settings
+includes the TD timestamp and refresh failure state.
+
+Pairing requires official membership plus compatible endpoints or substantial ordered stop overlap. Direction codes and
+stop sequences remain operator-specific; unrelated same-number services such as 2X and special KMB variants remain
+separate. Partial matching/request failures have bilingual notices. See `JOINT-ROUTES.md` for algorithms, lifecycle and
+limitations, including event routes absent from TD, ambiguous stops and delayed geographic matching during the initial
+Citybus download.
+
+Verification: production build, ESLint, formatting, 41 unit tests and all 26 browser tests passed. Production offline
+checks passed in Chromium and WebKit, now including cached joint membership restoring one merged route. The mobile
+joint-route screenshot was inspected. Live checks verified the TD query/CORS and both operators’ 102/106 stop lists;
+retained fixtures exercise both directions. This was not an exhaustive live ETA audit. Physical iPhone validation
+remains manual.

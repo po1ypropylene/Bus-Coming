@@ -13,7 +13,7 @@ export function useRouteDetails(route: Route, downloadedStops: Record<string, St
     useEffect(() => {
         if (complete) return
         let active = true
-        void loadRouteDetails(route)
+        void loadRouteDetails({ ...route, jointPartners: undefined })
             .then((data) => {
                 if (active) setResult({ id: route.id, data })
             })
@@ -26,7 +26,11 @@ export function useRouteDetails(route: Route, downloadedStops: Record<string, St
     }, [route, complete, attempt])
     const current = result?.id === route.id ? result : null
     return {
-        route: complete ? route : (current?.data?.route ?? route),
+        route: complete
+            ? route
+            : current?.data?.route
+                ? { ...current.data.route, jointPartners: route.jointPartners }
+                : route,
         stops: complete ? downloadedStops : (current?.data?.stops ?? {}),
         loading: !complete && !current,
         error: !complete && !!current?.error,

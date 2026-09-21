@@ -84,3 +84,11 @@ flow below them. Numbers remain in a 3-column pad, with a separate 2-column scro
 expands the results. Query/operator changes reset only the results scroll position, so matches stay visible while
 typing. Route details leave this constrained shell and use normal page scrolling. Desktop retains its sidebar layout.
 Keep keyboard focus, 44px keys and the 320×568 / 440×956 geometry regression when changing this screen.
+
+## Joint routes
+
+Read [JOINT-ROUTES.md](JOINT-ROUTES.md) before changing joint membership, journey/stop matching or ETA aggregation.
+`services/joint/` owns the official TD adapter, conservative pairing and combined arrivals. `useJointItinerary` includes
+partner-only stops without changing provider IDs or API sequences. Keep raw provider snapshots independent, never
+persist derived `jointPartners`, and resolve old bookmarks through their original route ID. There is no manual
+membership registry. Keep failures partial and explicit; do not merge by route number or O/I code alone.

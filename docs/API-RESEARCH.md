@@ -104,3 +104,16 @@ A targeted live audit around 03:28 HKT reproduced missing inbound ETAs. N8P's ca
 Citybus selection now verifies direction and the route/stop/company fields when supplied by its stop-specific endpoint. For a stop that appears exactly once in the selected direction's catalogue, its stop ID determines the visit, so a different ETA sequence does not discard valid rows. Repeated stops, incomplete stop lists and invalid selected sequences retain exact sequence matching. KMB retains its exact direction/service/sequence filter; NLB is unchanged. No N8P-specific offset is hardcoded. Repeated-visit Citybus sequence inconsistencies remain conservative (may show no ETA rather than the wrong visit).
 
 Evidence: `citybus-n8p-audit.json` contains timestamps, complete route/stop responses and ETA responses for both directions. Reproduce with `node scripts/audit-citybus-route.mjs N8P`; this reads public operator data and replaces that route's audit file. ETA timestamps are historical observations, not current predictions. No route-data reset or bookmark migration is necessary for the fix.
+
+## Transport Department joint-route membership — 21 September 2026
+
+The public CSDI FeatureServer provides a small filtered JSON query for `COMPANY_CODE IN ('KMB+CTB','LWB+CTB')`, with
+`ROUTE_NAMEE` identifying joint route numbers. The app now downloads and caches this source automatically. Live query
+and browser CORS were verified: 190 records / 90 distinct numbers. These counts are dated evidence, not constants.
+See [JOINT-ROUTES.md](JOINT-ROUTES.md) for the exact endpoint, parameters, pagination, cache lifecycle, direction
+matching and conservative stop matching. Operator APIs still supply all ETAs.
+
+Live route/stop snapshots for 102 and 106 are retained as test fixtures. 102 has 31/34 KMB stops and 31/36 Citybus
+stops; 106 has 48/47 KMB stops and 47/48 Citybus stops, with opposite direction codes between operators. Shared numbers,
+direction letters and sequence numbers therefore cannot be used as a cross-operator join key. These were current
+catalogue checks, not an exhaustive live ETA audit.

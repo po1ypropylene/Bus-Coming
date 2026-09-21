@@ -24,6 +24,8 @@ export interface Route {
     origin: Localized
     destination: Localized
     stops: { id: string; seq: number }[]
+    // Derived from current TD data; never persisted in bookmarks or operator snapshots.
+    jointPartners?: Route[]
 }
 
 export interface Snapshot {
@@ -54,11 +56,13 @@ export interface UserData {
 export interface Arrival {
     time: number | null
     remark: string
+    provider?: Provider
 }
 
 export interface ArrivalResult {
     arrivals: Arrival[]
     fetchedAt: number
+    partial?: boolean
 }
 
 export interface Progress {
@@ -92,4 +96,11 @@ export type CatalogEvent =
     | { type: 'snapshot'; snapshot: Snapshot }
     | { type: 'catalog'; catalog: RouteCatalog }
     | { type: 'progress'; progress: Progress }
+    | { type: 'joint'; catalog: JointCatalog }
+    | { type: 'jointError' }
     | { type: 'complete' }
+
+export interface JointCatalog {
+    updatedAt: number
+    numbers: string[]
+}

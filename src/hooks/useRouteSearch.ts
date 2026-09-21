@@ -18,7 +18,10 @@ export function useRouteSearch(routes: Route[], snapshots: Snapshot[]) {
             routes
                 .filter(
                     (r) =>
-                        (operator === 'all' || r.provider === operator) && r.number.includes(query),
+                        (operator === 'all' ||
+                            r.provider === operator ||
+                            r.jointPartners?.some((p) => p.provider === operator)) &&
+                        r.number.includes(query),
                 )
                 .sort((a, b) => Number(b.number === query) - Number(a.number === query)),
         [routes, query, operator],

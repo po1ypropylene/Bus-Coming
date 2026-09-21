@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import { useApp } from '../../app/AppContext'
 import { RouteBadge } from '../../components/routes/RouteBadge'
-import { company } from '../../i18n'
+import { routeCompany } from '../../i18n'
 import { type Route } from '../../types/transit'
 
 export function RouteRow({ route, onClick }: { route: Route; onClick: () => void }) {
@@ -11,7 +11,7 @@ export function RouteRow({ route, onClick }: { route: Route; onClick: () => void
             <RouteBadge route={route} />
             <span className="route-copy">
                 <span className="route-company">
-                    {company(route.provider, tc)}
+                    {routeCompany(route, tc)}
                     {route.provider === 'KMB' && route.service !== '1'
                         ? ` · ${t.service} ${route.service}`
                         : ''}

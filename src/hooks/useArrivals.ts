@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
-import { getArrivals } from '../services/api'
+import { getJointArrivals } from '../services/joint/arrivals'
 import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
 
-export function useArrivals(route: Route, stop: Stop, seq: number, lang: Lang) {
+export function useArrivals(
+    route: Route,
+    stop: Stop,
+    seq: number,
+    lang: Lang,
+    stops: Record<string, Stop>,
+) {
     const [result, setResult] = useState<ArrivalResult | null>(null)
     const [failed, setFailed] = useState(false)
     const [loading, setLoading] = useState(true)
@@ -16,7 +22,7 @@ export function useArrivals(route: Route, stop: Stop, seq: number, lang: Lang) {
             if (document.hidden || running) return
             running = true
             try {
-                const next = await getArrivals(route, stop, seq, lang)
+                const next = await getJointArrivals(route, stop, seq, lang, stops)
                 if (active) {
                     setResult(next)
                     setNow(Date.now())
@@ -47,7 +53,7 @@ export function useArrivals(route: Route, stop: Stop, seq: number, lang: Lang) {
             document.removeEventListener('visibilitychange', resume)
             window.removeEventListener('online', resume)
         }
-    }, [route, stop, seq, lang, tick])
+    }, [route, stop, seq, lang, tick, stops])
     const stale = failed || (!!result && now - result.fetchedAt > 90000)
     const arrivals =
         result?.arrivals.filter((a) => a.time === null || a.time > now - 60000).slice(0, 3) ?? []

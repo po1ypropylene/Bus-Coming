@@ -1,3 +1,4 @@
+import { jointRoutes } from '../services/joint/matching'
 import { useAppUpdate } from './useAppUpdate'
 import { useEffect, useMemo, useState } from 'react'
 import { useCatalog } from './useCatalog.ts'
@@ -12,7 +13,8 @@ import { useUserData } from './useUserData'
 
 export function useAppController() {
     const appUpdate = useAppUpdate()
-    const { snapshots, catalogs, progress, busy, storageError, refresh } = useCatalog()
+    const { snapshots, catalogs, jointCatalog, jointError, progress, busy, storageError, refresh } =
+        useCatalog()
     const { user, saveError, updateUser } = useUserData()
     useTheme(user.theme)
     const [tab, setTab] = useState<Tab>('saved')
@@ -25,7 +27,7 @@ export function useAppController() {
     const lang = user.language,
         t = strings[lang],
         tc = lang === 'tc'
-    const routes = useMemo(
+    const rawRoutes = useMemo(
         () =>
             [
                 ...snapshots.flatMap((s) => s.routes),
@@ -43,9 +45,12 @@ export function useAppController() {
         () => Object.assign({}, ...snapshots.map((s) => s.stops)) as Record<string, Stop>,
         [snapshots],
     )
+    const { routes, byRoute } = useMemo(
+        () => jointRoutes(rawRoutes, jointCatalog, stops),
+        [rawRoutes, jointCatalog, stops],
+    )
     const search = useRouteSearch(routes, snapshots)
     const nearbyState = useNearbyStops(stops)
-    const byRoute = useMemo(() => new Map(routes.map((r) => [r.id, r])), [routes])
     const groups = [...new Set(user.bookmarks.map((b) => b.group).filter(Boolean))]
     useEffect(() => {
         document.documentElement.lang = lang === 'tc' ? 'zh-Hant' : 'en'
@@ -78,7 +83,7 @@ export function useAppController() {
                 routeId: route.id,
                 stopId: stop.id,
                 seq,
-                route,
+                route: { ...route, jointPartners: undefined },
                 stop,
                 group: '',
             },
@@ -89,6 +94,8 @@ export function useAppController() {
     const currentRoute = selectedRoute ? (byRoute.get(selectedRoute.id) ?? selectedRoute) : null
     return {
         appUpdate,
+        jointCatalog,
+        jointError,
         snapshots,
         progress,
         busy,

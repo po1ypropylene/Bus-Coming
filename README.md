@@ -79,6 +79,8 @@ Choose **Settings → Theme colour** for green, blue, yellow, red or purple. The
 
 ## Documentation
 
+- [Joint routes: automatic TD data, matching and maintenance](docs/JOINT-ROUTES.md)
+
 - [Development guide and formatting conventions](docs/DEVELOPMENT.md)
 - [Instructions for coding agents](AGENTS.md)
 - [API research and download strategy](docs/API-RESEARCH.md)

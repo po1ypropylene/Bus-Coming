@@ -1,13 +1,17 @@
 /// <reference lib="webworker" />
 import { download } from '../services/catalog/download'
+import { downloadJointCatalog } from '../services/joint/catalog'
 import { PROVIDERS } from '../types/transit'
 
 let busy = false
 self.onmessage = async (event: MessageEvent<{ force: boolean }>) => {
     if (busy) return
     busy = true
-    await Promise.all(
-        PROVIDERS.map(async (provider) => {
+    await Promise.all([
+        downloadJointCatalog(event.data.force, (message) => self.postMessage(message)).catch(() =>
+            self.postMessage({ type: 'jointError' }),
+        ),
+        ...PROVIDERS.map(async (provider) => {
             try {
                 await download(provider, event.data.force, (message) => self.postMessage(message))
             } catch (error) {
@@ -18,7 +22,7 @@ self.onmessage = async (event: MessageEvent<{ force: boolean }>) => {
                 })
             }
         }),
-    )
+    ])
     busy = false
     self.postMessage({ type: 'complete' })
 }

@@ -1,6 +1,9 @@
+import { useMemo } from 'react'
+import { useApp } from '../../app/AppContext'
+import type { Copy } from '../../i18n'
+import { company } from '../../i18n'
 import { RefreshCw } from 'lucide-react'
 import { useArrivals } from '../../hooks/useArrivals'
-import type { Copy } from '../../i18n'
 import type { Lang, Route, Stop } from '../../types/transit'
 
 export function ArrivalPanel({
@@ -9,18 +12,26 @@ export function ArrivalPanel({
     seq,
     lang,
     t,
+                                 knownStops,
 }: {
     route: Route
     stop: Stop
     seq: number
     lang: Lang
     t: Copy
+    knownStops?: Record<string, Stop>
 }) {
+    const { stops } = useApp()
+    const availableStops = useMemo(
+        () => (knownStops ? { ...stops, ...knownStops } : stops),
+        [stops, knownStops],
+    )
     const { result, failed, loading, now, stale, arrivals, refresh } = useArrivals(
         route,
         stop,
         seq,
         lang,
+        availableStops,
     )
     return (
         <div className={`arrival-panel ${stale ? 'stale' : ''}`}>
@@ -47,6 +58,7 @@ export function ArrivalPanel({
                                       : Math.ceil((a.time - now) / 60000)}
                             </strong>
                             {a.time !== null && a.time > now && <span>{t.min}</span>}
+                            {a.provider && <small>{company(a.provider, lang === 'tc')}</small>}
                             {a.remark && <small>{a.remark}</small>}
                         </div>
                     ))
@@ -54,6 +66,11 @@ export function ArrivalPanel({
                     <p className="muted-text">{failed ? t.unavailable : t.noEta}</p>
                 )}
             </div>
+            {result?.partial && (
+                <p className="muted-text" role="status">
+                    {t.partialEta}
+                </p>
+            )}
             <div className="arrival-foot">
                 {failed && arrivals.length > 0 && <span>{t.unavailable} · </span>}
                 {result &&

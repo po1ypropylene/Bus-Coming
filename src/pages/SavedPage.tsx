@@ -14,7 +14,7 @@ import { ArrivalPanel } from '../components/arrivals/ArrivalPanel'
 import { DownloadCard } from '../components/catalog/DownloadCard'
 import { JourneyArt } from '../components/illustrations/JourneyArt'
 import { RouteBadge } from '../components/routes/RouteBadge'
-import { company } from '../i18n'
+import { routeCompany } from '../i18n'
 import { resolveBookmark } from '../utils/transit'
 
 export function SavedPage() {
@@ -23,6 +23,7 @@ export function SavedPage() {
         tc,
         user,
         snapshots,
+        byRoute,
         lang,
         openRoute,
         updateUser,
@@ -81,7 +82,16 @@ export function SavedPage() {
                         {user.bookmarks
                             .filter((b) => !activeGroup || b.group === activeGroup)
                             .map((b) => {
-                                const { route, stop, available } = resolveBookmark(b, snapshots)
+                                const {
+                                    route: savedRoute,
+                                    stop,
+                                    available,
+                                } = resolveBookmark(b, snapshots)
+                                const indexed = byRoute.get(savedRoute.id)
+                                const route = {
+                                    ...savedRoute,
+                                    jointPartners: indexed?.jointPartners,
+                                }
                                 return (
                                     <article className="bookmark-card" key={b.id}>
                                         <div className="bookmark-label">
@@ -125,7 +135,7 @@ export function SavedPage() {
                                             <p className="banner">{t.missingRoute}</p>
                                         )}
                                         <div className="bookmark-bottom">
-                                            <span>{company(route.provider, tc)}</span>
+                                            <span>{routeCompany(route, tc)}</span>
                                             <button
                                                 className="icon-button"
                                                 onClick={() => {

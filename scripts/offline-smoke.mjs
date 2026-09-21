@@ -1,7 +1,8 @@
 import { chromium, webkit } from '@playwright/test'
-import { mkdir, writeFile, readFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { createServer } from 'node:http'
-import { resolve, extname } from 'node:path'
+import { extname, resolve } from 'node:path'
+
 await mkdir('artifacts', { recursive: true })
 const results = []
 for (const [name, engine] of [
@@ -43,6 +44,7 @@ for (const [name, engine] of [
         })
         await context.route('https://data.etabus.gov.hk/**', (req) => req.abort())
         await context.route('https://rt.data.gov.hk/**', (req) => req.abort())
+        await context.route('https://portal.csdi.gov.hk/**', (req) => req.abort())
         const page = await context.newPage()
         const errors = []
         page.on('pageerror', (error) => errors.push(error.message))
@@ -59,14 +61,22 @@ for (const [name, engine] of [
                 lng: 114.2,
             }
             const route = {
-                id: 'KMB:1A:O:1',
-                number: '1A',
+                id: 'KMB:106:O:1',
+                number: '106',
                 provider: 'KMB',
                 bound: 'O',
                 service: '1',
                 origin: { en: 'Origin', tc: '起點' },
                 destination: { en: 'Destination', tc: '終點' },
                 stops: [{ id: stop.id, seq: 1 }],
+            }
+            const partnerStop = { ...stop, id: 'CTB:000001', code: '000001', provider: 'CTB' }
+            const partner = {
+                ...route,
+                id: 'CTB:106:I:1',
+                provider: 'CTB',
+                bound: 'I',
+                stops: [{ id: partnerStop.id, seq: 12 }],
             }
             localStorage.setItem(
                 'bus-coming-user-v1',
@@ -90,13 +100,27 @@ for (const [name, engine] of [
                 const req = indexedDB.open('bus-coming-v1', 2)
                 req.onerror = () => reject(req.error)
                 req.onsuccess = () => {
-                    const tx = req.result.transaction('snapshots', 'readwrite')
+                    const tx = req.result.transaction(['snapshots', 'responses'], 'readwrite')
+                    tx.objectStore('responses').put(
+                        {
+                            at: Date.now(),
+                            generation: 1,
+                            data: { updatedAt: Date.now(), numbers: ['106'] },
+                        },
+                        'td-joint-routes-v1',
+                    )
                     for (const provider of ['KMB', 'CTB', 'NLB'])
                         tx.objectStore('snapshots').put({
                             provider,
                             updatedAt: Date.now(),
-                            routes: provider === 'KMB' ? [route] : [],
-                            stops: provider === 'KMB' ? { [stop.id]: stop } : {},
+                            routes:
+                                provider === 'KMB' ? [route] : provider === 'CTB' ? [partner] : [],
+                            stops:
+                                provider === 'KMB'
+                                    ? { [stop.id]: stop }
+                                    : provider === 'CTB'
+                                        ? { [partnerStop.id]: partnerStop }
+                                        : {},
                             stopRoutes: {},
                         })
                     tx.oncomplete = () => {
@@ -129,6 +153,11 @@ for (const [name, engine] of [
         await page.locator('.bookmark-card').waitFor()
         await page.getByRole('button', { name: 'Routes', exact: true }).click()
         await page.locator('.route-row').waitFor()
+        if (
+            (await page.locator('.route-row').count()) !== 1 ||
+            !(await page.locator('.route-row').textContent()).includes('Joint route')
+        )
+            throw new Error('Offline joint membership was not restored')
         const overflow = await page.evaluate(
             () => document.documentElement.scrollWidth > innerWidth,
         )

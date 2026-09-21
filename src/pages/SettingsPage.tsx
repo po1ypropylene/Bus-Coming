@@ -22,6 +22,8 @@ export function SettingsPage() {
         lang,
         updateUser,
         snapshots,
+        jointCatalog,
+        jointError,
         progress,
         busy,
         refresh,
@@ -128,6 +130,18 @@ export function SettingsPage() {
                             </div>
                         )
                     })}
+                    <div className="provider-setting">
+                        <strong>{t.jointData}</strong>
+                        <p>
+                            {t.lastDownloaded}:{' '}
+                            {jointCatalog
+                                ? new Date(jointCatalog.updatedAt).toLocaleString(
+                                    tc ? 'zh-HK' : 'en-GB',
+                                )
+                                : '—'}
+                        </p>
+                        {jointError && <p className="error-text">{t.failed}</p>}
+                    </div>
                     <button className="setting-action" disabled={busy} onClick={() => refresh()}>
                         <RefreshCw size={18} className={busy ? 'spin' : ''} />
                         {busy ? t.downloading : t.refreshData}

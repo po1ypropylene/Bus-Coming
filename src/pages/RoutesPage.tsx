@@ -35,7 +35,7 @@ export function RoutesPage() {
             <section className="search-controls">
                 <div className="search-entry">
                     <div className="search-box">
-                        <Search size={22}/>
+                        <Search size={22} />
                         <input
                             aria-label={t.routeNumber}
                             inputMode="none"
@@ -59,7 +59,7 @@ export function RoutesPage() {
                                 aria-label={t.clear}
                                 onClick={() => setQuery('')}
                             >
-                                <X size={18}/>
+                                <X size={18} />
                             </button>
                         )}
                     </div>
@@ -76,16 +76,16 @@ export function RoutesPage() {
                                 {co === 'all'
                                     ? t.all
                                     : co === 'KMB'
+                                      ? tc
+                                          ? '九巴/龍運'
+                                          : 'KMB/LWB'
+                                      : co === 'CTB'
                                         ? tc
-                                            ? '九巴/龍運'
-                                            : 'KMB/LWB'
-                                        : co === 'CTB'
-                                            ? tc
-                                                ? '城巴'
-                                                : 'Citybus'
-                                            : tc
-                                                ? '嶼巴'
-                                                : 'NLB'}
+                                            ? '城巴'
+                                            : 'Citybus'
+                                        : tc
+                                          ? '嶼巴'
+                                          : 'NLB'}
                             </button>
                         ))}
                     </div>

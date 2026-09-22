@@ -119,8 +119,8 @@ for (const [name, engine] of [
                                 provider === 'KMB'
                                     ? { [stop.id]: stop }
                                     : provider === 'CTB'
-                                        ? { [partnerStop.id]: partnerStop }
-                                        : {},
+                                      ? { [partnerStop.id]: partnerStop }
+                                      : {},
                             stopRoutes: {},
                         })
                     tx.oncomplete = () => {

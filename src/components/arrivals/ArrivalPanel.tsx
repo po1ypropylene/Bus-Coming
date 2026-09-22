@@ -12,7 +12,7 @@ export function ArrivalPanel({
     seq,
     lang,
     t,
-                                 knownStops,
+    knownStops,
 }: {
     route: Route
     stop: Stop

@@ -66,9 +66,9 @@ const snapshots: Snapshot[] = (['KMB', 'CTB', 'NLB'] as const).map((provider) =>
 })
 
 test('official joint data merges listings, combines ETAs, includes extra stops and preserves old bookmarks', async ({
-                                                                                                                        page,
-                                                                                                                        context,
-                                                                                                                    }) => {
+    page,
+    context,
+}) => {
     await context.route('https://portal.csdi.gov.hk/**', (request) =>
         request.fulfill({
             json: { features: [{ attributes: { COMPANY_CODE: 'KMB+CTB', ROUTE_NAMEE: '106' } }] },
@@ -84,7 +84,7 @@ test('official joint data merges listings, combines ETAs, includes extra stops a
                         service_type: 1,
                         eta: new Date(
                             Date.now() +
-                            (request.request().url().includes('/CTB/') ? 3 : 7) * 60000,
+                                (request.request().url().includes('/CTB/') ? 3 : 7) * 60000,
                         ).toISOString(),
                     },
                 ],

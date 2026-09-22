@@ -676,3 +676,46 @@ test('bookmarks reorder within groups, persist on reload and support keyboard an
     await expect(page.getByText('使用箭頭調整收藏車站的次序，變更會自動儲存。')).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
+
+test('Citybus rush-hour ETA order is chronological in route details and saved bookmarks', async ({
+                                                                                                     page,
+                                                                                                 }) => {
+    // Reproduce the reported response ordering without relying on a live rush-hour window.
+    const fixtureStop = {
+        ...stop,
+        id: 'CTB:720TEST',
+        code: '720TEST',
+        provider: 'CTB',
+        name: { en: 'Tung Hiu House Tung Yuk Court', tc: '東旭苑東曉閣' },
+    }
+    const fixtureRoute = {
+        ...route,
+        id: 'CTB:720:I:1',
+        number: '720',
+        provider: 'CTB',
+        bound: 'I',
+        destination: { en: 'Central', tc: '中環' },
+        stops: [{ id: fixtureStop.id, seq: 2 }],
+    }
+    await seed(page, 2, { route: fixtureRoute, stop: fixtureStop })
+    await page.route('**/eta/**', (request) =>
+        request.fulfill({
+            json: {
+                data: [13, 2, 7].map((minutes) => ({
+                    dir: 'I',
+                    seq: 2,
+                    eta: new Date(Date.now() + minutes * 60000).toISOString(),
+                    rmk_en: `Variant ${minutes}`,
+                })),
+            },
+        }),
+    )
+    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await page.locator('.route-row').click()
+    await page.locator('.stop-main').click()
+    await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
+    await page.getByRole('button', { name: 'Save stop', exact: true }).click()
+    await page.getByRole('button', { name: 'Done', exact: true }).click()
+    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
+})

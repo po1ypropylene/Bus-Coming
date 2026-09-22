@@ -29,8 +29,8 @@ export function useRouteDetails(route: Route, downloadedStops: Record<string, St
         route: complete
             ? route
             : current?.data?.route
-                ? { ...current.data.route, jointPartners: route.jointPartners }
-                : route,
+              ? { ...current.data.route, jointPartners: route.jointPartners }
+              : route,
         stops: complete ? downloadedStops : (current?.data?.stops ?? {}),
         loading: !complete && !current,
         error: !complete && !!current?.error,

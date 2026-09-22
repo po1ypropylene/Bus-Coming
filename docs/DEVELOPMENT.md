@@ -102,3 +102,10 @@ list with translated 44px up/down controls, disabled boundaries and screen-reade
 uses the normal user-data persistence/error path. Editing a group preserves the bookmark's array position; new stops
 append. Export preserves array order. Import into an empty collection restores it; merging into an existing collection
 keeps existing positions and appends new IDs in imported order, as before. Do not change this silently.
+
+## ETA display ordering
+
+All arrival panels use `utils/arrivals.ts` through `useArrivals`: discard expired predictions, sort by absolute arrival
+timestamp, then take the first three. Untimed remarks follow timed predictions; equal-time buses and their remarks
+remain distinct. Never assume operator response order is chronological (rush-hour service variants may be grouped).
+Keep provider direction/service/stop filtering in the adapters; display sorting must not broaden those matches.

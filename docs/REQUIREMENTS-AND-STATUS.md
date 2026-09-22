@@ -5,7 +5,7 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 ## Requirement checklist
 
 | Requirement                                  | Implementation                                                                                                                                     | Status                                                                     |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | React mobile web app                         | React 19, TypeScript, Vite; responsive mobile/desktop layouts                                                                                      | Implemented                                                                |
 | iOS Home Screen behavior                     | Standalone manifest, 192/512 PNG icons, Apple touch icon, safe-area spacing, production service worker                                             | Implemented; physical-device installation still requires manual validation |
 | Maintain user data                           | Local bookmark/language persistence, storage error reporting, JSON backup export and validated merging import, optional persistent-storage request | Implemented; local only                                                    |
@@ -188,3 +188,15 @@ positions are included. Existing data and backup format remain compatible; no dr
 Verification: build, lint, 44 unit tests, all 28 browser tests (mobile WebKit and desktop Chromium), and production
 offline smoke checks passed. Browser coverage verifies group isolation, saved array order, reload persistence, keyboard
 activation and Chinese labels. Physical iPhone and VoiceOver testing remain manual.
+
+## Chronological ETA display — 22 September 2026
+
+Fixed single-operator arrival panels preserving upstream response order. All providers now use shared display sorting
+before the three-prediction limit, including route details and bookmarks. The reported 720 order of 13, 2, 7 minutes
+now displays 2, 7, 13. Untimed remarks follow timed predictions; equal-time buses retain their remarks. Existing
+expiry, direction, service and stop filtering remain unchanged. Regression data reproduces the reported ordering;
+no current live rush-hour API audit was performed.
+
+Verification: build, lint, formatting, 47 unit tests and all 30 browser tests passed. The browser regression checks
+2, 7, 13 in both route details and saved bookmarks on mobile WebKit and desktop Chromium. Storage and offline behavior
+were unchanged; physical iPhone testing remains manual.

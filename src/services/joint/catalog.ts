@@ -32,10 +32,10 @@ export function parseJointPage(input: unknown): {
 export function cachedJointCatalog(value: unknown): JointCatalog | null {
     const catalog = value as JointCatalog
     return catalog &&
-    Number.isFinite(catalog.updatedAt) &&
-    Array.isArray(catalog.numbers) &&
-    catalog.numbers.length > 0 &&
-    catalog.numbers.every((n) => typeof n === 'string' && /^[A-Z0-9]+$/.test(n))
+        Number.isFinite(catalog.updatedAt) &&
+        Array.isArray(catalog.numbers) &&
+        catalog.numbers.length > 0 &&
+        catalog.numbers.every((n) => typeof n === 'string' && /^[A-Z0-9]+$/.test(n))
         ? catalog
         : null
 }
@@ -48,7 +48,7 @@ export async function downloadJointCatalog(force: boolean, emit: (event: Catalog
         if (cached && !force && Date.now() - cached.updatedAt < WEEK) return
         const numbers = new Set<string>()
         let offset = 0
-        for (; ;) {
+        for (;;) {
             const params = new URLSearchParams({
                 f: 'json',
                 where: "COMPANY_CODE IN ('KMB+CTB','LWB+CTB')",

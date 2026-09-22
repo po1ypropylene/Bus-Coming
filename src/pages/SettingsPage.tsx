@@ -136,8 +136,8 @@ export function SettingsPage() {
                             {t.lastDownloaded}:{' '}
                             {jointCatalog
                                 ? new Date(jointCatalog.updatedAt).toLocaleString(
-                                    tc ? 'zh-HK' : 'en-GB',
-                                )
+                                      tc ? 'zh-HK' : 'en-GB',
+                                  )
                                 : '—'}
                         </p>
                         {jointError && <p className="error-text">{t.failed}</p>}

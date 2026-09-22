@@ -4,11 +4,11 @@ import type { Bookmark, Lang } from '../../types/transit'
 import type { Copy } from '../../i18n'
 
 export function BookmarkOrder({
-                                  bookmarks,
-                                  lang,
-                                  t,
-                                  onMove,
-                              }: {
+    bookmarks,
+    lang,
+    t,
+    onMove,
+}: {
     bookmarks: Bookmark[]
     lang: Lang
     t: Copy
@@ -44,7 +44,7 @@ export function BookmarkOrder({
                                     disabled={index === 0}
                                     onClick={() => move(-1)}
                                 >
-                                    <ArrowUp size={20}/>
+                                    <ArrowUp size={20} />
                                 </button>
                                 <button
                                     className="icon-button"
@@ -52,7 +52,7 @@ export function BookmarkOrder({
                                     disabled={index === bookmarks.length - 1}
                                     onClick={() => move(1)}
                                 >
-                                    <ArrowDown size={20}/>
+                                    <ArrowDown size={20} />
                                 </button>
                             </div>
                         </li>

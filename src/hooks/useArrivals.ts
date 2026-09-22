@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getJointArrivals } from '../services/joint/arrivals'
 import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
+import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
 
 export function useArrivals(
     route: Route,
@@ -55,7 +56,6 @@ export function useArrivals(
         }
     }, [route, stop, seq, lang, tick, stops])
     const stale = failed || (!!result && now - result.fetchedAt > 90000)
-    const arrivals =
-        result?.arrivals.filter((a) => a.time === null || a.time > now - 60000).slice(0, 3) ?? []
+    const arrivals = upcomingArrivals(result?.arrivals ?? [], now)
     return { result, failed, loading, now, stale, arrivals, refresh: () => setTick((v) => v + 1) }
 }

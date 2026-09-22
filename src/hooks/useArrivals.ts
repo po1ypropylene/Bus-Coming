@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getJointArrivals } from '../services/joint/arrivals'
 import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
-import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
+import { upcomingArrivals } from '../utils/arrivals'
 
 export function useArrivals(
     route: Route,

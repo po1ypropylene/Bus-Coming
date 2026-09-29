@@ -46,29 +46,30 @@ function RouteDetails({ route }: { route: Route }) {
             </button>
             <section className="route-heading">
                 <RouteBadge route={currentRoute} />
-                <div>
+                <div className="route-heading-copy">
                     <p className="eyebrow">{routeCompany(currentRoute, tc)}</p>
                     <h1>{currentRoute.destination[lang]}</h1>
                     <p>
                         {t.from} {currentRoute.origin[lang]}
                     </p>
                 </div>
+                {reverse && (
+                    <button
+                        className="text-button direction-switch"
+                        onClick={() => openRoute(reverse)}
+                        aria-label={`${t.flipDirection}: ${reverse.destination[lang]}`}
+                        title={`${t.flipDirection}: ${reverse.destination[lang]}`}
+                    >
+                        <ArrowRightLeft size={18}/>
+                        <span>
+                            {t.flipDirection}
+                            <small>
+                                {t.toward} {reverse.destination[lang]}
+                            </small>
+                        </span>
+                    </button>
+                )}
             </section>
-            {reverse && (
-                <button
-                    className="text-button direction-switch"
-                    onClick={() => openRoute(reverse)}
-                    aria-label={`${t.flipDirection}: ${reverse.destination[lang]}`}
-                >
-                    <ArrowRightLeft size={18}/>
-                    <span>
-                        {t.flipDirection}
-                        <small>
-                            {t.toward} {reverse.destination[lang]}
-                        </small>
-                    </span>
-                </button>
-            )}
             <div className="section-heading">
                 <h2>{t.routeStops}</h2>
                 <span>

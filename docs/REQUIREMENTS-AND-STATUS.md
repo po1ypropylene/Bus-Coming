@@ -203,7 +203,8 @@ were unchanged; physical iPhone testing remains manual.
 
 ## Route direction switch — 29 September 2026
 
-Added a bilingual **Switch direction** button below the route heading, with the destination shown before switching.
+Added a bilingual **Switch direction** button at the right of the route heading. Wider screens show the target
+destination; phones use a 44px icon with a translated destination label for assistive technology.
 It opens the opposite journey and clears expanded stops/ETAs. Citybus 2X stays within Citybus; KMB 2X is never selected
 by number coincidence. Joint journeys retain the target direction's independently matched partners, including 106's
 reversed operator bounds and navigation from old Citybus bookmarks. A known partner may provide the return direction

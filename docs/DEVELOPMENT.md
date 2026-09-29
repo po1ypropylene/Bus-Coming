@@ -119,7 +119,9 @@ another operator by number alone. Only an established joint partner can supply a
 has no reverse record. Keep the target's derived partners, not the source's: 106 has opposite O/I conventions between
 KMB and Citybus. Ambiguous or absent candidates hide the switch; do not fall back to a different KMB service type.
 
-The bilingual direction button previews the target destination. `openRoute` clears expanded stop state and scrolls to
+The bilingual direction button sits at the right of the route heading and previews the target destination. On phones it
+uses a 44px icon button, retaining the translated destination in its accessible label and tooltip. `openRoute` clears
+expanded stop state and scrolls to
 the top; route details are keyed by route ID to reset local detail/itinerary state. Citybus details load on demand as
 usual. Its early index contains provisional directions; an empty upstream direction displays the existing no-stops
 message. Complete catalogues omit empty directions. This feature does not reverse stop arrays or rewrite bookmarks.

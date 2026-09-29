@@ -200,3 +200,21 @@ no current live rush-hour API audit was performed.
 Verification: build, lint, formatting, 47 unit tests and all 30 browser tests passed. The browser regression checks
 2, 7, 13 in both route details and saved bookmarks on mobile WebKit and desktop Chromium. Storage and offline behavior
 were unchanged; physical iPhone testing remains manual.
+
+## Route direction switch — 29 September 2026
+
+Added a bilingual **Switch direction** button below the route heading, with the destination shown before switching.
+It opens the opposite journey and clears expanded stops/ETAs. Citybus 2X stays within Citybus; KMB 2X is never selected
+by number coincidence. Joint journeys retain the target direction's independently matched partners, including 106's
+reversed operator bounds and navigation from old Citybus bookmarks. A known partner may provide the return direction
+when the original operator has none. KMB service variants stay separate; NLB matches unique reversed terminals.
+One-way/unmatched/ambiguous journeys have no switch. Early Citybus index directions still require on-demand loading
+and can return the existing no-stops message if the direction is empty.
+
+Regression coverage includes provider isolation, special services, asymmetric terminals, circular/ambiguous journeys,
+NLB route IDs, real archived 106 fixtures in both directions, legacy Citybus bookmarks, cleared stop selection,
+return navigation, opposite stop ETA requests, and Traditional Chinese labels. No new live API audit or physical
+iPhone test was performed for this navigation change.
+
+Verification: production build, lint, formatting, 51 unit tests and all 34 browser tests passed on mobile WebKit and
+desktop Chromium. Storage, startup and service-worker behavior are unchanged.

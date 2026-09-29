@@ -1,4 +1,5 @@
-import { ArrowLeft, Bookmark as BookmarkIcon, ChevronRight } from 'lucide-react'
+import { oppositeRoute } from '../utils/routeDirection'
+import { ArrowLeft, ArrowRightLeft, Bookmark as BookmarkIcon, ChevronRight } from 'lucide-react'
 import { useApp } from '../app/AppContext'
 import { ArrivalPanel } from '../components/arrivals/ArrivalPanel'
 import { RouteBadge } from '../components/routes/RouteBadge'
@@ -10,12 +11,14 @@ import type { Route } from '../types/transit'
 export function RouteDetailsPage() {
     const { currentRoute: selectedRoute } = useApp()
     if (!selectedRoute) return null
-    return <RouteDetails route={selectedRoute} />
+    return <RouteDetails key={selectedRoute.id} route={selectedRoute}/>
 }
 
 function RouteDetails({ route }: { route: Route }) {
     const {
         setSelectedRoute,
+        byRoute,
+        openRoute,
         t,
         tc,
         lang,
@@ -33,6 +36,7 @@ function RouteDetails({ route }: { route: Route }) {
         error,
         retry,
     } = useRouteDetails(route, downloadedStops)
+    const reverse = oppositeRoute(route, byRoute.values())
     const itinerary = useJointItinerary(currentRoute, stops, downloadedStops)
     return (
         <>
@@ -50,6 +54,21 @@ function RouteDetails({ route }: { route: Route }) {
                     </p>
                 </div>
             </section>
+            {reverse && (
+                <button
+                    className="text-button direction-switch"
+                    onClick={() => openRoute(reverse)}
+                    aria-label={`${t.flipDirection}: ${reverse.destination[lang]}`}
+                >
+                    <ArrowRightLeft size={18}/>
+                    <span>
+                        {t.flipDirection}
+                        <small>
+                            {t.toward} {reverse.destination[lang]}
+                        </small>
+                    </span>
+                </button>
+            )}
             <div className="section-heading">
                 <h2>{t.routeStops}</h2>
                 <span>

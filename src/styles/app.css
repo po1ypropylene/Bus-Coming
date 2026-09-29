@@ -2077,3 +2077,21 @@ progress {
     min-width: 44px;
     min-height: 44px;
 }
+
+.direction-switch {
+    min-height: 44px;
+    max-width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.direction-switch svg {
+    flex-shrink: 0;
+}
+
+.direction-switch small {
+    display: block;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+    margin-top: 4px;
+}

@@ -2077,3 +2077,40 @@ progress {
     min-width: 44px;
     min-height: 44px;
 }
+
+.route-heading-copy {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.direction-switch {
+    min-height: 44px;
+    text-align: left;
+    margin-left: auto;
+    flex-shrink: 0;
+    max-width: 240px;
+}
+
+.direction-switch svg {
+    flex-shrink: 0;
+}
+
+.direction-switch small {
+    display: block;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+    margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+    .direction-switch {
+        width: 44px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .direction-switch > span {
+        display: none;
+    }
+}

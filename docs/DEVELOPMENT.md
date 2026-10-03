@@ -109,3 +109,19 @@ All arrival panels use `utils/arrivals.ts` through `useArrivals`: discard expire
 timestamp, then take the first three. Untimed remarks follow timed predictions; equal-time buses and their remarks
 remain distinct. Never assume operator response order is chronological (rush-hour service variants may be grouped).
 Keep provider direction/service/stop filtering in the adapters; display sorting must not broaden those matches.
+
+## Route direction switching
+
+`utils/routeDirection.ts` chooses the opposite journey from the full `byRoute` index, which includes hidden Citybus
+identities for joint services and the early Citybus catalogue. Prefer the same operator, number and service with the
+opposite bound. NLB uses separate route IDs with bound O, so require uniquely reversed terminals instead. Never match
+another operator by number alone. Only an established joint partner can supply a fallback when the current operator
+has no reverse record. Keep the target's derived partners, not the source's: 106 has opposite O/I conventions between
+KMB and Citybus. Ambiguous or absent candidates hide the switch; do not fall back to a different KMB service type.
+
+The bilingual direction button sits at the right of the route heading and previews the target destination. On phones it
+uses a 44px icon button, retaining the translated destination in its accessible label and tooltip. `openRoute` clears
+expanded stop state and scrolls to
+the top; route details are keyed by route ID to reset local detail/itinerary state. Citybus details load on demand as
+usual. Its early index contains provisional directions; an empty upstream direction displays the existing no-stops
+message. Complete catalogues omit empty directions. This feature does not reverse stop arrays or rewrite bookmarks.

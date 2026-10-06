@@ -20,7 +20,14 @@ No KV, R2, paid Worker plan or Cloudflare Cron Trigger is required.
    snapshot file so clients holding its manifest can finish downloading it during a deployment.
 6. Set `VITE_CITYBUS_CATALOG_URL` to that same manifest URL in your **application build environment**. This is a public
    URL, not a secret. It must be present when Vite builds; setting it only as a runtime Worker binding has no effect.
-   Rebuild and deploy the app through your existing deployment process. A separate custom data domain is optional.
+   For Cloudflare Git-connected Workers Builds (build command `npm run build`, deploy command
+   `npx wrangler deploy`), open the **app Worker → Settings → Builds → Production**. Scroll to the **Variables and
+   secrets** section inside Builds and add a plain-text build variable named
+   `VITE_CITYBUS_CATALOG_URL`, with the complete manifest URL from step 5 as its value. Save it, then trigger a new
+   production build (for example, retry the latest production build or push a new commit to `main`). Merely redeploying
+   previously built files does not incorporate the variable. Keep the existing build/deploy commands. This variable
+   belongs to the app Worker's build settings; it is separate from the general runtime Variables and Secrets section
+   and from GitHub's `CITYBUS_MANIFEST_URL`. A separate custom data domain is optional.
 7. Check the manifest returns JSON, and its referenced snapshot returns JSON with `Access-Control-Allow-Origin: *`.
    On a new browser profile, Settings should reach Citybus **Ready offline** after the shared download. On an existing
    profile, use manual data refresh. Verify a Citybus route, saved stop and offline search without clearing user data.

@@ -125,3 +125,9 @@ expanded stop state and scrolls to
 the top; route details are keyed by route ID to reset local detail/itinerary state. Citybus details load on demand as
 usual. Its early index contains provisional directions; an empty upstream direction displays the existing no-stops
 message. Complete catalogues omit empty directions. This feature does not reverse stop arrays or rewrite bookmarks.
+
+## Shared Citybus snapshots — 6 October 2026
+
+See [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md) for the optional Cloudflare Static Assets publisher, manifest contract,
+weekly GitHub workflow, build-time URL configuration, validation and official-import fallback. The publisher reuses
+the Citybus normalizer. Existing IndexedDB schema, user data and ETA adapters remain unchanged.

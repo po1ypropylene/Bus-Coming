@@ -4,3 +4,8 @@ artifacts
 test-results
 package-lock.json
 docs/api-audit.json
+.catalog-tools
+.citybus-public
+.citybus-staging
+.citybus-checkpoints
+.wrangler

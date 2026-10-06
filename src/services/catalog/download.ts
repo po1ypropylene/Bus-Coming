@@ -3,6 +3,7 @@ import { type CatalogEvent, type Progress, type Provider, WEEK } from '../../typ
 import { makeSnapshot } from '../../utils/transit'
 import { BASE, request } from '../api'
 import { downloadCitybus } from './citybus'
+import { fetchCitybusSnapshot } from './citybusSnapshot'
 import { downloadKMB } from './kmb'
 import { downloadNLB } from './nlb'
 import type { Row } from './shared'
@@ -22,6 +23,23 @@ export async function download(
     try {
         const previous = await database.get('snapshots', provider)
         if (!force && previous && Date.now() - previous.updatedAt < WEEK) return
+        const sharedUrl = import.meta.env.VITE_CITYBUS_CATALOG_URL
+        if (provider === 'CTB' && sharedUrl) {
+            progress(provider, 0, 2)
+            let shared
+            try {
+                shared = await fetchCitybusSnapshot(sharedUrl, previous)
+            } catch (error) {
+                console.warn('Shared Citybus data unavailable; using official importer', error)
+            }
+            if (shared) {
+                // Storage errors must propagate, not trigger another network crawl.
+                await database.put('snapshots', shared)
+                emit({ type: 'snapshot', snapshot: shared })
+                progress(provider, 2, 2, 'ready')
+                return
+            }
+        }
         let generation = await database.get('generations', provider)
         if (
             !generation ||

@@ -1,0 +1,38 @@
+name: Refresh Citybus catalogue
+
+on:
+    schedule:
+        # Sunday 03:23 Hong Kong time (Saturday 19:23 UTC).
+        -   cron: '23 19 * * 6'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: citybus-catalog-publisher
+    cancel-in-progress: false
+
+jobs:
+    publish:
+        if: vars.CITYBUS_PUBLISH_ENABLED == 'true'
+        runs-on: ubuntu-latest
+        timeout-minutes: 90
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-node@v4
+                with:
+                    node-version: '22'
+                    cache: npm
+            -   run: npm ci
+            -   run: npm test
+            -   run: npm run catalog:test
+            -   name: Generate and validate complete snapshot
+                run: npm run catalog:generate
+                env:
+                    CITYBUS_PREVIOUS_MANIFEST_URL: ${{ vars.CITYBUS_MANIFEST_URL }}
+            -   name: Publish static assets
+                run: npm run catalog:deploy
+                env:
+                    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

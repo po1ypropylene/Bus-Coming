@@ -15,7 +15,11 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:5173. Initial launch downloads real operator data into IndexedDB. Citybus route search becomes available as soon as its small route index loads; opening a route loads its stops on demand. The full Citybus offline catalogue still requires thousands of individual requests, and downloads independently of KMB/NLB. Download progress is in Settings. Existing downloaded data stays usable during updates.
+Open http://localhost:5173. Initial launch downloads real operator data into IndexedDB. Citybus route search becomes
+available as soon as its small route index loads; opening a route loads its stops on demand. Configure
+the [shared Citybus catalogue](docs/CITYBUS-SNAPSHOTS.md) to download a prepared Cloudflare snapshot. Without that
+configuration, the full Citybus offline catalogue still requires thousands of individual requests. KMB/NLB download
+independently. Download progress is in Settings. Existing downloaded data stays usable during updates.
 
 ```sh
 npm run build
@@ -23,7 +27,8 @@ npm run preview
 ```
 
 The production build in `dist/` includes the service worker; development deliberately does not register one. Host
-`dist/` at the root of an HTTPS origin. No backend, API key, account, paid service or environment secrets are needed.
+`dist/` at the root of an HTTPS origin. Direct operator downloads need no API key or paid service. Optional shared
+Citybus publishing uses a GitHub workflow and a scoped Cloudflare deployment token; see the setup guide.
 
 ## WebStorm and iPhone 17 Pro Max
 
@@ -85,6 +90,8 @@ In Safari: Share → Add to Home Screen → leave **Open as Web App** enabled. L
 Choose **Settings → Theme colour** for green, blue, yellow, red or purple. The choice is saved on this device and included in exported backups. Light/dark appearance follows your device. Older data keeps the original green theme.
 
 ## Documentation
+
+- [Shared Citybus catalogue: Cloudflare hosting and weekly publisher](docs/CITYBUS-SNAPSHOTS.md)
 
 - [Joint routes: automatic TD data, matching and maintenance](docs/JOINT-ROUTES.md)
 

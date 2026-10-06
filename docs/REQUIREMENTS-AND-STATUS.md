@@ -64,7 +64,11 @@ Last updated: 21 September 2026. This document describes the implemented app, ve
 ## Known limits / remaining manual verification
 
 1. **iOS suspension:** no guaranteed weekly job while the app is closed. An overdue download runs when the app next becomes active. This is a platform limit, not a claim of background scheduling support.
-2. **Initial Citybus download is slow:** its documented API needs hundreds of route-direction requests plus thousands of unique stop requests. The worker limits concurrency and resumes checkpoints. Citybus route search and on-demand route details are now usable before the full download finishes; nearby Citybus discovery still requires its completed offline snapshot. KMB/NLB are usable independently. A future optional server-generated snapshot could shorten first launch, but no unverified third-party bulk feed is used.
+2. **Initial Citybus download is slow:** its documented API needs hundreds of route-direction requests plus thousands of
+   unique stop requests. The worker limits concurrency and resumes checkpoints. Citybus route search and on-demand route
+   details are now usable before the full download finishes; nearby Citybus discovery still requires its completed
+   offline snapshot. KMB/NLB are usable independently. An optional server-generated snapshot now shortens first launch
+   when configured; see [setup](CITYBUS-SNAPSHOTS.md). It uses official operator data.
 3. **Local persistence only:** no accounts or cloud synchronization. Browser eviction, clearing website data or reinstalling can remove local data. Export/import is the recovery path. Safari and the installed Home Screen app may have separate storage.
 4. **Physical iPhone validation:** Home Screen installation, Dynamic Island/safe areas, real GPS permission prompts, VoiceOver and large Dynamic Type settings require an actual iPhone test. WebKit emulation is not a substitute for those checks.
 5. **Live estimates depend on operators:** operator outages, no service and missing metadata are handled; estimates are not guaranteed bus arrivals. ETA requires a network connection.
@@ -219,3 +223,18 @@ iPhone test was performed for this navigation change.
 
 Verification: production build, lint, formatting, 51 unit tests and all 34 browser tests passed on mobile WebKit and
 desktop Chromium. Storage, startup and service-worker behavior are unchanged.
+
+## Shared Citybus catalogue — 6 October 2026
+
+Implemented optional validated bulk download, shared normalization, a resumable scheduled publisher and a separate
+Cloudflare assets-only Worker configuration. Weekly/manual checks use a manifest and avoid unchanged payloads.
+Failures fall back to the official importer; existing snapshots/bookmarks remain intact. Setup and limitations are
+in [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md). Deployment still requires GitHub/Cloudflare configuration and an app
+build with the published manifest URL. Verified production build, lint, formatting, 61 unit tests, publisher fixture
+checks and all 36 browser checks in
+Chromium/mobile WebKit. Production offline reload/bookmarks/search checks passed in both engines. Publisher fixtures
+cover stop deduplication, repeated visits, checksums, headers, previous-generation retention and refusing failed
+publication. The assets-only Wrangler deployment dry run passed. Builds with shared downloads enabled and disabled both
+passed;
+production offline checks also passed with shared downloads enabled. No full current live Citybus crawl, Cloudflare
+deployment or physical iPhone verification was performed.

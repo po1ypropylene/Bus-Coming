@@ -117,3 +117,9 @@ Live route/stop snapshots for 102 and 106 are retained as test fixtures. 102 has
 stops; 106 has 48/47 KMB stops and 47/48 Citybus stops, with opposite direction codes between operators. Shared numbers,
 direction letters and sequence numbers therefore cannot be used as a cross-operator join key. These were current
 catalogue checks, not an exhaustive live ETA audit.
+
+## Shared Citybus snapshots — 6 October 2026
+
+See [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md) for the optional Cloudflare Static Assets publisher, manifest contract,
+weekly GitHub workflow, build-time URL configuration, validation and official-import fallback. The publisher reuses
+the Citybus normalizer. Existing IndexedDB schema, user data and ETA adapters remain unchanged.

@@ -29,3 +29,10 @@ playwright-report/
 artifacts/
 *.pem
 *.key
+
+# Citybus publisher output and resumable operator responses
+.catalog-tools/
+.citybus-public/
+.citybus-staging/
+.citybus-checkpoints/
+.wrangler/

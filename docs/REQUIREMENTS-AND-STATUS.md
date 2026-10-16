@@ -262,3 +262,22 @@ limit), 320px layout, joint-arrival metadata preservation, and explicit stale st
 mixed-destination screenshot was inspected. Production offline reload/bookmarks/search smoke checks passed in both
 engines. The required formatter also normalized existing formatting in several unrelated files; no behavior changed
 there.
+
+## TypeScript 7 upgrade — 16 October 2026
+
+The direct `typescript` dependency and build compiler are TypeScript 7.0.2. TypeScript 6, its compatibility package,
+and the native alias have been removed. Native parallel type checking runs during builds and through the new
+`typecheck` / `typecheck:watch` commands. Application behavior and compiler strictness are unchanged.
+
+Oxlint replaces the TypeScript-6-dependent `typescript-eslint` rules. ESLint retains React Hooks, Fast Refresh,
+Prettier and two core rules using an independent Babel parser. Explicit migrated rules preserve the previous lint
+policy; compiler and lint regression probes are part of `npm test`. The development runtime now requires Node 22.18+
+within 22.x, or Node 24.11+, for Babel 8's ESLint 10 support.
+
+Verification after a clean `npm ci`: the dependency tree contains only TypeScript 7.0.2 and has no peer conflicts.
+Native type checking, watch-mode startup, production build, both linters, Prettier, all 63 unit tests, the new toolchain
+regression probes, all 38 desktop Chromium/mobile WebKit browser tests, and Citybus publisher fixture checks passed.
+Production offline reload/bookmarks/search and app-update activation/preference-preservation checks passed in both
+engines. macOS watch mode was verified outside the execution sandbox because its FSEvents stream was blocked inside it.
+The required formatter normalized eight existing source, test and configuration files. No current live API audit,
+physical iPhone validation or comparative compiler performance benchmark was performed.

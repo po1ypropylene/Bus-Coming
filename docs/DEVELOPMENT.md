@@ -56,6 +56,24 @@ To add a palette, add its identifier, both translated labels, both complete CSS 
 
 ## Verification and release workflow
 
+The direct `typescript` dependency is TypeScript 7.0.2; `npx tsc --version` should report `7.0.2`.
+Builds and `npm run typecheck` use its native compiler with default parallel checking. Use
+`npm run typecheck:watch` alongside Vite for continuous native type checking; Vite alone does not check types.
+There is no TypeScript 6 compiler, alias or compatibility package. Commit `package-lock.json` with dependency changes.
+
+TypeScript 7 does not expose the old JavaScript compiler API required by `typescript-eslint`, so linting uses
+[Oxlint](https://oxc.rs/docs/guide/usage/linter/migrate-from-eslint.html) for the previous general and TypeScript rules
+listed explicitly in `.oxlintrc.json`. ESLint retains React Hooks (including compiler diagnostics), Fast Refresh,
+Prettier, and the `no-octal` / `preserve-caught-error` core rules. Its Babel parser only parses TS/TSX for those checks;
+it does not compile the application or replace TypeScript's type checker. Babel 8's ESLint 10 support requires
+Node 22.18+ within the 22.x line, or Node 24.11+.
+
+`npm run lint` runs both linters. Keep the TypeScript rule settings in Oxlint when changing lint policy; do not restore
+`typescript-eslint` until it supports the native compiler without installing an older TypeScript. `npm test` also runs
+`test:toolchain`, which verifies compiler selection, rejects a deliberate type error, and probes TypeScript lint rules,
+React Hooks/dependencies, Fast Refresh, caught errors and formatting. The probes use temporary fixtures, never user
+data.
+
 Run `npm run format:check`, `npm run lint`, `npm test`, `npm run build` and `npm run test:e2e`. Browser tests cover Chromium desktop and 440×956 WebKit mobile. Theme regressions cover all five colours in both appearances, contrast, metadata, reload persistence, export/import and Chinese labels; unit tests cover old-data defaults and invalid preferences.
 
 Run `npm run test:offline` for startup, persistence or PWA changes. Vite development does not register a service worker; test offline behavior against a production build. A production preview uses the last built files, so rebuild it after source changes. Existing installed clients may need to close/reopen to activate a new service worker.

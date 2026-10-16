@@ -54,13 +54,7 @@ export function ArrivalPanel({
                     arrivals.map((a, i) => (
                         <div className="arrival-time" key={`${a.time}-${i}`}>
                             <div className="arrival-countdown">
-                                <strong
-                                    className={
-                                        a.time !== null && a.time - now < 60000
-                                            ? 'arrival-due'
-                                            : undefined
-                                    }
-                                >
+                                <strong>
                                     {a.time === null
                                         ? '—'
                                         : a.time - now < 60000

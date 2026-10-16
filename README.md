@@ -8,7 +8,7 @@ Open the live app in Safari on your iPhone and choose **Share → Add to Home Sc
 
 ## Run locally
 
-Requires Node 22.12+ (or a current supported Node release) and npm.
+Requires Node 22.18+ within the 22.x line, or Node 24.11+, and npm.
 
 ```sh
 npm ci
@@ -60,12 +60,14 @@ In Safari: Share → Add to Home Screen → leave **Open as Web App** enabled. L
 ## Commands
 
 | Command                       | Purpose                                                                                              |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+|-------------------------------|------------------------------------------------------------------------------------------------------|
 | `npm run dev`                 | Development server, LAN-accessible                                                                   |
 | `npm run build`               | Type checking and production PWA build                                                               |
+| `npm run typecheck`           | Native TypeScript 7 type checking                                                                    |
+| `npm run typecheck:watch`     | Continuous native type checking alongside the development server                                     |
 | `npm run preview`             | Serve production build locally                                                                       |
-| `npm run lint`                | ESLint                                                                                               |
-| `npm test`                    | Data normalization, ETA filtering and backup validation                                              |
+| `npm run lint`                | Oxlint general/TypeScript rules, ESLint React and Prettier checks                                    |
+| `npm test`                    | Data normalization, ETA filtering, backup validation and toolchain regression checks                 |
 | `npm run test:e2e`            | WebKit mobile + Chromium desktop interaction tests                                                   |
 | `npm run test:offline`        | Production cache reload tests with the origin server stopped                                         |
 | `npm run format`              | Format source, styles and documentation                                                              |

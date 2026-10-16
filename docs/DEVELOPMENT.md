@@ -65,8 +65,9 @@ TypeScript 7 does not expose the old JavaScript compiler API required by `typesc
 [Oxlint](https://oxc.rs/docs/guide/usage/linter/migrate-from-eslint.html) for the previous general and TypeScript rules
 listed explicitly in `.oxlintrc.json`. ESLint retains React Hooks (including compiler diagnostics), Fast Refresh,
 Prettier, and the `no-octal` / `preserve-caught-error` core rules. Its Babel parser only parses TS/TSX for those checks;
-it does not compile the application or replace TypeScript's type checker. Babel 8's ESLint 10 support requires
-Node 22.18+ within the 22.x line, or Node 24.11+.
+it does not compile the application or replace TypeScript's type checker. The Babel 8 / Lighthouse test toolchain
+requires
+Node 22.19+ within the 22.x line, or Node 24.11+.
 
 `npm run lint` runs both linters. Keep the TypeScript rule settings in Oxlint when changing lint policy; do not restore
 `typescript-eslint` until it supports the native compiler without installing an older TypeScript. `npm test` also runs
@@ -125,7 +126,7 @@ keeps existing positions and appends new IDs in imported order, as before. Do no
 
 All arrival panels use `utils/arrivals.ts` through `useArrivals`: retain operator-supplied predictions, sort by absolute
 arrival timestamp, then take the first three. Do not discard negative ETAs: an overdue estimate can still describe an
-approaching bus. Anything less than one minute away (including zero and negative intervals) displays **Due / 即將到站**
+approaching bus. Anything up to one minute away (including zero and negative intervals) displays **Due / 就到**
 without a minute suffix. Operator refreshes remove withdrawn predictions; request failures retain the explicit
 stale/unavailable state. Untimed remarks follow timed predictions; equal-time buses and their remarks
 remain distinct. Never assume operator response order is chronological (rush-hour service variants may be grouped).
@@ -159,3 +160,40 @@ message. Complete catalogues omit empty directions. This feature does not revers
 See [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md) for the optional Cloudflare Static Assets publisher, manifest contract,
 weekly GitHub workflow, build-time URL configuration, validation and official-import fallback. The publisher reuses
 the Citybus normalizer. Existing IndexedDB schema, user data and ETA adapters remain unchanged.
+
+## UI readability and ETA freshness — 17 October 2026
+
+Use `--nav-clearance` for ordinary pages: navigation height, bottom offset, device safe area and a 16px gap.
+The mobile route search shell reserves navigation and keypad space in normal flow; its separate results scroller has
+16px end padding instead. The tab surface is opaque with a gradient scrim above it. The app header stays compact and
+sticky, including on short screens. Only the empty Saved screen uses the large hero; other screens use small titles.
+
+Secondary/caption text is at least 13px, including Chinese, with no extra tracking on Chinese section labels.
+`tests/ui-improvements.spec.ts` measures ink, muted, accent and warning tokens against surface, background, soft and
+line colours for all ten palette/appearance combinations. It also runs axe on every tab and route details in Chromium
+and WebKit. `tests/accessibility.spec.ts` runs Lighthouse accessibility snapshots in Chromium for both locales;
+it deliberately skips WebKit because Lighthouse uses Chrome's protocol. These tools are development dependencies only.
+
+`validNextCharacters` follows the existing substring search semantics (including repeated matches) against the current
+operator's loaded results. `useRouteSearch` memoises its result. Unavailable letters are omitted; the letter section
+collapses when empty and the number pad fills its width. Digits retain stable positions and use native `disabled`
+and `aria-disabled`; clear/backspace remain available. New catalogue entries automatically update available keys.
+Mobile keypad rows are 48px (44px on short screens); the labelled keyboard icon toggles visibility beside the input.
+
+`useArrivals` polls every 30 seconds only when its IntersectionObserver sees the card, the document is visible and
+focused, and the browser reports a connection. Focus, visibility, reconnection and re-entry resume checking through
+the existing 15-second cache and request deduplication. Existing in-flight HTTP requests can finish after focus is lost;
+new polling requests pause. Results are keyed by route, stop, sequence and language so a previous selection cannot flash
+in a new panel. Relative request age/countdowns tick each second while active. Failed, partial, offline or
+older-than-90s
+results are explicitly stale; old predictions remain visible. The header reflects the latest completed ETA request,
+with a neutral waiting state before any result, amber after failure/partial/90s age and grey offline.
+
+ETA cards use content-driven height with compact loading placeholders. Longer operator notes expand the card naturally;
+there is no fixed-height reservation or nested ETA scroller. Absolute arrival times use Hong Kong time. Equal-width
+columns balance
+full-size `Due / 就到` labels with numeric predictions, including when all three buses are due; only mixed destinations
+or different remarks use rows. No small-font fallback is used for due labels. Operator remarks appear under each
+affected departure; no GPS or scheduled classification is inferred from an empty remark. Retain untimed last-bus
+messages when supplied. Error states
+have a retry action; offline states preserve known results and explain that a connection is needed.

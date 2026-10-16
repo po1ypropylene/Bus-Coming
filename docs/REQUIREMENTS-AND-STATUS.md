@@ -281,3 +281,46 @@ Production offline reload/bookmarks/search and app-update activation/preference-
 engines. macOS watch mode was verified outside the execution sandbox because its FSEvents stream was blocked inside it.
 The required formatter normalized eight existing source, test and configuration files. No current live API audit,
 physical iPhone validation or comparative compiler performance benchmark was performed.
+
+## UI review and due-label spacing — 17 October 2026
+
+Implemented all six areas in the supplied UI review: shared bottom-nav clearance and opaque navigation; measured
+secondary/tertiary text contrast and 13px captions; memoised valid-next-character keypad enablement; explicit To/From
+route directions; visible/focused 30-second ETA polling with clocks, operator remarks, relative age,
+skeleton/empty/error/
+offline states and retry; and a compact sticky header with real request health and small titles outside the empty Saved
+screen. The user additionally requested full-size due labels: Chinese now uses **就到**, equal-width columns balance
+due buses (including three due buses together); only differing service descriptions/destinations use rows. The ETA body
+reserves space across
+states and permits scrolling longer operator descriptions. Existing user data and provider matching are preserved.
+
+Verification: production build, lint, Prettier, 67 unit tests and toolchain probes passed. The full browser suite passed
+51 cases with one intentional WebKit skip for the Chromium-only Lighthouse test. Geometry covers 360/390/768px on every
+tab and route details, four visible route rows at 390×844 with the keypad open, and the existing 320×568 regression.
+New browser checks cover dynamic key availability, equal full-size Chinese due labels including three due buses in one
+row, stable ETA
+footprints, remarks/clocks, ticking age, offscreen/hidden/unfocused polling pauses and resume, offline/stale health,
+retry, and saving/removing favourites across reloads. Mobile single/multiple-due screenshots were visually inspected.
+
+Lighthouse accessibility snapshots scored **100** for Saved, Nearby, Routes, Settings and route details in both English
+and Traditional Chinese (default green/light appearance). Axe found no WCAG A/AA violations on all five screens across
+all five themes in light and dark appearance, in both Chromium and mobile WebKit. Token measurements additionally
+assert at least 4.5:1 for ink/muted/accent/warning text against each main surface. Production offline reload, persisted
+bookmarks, route search and manifest checks passed in both engines. These are fixture/emulation results, not physical
+iPhone, VoiceOver, live operator or deployment verification. The test toolchain now requires Node 22.19+ within 22.x (or
+24.11+) for Lighthouse. The required formatter also normalized pre-existing formatting in several unrelated files.
+
+## Compact ETA cards and filtered letter keys — 17 October 2026
+
+Follow-up screenshot feedback supersedes the fixed-height ETA reservation above. Removed the 204px body and oversized
+footer spacing: cards now fit their content, with compact skeletons and naturally expanding service notes. Clocks,
+provider/remark text, full-size due labels and relative update seconds remain. Unavailable letter keys are hidden,
+remaining letters reflow from the top, and an empty letter section disappears so mobile digit keys fill the width.
+Digits retain their established positions and disabled states. No API, polling or storage behavior changed.
+
+Verification for this follow-up: build, lint, formatting, 67 unit tests/toolchain probes and all 51 browser cases passed
+(one intentional WebKit Lighthouse skip). Browser assertions check compact ETA heights on mobile and desktop, hidden
+invalid letters, their return after backspace/clear, and full-width digit keys when no letters remain. The mobile ETA
+and empty-letter keypad screenshots were inspected. Lighthouse remained 100 on every screen in both locales; all-theme
+axe checks passed in both engines. No new live API or physical-device validation was performed; offline/storage code
+was unchanged, so the production offline smoke was not repeated for this presentation-only follow-up.

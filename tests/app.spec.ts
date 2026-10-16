@@ -1,105 +1,6 @@
-import { expect, type Page, test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
+import { openStop, route, seed, stop } from './fixtures'
 
-const stop = {
-    id: 'KMB:ABC',
-    code: 'ABC',
-    provider: 'KMB',
-    name: { en: 'Star Ferry', tc: '尖沙咀碼頭' },
-    lat: 22.294,
-    lng: 114.168,
-}
-const route = {
-    id: 'KMB:1A:O:1',
-    number: '1A',
-    provider: 'KMB',
-    bound: 'O',
-    service: '1',
-    origin: { en: 'Sau Mau Ping', tc: '秀茂坪' },
-    destination: { en: 'Star Ferry', tc: '尖沙咀碼頭' },
-    stops: [{ id: stop.id, seq: 1 }],
-}
-async function seed(page: Page, version = 2, fixture = { route, stop }) {
-    await page.context().route('https://portal.csdi.gov.hk/**', (request) =>
-        request.fulfill({
-            json: {
-                features: [{ attributes: { COMPANY_CODE: 'KMB+CTB', ROUTE_NAMEE: '106' } }],
-            },
-        }),
-    )
-    await page.addInitScript(
-        ({ stop, route, version }) => {
-            const req = indexedDB.open('bus-coming-v1', version)
-            req.onupgradeneeded = () => {
-                req.result.createObjectStore('snapshots', { keyPath: 'provider' })
-                req.result.createObjectStore('responses')
-                req.result.createObjectStore('generations')
-                if (version >= 2) {
-                    req.result.createObjectStore('routeCatalogs', { keyPath: 'provider' })
-                    req.result.createObjectStore('routeDetails', { keyPath: 'id' })
-                }
-            }
-            req.onsuccess = () => {
-                const tx = req.result.transaction('snapshots', 'readwrite')
-                for (const provider of ['KMB', 'CTB', 'NLB'])
-                    tx.objectStore('snapshots').put({
-                        provider,
-                        updatedAt: Date.now(),
-                        routes:
-                            provider === route.provider
-                                ? provider === 'KMB'
-                                    ? [route, { ...route, id: 'KMB:2:O:1', number: '2' }]
-                                    : [route]
-                                : [],
-                        stops: provider === route.provider ? { [stop.id]: stop } : {},
-                        stopRoutes:
-                            provider === route.provider
-                                ? {
-                                      [stop.id]: [
-                                          { routeId: route.id, seq: 1 },
-                                          ...(provider === 'KMB'
-                                              ? [{ routeId: 'KMB:2:O:1', seq: 1 }]
-                                              : []),
-                                      ],
-                                  }
-                                : {},
-                    })
-                tx.oncomplete = () => req.result.close()
-            }
-        },
-        { ...fixture, version },
-    )
-    await page.route('**/eta/**', (request) =>
-        request.fulfill({
-            json: {
-                data: [
-                    {
-                        dir: 'O',
-                        seq: 1,
-                        service_type: 1,
-                        eta: new Date(Date.now() + 5 * 60000).toISOString(),
-                        rmk_en: '',
-                        rmk_tc: '',
-                    },
-                    {
-                        dir: 'I',
-                        seq: 1,
-                        service_type: 1,
-                        eta: new Date(Date.now() + 60000).toISOString(),
-                    },
-                ],
-            },
-        }),
-    )
-    await page.goto('/')
-}
-async function openStop(page: Page) {
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
-    await page.getByRole('button', { name: '1', exact: true }).click()
-    await page.getByRole('button', { name: 'A', exact: true }).click()
-    await expect(page.locator('.route-row')).toHaveCount(1)
-    await page.locator('.route-row').click()
-    await page.locator('.stop-main').click()
-}
 test('custom keypad, exact arrival filtering, grouped bookmarks, persistence and Chinese', async ({
     page,
 }) => {
@@ -385,7 +286,7 @@ test('Citybus is searchable and usable before its full offline download finishes
     await expect(page.locator('.route-row')).toHaveCount(2)
     await expect(page.locator('.catalog-status')).toContainText('Citybus routes are searchable')
     await page
-        .getByRole('button', { name: '2X Citybus Star Ferry From Central', exact: true })
+        .getByRole('button', { name: '2X Citybus To Star Ferry From Central', exact: true })
         .click()
     await expect(page.locator('.stop-main')).toHaveCount(1)
     await page.locator('.stop-main').click()
@@ -402,7 +303,7 @@ test('Citybus is searchable and usable before its full offline download finishes
     await page.getByRole('textbox', { name: 'Route number' }).fill('2X')
     await expect(page.locator('.route-row')).toHaveCount(2)
     await page
-        .getByRole('button', { name: '2X Citybus Star Ferry From Central', exact: true })
+        .getByRole('button', { name: '2X Citybus To Star Ferry From Central', exact: true })
         .click()
     await expect(page.locator('.stop-main')).toHaveCount(1)
 })
@@ -599,6 +500,7 @@ test('mobile route matches remain visible above the keypad while typing', async 
     ]) {
         await page.setViewportSize(viewport)
         await page.getByRole('button', { name: 'Routes', exact: true }).click()
+        await expect(page.locator('.app-header')).toBeVisible()
         await page.getByRole('button', { name: 'Clear', exact: true }).last().click()
         await page.getByRole('button', { name: '1', exact: true }).click()
         await page.getByRole('button', { name: 'A', exact: true }).click()
@@ -778,7 +680,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     await page.getByRole('button', { name: 'Saved', exact: true }).click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['Due', '6', '14'])
     await page.getByRole('button', { name: 'Language', exact: true }).click()
-    await expect(page.locator('.arrival-time strong')).toHaveText(['即將到站', '6', '14'])
+    await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '6', '14'])
     await expect(page.locator('.arrival-destination')).toHaveText([
         '往 中環（永和街）',
         '往 中環（永和街）',
@@ -799,7 +701,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     await page.getByRole('button', { name: '重新整理', exact: true }).click()
     await expect(page.locator('.arrival-panel')).toContainText('上次預計時間')
     await expect(page.locator('.arrival-panel')).toContainText('無法更新到站時間')
-    await expect(page.locator('.arrival-time strong').first()).toHaveText('即將到站')
+    await expect(page.locator('.arrival-time strong').first()).toHaveText('就到')
     await page.unroute('**/eta/**')
     // Reinstall a successful response with all destinations equal; no extra labels.
     await page.route('**/eta/**', (request) =>
@@ -816,11 +718,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
         }),
     )
     await page.getByRole('button', { name: '重新整理', exact: true }).click()
-    await expect(page.locator('.arrival-time strong')).toHaveText([
-        '即將到站',
-        '即將到站',
-        '即將到站',
-    ])
+    await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '就到', '就到'])
     await expect(page.locator('.arrival-destination')).toHaveCount(0)
     await expect(page.locator('.arrival-rows')).toHaveCount(0)
     await expect(page.locator('.arrival-countdown > span')).toHaveCount(0)

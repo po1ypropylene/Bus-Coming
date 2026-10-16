@@ -8,7 +8,7 @@ Open the live app in Safari on your iPhone and choose **Share → Add to Home Sc
 
 ## Run locally
 
-Requires Node 22.18+ within the 22.x line, or Node 24.11+, and npm.
+Requires Node 22.19+ within the 22.x line, or Node 24.11+, and npm.
 
 ```sh
 npm ci
@@ -80,7 +80,9 @@ In Safari: Share → Add to Home Screen → leave **Open as Web App** enabled. L
 - The Web Worker downloads and normalizes operator catalogues off the main thread. IndexedDB holds one atomic snapshot per operator, with routes, stops and reverse stop-to-route indexes.
 - Weekly age checks happen at launch, resume, reconnection and hourly while open. iOS cannot be relied on to execute weekly jobs while a web app is closed. The next active session performs overdue work.
 - Four requests per operator run concurrently for fan-out downloads. Retry/backoff handles transient failures. Checkpoints resume interrupted downloads; current snapshots stay untouched until replacements are complete.
-- ETA uses the network, updates every minute while visible, and is never cached by the service worker. KMB/Citybus results are filtered by direction and stop sequence; NLB timestamps are parsed in Hong Kong time.
+- ETA uses the network, updates every 30 seconds while the card is visible and the app is focused, and is never cached
+  by the service worker. KMB/Citybus results are filtered by direction and stop sequence; NLB timestamps are parsed in
+  Hong Kong time.
 - Bookmarks, language and theme colour are stored locally, separately from replaceable route snapshots. Export/import provides a portable backup. No cloud sync is implemented. Storage can still be removed by the user or operating system.
 - On **Saved**, tap **Reorder**, use the up/down arrows, then tap **Done**. Moves save automatically. In a group, only
   that group’s bookmarks move; other bookmarks retain their positions.

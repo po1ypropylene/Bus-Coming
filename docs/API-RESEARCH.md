@@ -74,7 +74,12 @@ Observed union: **A B C D E F G H K M N O P R S T W X** (18 letters). No I, J, L
 
 Normalize to provider-prefixed stop IDs, variant route IDs, route stop arrays and a reverse stop-to-route index. Store complete provider snapshots in IndexedDB. Download and normalization run in a Web Worker. Persist successful intermediate responses for seven days so interrupted Citybus downloads resume without repeating thousands of requests. A force refresh starts a new generation and reuses its checkpoints on retry. Commit each provider snapshot atomically only after all its relationships and stop details are fetched. Failed providers keep their previous snapshot and timestamp.
 
-Initial download starts automatically. Weekly refresh is checked at launch, on becoming visible, and periodically while active. Existing routes and live ETA remain available during updates. iOS does not promise background execution while a PWA is closed or suspended: refresh resumes the next time the app is active. Manual refresh and each provider's last successful download time appear in Settings. HTTPS is required for service workers and phone geolocation. ETA is network-only, refreshed each minute while visible, with stale/error state kept explicit.
+Initial download starts automatically. Weekly refresh is checked at launch, on becoming visible, and periodically while
+active. Existing routes and live ETA remain available during updates. iOS does not promise background execution while a
+PWA is closed or suspended: refresh resumes the next time the app is active. Manual refresh and each provider's last
+successful download time appear in Settings. HTTPS is required for service workers and phone geolocation. ETA is
+network-only, requested every 30 seconds while its card is visible and the document is focused, with stale/error state
+kept explicit.
 
 ## UI and platform references
 
@@ -143,3 +148,18 @@ Removed the shared display cutoff that rejected `eta <= now - 60000`. Negative E
 has passed the stop. The panel retains predictions until the operator replaces/removes them, displays intervals under
 one minute as **Due / 即將到站**, and keeps the existing stale/error warning if refresh fails. Direction, service and
 stop-selection rules are unchanged. Past predictions can remain visible with that warning during a network failure.
+
+## ETA presentation update — 17 October 2026
+
+The UI uses the existing normalized `remark`: KMB/Citybus adapters select `rmk_tc` / `rmk_en`, and NLB retains
+`routeVariantName` or its response `message`. Scheduled and last-bus notes are displayed only when supplied in those
+fields. No new live/scheduled flag, last-bus timetable or interpretation of NLB `noGPS` was added. These field names
+were
+verified in repository adapters and their fixtures for this change; no new live API audit was performed.
+
+Polling now requests every 30 seconds for visible cards in a focused, visible, online document. This client cadence
+does not imply the operator regenerates predictions that frequently. The relative age is time since the successful
+client fetch, not a claim about the operator's source-data generation time. Absolute clocks remain in Asia/Hong_Kong.
+The inclusive one-minute due label is now **Due / 就到**, following the user's requested full-size, shorter Chinese
+label.
+Direction/service/stop filtering and joint-provider aggregation are unchanged.

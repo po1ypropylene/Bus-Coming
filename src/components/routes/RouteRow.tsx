@@ -16,7 +16,9 @@ export function RouteRow({ route, onClick }: { route: Route; onClick: () => void
                         ? ` · ${t.service} ${route.service}`
                         : ''}
                 </span>
-                <strong>{route.destination[lang]}</strong>
+                <strong>
+                    {t.toward} {route.destination[lang]}
+                </strong>
                 <small>
                     {t.from} {route.origin[lang]}
                 </small>

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { FALLBACK_LETTERS, type Route, type Snapshot } from '../types/transit'
+import { validNextCharacters } from '../utils/routeSearch'
 import { routeLetters } from '../utils/transit'
 
 export function useRouteSearch(routes: Route[], snapshots: Snapshot[]) {
@@ -26,7 +27,9 @@ export function useRouteSearch(routes: Route[], snapshots: Snapshot[]) {
                 .sort((a, b) => Number(b.number === query) - Number(a.number === query)),
         [routes, query, operator],
     )
+    const availableKeys = useMemo(() => validNextCharacters(filtered, query), [filtered, query])
     return {
+        availableKeys,
         query,
         setQuery,
         operator,

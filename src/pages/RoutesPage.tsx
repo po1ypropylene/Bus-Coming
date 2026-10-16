@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Download, Search, X } from 'lucide-react'
+import { Download, Keyboard, Search, X } from 'lucide-react'
 import { useApp } from '../app/AppContext'
 import { CatalogStatus } from '../components/catalog/CatalogStatus'
 import { DownloadCard } from '../components/catalog/DownloadCard'
@@ -20,6 +20,7 @@ export function RoutesPage() {
         keypad,
         setKeypad,
         letters,
+        availableKeys,
         snapshots,
         routes,
         filtered,
@@ -91,8 +92,13 @@ export function RoutesPage() {
                     </div>
                     <div className="keypad-heading">
                         <span>{t.keyHint}</span>
-                        <button className="text-button" onClick={() => setKeypad(!keypad)}>
-                            {keypad ? t.hideKeypad : t.showKeypad}
+                        <button
+                            className="text-button"
+                            aria-label={keypad ? t.hideKeypad : t.showKeypad}
+                            onClick={() => setKeypad(!keypad)}
+                        >
+                            <Keyboard size={20}/>
+                            <span>{keypad ? t.hideKeypad : t.showKeypad}</span>
                         </button>
                     </div>
                 </div>
@@ -100,6 +106,7 @@ export function RoutesPage() {
                     <RouteKeypad
                         t={t}
                         letters={letters}
+                        availableKeys={availableKeys}
                         setQuery={setQuery}
                         onChange={() => setLimit(40)}
                     />

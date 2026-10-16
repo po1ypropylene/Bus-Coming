@@ -1,11 +1,13 @@
+import { useEtaHealth } from '../../hooks/useEtaHealth'
 import { BusFront, WifiOff } from 'lucide-react'
 import { useApp } from '../../app/AppContext'
 
 export function AppHeader() {
     const { navigate, t, tc, online, user, updateUser } = useApp()
+    const health = useEtaHealth()
     return (
         <header className="app-header">
-            <button className="brand" onClick={() => navigate('saved')}>
+            <button aria-label={t.brand} className="brand" onClick={() => navigate('saved')}>
                 <span className="brand-icon">
                     <BusFront size={23} />
                 </span>
@@ -15,16 +17,20 @@ export function AppHeader() {
                 </span>
             </button>
             <div className="header-right">
-                <span className="connection">
+                <span className={`connection ${online ? health : 'offline'}`}>
                     {online ? (
                         <>
-                            <i className="live-dot" />
-                            {t.live}
+                            <i className={`live-dot ${health}`}/>
+                            {health === 'live'
+                                ? t.live
+                                : health === 'stale'
+                                    ? t.etaStale
+                                    : t.etaWaiting}
                         </>
                     ) : (
                         <>
                             <WifiOff size={14} />
-                            {tc ? '離線' : 'Offline'}
+                            {t.offlineLabel}
                         </>
                     )}
                 </span>

@@ -10,11 +10,17 @@
     --bg: #f7f9f7;
     --surface: #fff;
     --ink: #223a36;
-    --muted: #70807b;
+    --muted: #52645b;
     --line: #e8ede9;
     --accent: #256c54;
     --soft: #eaf2ec;
     --shadow: 0 6px 24px #24483705;
+    --warning: #805314;
+    --nav-height: 72px;
+    --nav-bottom: 10px;
+    --nav-clearance: calc(
+        var(--nav-height) + var(--nav-bottom) + env(safe-area-inset-bottom) + 16px
+    );
     color-scheme: light dark;
 }
 
@@ -60,7 +66,8 @@ button:disabled {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+[tabindex]:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
 }
@@ -118,11 +125,12 @@ button:active:not(:disabled) {
         --bg: #14231e;
         --surface: #1c2e27;
         --ink: #e6efe8;
-        --muted: #9fb1a7;
+        --muted: #b7c8be;
         --line: #304039;
         --accent: #91d5ae;
         --soft: #2a4034;
         --shadow: none;
+        --warning: #f1cc88;
         color: var(--ink);
         background: var(--bg);
     }

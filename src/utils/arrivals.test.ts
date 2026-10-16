@@ -1,5 +1,6 @@
 import { expect, it } from 'vitest'
-import { upcomingArrivals } from './arrivals'
+import { strings } from '../i18n'
+import { arrivalAge, arrivalCountdown, upcomingArrivals } from './arrivals'
 import type { Arrival } from '../types/transit'
 
 const now = 1_000_000
@@ -24,4 +25,18 @@ it('retains negative, immediate and sub-minute predictions supplied by the opera
         const input = [eta(6), eta(minutes), eta(14), eta(21)]
         expect(upcomingArrivals(input)).toEqual([input[1], input[0], input[2]])
     }
+})
+
+it('formats due through one minute inclusively and rounds later estimates upwards', () => {
+    for (const minutes of [-5, 0, 0.5, 1]) {
+        expect(arrivalCountdown(now + minutes * 60000, now, strings.tc)).toBe('就到')
+        expect(arrivalCountdown(now + minutes * 60000, now, strings.en)).toBe('Due')
+    }
+    expect(arrivalCountdown(now + 60001, now, strings.en)).toBe('2')
+    expect(arrivalCountdown(null, now, strings.en)).toBe('—')
+})
+it('formats ticking age in both languages without negative ages after a clock correction', () => {
+    expect(arrivalAge(now, now + 12345, strings.en)).toBe('Updated 12s ago')
+    expect(arrivalAge(now, now + 91000, strings.tc)).toBe('91 秒前更新')
+    expect(arrivalAge(now, now - 1000, strings.en)).toBe('Updated 0s ago')
 })

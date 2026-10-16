@@ -8,7 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 32px 0;
+    padding: calc(8px + env(safe-area-inset-top)) 0 8px;
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
     gap: 12px;
 }
@@ -37,7 +41,7 @@
 .brand small {
     display: block;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.2px;
     color: var(--muted);
     margin-top: 4px;
@@ -53,7 +57,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 550;
     color: var(--muted);
 }
@@ -82,7 +86,7 @@
 }
 
 main {
-    padding-bottom: 138px;
+    padding-bottom: var(--nav-clearance);
     min-height: calc(100dvh - 110px);
 }
 
@@ -91,7 +95,7 @@ main {
 }
 
 .eyebrow {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 1.7px;
     font-weight: 650;
     color: var(--muted);
@@ -154,8 +158,8 @@ h1 {
 }
 
 .chip span {
-    font-size: 11px;
-    opacity: 0.65;
+    font-size: 13px;
+    opacity: 1;
 }
 
 .icon-button {
@@ -227,7 +231,7 @@ h1 {
 }
 
 .tiny-note {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin-top: 22px;
     display: flex;
@@ -347,7 +351,7 @@ h1 {
 
 .nearby-promo .eyebrow {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     position: relative;
     z-index: 1;
@@ -363,7 +367,7 @@ h1 {
 }
 
 .nearby-promo p {
-    font-size: 12px;
+    font-size: 13px;
     max-width: 185px;
     color: var(--muted);
     margin-bottom: 25px;
@@ -375,7 +379,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 650;
     position: relative;
     z-index: 1;
@@ -434,15 +438,15 @@ h1 {
 }
 
 .home-note p {
-    font-size: 11px;
+    font-size: 13px;
     margin: 0;
 }
 
 .home-note small {
     display: block;
     margin-top: 7px;
-    font-size: 11px;
-    opacity: 0.85;
+    font-size: 13px;
+    opacity: 1;
 }
 
 .round-icon {
@@ -464,7 +468,8 @@ h1 {
 
 .tab-bar {
     position: fixed;
-    bottom: 24px;
+    bottom: calc(var(--nav-bottom) + env(safe-area-inset-bottom));
+    min-height: var(--nav-height);
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -472,7 +477,7 @@ h1 {
     max-width: calc(100% - 32px);
     display: flex;
     border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    background: var(--surface);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     padding: 7px;
@@ -489,7 +494,7 @@ h1 {
     gap: 5px;
     min-height: 56px;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
     border-radius: 18px;
 }
 
@@ -509,14 +514,14 @@ h1 {
 }
 
 .section-heading h2 {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 1.4px;
     font-weight: 650;
     margin: 0;
 }
 
 .section-heading > span {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .list-card {
@@ -536,7 +541,7 @@ h1 {
 
 .search-controls {
     position: sticky;
-    top: 20px;
+    top: calc(76px + env(safe-area-inset-top));
 }
 
 .search-box {
@@ -581,7 +586,7 @@ h1 {
 .operator-tabs button {
     flex: 1;
     padding: 0 5px;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 550;
     border-radius: 9px;
     min-height: 44px;
@@ -599,12 +604,12 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
 .keypad-heading .text-button {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .keypad {
@@ -688,17 +693,17 @@ h1 {
     letter-spacing: -0.5px;
     padding: 0 8px;
     background: #f5e9e4;
-    color: #a66349;
+    color: #894d36;
 }
 
 .route-badge.ctb {
     background: #f8f0d9;
-    color: #97742f;
+    color: #785a20;
 }
 
 .route-badge.nlb {
     background: #e8effb;
-    color: #5275a6;
+    color: #43638f;
 }
 
 .route-copy {
@@ -716,12 +721,12 @@ h1 {
 
 .route-copy small {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
 .route-company {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     letter-spacing: 0.2px;
 }
@@ -735,7 +740,7 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.6;
     color: var(--muted);
     margin: 18px 0;
@@ -774,7 +779,7 @@ h1 {
 }
 
 .download-card > p {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -787,7 +792,7 @@ h1 {
     justify-content: space-between;
     gap: 12px;
     margin: 12px 0;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -797,7 +802,7 @@ h1 {
 }
 
 .background-status {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     display: flex;
     align-items: center;
@@ -810,7 +815,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 9px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
     background: var(--soft);
     border-radius: 12px;
@@ -824,7 +829,7 @@ h1 {
 }
 
 .error-text {
-    color: #aa6849 !important;
+    color: var(--warning) !important;
 }
 
 .back-button {
@@ -861,7 +866,7 @@ h1 {
 }
 
 .route-heading p:last-child {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
     margin: 0;
 }
@@ -899,7 +904,7 @@ h1 {
     background: var(--soft);
     color: var(--accent);
     border-radius: 50%;
-    font-size: 11px;
+    font-size: 13px;
     flex-shrink: 0;
 }
 
@@ -917,7 +922,7 @@ h1 {
 .stop-main small {
     display: block;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
     margin-top: 5px;
 }
 
@@ -943,9 +948,9 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--accent);
-    height: 28px;
+    min-height: 44px;
 }
 
 .arrival-top > span {
@@ -958,12 +963,11 @@ h1 {
     display: flex;
     gap: 27px;
     padding: 12px 0 7px;
-    min-height: 65px;
 }
 
 .arrival-time {
     min-width: 0;
-    flex: 1;
+    flex: 0 0 auto;
 }
 
 .arrival-time strong {
@@ -973,14 +977,14 @@ h1 {
 }
 
 .arrival-countdown > span {
-    font-size: 11px;
+    font-size: 13px;
     margin-left: 5px;
     color: var(--muted);
 }
 
 .arrival-time small {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin-top: 5px;
     overflow-wrap: anywhere;
@@ -1011,23 +1015,18 @@ h1 {
     line-height: 1.5;
 }
 
-.arrival-time strong.arrival-due {
-    font-size: 16px;
-    letter-spacing: 0;
-}
-
 .arrival-foot {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     line-height: 1.5;
 }
 
 .arrival-panel.stale {
-    background: color-mix(in srgb, var(--soft) 60%, #c9a46a30);
+    outline: 1px solid var(--warning);
 }
 
 .muted-text {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
     line-height: 1.7;
 }
@@ -1039,7 +1038,7 @@ h1 {
     gap: 8px;
     min-height: 44px;
     color: var(--accent);
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .bookmark-list {
@@ -1059,7 +1058,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -1091,7 +1090,7 @@ h1 {
 }
 
 .bookmark-route small {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     display: block;
     margin-top: 5px;
@@ -1102,7 +1101,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .location-card {
@@ -1128,7 +1127,7 @@ h1 {
 }
 
 .location-card p {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
     margin: 0;
 }
@@ -1177,14 +1176,14 @@ h1 {
 
 .near-stop small {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin-top: 6px;
     line-height: 1.6;
 }
 
 .distance {
-    font-size: 11px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1258,7 +1257,7 @@ h1 {
 }
 
 .status-pill {
-    font-size: 11px;
+    font-size: 13px;
     padding: 5px 8px;
     border-radius: 12px;
     background: var(--bg);
@@ -1271,13 +1270,13 @@ h1 {
 }
 
 .provider-setting p {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin: 8px 0 4px;
 }
 
 .provider-setting small {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -1311,7 +1310,7 @@ progress {
 }
 
 .setting-description {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     margin: 12px 12px 25px;
 }
@@ -1327,11 +1326,11 @@ progress {
     width: 64px;
     height: 64px;
     border-radius: 19px;
-    margin-bottom: 28px;
+    margin-bottom: calc(var(--nav-bottom) + env(safe-area-inset-bottom));
 }
 
 .install-card .eyebrow {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 1px;
 }
 
@@ -1346,7 +1345,7 @@ progress {
 }
 
 .install-card > small {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -1357,17 +1356,17 @@ progress {
 }
 
 .about strong {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 550;
 }
 
 .about p {
-    font-size: 11px;
+    font-size: 13px;
     margin: 12px 0;
 }
 
 .about a {
-    font-size: 11px;
+    font-size: 13px;
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -1422,7 +1421,7 @@ progress {
 
 .save-dialog label {
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 10px;
     color: var(--muted);
 }
@@ -1504,7 +1503,7 @@ progress {
     }
 
     .home-aside .download-card > p {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .home-aside .download-providers {
@@ -1518,7 +1517,7 @@ progress {
     }
 
     .app-header {
-        padding: calc(19px + env(safe-area-inset-top)) 0 19px;
+        padding: calc(8px + env(safe-area-inset-top)) 0 8px;
     }
 
     .brand {
@@ -1533,7 +1532,7 @@ progress {
     }
 
     .brand small {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .header-right {
@@ -1541,7 +1540,7 @@ progress {
     }
 
     .connection {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .language-toggle {
@@ -1557,11 +1556,11 @@ progress {
     }
 
     .page-heading > p:last-child:not(.eyebrow) {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .eyebrow {
-        font-size: 11px;
+        font-size: 13px;
         letter-spacing: 1.5px;
     }
 
@@ -1586,7 +1585,7 @@ progress {
     }
 
     .empty-saved > p {
-        font-size: 12px;
+        font-size: 13px;
         max-width: 290px;
         margin-bottom: 21px;
     }
@@ -1597,7 +1596,7 @@ progress {
     }
 
     .tiny-note {
-        font-size: 11px;
+        font-size: 13px;
         margin-top: 19px;
     }
 
@@ -1636,7 +1635,7 @@ progress {
     }
 
     .tab-bar {
-        bottom: calc(10px + env(safe-area-inset-bottom));
+        bottom: calc(var(--nav-bottom) + env(safe-area-inset-bottom));
         max-width: calc(100% - 28px);
         padding: 5px;
         border-radius: 23px;
@@ -1644,12 +1643,12 @@ progress {
 
     .tab {
         min-height: 54px;
-        font-size: 11px;
+        font-size: 13px;
         border-radius: 18px;
     }
 
     main {
-        padding-bottom: calc(115px + env(safe-area-inset-bottom));
+        padding-bottom: var(--nav-clearance);
     }
 
     .search-controls {
@@ -1674,7 +1673,7 @@ progress {
     }
 
     .keypad-heading {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .letter-keys button {
@@ -1686,7 +1685,7 @@ progress {
     }
 
     .route-row {
-        padding: 16px 13px;
+        padding: 8px 13px;
         gap: 12px;
     }
 
@@ -1700,7 +1699,7 @@ progress {
     }
 
     .route-copy small {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .location-card {
@@ -1723,7 +1722,7 @@ progress {
     }
 
     .location-card p {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .near-stop {
@@ -1737,7 +1736,7 @@ progress {
     }
 
     .distance {
-        font-size: 11px;
+        font-size: 13px;
         gap: 2px;
     }
 
@@ -1746,7 +1745,7 @@ progress {
     }
 
     .near-stop small {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .route-heading {
@@ -1801,7 +1800,7 @@ progress {
     }
 
     .background-status {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .home-aside .download-card {
@@ -1814,7 +1813,7 @@ progress {
         padding: 0 15px;
     }
 
-    .connection {
+    .brand > span:last-child {
         display: none;
     }
 
@@ -1835,7 +1834,7 @@ progress {
     }
 
     .route-copy strong {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
@@ -1922,7 +1921,7 @@ progress {
     border: 1px solid var(--line);
     border-radius: 14px;
     background: var(--soft);
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .catalog-status p {
@@ -1936,7 +1935,7 @@ progress {
 
 .catalog-status span {
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
 }
 
 /* Mobile route search keeps results and the custom keyboard in the same viewport. */
@@ -2025,13 +2024,14 @@ progress {
     }
 
     .route-search-shell .number-keys button {
-        height: 44px;
+        height: 48px;
     }
 
     .route-search-shell .letter-keys {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-auto-rows: 44px;
-        height: 191px;
+        max-height: 207px;
+        align-self: start;
         overflow-y: auto;
         overscroll-behavior-y: contain;
     }
@@ -2047,12 +2047,12 @@ progress {
 }
 
 @media (max-width: 700px) and (max-height: 700px) {
-    .route-search-shell .app-header {
-        display: none;
+    .route-search-shell .route-row {
+        padding-block: 6px;
     }
 
-    .route-search-shell .route-row {
-        padding-block: 10px;
+    .route-search-shell .search-results .section-heading {
+        margin-bottom: 4px;
     }
 }
 
@@ -2143,5 +2143,178 @@ progress {
 
     .direction-switch > span {
         display: none;
+    }
+}
+
+/* Shared clearance and opaque navigation prevent text bleeding through the floating bar. */
+.tab-bar::before {
+    content: '';
+    position: absolute;
+    inset: -18px -1px -1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, transparent, var(--bg) 20px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.brand small {
+    display: none;
+}
+
+.page-heading.compact {
+    padding: 20px 0;
+}
+
+.page-heading.compact h1 {
+    font-size: 25px;
+    margin: 0;
+}
+
+:lang(zh-Hant) .eyebrow,
+:lang(zh-Hant) .section-heading h2,
+:lang(zh-Hant) .install-card .eyebrow {
+    letter-spacing: 0;
+}
+
+.connection.stale,
+.arrival-panel.stale .arrival-top,
+.arrival-panel.stale .arrival-foot {
+    color: var(--warning);
+}
+
+.live-dot.waiting {
+    background: var(--muted);
+}
+
+.live-dot.stale,
+.live-dot.muted {
+    background: var(--warning);
+}
+
+.number-keys .key-action span {
+    font-size: 13px;
+}
+
+.arrival-foot {
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.arrival-remark {
+    border-left: 2px solid var(--accent);
+    padding-left: 8px;
+}
+
+.arrival-skeleton {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.arrival-skeleton > div {
+    min-height: 56px;
+    border-radius: 8px;
+    background: var(--line);
+}
+
+@media (max-width: 700px) {
+    .route-search-shell .tab-bar::before {
+        display: none;
+    }
+
+    .route-search-shell .search-results {
+        padding-bottom: 16px;
+    }
+}
+
+.arrival-times:not(.arrival-rows) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+    text-align: center;
+}
+
+.arrival-times > .muted-text,
+.arrival-skeleton {
+    grid-column: 1 / -1;
+}
+
+.arrival-countdown {
+    font-size: 29px;
+    white-space: nowrap;
+}
+
+.arrival-times.arrival-rows {
+    justify-content: flex-start;
+}
+
+.arrival-time strong.arrival-due {
+    font-size: 29px;
+    letter-spacing: 0;
+}
+
+@media (max-width: 760px) {
+    .arrival-countdown,
+    .arrival-time strong.arrival-due {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+    .route-search-shell .number-keys button {
+        height: 44px;
+    }
+
+    .route-search-shell .letter-keys {
+        max-height: 191px;
+    }
+}
+
+@media (max-width: 700px) {
+    .route-search-shell .search-entry {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 44px;
+        gap: 4px;
+    }
+
+    .route-search-shell .search-box {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .route-search-shell .keypad-heading {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .route-search-shell .keypad-heading span {
+        display: none;
+    }
+
+    .route-search-shell .keypad-heading button {
+        width: 44px;
+        border-radius: 12px;
+        background: var(--soft);
+    }
+
+    .route-search-shell .operator-tabs {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 0;
+    }
+
+    .route-search-shell .route-copy strong {
+        margin-block: 2px;
+    }
+}
+
+@media (max-width: 700px) {
+    .route-search-shell .keypad.numbers-only {
+        grid-template-columns: minmax(0, 1fr);
     }
 }

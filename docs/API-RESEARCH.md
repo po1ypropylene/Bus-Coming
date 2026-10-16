@@ -123,3 +123,23 @@ catalogue checks, not an exhaustive live ETA audit.
 See [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md) for the optional Cloudflare Static Assets publisher, manifest contract,
 weekly GitHub workflow, build-time URL configuration, validation and official-import fallback. The publisher reuses
 the Citybus normalizer. Existing IndexedDB schema, user data and ETA adapters remain unchanged.
+
+## Departure destinations and overdue estimates — 16 October 2026
+
+The [Citybus data dictionary](https://www.citybus.com.hk/datagovhk/bus_eta_data_dictionary.pdf),
+section 2.5, documents `dest_en`, `dest_tc`, `rmk_en` and `rmk_tc` on each ETA row. The per-departure destination can
+be more specific than the combined catalogue destination. Bus Coming now preserves these destination fields in the
+selected language (also for KMB) and continues to retain operator remarks. There is no separate documented bypass-stop
+list in the Citybus ETA contract; show routing descriptions when supplied in remarks, without inventing them.
+
+Targeted public API reads on 16 October 2026 verified `/route-stop/CTB/720/outbound` (response generated at
+21:48:20 HKT) lists stop `003156` at sequence 2. `/eta/CTB/003156/720` (generated at 21:48:41 HKT, row data timestamp
+21:48:07) returned three outbound predictions at 21:51:21, 22:11:14 and 22:31:14, all with destination
+`Central (Macao Ferry)` / `中環(港澳碼頭)` and empty remarks. This evening sample verifies the fields, not the morning
+Wing Wo Street/bypass service or the original missing bus. Morning mixed-service browser fixtures are constructed from
+the user's report, not a captured live morning response.
+
+Removed the shared display cutoff that rejected `eta <= now - 60000`. Negative ETA alone does not establish that a bus
+has passed the stop. The panel retains predictions until the operator replaces/removes them, displays intervals under
+one minute as **Due / 即將到站**, and keeps the existing stale/error warning if refresh fails. Direction, service and
+stop-selection rules are unchanged. Past predictions can remain visible with that warning during a network failure.

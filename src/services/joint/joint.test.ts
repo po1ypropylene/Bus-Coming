@@ -133,13 +133,15 @@ describe('combined arrivals', () => {
         vi.mocked(getArrivals).mockImplementation(async (r) => ({
             fetchedAt: 100,
             arrivals: [
-                { time: r.provider === 'KMB' ? 500 : 300, remark: '' },
+                { time: r.provider === 'KMB' ? 500 : 300, remark: '', destination: r.provider },
                 { time: 700, remark: '' },
             ],
         }))
         const result = await getJointArrivals(joint, stops['KMB:2'], 2, 'en', stops)
         expect(result.arrivals.map((a) => a.time)).toEqual([300, 500, 700, 700])
         expect(result.arrivals[0].provider).toBe('CTB')
+        expect(result.arrivals[0].destination).toBe('CTB')
+        expect(result.arrivals[1].destination).toBe('KMB')
         expect(getArrivals).toHaveBeenCalledWith(ctb, stops['CTB:2'], 12, 'en')
         expect(result.partial).toBe(false)
     })

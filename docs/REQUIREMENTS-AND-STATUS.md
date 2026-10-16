@@ -238,3 +238,27 @@ publication. The assets-only Wrangler deployment dry run passed. Builds with sha
 passed;
 production offline checks also passed with shared downloads enabled. No full current live Citybus crawl, Cloudflare
 deployment or physical iPhone verification was performed.
+
+## Imminent arrivals and departure variants — 16 October 2026
+
+Removed the one-minute-past cutoff from all arrival panels. Negative, immediate and sub-minute estimates now display
+**Due / 即將到站**, without a minute suffix; operator refreshes control when a departure disappears. Chronological
+sorting, the first-three limit, direction/service/stop matching, and stale/error reporting remain intact.
+
+Citybus and KMB per-departure destinations are retained. If the displayed timed departures have different supplied
+destinations, show their destinations alongside the existing operator remarks in readable rows. Different remarks also
+use rows, including variants with the same terminus. Identical destinations stay hidden; missing destinations are not
+filled in from the catalogue. Both route details and saved stops use the shared panel. No storage migration is needed.
+
+The targeted evening 720 API check confirmed destination fields but did not reproduce the morning bypass service;
+see API research for timestamps and limitations. Routing notes depend on the public API supplying them. Physical iPhone
+and live morning-service validation remain manual.
+
+Verification: production build, lint, formatting, 63 unit tests and all 38 browser tests passed in desktop Chromium and
+mobile WebKit. New coverage checks negative/immediate/sub-minute predictions, mixed bilingual destinations and remarks,
+route details and saved stops, no repeated destination labels (including a different fourth departure outside the
+display
+limit), 320px layout, joint-arrival metadata preservation, and explicit stale state after failed refresh. The mobile
+mixed-destination screenshot was inspected. Production offline reload/bookmarks/search smoke checks passed in both
+engines. The required formatter also normalized existing formatting in several unrelated files; no behavior changed
+there.

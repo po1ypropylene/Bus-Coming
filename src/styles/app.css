@@ -972,7 +972,7 @@ h1 {
     letter-spacing: -1px;
 }
 
-.arrival-time > span {
+.arrival-countdown > span {
     font-size: 11px;
     margin-left: 5px;
     color: var(--muted);
@@ -983,6 +983,37 @@ h1 {
     font-size: 11px;
     color: var(--muted);
     margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+.arrival-times.arrival-rows {
+    flex-direction: column;
+    gap: 12px;
+}
+
+.arrival-rows .arrival-time {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+}
+
+.arrival-rows .arrival-countdown {
+    flex: 0 0 7rem;
+}
+
+.arrival-description {
+    min-width: 0;
+}
+
+.arrival-time .arrival-destination {
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.arrival-time strong.arrival-due {
+    font-size: 16px;
+    letter-spacing: 0;
 }
 
 .arrival-foot {

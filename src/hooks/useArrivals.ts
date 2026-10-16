@@ -56,6 +56,6 @@ export function useArrivals(
         }
     }, [route, stop, seq, lang, tick, stops])
     const stale = failed || (!!result && now - result.fetchedAt > 90000)
-    const arrivals = upcomingArrivals(result?.arrivals ?? [], now)
+    const arrivals = upcomingArrivals(result?.arrivals ?? [])
     return { result, failed, loading, now, stale, arrivals, refresh: () => setTick((v) => v + 1) }
 }

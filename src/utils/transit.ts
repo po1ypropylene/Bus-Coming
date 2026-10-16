@@ -1,5 +1,5 @@
-import { THEMES } from '../types/transit'
 import type { Arrival, Bookmark, Route, Snapshot, Stop, UserData } from '../types/transit'
+import { THEMES } from '../types/transit'
 
 export const routeLetters = (routes: Route[]) =>
     [...new Set(routes.flatMap((r) => r.number.toUpperCase().match(/[A-Z]/g) ?? []))].sort()
@@ -58,6 +58,7 @@ export function selectArrivals(
         .map((row) => ({
             time: row.eta ? hkTime(String(row.eta)) : null,
             remark: String(row[`rmk_${lang}`] || ''),
+            destination: String(row[`dest_${lang}`] || '').trim() || undefined,
         }))
 }
 
@@ -84,6 +85,7 @@ export function selectCitybusArrivals(
         .map((row) => ({
             time: row.eta ? hkTime(String(row.eta)) : null,
             remark: String(row[`rmk_${lang}`] || ''),
+            destination: String(row[`dest_${lang}`] || '').trim() || undefined,
         }))
 }
 

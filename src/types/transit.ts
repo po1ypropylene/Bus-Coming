@@ -56,6 +56,7 @@ export interface UserData {
 export interface Arrival {
     time: number | null
     remark: string
+    destination?: string
     provider?: Provider
 }
 

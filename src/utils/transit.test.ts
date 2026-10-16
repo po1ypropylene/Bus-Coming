@@ -197,4 +197,29 @@ describe('Citybus direction-specific sequence mismatches', () => {
             ),
         ).toEqual([{ time: null, remark: 'Scheduled' }])
     })
+    it('retains per-departure destinations and routing remarks in both languages', () => {
+        const special = {
+            ...row,
+            dest_en: 'Central (Wing Wo Street)',
+            dest_tc: '中環（永和街）',
+            rmk_en: 'Omit Taikoo Shing and Admiralty',
+            rmk_tc: '不經太古城和金鐘',
+        }
+        const normal = {
+            ...row,
+            dest_en: 'Central (Macao Ferry)',
+            dest_tc: '中環（港澳碼頭）',
+            rmk_en: '',
+            rmk_tc: '',
+        }
+        for (const lang of ['en', 'tc'] as const) {
+            expect(selectCitybusArrivals([special, normal], inbound, '002424', 1, lang)).toEqual(
+                [special, normal].map((a) => ({
+                    time: Date.parse(a.eta),
+                    destination: a[`dest_${lang}`],
+                    remark: a[`rmk_${lang}`],
+                })),
+            )
+        }
+    })
 })

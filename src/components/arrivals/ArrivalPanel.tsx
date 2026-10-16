@@ -33,6 +33,9 @@ export function ArrivalPanel({
         lang,
         availableStops,
     )
+    const departures = arrivals.filter((a) => a.time !== null)
+    const showDestinations = new Set(departures.map((a) => a.destination).filter(Boolean)).size > 1
+    const showRows = showDestinations || new Set(departures.map((a) => a.remark.trim())).size > 1
     return (
         <div className={`arrival-panel ${stale ? 'stale' : ''}`}>
             <div className="arrival-top">
@@ -44,22 +47,37 @@ export function ArrivalPanel({
                     <RefreshCw size={16} />
                 </button>
             </div>
-            <div className="arrival-times" aria-live="polite">
+            <div className={`arrival-times ${showRows ? 'arrival-rows' : ''}`} aria-live="polite">
                 {loading ? (
                     <p className="muted-text">{t.loadingEta}</p>
                 ) : arrivals.length ? (
                     arrivals.map((a, i) => (
                         <div className="arrival-time" key={`${a.time}-${i}`}>
-                            <strong>
-                                {a.time === null
-                                    ? '—'
-                                    : Math.ceil((a.time - now) / 60000) <= 0
-                                      ? t.due
-                                      : Math.ceil((a.time - now) / 60000)}
-                            </strong>
-                            {a.time !== null && a.time > now && <span>{t.min}</span>}
-                            {a.provider && <small>{company(a.provider, lang === 'tc')}</small>}
-                            {a.remark && <small>{a.remark}</small>}
+                            <div className="arrival-countdown">
+                                <strong
+                                    className={
+                                        a.time !== null && a.time - now < 60000
+                                            ? 'arrival-due'
+                                            : undefined
+                                    }
+                                >
+                                    {a.time === null
+                                        ? '—'
+                                        : a.time - now < 60000
+                                            ? t.due
+                                            : Math.ceil((a.time - now) / 60000)}
+                                </strong>
+                                {a.time !== null && a.time - now >= 60000 && <span>{t.min}</span>}
+                            </div>
+                            <div className="arrival-description">
+                                {showDestinations && a.destination && (
+                                    <small className="arrival-destination">
+                                        {t.toward} {a.destination}
+                                    </small>
+                                )}
+                                {a.provider && <small>{company(a.provider, lang === 'tc')}</small>}
+                                {a.remark && <small>{a.remark}</small>}
+                            </div>
                         </div>
                     ))
                 ) : (

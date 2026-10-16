@@ -72,11 +72,15 @@ async function get(path: string): Promise<Payload> {
     throw new Error('Citybus fetch failed')
 }
 
-const { routes, stops } = await downloadCitybus({
-    get, addTotal: () => {
-    }
-}, async () => {
-})
+const { routes, stops } = await downloadCitybus(
+    {
+        get,
+        addTotal: () => {
+        },
+    },
+    async () => {
+    },
+)
 const updatedAt = generation
 const snapshot = validateCitybusSnapshot(
     {

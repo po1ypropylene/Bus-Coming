@@ -719,3 +719,112 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
     await page.getByRole('button', { name: 'Saved', exact: true }).click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
 })
+
+test('Citybus imminent buses and mixed destinations survive in details and saved stops', async ({
+                                                                                                    page,
+                                                                                                }, testInfo) => {
+    const fixtureNow = Date.now()
+    await page.clock.install({ time: new Date(fixtureNow) })
+    const fixtureStop = { ...stop, id: 'CTB:003156', code: '003156', provider: 'CTB' }
+    const fixtureRoute = {
+        ...route,
+        id: 'CTB:720:O:1',
+        number: '720',
+        provider: 'CTB',
+        destination: {
+            en: 'Central (Macao Ferry / Wing Wo Street)',
+            tc: '中環（港澳碼頭／永和街）',
+        },
+        stops: [{ id: fixtureStop.id, seq: 2 }],
+    }
+    await seed(page, 2, { route: fixtureRoute, stop: fixtureStop })
+    // Constructed regression data based on the report, not a captured morning API response.
+    const minutes = [-1.5, 6, 14, 21]
+    await page.route('**/eta/**', (request) =>
+        request.fulfill({
+            json: {
+                data: minutes.map((minute, i) => ({
+                    co: 'CTB',
+                    route: '720',
+                    dir: 'O',
+                    stop: '003156',
+                    seq: 2,
+                    eta: new Date(fixtureNow + minute * 60000).toISOString(),
+                    dest_en: i < 2 ? 'Central (Wing Wo Street)' : 'Central (Macao Ferry)',
+                    dest_tc: i < 2 ? '中環（永和街）' : '中環（港澳碼頭）',
+                    rmk_en: i < 2 ? 'Omit Taikoo Shing and Admiralty' : '',
+                    rmk_tc: i < 2 ? '不經太古城和金鐘' : '',
+                })),
+            },
+        }),
+    )
+    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await page.locator('.route-row').click()
+    await page.locator('.stop-main').click()
+    await expect(page.locator('.arrival-time strong')).toHaveText(['Due', '6', '14'])
+    await expect(page.locator('.arrival-destination')).toHaveText([
+        'To Central (Wing Wo Street)',
+        'To Central (Wing Wo Street)',
+        'To Central (Macao Ferry)',
+    ])
+    await expect(page.locator('.arrival-time').first()).toContainText(
+        'Omit Taikoo Shing and Admiralty',
+    )
+    await expect(
+        page.locator('.arrival-time').first().locator('.arrival-countdown > span'),
+    ).toHaveCount(0)
+    await page.getByRole('button', { name: 'Save stop', exact: true }).click()
+    await page.getByRole('button', { name: 'Done', exact: true }).click()
+    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await expect(page.locator('.arrival-time strong')).toHaveText(['Due', '6', '14'])
+    await page.getByRole('button', { name: 'Language', exact: true }).click()
+    await expect(page.locator('.arrival-time strong')).toHaveText(['即將到站', '6', '14'])
+    await expect(page.locator('.arrival-destination')).toHaveText([
+        '往 中環（永和街）',
+        '往 中環（永和街）',
+        '往 中環（港澳碼頭）',
+    ])
+    await expect(page.locator('.arrival-time').first()).toContainText('不經太古城和金鐘')
+    await page.screenshot({
+        path: testInfo.outputPath('citybus-mixed-destinations.png'),
+        fullPage: true,
+    })
+    await page.setViewportSize({ width: 320, height: 568 })
+    expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    ).toBe(true)
+    // A failed refresh must keep the operator prediction explicitly labelled as stale.
+    await page.route('**/eta/**', (request) => request.abort('internetdisconnected'))
+    await page.clock.fastForward(16000)
+    await page.getByRole('button', { name: '重新整理', exact: true }).click()
+    await expect(page.locator('.arrival-panel')).toContainText('上次預計時間')
+    await expect(page.locator('.arrival-panel')).toContainText('無法更新到站時間')
+    await expect(page.locator('.arrival-time strong').first()).toHaveText('即將到站')
+    await page.unroute('**/eta/**')
+    // Reinstall a successful response with all destinations equal; no extra labels.
+    await page.route('**/eta/**', (request) =>
+        request.fulfill({
+            json: {
+                data: [-1, 0, 0.5, 6].map((minute, i) => ({
+                    dir: 'O',
+                    seq: 2,
+                    eta: new Date(fixtureNow + minute * 60000).toISOString(),
+                    dest_en: i < 3 ? 'Central (Macao Ferry)' : 'Central (Wing Wo Street)',
+                    dest_tc: i < 3 ? '中環（港澳碼頭）' : '中環（永和街）',
+                })),
+            },
+        }),
+    )
+    await page.getByRole('button', { name: '重新整理', exact: true }).click()
+    await expect(page.locator('.arrival-time strong')).toHaveText([
+        '即將到站',
+        '即將到站',
+        '即將到站',
+    ])
+    await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    await expect(page.locator('.arrival-rows')).toHaveCount(0)
+    await expect(page.locator('.arrival-countdown > span')).toHaveCount(0)
+    expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    ).toBe(true)
+})

@@ -105,10 +105,20 @@ keeps existing positions and appends new IDs in imported order, as before. Do no
 
 ## ETA display ordering
 
-All arrival panels use `utils/arrivals.ts` through `useArrivals`: discard expired predictions, sort by absolute arrival
-timestamp, then take the first three. Untimed remarks follow timed predictions; equal-time buses and their remarks
+All arrival panels use `utils/arrivals.ts` through `useArrivals`: retain operator-supplied predictions, sort by absolute
+arrival timestamp, then take the first three. Do not discard negative ETAs: an overdue estimate can still describe an
+approaching bus. Anything less than one minute away (including zero and negative intervals) displays **Due / 即將到站**
+without a minute suffix. Operator refreshes remove withdrawn predictions; request failures retain the explicit
+stale/unavailable state. Untimed remarks follow timed predictions; equal-time buses and their remarks
 remain distinct. Never assume operator response order is chronological (rush-hour service variants may be grouped).
 Keep provider direction/service/stop filtering in the adapters; display sorting must not broaden those matches.
+
+KMB and Citybus arrival adapters retain the selected-language `dest_en` / `dest_tc` as optional per-departure
+`destination`, alongside existing remarks. Compare only the displayed timed departures: when at least two supplied
+destinations differ, show each available destination. Identical or missing destinations add no label. Mixed destinations
+or differing remarks use stacked rows so service descriptions remain readable on phones; identical services keep the
+compact countdown layout. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
+Do not infer a bypass itinerary from the route number, clock time or catalogue destination.
 
 ## Route direction switching
 

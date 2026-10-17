@@ -7,14 +7,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
-    --bg: #f7f9f7;
+    --bg: #f6f8fc;
     --surface: #fff;
-    --ink: #223a36;
-    --muted: #52645b;
-    --line: #e8ede9;
-    --accent: #256c54;
-    --soft: #eaf2ec;
-    --shadow: 0 6px 24px #24483705;
+    --ink: #24364c;
+    --muted: #506279;
+    --line: #e5ebf3;
+    --accent: #2464a5;
+    --soft: #e9f0fa;
+    --shadow: 0 6px 24px color-mix(in srgb, var(--ink) 2%, transparent);
     --warning: #805314;
     --nav-height: 72px;
     --nav-bottom: 10px;
@@ -122,13 +122,13 @@ button:active:not(:disabled) {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #14231e;
-        --surface: #1c2e27;
-        --ink: #e6efe8;
-        --muted: #b7c8be;
-        --line: #304039;
-        --accent: #91d5ae;
-        --soft: #2a4034;
+        --bg: #151e2b;
+        --surface: #1d2a3a;
+        --ink: #f0edf2;
+        --muted: #bccce0;
+        --line: #314157;
+        --accent: #9ac9ff;
+        --soft: #293c55;
         --shadow: none;
         --warning: #f1cc88;
         color: var(--ink);

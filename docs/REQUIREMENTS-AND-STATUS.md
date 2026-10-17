@@ -9,7 +9,7 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 | Area                     | Behavior                                                                                                                                                 |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Operators                | KMB / Long Win, Citybus and New Lantao Bus; provider-specific route, direction, service and stop identities                                              |
-| Languages and appearance | English and Traditional Chinese; five persisted theme colours; system light/dark appearance                                                              |
+| Languages and appearance | English and Traditional Chinese; five persisted theme colours with blue as default; system light/dark appearance                                         |
 | Home Screen app          | Standalone manifest, install icons, safe areas, production offline shell and user-controlled app updates                                                 |
 | Saved                    | Stop arrival cards, arbitrary named groups, edit/remove and persistent up/down ordering; filtering a group leaves other bookmarks in place               |
 | Routes                   | Offline substring search with exact matches first, operator filters, paginated results and direction-specific stop lists                                 |
@@ -50,7 +50,9 @@ are unchanged.
 
 ## Data preservation
 
-Bookmarks, language and theme are local to the browser/app, separate from replaceable route snapshots. Older user data
+Bookmarks, language and theme are local to the browser/app, separate from replaceable route snapshots. Blue is the
+default for new users and older records/backups without a theme. Explicitly saved colours, including green, remain
+unchanged. The favicon and Home Screen icons use the blue brand. Older user data
 and backups remain supported. Invalid imports do not overwrite existing data; valid imports merge by bookmark ID with
 imported values winning conflicts. Existing positions remain, new IDs append in import order, and imported preferences
 are restored. Exports preserve bookmark order.
@@ -74,17 +76,21 @@ no longer exists shows unavailable and asks the user to save it again. App updat
   and preference preservation. Publisher fixture tests exercise normalization, hashes, headers, previous-generation
   retention and failed-publication safety.
 
-Liquid Glass styling validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes
+Blue-default and README validation on 17 October 2026 passed build, lint, formatting, 72 unit tests, toolchain probes
 and 53 browser cases, with one intentional WebKit skip for Chromium-only Lighthouse. Existing regressions confirm
 unchanged keypad positions, navigation clearance, full-size due labels, bilingual headings, theme persistence,
-bookmarks and route/ETA behavior. Lighthouse scored 100 on all five screens in both languages in green/light
+bookmarks and route/ETA behavior. Lighthouse scored 100 on all five screens in both languages in blue/light
 appearance; all-theme axe and token-contrast checks passed in both engines. Desktop Chromium and mobile WebKit
 screenshots were reviewed in light/dark appearance. Additional checks exercised opaque higher-contrast chrome
 in both engines, and reduced transparency, forced-colour selection and keyboard navigation in Chromium.
-Screenshots and disposable verification scripts are in ignored `artifacts/liquid-glass/`.
-Production offline smoke checks were not repeated because no persistence, startup or service-worker behavior
-changed. These are local fixture/emulation results, not live operator, deployment, physical iPhone, GPU performance
-or VoiceOver verification.
+The published README includes four framed iPhone 17 previews at 402×874 logical pixels (3×), Traditional Chinese,
+blue, and both appearances. Route 8P/118 records, stops and ETAs were captured from public operator APIs on
+17 October at approximately 17:53 HKT, with official TD joint membership for 118. The renderer replays the dated
+responses; the preview ETA values are not current service predictions. Sources and reproduction commands are in
+[development](DEVELOPMENT.md#generated-output-and-regression-fixtures).
+Production offline smoke passed in Chromium and WebKit, including cached reload, bookmark/search preservation,
+the blue default for older preferences and the blue manifest. These checks and the README previews use browser
+emulation, not physical iPhone, deployment, GPU-performance or VoiceOver validation.
 
 WebStorm formatting setup was also verified on 17 October 2026: Reformat Code followed by Save left the keypad TSX
 and application CSS byte-for-byte unchanged; Reindent followed by Save also preserved the TSX file. Project Prettier

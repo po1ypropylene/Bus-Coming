@@ -8,6 +8,6 @@ for (const [size, name] of [
 ])
     await sharp(svg)
         .resize(size, size)
-        .flatten({ background: '#256c54' })
+        .flatten({ background: '#2464a5' })
         .png()
         .toFile(`public/${name}.png`)

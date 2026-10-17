@@ -37,15 +37,15 @@ Keep `App.tsx` as an entry point. Feature logic belongs in the modules above rat
 
 ## Persistence and upgrades
 
-`bus-coming-user-v1` in localStorage stores version 1 user data: language, theme and bookmarks. `validateUserData` is the boundary for both stored data and imported backups. Old records without `theme` normalize to `green`; all five known strings are accepted, while supplied unknown/null values are rejected. Adding this optional-on-input field does not require clearing data or changing the version/key. New writes and exports include the normalized theme. If storage writes fail, the current session still updates and the app reports the save failure.
+`bus-coming-user-v1` in localStorage stores version 1 user data: language, theme and bookmarks. `validateUserData` is the boundary for both stored data and imported backups. New users and old records without `theme` use `DEFAULT_THEME` (`blue`); explicitly saved colours, including green, are preserved. All five known strings are accepted, while supplied unknown/null values are rejected. This default does not require clearing data or changing the version/key. New writes and exports include the normalized theme. If storage writes fail, the current session still updates and the app reports the save failure.
 
-Backups merge bookmarks by ID, with imported entries winning conflicts, and restore imported preferences. An older backup defaults the theme to green. Invalid imports do not overwrite existing data. Imports remain limited to 10 MB and 1,000 bookmarks. Keep migration coverage when adding fields.
+Backups merge bookmarks by ID, with imported entries winning conflicts, and restore imported preferences. An older backup without a theme defaults to blue. Invalid imports do not overwrite existing data. Imports remain limited to 10 MB and 1,000 bookmarks. Keep migration coverage when adding fields.
 
 IndexedDB `bus-coming-v1`, schema version 2, contains `snapshots`, `responses`, `generations`, `routeCatalogs` and `routeDetails`. Complete provider snapshots commit atomically; interrupted downloads resume checkpoints. Do not rename/delete stores or clear data to work around a migration. User bookmarks remain separate from replaceable route data.
 
 ## Theme implementation and extension
 
-Settings offers Green (default), Blue, Yellow, Red and Purple through a native radio group with visible labels, selected checkmarks and keyboard focus. Preferences are translated and persist across reloads and backup export/import. Appearance continues to follow the device's light/dark setting.
+Settings offers Green, Blue (default), Yellow, Red and Purple through a native radio group with visible labels, selected checkmarks and keyboard focus. Preferences are translated and persist across reloads and backup export/import. Appearance continues to follow the device's light/dark setting.
 
 - `THEMES` and `Theme` in `src/types/transit.ts` define allowed identifiers.
 - `src/components/settings/ThemePicker.tsx` renders the choices.
@@ -53,7 +53,7 @@ Settings offers Green (default), Blue, Yellow, Red and Purple through a native r
 - `src/styles/themes.css` defines paired light/dark accent, background, foreground and soft surface tokens. Application decoration uses those tokens; operator badges and success/error indicators retain their semantic colours.
 - `src/i18n/index.ts` supplies colour labels for both languages.
 
-To add a palette, add its identifier, both translated labels, both complete CSS token sets (including surface, border `--line`, secondary text `--muted` and shadow), and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon and manifest retain the app's fixed green brand; the running app's browser chrome follows the selected palette where the browser supports it.
+To add a palette, add its identifier, both translated labels, both complete CSS token sets (including surface, border `--line`, secondary text `--muted` and shadow), and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon uses the fixed blue brand; initial CSS, HTML metadata and the manifest use the blue palette. The running app's browser chrome follows the selected palette where the browser supports it. `npm run icons` regenerates the PNG install assets from `public/favicon.svg`.
 
 ### Glass presentation
 
@@ -187,7 +187,7 @@ the Citybus normalizer. Existing IndexedDB schema, user data and ETA adapters re
 
 Use `--nav-clearance` for ordinary pages: navigation height, bottom offset, device safe area and a 16px gap.
 The mobile route search shell reserves navigation and keypad space in normal flow; its separate results scroller has
-16px end padding instead. The tab surface is opaque with a gradient scrim above it. The app header stays compact and
+16px end padding instead. The tab surface uses the glass finish and opaque accessibility fallbacks described above. The app header stays compact and
 sticky, including on short screens. Only the empty Saved screen uses the large hero; other screens use small titles.
 
 Secondary/caption text is at least 13px, including Chinese, with no extra tracking on Chinese section labels.
@@ -229,6 +229,21 @@ These folders are disposable after reviewing a run. `npm run audit:apis` writes 
 run them only when current operator evidence is needed. Keep durable findings and reproduction commands in
 [API research](API-RESEARCH.md), and record verification scope in [requirements/status](REQUIREMENTS-AND-STATUS.md).
 Replace obsolete status summaries instead of appending a history of every test run; Git retains earlier versions.
+
+The intentionally published README screenshots are an exception: keep `docs/images/iphone17-*.png` under version
+control. `scripts/render-readme.mjs` renders the real UI in isolated WebKit contexts at 402×874 CSS pixels and 3×
+scale, Traditional Chinese and blue, in both appearances. It substitutes 62px/34px top/bottom safe-area values only
+in intercepted development stylesheets, then renders an illustrative iPhone shell/status bar around the capture.
+The app clock is fixed to the dated capture so the original ETA timestamps remain meaningful. It never edits
+application content or a user's browser data. Raw screen captures stay under ignored `artifacts/readme/`.
+
+To regenerate, run `npm run dev -- --host 127.0.0.1 --port 4174` and, separately,
+`node scripts/render-readme.mjs` (`README_BASE_URL` can override the origin). It replays
+`scripts/fixtures/readme-transit.json`, which retains normalized 8P/118 journeys, all their stops, and unmodified
+public operator/TD responses with source URLs and capture times. To deliberately refresh the public examples, run
+`node scripts/capture-readme-data.mjs` first, then regenerate and visually review all four images. The renderer fails
+on uncaptured requests instead of inventing predictions. Keep README captions focused on app features. These are
+documentation captures, not live-service promises or physical iPhone verification.
 
 Keep `tests/fixtures.ts` and `src/services/joint/fixtures/{102,106}.json`: browser tests and joint-route/direction
 regressions consume them. The JSON files are dated operator captures, not runtime data or current route guarantees.

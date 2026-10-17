@@ -1,5 +1,5 @@
 import type { Arrival, Bookmark, Route, Snapshot, Stop, UserData } from '../types/transit'
-import { THEMES } from '../types/transit'
+import { DEFAULT_THEME, THEMES } from '../types/transit'
 
 export const routeLetters = (routes: Route[]) =>
     [...new Set(routes.flatMap((r) => r.number.toUpperCase().match(/[A-Z]/g) ?? []))].sort()
@@ -133,7 +133,7 @@ export function validateUserData(input: unknown): UserData {
                 throw new Error('Invalid name')
         ids.add(b.id)
     }
-    return { ...data, theme: data.theme ?? 'green' }
+    return { ...data, theme: data.theme ?? DEFAULT_THEME }
 }
 
 export function resolveBookmark(bookmark: Bookmark, snapshots: Snapshot[]) {

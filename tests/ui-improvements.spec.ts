@@ -290,7 +290,7 @@ test('saving and removing a favourite persist without losing preferences', async
     await page.getByRole('button', { name: 'Remove saved stop', exact: true }).click()
     await page.reload()
     await expect(page.locator('.bookmark-card')).toHaveCount(0)
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'green')
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'blue')
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
 })
 

@@ -164,8 +164,16 @@ for (const [name, engine] of [
         const manifest = await page.evaluate(async () =>
             (await fetch('/manifest.webmanifest')).json(),
         )
-        if (manifest.display !== 'standalone' || overflow || errors.length)
-            throw new Error(JSON.stringify({ manifest, overflow, errors }))
+        const theme = await page.locator('html').getAttribute('data-theme')
+        if (
+            manifest.display !== 'standalone' ||
+            manifest.theme_color !== '#f6f8fc' ||
+            manifest.background_color !== '#f6f8fc' ||
+            theme !== 'blue' ||
+            overflow ||
+            errors.length
+        )
+            throw new Error(JSON.stringify({ manifest, theme, overflow, errors }))
         await page.screenshot({
             path: `artifacts/offline-${name.toLowerCase()}.png`,
             fullPage: true,
@@ -180,6 +188,7 @@ for (const [name, engine] of [
             bookmarkPersistence: 'passed',
             cachedRouteSearch: 'passed',
             standaloneManifest: 'passed',
+            blueDefaultAndManifest: 'passed',
             errors,
         })
         console.log(name, 'offline app reload, bookmarks, route search, manifest: PASS')

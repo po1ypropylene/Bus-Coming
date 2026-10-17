@@ -367,7 +367,7 @@ test('theme colours persist, support both appearances and survive backup import'
 }) => {
     await seed(page)
     await page.getByRole('button', { name: 'Settings', exact: true }).click()
-    await expect(page.getByRole('radio', { name: 'Green', exact: true })).toBeChecked()
+    await expect(page.getByRole('radio', { name: 'Blue', exact: true })).toBeChecked()
     const colours = new Set<string>()
     for (const scheme of ['light', 'dark'] as const) {
         await page.emulateMedia({ colorScheme: scheme })

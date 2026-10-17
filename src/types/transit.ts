@@ -1,5 +1,6 @@
 export const THEMES = ['green', 'blue', 'yellow', 'red', 'purple'] as const
 export type Theme = (typeof THEMES)[number]
+export const DEFAULT_THEME: Theme = 'blue'
 
 export type Lang = 'en' | 'tc'
 export type Provider = 'KMB' | 'CTB' | 'NLB'

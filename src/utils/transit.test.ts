@@ -114,9 +114,9 @@ describe('user data protection', () => {
 })
 
 describe('theme preference migration', () => {
-    it('defaults older backups to green without changing bookmarks or language', () => {
+    it('defaults older backups to blue without changing bookmarks or language', () => {
         const data = validateUserData({ version: 1, language: 'tc', bookmarks: [bookmark] })
-        expect(data.theme).toBe('green')
+        expect(data.theme).toBe('blue')
         expect(data.language).toBe('tc')
         expect(data.bookmarks).toEqual([bookmark])
     })

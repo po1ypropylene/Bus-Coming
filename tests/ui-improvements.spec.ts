@@ -19,15 +19,50 @@ test('keypad follows matching routes and leaves four rows visible at 390×844', 
     await page.getByRole('button', { name: 'A', exact: true }).click()
     await expect(page.locator('.route-row')).toHaveCount(1)
     await expect(page.locator('.letter-keys')).toHaveCount(0)
-    const numberPad = await page.locator('.number-keys').boundingBox()
-    const keypad = await page.locator('.keypad').boundingBox()
-    expect(keypad!.width - numberPad!.width).toBeLessThan(24)
     await page.getByRole('button', { name: 'Delete last character', exact: true }).click()
     await expect(page.getByRole('textbox')).toHaveValue('1')
     await expect(page.locator('.letter-keys button')).toHaveText(['A', 'B', 'X'])
     await page.locator('.keypad').getByRole('button', { name: 'Clear', exact: true }).click()
     await expect(page.getByRole('textbox')).toHaveValue('')
     await expect(page.getByRole('button', { name: 'N', exact: true })).toBeEnabled()
+})
+
+test('number and action keys stay in place when filtered letters disappear and return', async ({
+    page,
+}) => {
+    await seed(page, 2, { route, stop }, numbers)
+    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    const keyBounds = () =>
+        page.locator('.number-keys button').evaluateAll((keys) =>
+            keys.map((key) => {
+                const { x, y, width, height } = key.getBoundingClientRect()
+                return { x, y, width, height }
+            }),
+        )
+
+    for (const viewport of [
+        { width: 320, height: 568 },
+        { width: 390, height: 844 },
+        { width: 440, height: 956 },
+        { width: 1280, height: 900 },
+    ]) {
+        await page.setViewportSize(viewport)
+        await page.getByRole('button', { name: '1', exact: true }).click()
+        await expect(page.locator('.letter-keys button')).toHaveText(['A', 'B', 'X'])
+        const before = await keyBounds()
+
+        await page.getByRole('button', { name: 'A', exact: true }).click()
+        await expect(page.locator('.letter-keys')).toHaveCount(0)
+        await expect.poll(keyBounds).toEqual(before)
+
+        await page.getByRole('button', { name: 'Delete last character', exact: true }).click()
+        await expect(page.locator('.letter-keys button')).toHaveText(['A', 'B', 'X'])
+        await expect.poll(keyBounds).toEqual(before)
+
+        await page.locator('.keypad').getByRole('button', { name: 'Clear', exact: true }).click()
+        await expect(page.getByRole('button', { name: 'N', exact: true })).toBeEnabled()
+        await expect.poll(keyBounds).toEqual(before)
+    }
 })
 
 test('last content clears navigation on each tab and details at requested widths', async ({

@@ -2312,9 +2312,3 @@ progress {
         margin-block: 2px;
     }
 }
-
-@media (max-width: 700px) {
-    .route-search-shell .keypad.numbers-only {
-        grid-template-columns: minmax(0, 1fr);
-    }
-}

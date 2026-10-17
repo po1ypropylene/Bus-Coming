@@ -13,7 +13,7 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 | Home Screen app          | Standalone manifest, install icons, safe areas, production offline shell and user-controlled app updates                                                 |
 | Saved                    | Stop arrival cards, arbitrary named groups, edit/remove and persistent up/down ordering; filtering a group leaves other bookmarks in place               |
 | Routes                   | Offline substring search with exact matches first, operator filters, paginated results and direction-specific stop lists                                 |
-| Keypad                   | Catalogue-derived letters, hidden unavailable letters, stable disabled digits, clear/backspace and a show/hide control                                   |
+| Keypad                   | Catalogue-derived letters, reserved space for hidden letters, fixed number/action key positions, disabled invalid digits, clear/backspace and show/hide  |
 | Direction switch         | Opens a uniquely matched opposite journey and clears expanded stops; preserves provider/service identities and handles NLB's separate route IDs          |
 | Nearby                   | User-triggered location, permission/error state, accuracy and up to 40 closest stops within 1 km; coordinates remain on device                           |
 | Settings                 | Language/theme, provider and TD download status/timestamps, manual refresh, backup export/import, installation and app-update controls                   |
@@ -67,14 +67,18 @@ no longer exists shows unavailable and asks the user to save it again. App updat
   and preference preservation. Publisher fixture tests exercise normalization, hashes, headers, previous-generation
   retention and failed-publication safety.
 
-Cleanup validation on 17 October 2026 passed build, lint, formatting, 67 unit tests/toolchain probes and 51 browser
-cases, with one intentional WebKit skip for Chromium-only Lighthouse. Local Markdown links and both audit scripts'
-output paths passed checks using mocked API responses in fresh temporary directories. Lighthouse scored 100 on
-all five screens in both languages in green/light appearance; all-theme axe checks passed in both engines. The required
-formatter also normalized 17 existing source/config/test files; those changes were verified as formatting only.
-Production offline smoke checks were last recorded earlier that day and were not repeated for this cleanup, which
-changes no persistence, startup or service-worker behavior. These are local fixture/emulation results, not live
-operator, deployment, physical iPhone or VoiceOver verification. Generated reports/screenshots were removed after review.
+Keypad layout validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes and
+53 browser cases, with one intentional WebKit skip for Chromium-only Lighthouse. The position regression compares
+all number/action key bounds before letters disappear, after backspace restores them and after clearing the query,
+at 320×568, 390×844, 440×956 and 1280×900 in both Chromium and WebKit. Lighthouse scored 100 on all five screens in
+both languages in green/light appearance; all-theme axe checks passed in both engines. Production offline smoke
+checks were not repeated because this change affects no persistence, startup or service-worker behavior. These are
+local fixture/emulation results, not live operator, deployment, physical iPhone or VoiceOver verification.
+
+WebStorm formatting setup was also verified on 17 October 2026: Reformat Code followed by Save left the keypad TSX
+and application CSS byte-for-byte unchanged; Reindent followed by Save also preserved the TSX file. Project Prettier
+handles reformat/save, and EditorConfig sets four-space continuation indentation. Build, lint, formatting, 67 unit
+tests and toolchain probes passed again. Browser/offline checks were not repeated for these editor-only settings.
 
 Historical live checks are summarized in [API research](API-RESEARCH.md): initial operator/CORS and full catalogue
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on

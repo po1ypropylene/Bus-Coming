@@ -17,7 +17,7 @@ export function RouteKeypad({
 }) {
     const visibleLetters = letters.filter((letter) => availableKeys.has(letter))
     return (
-        <div className={`keypad ${visibleLetters.length ? '' : 'numbers-only'}`}>
+        <div className="keypad">
             <div className="number-keys">
                 {['1', '2', '3', '4', '5', '6', '7', '8', '9', 'clear', '0', 'delete'].map(
                     (key) => (

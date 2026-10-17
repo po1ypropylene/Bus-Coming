@@ -12,8 +12,9 @@ The source convention is **four spaces**, not tab characters, with single quotes
 
 - `.prettierrc.json` is the canonical formatter configuration.
 - `eslint.config.js` includes `eslint-plugin-prettier/recommended` last: formatting differences fail lint and conflicting ESLint style rules are disabled by `eslint-config-prettier`.
-- `.editorconfig` supplies four-space indentation, UTF-8, LF and final newlines to WebStorm and other editors. Markdown retains intentional trailing spaces.
-- In WebStorm, enable EditorConfig support; under **Languages & Frameworks → JavaScript → Prettier**, select this project's installed Prettier and enable **Run on save** and **Run on Reformat Code**. Use automatic ESLint configuration. If editor defaults differ, the checked-in configuration wins.
+- `.editorconfig` supplies four-space indentation and tab width, four-space JetBrains continuation indentation, a 100-column target, UTF-8, LF and final newlines. Markdown retains intentional trailing spaces.
+- In WebStorm, enable EditorConfig support. Under **Languages & Frameworks → JavaScript → Prettier**, use **Manual Prettier configuration** with this project's `node_modules/prettier`. Enable **Run on save**, **Run on 'Reformat Code' action** and **Prefer Prettier configuration to IDE code style**. Set **Run for files** to `**/*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,json,jsonc,css,scss,less,html,md,mdx,yml,yaml,vue,astro}` so stylesheets and documentation use the same formatter as the CLI. Keep automatic `.prettierignore` detection and leave formatting outside the dependency scope disabled. These local settings live in ignored `.idea/` files.
+- Oxlint checks code quality; Prettier owns whitespace and wrapping, with ESLint enforcing Prettier plus the remaining React/core rules. Keep automatic ESLint configuration. WebStorm's **Reindent** uses its native indentation engine; save afterward to apply Prettier's complete layout, especially nested ternaries and JSX. Prefer **Reformat Code** for canonical whole-file formatting. See [WebStorm's Prettier integration](https://www.jetbrains.com/help/webstorm/prettier.html).
 - `npm run format` normalizes tracked project text; `npm run format:check` checks it without editing. `npm run lint` checks code quality and JS/TS formatting. Generated assets, build output, test screenshots and dependency files are excluded where appropriate.
 
 ## Module ownership
@@ -181,7 +182,8 @@ it deliberately skips WebKit because Lighthouse uses Chrome's protocol. These to
 
 `validNextCharacters` follows the existing substring search semantics (including repeated matches) against the current
 operator's loaded results. `useRouteSearch` memoises its result. Unavailable letters are omitted; the letter section
-collapses when empty and the number pad fills its width. Digits retain stable positions and use native `disabled`
+is omitted when empty, but its mobile grid column stays reserved so the number and action keys keep the same
+positions and sizes as letters disappear or return. Digits use native `disabled`
 and `aria-disabled`; clear/backspace remain available. New catalogue entries automatically update available keys.
 Mobile keypad rows are 48px (44px on short screens); the labelled keyboard icon toggles visibility beside the input.
 

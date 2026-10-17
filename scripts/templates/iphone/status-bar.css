@@ -1,0 +1,42 @@
+.status-bar {
+    position: absolute;
+    z-index: 72;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    height: 54px;
+    padding: 10px 34px 0 36px;
+    background: transparent;
+    color: #050505;
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    pointer-events: none;
+}
+
+.status-time {
+    justify-self: start;
+    min-width: 58px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.status-indicators {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+}
+
+.status-indicator-svg {
+    display: block;
+}
+
+.status-indicator-svg[data-platform='ios'] {
+    width: 79px;
+    height: 13px;
+}

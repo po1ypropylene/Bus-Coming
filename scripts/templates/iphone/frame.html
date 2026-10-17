@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            {{STATUS_CSS}}
+            * { box-sizing: border-box; }
+            body { margin: 0; width: 511px; height: 968px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+            .phone { position: relative; width: 511px; height: 968px; }
+            .screen { position: absolute; left: 59px; top: 58px; width: 393px; height: 852px; border-radius: 42px; overflow: hidden; }
+            .capture { display: block; width: 393px; height: 852px; }
+            .bezel { position: absolute; inset: 0; width: 511px; height: 968px; pointer-events: none; }
+            .status-bar { color: {{INK}}; }
+            .status-indicator-svg { filter: {{FILTER}}; }
+            .home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 140px; height: 5px; border-radius: 100px; background: {{INK}}; }
+        </style>
+    </head>
+    <body>
+        <div class="phone">
+            <div class="screen">
+                <img class="capture" src="{{CAPTURE}}" alt="Bus Coming" />
+                <div class="status-bar">
+                    <span class="status-time">{{TIME}}</span>
+                    <div class="status-indicators">
+                        <img
+                            class="status-indicator-svg"
+                            data-platform="ios"
+                            src="{{STATUS}}"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <div class="home"></div>
+            </div>
+            <img class="bezel" src="{{BEZEL}}" alt="" />
+        </div>
+    </body>
+</html>

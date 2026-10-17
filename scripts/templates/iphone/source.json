@@ -1,0 +1,24 @@
+{
+    "repository": "https://github.com/openai/plugins",
+    "revision": "0722921d5542fc593105c27bd52630babd8b8c2a",
+    "sourceDirectory": "plugins/product-design/templates/mobile-app",
+    "files": {
+        "bezel.png": "public/assets/iphone/Bezel.png",
+        "ios-status-icons.svg": "public/assets/status/ios-status-icons.svg",
+        "status-bar.css": "src/styles.css (.status-bar, .status-time and iOS indicator rules)"
+    },
+    "geometry": {
+        "device": {
+            "width": 511,
+            "height": 968
+        },
+        "screen": {
+            "x": 59,
+            "y": 58,
+            "width": 393,
+            "height": 852,
+            "radius": 42
+        }
+    },
+    "adaptation": "Standalone screenshot composition; original bezel and status SVG unchanged. Status foreground follows appearance; clock retains the fixture capture time. App capture supplies safe-area padding."
+}

@@ -34,6 +34,18 @@ body {
     border-bottom-color: var(--glass-edge);
 }
 
+/* Fill the viewport gutters and the route-search top safe area with the same colour. */
+.app-header::before {
+    content: '';
+    position: absolute;
+    inset: calc(-1 * env(safe-area-inset-top)) 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background: var(--bg);
+    box-shadow: 0 0 0 100vmax var(--bg);
+    clip-path: inset(0 -100vmax);
+}
+
 .tab-bar {
     border-color: var(--glass-edge);
     border-radius: 38px;
@@ -204,15 +216,10 @@ body {
 
 /* Limit composited blur to floating chrome and the single modal sheet. */
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .app-header,
     .tab-bar,
     .save-dialog {
         -webkit-backdrop-filter: blur(24px) saturate(1.35);
         backdrop-filter: blur(24px) saturate(1.35);
-    }
-
-    .app-header {
-        background: color-mix(in srgb, var(--bg) 92%, transparent);
     }
 
     .tab-bar,

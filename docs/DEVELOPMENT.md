@@ -63,7 +63,9 @@ highlighted cards and controls, and a frosted save sheet. Neutral highlight toke
 fills, edges and shadows derive from the selected theme. Route plates retain separate KMB, Citybus and NLB
 colour tokens in both appearances.
 
-Only the header, floating tab bar and modal use backdrop blur; repeated cards and route plates use gradients
+The header uses an opaque theme background extended across the viewport gutters and top safe area,
+including the mobile route-search shell, so the body gradient cannot form a lighter side strip.
+Only the floating tab bar and modal use backdrop blur; repeated cards and route plates use gradients
 and inset highlights to avoid a composited filter for every row. Supported browsers enhance opaque defaults
 with translucent fills. Reduced transparency or increased contrast restores opaque chrome and flat plates;
 forced colours retains outlined selection, and reduced motion disables the existing press scale. Preserve

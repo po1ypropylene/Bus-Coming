@@ -70,6 +70,8 @@ no longer exists shows unavailable and asks the user to save it again. App updat
   `tests/fixtures.ts` supplies deterministic browser data. Fixtures are test inputs, not current live data.
 - Chromium desktop and 440×956 mobile WebKit cover search, ETA, groups/order, reloads, imports, simulated GPS, progressive
   Citybus loading, migrations, failed refresh retention, joint routes, direction switches and both languages.
+- Header pixel checks cover uniform light/dark backgrounds across both viewport gutters and a simulated
+  62px top safe area on Settings and Routes at 320px, 440px and 1280px widths in both browser engines.
 - UI checks cover compact cards/due labels, polling pauses/resume, health/retry states, keypad availability, narrow
   layouts, all-theme axe checks and token contrast. Lighthouse accessibility runs only in Chromium.
 - Production offline and update smoke scripts separately exercise cached reload, bookmarks/search, update activation

@@ -86,14 +86,14 @@ for (const joint of [false, true]) {
         )
         await page.goto('/')
         await page.locator('.bookmark-route').click()
-        await expect(page.locator('.route-heading h1')).toHaveText(initial.destination.en)
+        await expect(page.locator('.route-heading h1')).toHaveText(`To ${initial.destination.en}`)
         await page
             .getByRole('button', {
                 name: `Switch direction: ${reverse.destination.en}`,
                 exact: true,
             })
             .click()
-        await expect(page.locator('.route-heading h1')).toHaveText(reverse.destination.en)
+        await expect(page.locator('.route-heading h1')).toHaveText(`To ${reverse.destination.en}`)
         await expect(page.locator('.stop-row.expanded')).toHaveCount(0)
         await expect(page.locator('.route-heading .eyebrow')).toHaveText(
             joint ? 'KMB / LWB + Citybus · Joint route' : 'Citybus',
@@ -111,8 +111,9 @@ for (const joint of [false, true]) {
                 exact: true,
             })
             .click()
-        await expect(page.locator('.route-heading h1')).toHaveText(initial.destination.en)
+        await expect(page.locator('.route-heading h1')).toHaveText(`To ${initial.destination.en}`)
         await page.getByRole('button', { name: 'Language', exact: true }).click()
+        await expect(page.locator('.route-heading h1')).toHaveText(`往 ${initial.destination.tc}`)
         await expect(
             page.getByRole('button', { name: `切換方向: ${reverse.destination.tc}`, exact: true }),
         ).toBeVisible()

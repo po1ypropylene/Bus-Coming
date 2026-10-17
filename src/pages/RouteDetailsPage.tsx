@@ -48,7 +48,9 @@ function RouteDetails({ route }: { route: Route }) {
                 <RouteBadge route={currentRoute} />
                 <div className="route-heading-copy">
                     <p className="eyebrow">{routeCompany(currentRoute, tc)}</p>
-                    <h1>{currentRoute.destination[lang]}</h1>
+                    <h1>
+                        {t.toward} {currentRoute.destination[lang]}
+                    </h1>
                     <p>
                         {t.from} {currentRoute.origin[lang]}
                     </p>

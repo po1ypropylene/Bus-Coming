@@ -25,6 +25,7 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 
 ## Arrival correctness and presentation
 
+- Route details prefix the destination heading with **To / 往** in the selected language.
 - All panels sort supplied predictions chronologically before taking the first three. Equal-time departures remain
   distinct; untimed operator messages follow timed predictions.
 - Intervals up to one minute, including negative estimates, display full-size **Due / 就到**. Operator refreshes
@@ -84,6 +85,11 @@ Historical live checks are summarized in [API research](API-RESEARCH.md): initia
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on
 16 October. The 720 check did not reproduce the reported morning bypass service. One-off JSON reports and screenshots
 are disposable; rerun the documented scripts when fresh evidence is required.
+
+Destination heading validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes
+and four direction-switch browser cases in Chromium and mobile WebKit, checking **To / 往** in both languages.
+These were local fixture/emulation checks; no live API or physical iPhone validation was performed. Offline smoke
+was not repeated for this text-only change.
 
 ## Known limits and remaining manual checks
 

@@ -193,7 +193,7 @@ export function SettingsPage() {
                     >
                         DATA.GOV.HK <ArrowUpRight size={14} />
                     </a>
-                    <p>Bus Coming · v1.0</p>
+                    <p>Bus Coming · v{__APP_VERSION__}</p>
                 </div>
             </aside>
         </div>

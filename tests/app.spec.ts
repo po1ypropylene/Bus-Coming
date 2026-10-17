@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { openStop, route, seed, stop } from './fixtures'
 
@@ -725,4 +726,13 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     ).toBe(true)
+})
+
+test('Settings footer uses the package version in both languages', async ({ page }) => {
+    const { version } = JSON.parse(readFileSync('package.json', 'utf8'))
+    await seed(page)
+    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await expect(page.locator('.about')).toContainText(`Bus Coming · v${version}`)
+    await page.getByRole('button', { name: 'Language', exact: true }).click()
+    await expect(page.locator('.about')).toContainText(`Bus Coming · v${version}`)
 })

@@ -48,6 +48,15 @@ are unchanged.
   an explicit placeholder and original sequence, without entering GPS results. Missing/null ETAs show supplied remarks
   or an unavailable state.
 
+## App versions and updates
+
+`package.json` is the single app-version source. Settings displays the full Semantic Version, and production
+service-worker cache identities use the same value. Agents automatically advance patch/minor/major once per
+completed shipped change set according to compatibility; see [versioning rules](DEVELOPMENT.md#app-versions).
+The UI offers an update after the new worker has downloaded successfully, with activation and reload controlled
+by the user. Changes to bundled assets also trigger detection through precache hashes. Backup and database schema
+versions remain independent of app release numbers.
+
 ## Data preservation
 
 Bookmarks, language and theme are local to the browser/app, separate from replaceable route snapshots. Blue is the
@@ -98,6 +107,13 @@ WebStorm formatting setup was also verified on 17 October 2026: Reformat Code fo
 and application CSS byte-for-byte unchanged; Reindent followed by Save also preserved the TSX file. Project Prettier
 handles reformat/save, and EditorConfig sets four-space continuation indentation. Build, lint, formatting, 67 unit
 tests and toolchain probes passed again. Browser/offline checks were not repeated for these editor-only settings.
+
+Version-source validation on 17 October 2026 passed production build, lint, formatting, 72 unit tests, toolchain
+probes and 59 browser cases, with the intentional WebKit Lighthouse skip. The new browser check verifies the full
+package version in the Settings footer in both languages. Production offline and update smoke checks passed in
+Chromium and WebKit. The update smoke serves three simulated version-derived cache identities of the same built
+shell, verifying waiting-worker detection, explicit activation/reload, current-build status, resume detection and
+preference preservation. This is local browser evidence, not deployment or physical iPhone verification.
 
 Historical live checks are summarized in [API research](API-RESEARCH.md): initial operator/CORS and full catalogue
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on

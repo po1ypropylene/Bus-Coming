@@ -3,7 +3,11 @@ import { readFile } from 'node:fs/promises'
 import { createServer } from 'node:http'
 import { resolve, extname } from 'node:path'
 
-// Serve two releases of the production shell with different precache revisions.
+const { version } = JSON.parse(await readFile('package.json', 'utf8'))
+const cacheId = `bus-coming-v${version}`
+expect(await readFile('dist/sw.js', 'utf8')).toContain(cacheId)
+
+// Serve three simulated version/cache identities of the same production shell.
 // Does not change dist or touch a user's browser profile.
 for (const [name, engine] of [
     ['Chromium', chromium],
@@ -24,9 +28,7 @@ for (const [name, engine] of [
                 )
             if (file.endsWith('/sw.js'))
                 data = Buffer.from(
-                    data
-                        .toString()
-                        .replace(/(url:"index.html",revision:")[^"]+/, `$1test-release-${release}`),
+                    data.toString().replaceAll(cacheId, `${cacheId}-smoke-${release}`),
                 )
             res.writeHead(200, {
                 'Cache-Control': 'no-cache',
@@ -59,6 +61,7 @@ for (const [name, engine] of [
         )
         await page.reload()
         await page.getByRole('button', { name: 'Settings', exact: true }).click()
+        await expect(page.locator('.about')).toContainText(`Bus Coming · v${version}`)
         release = 2
         await page.getByRole('button', { name: 'Check for app updates', exact: true }).click()
         await expect(

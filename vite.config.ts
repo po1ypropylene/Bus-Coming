@@ -1,5 +1,11 @@
 import { defineConfig } from 'vite'
 import { readFileSync } from 'node:fs'
+const { version } = JSON.parse(
+    readFileSync(new URL('./package.json', import.meta.url), 'utf8'),
+) as {
+    version: string
+}
+
 const https =
     process.env.BUS_HTTPS_KEY && process.env.BUS_HTTPS_CERT
         ? {
@@ -10,6 +16,7 @@ const https =
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
+    define: { __APP_VERSION__: JSON.stringify(version) },
     plugins: [
         react(),
         VitePWA({
@@ -38,6 +45,7 @@ export default defineConfig({
                 ],
             },
             workbox: {
+                cacheId: `bus-coming-v${version}`,
                 globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
                 navigateFallback: '/index.html',
                 cleanupOutdatedCaches: true,

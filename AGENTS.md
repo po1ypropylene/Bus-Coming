@@ -18,3 +18,11 @@ Follow the existing four-space source convention observed in `src/types/transit.
 - Never invent live routes, stops, GPS positions or ETAs. Keep ETA direction, service and stop sequence filtering intact.
 - Add meaningful regression coverage for behavior and persistence changes. Run build, lint, formatting, unit and relevant browser checks. Run the production offline smoke check when changing persistence, startup, service workers or offline behavior.
 - Record actual verification and remaining limits; do not equate emulated WebKit with physical iPhone validation. Do not claim current live API checks based on older evidence.
+
+## App versioning
+
+- Automatically advance the app version once per completed change set that changes shipped app code, behavior, assets or dependencies. Do not bump for documentation/instruction-only edits, tests alone, formatting alone, or each intermediate edit/rebuild. An explicit user version instruction takes precedence.
+- Follow Semantic Versioning (`MAJOR.MINOR.PATCH`): patch for backward-compatible fixes, minor for backward-compatible features, and major for breaking changes. Reset lower components when increasing minor or major. Choose the highest level required by the complete change set; do not infer breaking changes from internal refactoring alone.
+- `package.json` → `version` is the single editable app-version source. Use `npm version patch --no-git-tag-version`, `npm version minor --no-git-tag-version` or `npm version major --no-git-tag-version` to update it and the generated `package-lock.json` metadata together, without creating a commit or tag. Do not hand-edit version literals in UI or service workers.
+- Vite injects `__APP_VERSION__` into the UI and derives the Workbox cache identity from that same value. The Settings footer displays the full version. The existing waiting-service-worker flow determines when a downloaded build is ready to apply; keep activation user-controlled and preserve stored user data. Never couple app versions to backup or IndexedDB schema versions.
+- Rebuild after advancing the version. Run the required checks, including `npm run test:offline` and `node scripts/update-smoke.mjs` when changing version/update wiring. A version bump does not authorize deployment.

@@ -25,6 +25,12 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 
 ## Arrival correctness and presentation
 
+The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, glossy operator-coloured
+route plates, softly highlighted cards, search/keypad controls and a frosted save sheet. It follows all five theme
+palettes and system light/dark appearance. Reduced-transparency and higher-contrast preferences use opaque surfaces;
+unsupported backdrop-filter browsers retain opaque defaults. Features, text, data contracts and navigation behavior
+are unchanged.
+
 - Route details prefix the destination heading with **To / 往** in the selected language.
 - All panels sort supplied predictions chronologically before taking the first three. Equal-time departures remain
   distinct; untimed operator messages follow timed predictions.
@@ -68,13 +74,17 @@ no longer exists shows unavailable and asks the user to save it again. App updat
   and preference preservation. Publisher fixture tests exercise normalization, hashes, headers, previous-generation
   retention and failed-publication safety.
 
-Keypad layout validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes and
-53 browser cases, with one intentional WebKit skip for Chromium-only Lighthouse. The position regression compares
-all number/action key bounds before letters disappear, after backspace restores them and after clearing the query,
-at 320×568, 390×844, 440×956 and 1280×900 in both Chromium and WebKit. Lighthouse scored 100 on all five screens in
-both languages in green/light appearance; all-theme axe checks passed in both engines. Production offline smoke
-checks were not repeated because this change affects no persistence, startup or service-worker behavior. These are
-local fixture/emulation results, not live operator, deployment, physical iPhone or VoiceOver verification.
+Liquid Glass styling validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes
+and 53 browser cases, with one intentional WebKit skip for Chromium-only Lighthouse. Existing regressions confirm
+unchanged keypad positions, navigation clearance, full-size due labels, bilingual headings, theme persistence,
+bookmarks and route/ETA behavior. Lighthouse scored 100 on all five screens in both languages in green/light
+appearance; all-theme axe and token-contrast checks passed in both engines. Desktop Chromium and mobile WebKit
+screenshots were reviewed in light/dark appearance. Additional checks exercised opaque higher-contrast chrome
+in both engines, and reduced transparency, forced-colour selection and keyboard navigation in Chromium.
+Screenshots and disposable verification scripts are in ignored `artifacts/liquid-glass/`.
+Production offline smoke checks were not repeated because no persistence, startup or service-worker behavior
+changed. These are local fixture/emulation results, not live operator, deployment, physical iPhone, GPU performance
+or VoiceOver verification.
 
 WebStorm formatting setup was also verified on 17 October 2026: Reformat Code followed by Save left the keypad TSX
 and application CSS byte-for-byte unchanged; Reindent followed by Save also preserved the TSX file. Project Prettier
@@ -85,11 +95,6 @@ Historical live checks are summarized in [API research](API-RESEARCH.md): initia
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on
 16 October. The 720 check did not reproduce the reported morning bypass service. One-off JSON reports and screenshots
 are disposable; rerun the documented scripts when fresh evidence is required.
-
-Destination heading validation on 17 October 2026 passed build, lint, formatting, 67 unit tests, toolchain probes
-and four direction-switch browser cases in Chromium and mobile WebKit, checking **To / 往** in both languages.
-These were local fixture/emulation checks; no live API or physical iPhone validation was performed. Offline smoke
-was not repeated for this text-only change.
 
 ## Known limits and remaining manual checks
 

@@ -692,18 +692,6 @@ h1 {
     font-weight: 750;
     letter-spacing: -0.5px;
     padding: 0 8px;
-    background: #f5e9e4;
-    color: #894d36;
-}
-
-.route-badge.ctb {
-    background: #f8f0d9;
-    color: #785a20;
-}
-
-.route-badge.nlb {
-    background: #e8effb;
-    color: #43638f;
 }
 
 .route-copy {
@@ -1858,21 +1846,6 @@ progress {
         background: #b9d4ba15;
     }
 
-    .route-badge {
-        background: #523b31;
-        color: #f0b99d;
-    }
-
-    .route-badge.ctb {
-        background: #494126;
-        color: #edcf80;
-    }
-
-    .route-badge.nlb {
-        background: #2c3e56;
-        color: #a9c8f1;
-    }
-
     .art-bus {
         background: var(--soft);
         color: var(--accent);
@@ -2146,17 +2119,6 @@ progress {
     }
 }
 
-/* Shared clearance and opaque navigation prevent text bleeding through the floating bar. */
-.tab-bar::before {
-    content: '';
-    position: absolute;
-    inset: -18px -1px -1px;
-    border-radius: inherit;
-    background: linear-gradient(to bottom, transparent, var(--bg) 20px);
-    z-index: -1;
-    pointer-events: none;
-}
-
 .brand small {
     display: none;
 }
@@ -2222,10 +2184,6 @@ progress {
 }
 
 @media (max-width: 700px) {
-    .route-search-shell .tab-bar::before {
-        display: none;
-    }
-
     .route-search-shell .search-results {
         padding-bottom: 16px;
     }

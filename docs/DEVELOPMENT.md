@@ -55,6 +55,22 @@ Settings offers Green (default), Blue, Yellow, Red and Purple through a native r
 
 To add a palette, add its identifier, both translated labels, both complete CSS token sets (including surface, border `--line`, secondary text `--muted` and shadow), and extend migration/browser tests. Check accent-to-surface contrast of at least 4.5:1, keyboard interaction, visible selection, mobile wrapping and dark appearance. Yellow deliberately uses a darker gold accent in light appearance for readable text. The install icon and manifest retain the app's fixed green brand; the running app's browser chrome follows the selected palette where the browser supports it.
 
+### Glass presentation
+
+`src/styles/glass.css` loads after the base, component and theme styles. It adds a CSS Liquid Glass-inspired
+finish without changing component state, layout ownership or data: a capsule tab bar, coloured route plates,
+highlighted cards and controls, and a frosted save sheet. Neutral highlight tokens adapt to system appearance;
+fills, edges and shadows derive from the selected theme. Route plates retain separate KMB, Citybus and NLB
+colour tokens in both appearances.
+
+Only the header, floating tab bar and modal use backdrop blur; repeated cards and route plates use gradients
+and inset highlights to avoid a composited filter for every row. Supported browsers enhance opaque defaults
+with translucent fills. Reduced transparency or increased contrast restores opaque chrome and flat plates;
+forced colours retains outlined selection, and reduced motion disables the existing press scale. Preserve
+navigation clearance, mobile search grid geometry, focus rings and touch targets when refining the finish.
+The visual reference is [FreeFrontend's Liquid Glass collection](https://freefrontend.com/css-liquid-glass/);
+the implementation uses native CSS without external assets, SVG distortion filters or animation libraries.
+
 ## Verification and release workflow
 
 The direct `typescript` dependency is TypeScript 7.0.2; `npx tsc --version` should report `7.0.2`.

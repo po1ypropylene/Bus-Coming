@@ -1,0 +1,270 @@
+/* Presentation only: retain component geometry, hit targets and semantic colours. */
+:root {
+    --glass-glint: rgb(255 255 255 / 78%);
+    --glass-sheen: rgb(255 255 255 / 38%);
+    --glass-edge: color-mix(in srgb, var(--accent) 14%, var(--surface));
+    --glass-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 7%, transparent);
+    --glass-rim:
+        inset 0 1px 0 var(--glass-glint),
+        inset 1px 0 0 color-mix(in srgb, var(--glass-glint) 45%, transparent),
+        inset 0 -1px 0 color-mix(in srgb, var(--accent) 9%, transparent);
+    --glass-wash: linear-gradient(145deg, var(--glass-sheen), transparent 48%);
+    --glass-panel: linear-gradient(155deg, var(--surface), var(--bg));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --glass-glint: rgb(255 255 255 / 20%);
+        --glass-sheen: rgb(255 255 255 / 5%);
+        --glass-edge: color-mix(in srgb, var(--accent) 20%, var(--surface));
+        --glass-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+    }
+}
+
+body {
+    min-height: 100dvh;
+    background:
+        radial-gradient(ellipse at 8% 0, var(--soft), transparent 55%),
+        radial-gradient(ellipse at 100% 75%, var(--soft), transparent 50%), var(--bg);
+}
+
+/* Opaque defaults also serve browsers without backdrop filtering. */
+.app-header {
+    background: var(--bg);
+    border-bottom-color: var(--glass-edge);
+}
+
+.tab-bar {
+    border-color: var(--glass-edge);
+    border-radius: 38px;
+    background: var(--glass-wash), var(--surface);
+    box-shadow:
+        var(--glass-rim),
+        0 12px 36px color-mix(in srgb, var(--ink) 14%, transparent),
+        0 2px 5px color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.tab {
+    border-radius: 30px;
+}
+
+.tab.active {
+    background: var(--glass-wash), var(--soft);
+    box-shadow:
+        var(--glass-rim),
+        0 2px 8px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.list-card,
+.bookmark-card,
+.empty-saved,
+.download-card,
+.location-card,
+.stop-list {
+    background: var(--glass-panel);
+    border-color: var(--glass-edge);
+    box-shadow: var(--glass-rim), var(--glass-shadow);
+}
+
+.nearby-promo,
+.install-card {
+    background: var(--glass-wash), linear-gradient(135deg, var(--soft), var(--bg));
+    box-shadow: var(--glass-rim), var(--glass-shadow);
+}
+
+.search-box,
+.language-toggle,
+.add-button,
+.chip:not(.active),
+.save-dialog input {
+    background: var(--glass-wash), var(--surface);
+    border-color: var(--glass-edge);
+    box-shadow:
+        var(--glass-rim),
+        0 3px 10px color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.search-box {
+    border-radius: 22px;
+}
+
+.operator-tabs,
+.keypad {
+    background: var(--glass-wash), color-mix(in srgb, var(--soft) 70%, var(--bg));
+    box-shadow: var(--glass-rim);
+}
+
+.operator-tabs {
+    border-radius: 17px;
+}
+
+.operator-tabs button {
+    border-radius: 14px;
+}
+
+.operator-tabs button.selected,
+.number-keys button:not(.key-action),
+.letter-keys button {
+    background: var(--glass-wash), var(--surface);
+    box-shadow:
+        var(--glass-rim),
+        0 2px 4px color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.primary,
+.secondary {
+    border-radius: 24px;
+    box-shadow:
+        var(--glass-rim),
+        0 3px 8px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.secondary,
+.arrival-panel,
+.round-icon,
+.near-pin,
+.stop-sequence {
+    background: var(--glass-wash), var(--soft);
+    box-shadow: var(--glass-rim);
+}
+
+.brand-icon,
+.theme-swatch,
+.chip.active {
+    box-shadow: var(--glass-rim);
+}
+
+/* Coloured optical plates: opaque ink and a soft bevel, with no per-row blur. */
+.route-badge {
+    --plate-fill: #f5e9e4;
+    --plate-ink: #894d36;
+    color: var(--plate-ink);
+    background:
+        linear-gradient(145deg, var(--glass-glint), transparent 52%),
+        linear-gradient(
+            170deg,
+            transparent 55%,
+            color-mix(in srgb, var(--plate-ink) 9%, transparent)
+        ),
+        var(--plate-fill);
+    border: 1px solid color-mix(in srgb, var(--plate-ink) 18%, var(--plate-fill));
+    box-shadow:
+        var(--glass-rim),
+        inset -1px 0 0 var(--glass-sheen),
+        0 3px 8px color-mix(in srgb, var(--plate-ink) 12%, transparent);
+}
+
+.route-badge.ctb {
+    --plate-fill: #f8f0d9;
+    --plate-ink: #785a20;
+}
+
+.route-badge.nlb {
+    --plate-fill: #e8effb;
+    --plate-ink: #43638f;
+}
+
+@media (prefers-color-scheme: dark) {
+    .route-badge {
+        --plate-fill: #523b31;
+        --plate-ink: #f0b99d;
+    }
+
+    .route-badge.ctb {
+        --plate-fill: #494126;
+        --plate-ink: #edcf80;
+    }
+
+    .route-badge.nlb {
+        --plate-fill: #2c3e56;
+        --plate-ink: #a9c8f1;
+    }
+}
+
+.save-dialog {
+    border-radius: 30px;
+    border-color: var(--glass-edge);
+    background: var(--glass-wash), var(--surface);
+    box-shadow:
+        var(--glass-rim),
+        0 24px 80px rgb(0 0 0 / 22%);
+}
+
+.save-dialog::backdrop {
+    background: rgb(12 18 24 / 32%);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.toast {
+    border-radius: 26px;
+    box-shadow:
+        var(--glass-rim),
+        0 8px 28px rgb(0 0 0 / 18%);
+}
+
+/* Limit composited blur to floating chrome and the single modal sheet. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .app-header,
+    .tab-bar,
+    .save-dialog {
+        -webkit-backdrop-filter: blur(24px) saturate(1.35);
+        backdrop-filter: blur(24px) saturate(1.35);
+    }
+
+    .app-header {
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+    }
+
+    .tab-bar,
+    .save-dialog {
+        background: var(--glass-wash), color-mix(in srgb, var(--surface) 88%, transparent);
+    }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    :root {
+        --glass-wash: linear-gradient(transparent, transparent);
+        --glass-panel: linear-gradient(var(--surface), var(--surface));
+        --glass-edge: var(--muted);
+    }
+
+    .app-header,
+    .tab-bar,
+    .save-dialog,
+    .save-dialog::backdrop {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .app-header {
+        background: var(--bg);
+    }
+
+    .tab-bar,
+    .save-dialog {
+        background: var(--surface);
+    }
+
+    .route-badge {
+        background: var(--plate-fill);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button:active:not(:disabled) {
+        transform: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .tab.active,
+    .operator-tabs button.selected,
+    .chip.active {
+        outline: 2px solid Highlight;
+        outline-offset: -3px;
+    }
+
+    .route-badge {
+        border-color: CanvasText;
+    }
+}

@@ -91,6 +91,9 @@ are disposable; rerun the documented scripts when fresh evidence is required.
   export/import is the recovery path. Safari and Home Screen storage may differ.
 - **Live service:** ETA needs a connection and depends on operator availability and accuracy. Every individual
   route/service variant has not been exhaustively validated.
+- **Citybus live/scheduled labels:** the public API has no documented classification field. The 17 October
+  2X/720 audit returned empty remarks at origins and intermediate stops. Citybus's own site displays richer
+  status, but its separate website service is not integrated. See [the audit](API-RESEARCH.md#citybus-departure-classification-audit--17-october-2026).
 - **Joint routes:** event services absent from TD stay separate. Special variants, repeated/ambiguous stops and
   insufficient overlap are not guessed; some journeys wait for full stop data. See [matching limits](JOINT-ROUTES.md).
 - **Scope:** Nearby uses straight-line distances. Maps, walking directions, journey planning, fares and push

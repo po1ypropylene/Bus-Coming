@@ -139,6 +139,11 @@ or differing remarks use stacked rows so service descriptions remain readable on
 compact countdown layout. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
 Do not infer a bypass itinerary from the route number, clock time or catalogue destination.
 
+Live/scheduled departure labels must come from explicit operator data. Never approximate this status
+from stop position, rounded timestamps, empty remarks or changes between refreshes. If no reliable
+public source supplies it, leave the departure unclassified. See the Citybus 2X/720 investigation in
+`API-RESEARCH.md`; the absence of a status must not be interpreted as live GPS tracking.
+
 ## Route direction switching
 
 `utils/routeDirection.ts` chooses the opposite journey from the full `byRoute` index, which includes hidden Citybus

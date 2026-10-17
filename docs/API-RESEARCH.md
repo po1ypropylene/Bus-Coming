@@ -163,3 +163,57 @@ client fetch, not a claim about the operator's source-data generation time. Abso
 The inclusive one-minute due label is now **Due / 就到**, following the user's requested full-size, shorter Chinese
 label.
 Direction/service/stop filtering and joint-provider aggregation are unchanged.
+
+## Citybus departure classification audit — 17 October 2026
+
+Ran `node scripts/audit-citybus-route.mjs 2X` and `node scripts/audit-citybus-route.mjs 720`
+against the public API at approximately 11:28 HKT, covering both directions and every catalogue stop.
+All returned ETA rows had empty `rmk_en`, `rmk_tc` and `rmk_sc`; none included a live/scheduled flag.
+The July 2023 Citybus data dictionary, section 2.5 (rechecked on this date), documents no such flag.
+The adapter already preserves these remarks when supplied, using the same display path as KMB.
+
+- At outbound origin `003155`, 2X returned 11:32:00, 11:40:00 and 11:50:00; 720 returned
+  11:30:00, 11:45:00 and 12:00:00. All remarks were empty.
+- At intermediate outbound stop `001301`, 2X returned 11:28:20, 11:28:45 and 11:33:12;
+  at `001303`, 720 returned 11:29:38, 11:43:06 and 11:58:06. All remarks were also empty.
+- At 2X inbound origin `003415`, the response included 12:00:00, **12:02:32** and 12:14:00.
+  Thus even origin predictions are not necessarily rounded to a whole minute.
+- 720 again showed catalogue/ETA sequence differences. These observations do not change the existing
+  unique-stop matching rule or establish that all first catalogue stops are active departure origins.
+
+Citybus's [official app guide](https://www.citybus.com.hk/en/uploadedfiles/app_guide/en.html)
+explains that ETA initially uses timetable/historical journey time and subsequently incorporates vehicle
+position after departure. An intermediate-stop ETA can therefore still be timetable-based. Neither a
+blank remark, stop position nor timestamp seconds establishes a particular departure's GPS status.
+The guide describes additional vehicle-distance information in Citybus's own app; that information is
+absent from the public ETA contract and these captures.
+
+Raw responses are in ignored `artifacts/citybus-2x-audit.json` and `artifacts/citybus-720-audit.json`.
+These are dated observations of the public API, not a verification of Citybus's private app data source.
+
+The public route-search website was also inspected in a browser. Its 720 normal outbound journey at
+Grand Promenade displayed **Scheduled** for 11:45, 12:00 and 12:15 (displayed update time 11:30:10).
+This confirms the operator has richer information than the open-data response. Its downloaded `fb.php`
+JavaScript's `showeta()` first calls `checkCall.php?type=eta` through a CAPTCHA-check branch, then loads
+an HTML popup from `auto_c96d6235d5ee4b388e8db90a4aa5b7ab.php?l=...`. The active request does not pass
+route/stop identity, suggesting server-side session context. This is not an established replacement API
+for the static application; cross-origin integration and reliable departure matching remain unverified.
+
+Static REA analysis of the downloaded HTML/JavaScript is retained as Evidence
+`ev_f672b1a7c7299d46af712e6cc69846b385e95ce7edfe1e16e9ad68e47d46c7bd` (summary view
+`ev_3fc300bf4c277a4770b6cc4bc773d08ebc7fb822de19e540b02b8a61e883b432`). Coverage is partial;
+static analysis does not establish server behavior or native-app contracts. Source captures are ignored
+under `artifacts/citybus-site/`. No departure classification or alternative data adapter was implemented.
+
+A follow-up search of official public datasets also checked the Digital Policy Office's
+[batch stop-ETA dataset](https://data.gov.hk/en-data/dataset/hk-dpo-datagovhk1-transport-bus-route-list-and-eta-spcific-bus-stop).
+It aggregates the existing operator APIs. Its
+[data dictionary](https://static.data.gov.hk/opendata/eta/bus-route-list-and-eta-specific-stop-api-data-dictionary.pdf),
+page 11, explicitly marks `departed` and `noGPS` as **not applicable for CTB**. These fields therefore
+cannot supply the missing Citybus classification. This follow-up verified documentation, not a new live
+batch response. No suitable richer public source was established by the dataset, specification and
+website checks; this is a bounded finding, not proof that no other source exists.
+
+The user's decision is to require explicit source-backed status and never use approximate labels.
+Stop position, timestamp rounding and ETA movement must not be used as classification heuristics.
+Keep existing Citybus estimates and supplied remarks until a reliable source supports the distinction.

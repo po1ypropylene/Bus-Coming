@@ -1,6 +1,6 @@
 # Hong Kong bus API research
 
-Verified 20 September 2026. Starting catalogue: https://data.gov.hk/en-datasets/category/transport
+Initial catalogue checks: 20 September 2026, with later targeted observations dated below. These are historical, not current guarantees. Starting catalogue: https://data.gov.hk/en-datasets/category/transport
 
 ## Sources and scope
 
@@ -68,7 +68,7 @@ Live route crawl: **64 variants**. Letters: **A B H M N P R S X**.
 
 ## Custom keypad
 
-Observed union: **A B C D E F G H K M N O P R S T W X** (18 letters). No I, J, L, Q, U, V, Y or Z in the sampled catalogues. Digits 0–9 are always present. The UI derives letters again from downloaded route numbers, so new operator codes do not require a release. Before downloads finish, use this verified union as a fallback. A reproducible crawl script is included at `scripts/audit-apis.mjs`.
+Observed union: **A B C D E F G H K M N O P R S T W X** (18 letters). No I, J, L, Q, U, V, Y or Z in the sampled catalogues. Digits 0–9 are always present. The UI derives letters again from downloaded route numbers, so new operator codes do not require a release. Before downloads finish, use this verified union as a fallback. Run `npm run audit:apis` to reproduce the catalogue check; output goes to ignored `artifacts/api-audit.json`.
 
 ## Storage and refresh design
 
@@ -108,7 +108,7 @@ A targeted live audit around 03:28 HKT reproduced missing inbound ETAs. N8P's ca
 
 Citybus selection now verifies direction and the route/stop/company fields when supplied by its stop-specific endpoint. For a stop that appears exactly once in the selected direction's catalogue, its stop ID determines the visit, so a different ETA sequence does not discard valid rows. Repeated stops, incomplete stop lists and invalid selected sequences retain exact sequence matching. KMB retains its exact direction/service/sequence filter; NLB is unchanged. No N8P-specific offset is hardcoded. Repeated-visit Citybus sequence inconsistencies remain conservative (may show no ETA rather than the wrong visit).
 
-Evidence: `citybus-n8p-audit.json` contains timestamps, complete route/stop responses and ETA responses for both directions. Reproduce with `node scripts/audit-citybus-route.mjs N8P`; this reads public operator data and replaces that route's audit file. ETA timestamps are historical observations, not current predictions. No route-data reset or bookmark migration is necessary for the fix.
+The historical capture is summarized above; unique/repeated-visit regression cases remain in `src/utils/transit.test.ts`. Reproduce with `node scripts/audit-citybus-route.mjs N8P`; this reads public operator data and writes timestamps, route/stop responses and ETA responses to ignored `artifacts/citybus-n8p-audit.json`. No route-data reset or bookmark migration is necessary for the fix.
 
 ## Transport Department joint-route membership — 21 September 2026
 
@@ -146,7 +146,7 @@ the user's report, not a captured live morning response.
 
 Removed the shared display cutoff that rejected `eta <= now - 60000`. Negative ETA alone does not establish that a bus
 has passed the stop. The panel retains predictions until the operator replaces/removes them, displays intervals under
-one minute as **Due / 即將到站**, and keeps the existing stale/error warning if refresh fails. Direction, service and
+one minute as **Due / 就到**, and keeps the existing stale/error warning if refresh fails. Direction, service and
 stop-selection rules are unchanged. Past predictions can remain visible with that warning during a network failure.
 
 ## ETA presentation update — 17 October 2026

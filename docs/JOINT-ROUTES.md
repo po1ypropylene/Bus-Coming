@@ -1,6 +1,5 @@
 # Jointly operated routes
 
-Implemented 21 September 2026. The former manually maintained registry and its one-off evidence JSON have been removed.
 Joint membership comes from Transport Department open data; there is no route-number allowlist in the application.
 
 ## Official source
@@ -73,8 +72,8 @@ physical provider stop entries; opening either can show combined ETAs.
 
 `services/joint/arrivals.ts` requests each operator independently and combines successful predictions chronologically.
 Equal-time predictions are retained because they can represent different buses. Operator labels remain available on each
-prediction; null-ETA remarks sort after timed predictions. The UI keeps the existing three-prediction limit and minute
-refresh cadence.
+prediction; null-ETA remarks sort after timed predictions. The UI keeps the existing three-prediction limit and 30-second
+refresh cadence while the card is visible and the document is focused, visible and online.
 
 A failed request or unmatched stop shows a bilingual partial-data notice while retaining successful results. If all
 requests fail, the existing stale/unavailable behavior applies. Errors are retried on the normal ETA cadence or refresh

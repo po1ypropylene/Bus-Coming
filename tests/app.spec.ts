@@ -525,8 +525,8 @@ test('mobile route matches remain visible above the keypad while typing', async 
 })
 
 test('bookmarks reorder within groups, persist on reload and support keyboard and Chinese', async ({
-                                                                                                       page,
-                                                                                                   }) => {
+    page,
+}) => {
     await seed(page)
     await page.evaluate(
         ({ route, stop }) => {
@@ -580,8 +580,8 @@ test('bookmarks reorder within groups, persist on reload and support keyboard an
 })
 
 test('Citybus rush-hour ETA order is chronological in route details and saved bookmarks', async ({
-                                                                                                     page,
-                                                                                                 }) => {
+    page,
+}) => {
     // Reproduce the reported response ordering without relying on a live rush-hour window.
     const fixtureStop = {
         ...stop,
@@ -623,8 +623,8 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
 })
 
 test('Citybus imminent buses and mixed destinations survive in details and saved stops', async ({
-                                                                                                    page,
-                                                                                                }, testInfo) => {
+    page,
+}, testInfo) => {
     const fixtureNow = Date.now()
     await page.clock.install({ time: new Date(fixtureNow) })
     const fixtureStop = { ...stop, id: 'CTB:003156', code: '003156', provider: 'CTB' }

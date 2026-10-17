@@ -20,12 +20,12 @@ export function AppHeader() {
                 <span className={`connection ${online ? health : 'offline'}`}>
                     {online ? (
                         <>
-                            <i className={`live-dot ${health}`}/>
+                            <i className={`live-dot ${health}`} />
                             {health === 'live'
                                 ? t.live
                                 : health === 'stale'
-                                    ? t.etaStale
-                                    : t.etaWaiting}
+                                  ? t.etaStale
+                                  : t.etaWaiting}
                         </>
                     ) : (
                         <>

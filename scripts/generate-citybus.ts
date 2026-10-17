@@ -48,8 +48,8 @@ async function get(path: string): Promise<Payload> {
                         header && Number.isFinite(seconds)
                             ? seconds * 1000
                             : header
-                                ? Date.parse(header) - Date.now()
-                                : 0
+                              ? Date.parse(header) - Date.now()
+                              : 0
                     await new Promise((resolve) =>
                         setTimeout(
                             resolve,
@@ -75,11 +75,9 @@ async function get(path: string): Promise<Payload> {
 const { routes, stops } = await downloadCitybus(
     {
         get,
-        addTotal: () => {
-        },
+        addTotal: () => {},
     },
-    async () => {
-    },
+    async () => {},
 )
 const updatedAt = generation
 const snapshot = validateCitybusSnapshot(

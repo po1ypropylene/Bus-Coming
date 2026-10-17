@@ -49,23 +49,23 @@ export async function seed(page: Page, version = 2, fixture = { route, stop }, n
                             provider === route.provider
                                 ? provider === 'KMB'
                                     ? (numbers ?? [route.number, '2']).map((number) => ({
-                                        ...route,
-                                        number,
-                                        id: `KMB:${number}:O:1`,
-                                    }))
+                                          ...route,
+                                          number,
+                                          id: `KMB:${number}:O:1`,
+                                      }))
                                     : [route]
                                 : [],
                         stops: provider === route.provider ? { [stop.id]: stop } : {},
                         stopRoutes:
                             provider === route.provider
                                 ? {
-                                    [stop.id]: [
-                                        { routeId: route.id, seq: 1 },
-                                        ...(provider === 'KMB'
-                                            ? [{ routeId: 'KMB:2:O:1', seq: 1 }]
-                                            : []),
-                                    ],
-                                }
+                                      [stop.id]: [
+                                          { routeId: route.id, seq: 1 },
+                                          ...(provider === 'KMB'
+                                              ? [{ routeId: 'KMB:2:O:1', seq: 1 }]
+                                              : []),
+                                      ],
+                                  }
                                 : {},
                     })
                 tx.oncomplete = () => req.result.close()

@@ -3,25 +3,25 @@ import fixture from '../src/services/joint/fixtures/106.json' with { type: 'json
 
 for (const joint of [false, true]) {
     test(`direction switch preserves ${joint ? 'joint partners' : 'Citybus identity for shared 2X number'}`, async ({
-                                                                                                                        page,
-                                                                                                                        context,
-                                                                                                                    }) => {
+        page,
+        context,
+    }) => {
         const routes = fixture.routes.map((route) =>
             joint
                 ? route
                 : {
-                    ...route,
-                    number: '2X',
-                    id: route.id.replace('106', '2X'),
-                    origin:
-                        route.bound === 'O'
-                            ? { en: 'Sai Wan Ho (Grand Promenade)', tc: '西灣河（嘉亨灣）' }
-                            : { en: 'Exhibition Centre Station', tc: '會展站' },
-                    destination:
-                        route.bound === 'O'
-                            ? { en: 'Exhibition Centre Station', tc: '會展站' }
-                            : { en: 'Sai Wan Ho (Grand Promenade)', tc: '西灣河（嘉亨灣）' },
-                },
+                      ...route,
+                      number: '2X',
+                      id: route.id.replace('106', '2X'),
+                      origin:
+                          route.bound === 'O'
+                              ? { en: 'Sai Wan Ho (Grand Promenade)', tc: '西灣河（嘉亨灣）' }
+                              : { en: 'Exhibition Centre Station', tc: '會展站' },
+                      destination:
+                          route.bound === 'O'
+                              ? { en: 'Exhibition Centre Station', tc: '會展站' }
+                              : { en: 'Sai Wan Ho (Grand Promenade)', tc: '西灣河（嘉亨灣）' },
+                  },
         )
         const initial = routes.find((r) => r.provider === 'CTB' && r.bound === 'O')!
         const reverse = routes.find((r) => r.provider === 'CTB' && r.bound === 'I')!

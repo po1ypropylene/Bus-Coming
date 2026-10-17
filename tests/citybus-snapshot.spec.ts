@@ -2,9 +2,9 @@ import { createHash } from 'node:crypto'
 import { expect, test } from '@playwright/test'
 
 test('first launch downloads shared Citybus data and preserves it across offline reload', async ({
-                                                                                                     page,
-                                                                                                     context,
-                                                                                                 }) => {
+    page,
+    context,
+}) => {
     const updatedAt = Date.now()
     const stop = {
         id: 'CTB:001234',

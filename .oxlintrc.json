@@ -1,8 +1,6 @@
 {
     "$schema": "./node_modules/oxlint/configuration_schema.json",
-    "plugins": [
-        "typescript"
-    ],
+    "plugins": ["typescript"],
     "categories": {
         "correctness": "off"
     },
@@ -18,10 +16,7 @@
     ],
     "overrides": [
         {
-            "files": [
-                "**/*.ts",
-                "**/*.tsx"
-            ],
+            "files": ["**/*.ts", "**/*.tsx"],
             "env": {
                 "browser": true
             },
@@ -30,10 +25,7 @@
                 "no-async-promise-executor": "error",
                 "no-case-declarations": "error",
                 "no-compare-neg-zero": "error",
-                "no-cond-assign": [
-                    "error",
-                    "except-parens"
-                ],
+                "no-cond-assign": ["error", "except-parens"],
                 "no-constant-binary-expression": [
                     "error",
                     {
@@ -66,10 +58,7 @@
                 ],
                 "no-empty-static-block": "error",
                 "no-ex-assign": "error",
-                "no-extra-boolean-cast": [
-                    "error",
-                    {}
-                ],
+                "no-extra-boolean-cast": ["error", {}],
                 "no-fallthrough": [
                     "error",
                     {
@@ -83,10 +72,7 @@
                         "exceptions": []
                     }
                 ],
-                "no-invalid-regexp": [
-                    "error",
-                    {}
-                ],
+                "no-invalid-regexp": ["error", {}],
                 "no-irregular-whitespace": [
                     "error",
                     {

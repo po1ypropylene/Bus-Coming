@@ -7,7 +7,7 @@ No KV, R2, paid Worker plan or Cloudflare Cron Trigger is required.
 
 ## Set up publishing
 
-1. Commit/push this change to the GitHub repository's default branch. Scheduled workflows run from that branch.
+1. Push the publisher workflow to the GitHub repository's default branch. Scheduled workflows run from that branch.
 2. In Cloudflare, create a scoped API token with **Account → Workers Scripts → Edit**, restricted to the account that
    will host the data Worker. Copy the account ID from the dashboard. Do not put the token in source or chat.
 3. In GitHub **Settings → Secrets and variables → Actions**, add repository secrets `CLOUDFLARE_API_TOKEN` and
@@ -40,7 +40,7 @@ source timestamp: the client rejects snapshots at least seven days old and uses 
 
 ## Local generation and manual publication
 
-Use Node 22.12+ and `npm ci`. Run `npm run catalog:test` for isolated publisher fixture checks. Run
+Use the Node version in [setup](SETUP.md#run-locally) and run `npm ci`. Run `npm run catalog:test` for isolated publisher fixture checks. Run
 `npm run catalog:generate` to collect data into `.citybus-public/`. The generator bundles
 the app's existing Citybus normalizer with Vite, so route identity and stop normalization stay consistent. It limits
 concurrency to four and retries with backoff/Retry-After handling. Successful raw responses are saved in

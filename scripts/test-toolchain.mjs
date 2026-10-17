@@ -57,14 +57,14 @@ try {
         [
             'react-hooks/rules-of-hooks',
             "import { useState } from 'react'\n" +
-            'export function Probe({ show }: { show: boolean }) {\n' +
-            '    if (show) useState(0)\n    return null\n}\n',
+                'export function Probe({ show }: { show: boolean }) {\n' +
+                '    if (show) useState(0)\n    return null\n}\n',
         ],
         [
             'react-hooks/exhaustive-deps',
             "import { useEffect } from 'react'\n" +
-            'export function Probe({ label }: { label: string }) {\n' +
-            '    useEffect(() => { console.log(label) }, [])\n    return null\n}\n',
+                'export function Probe({ label }: { label: string }) {\n' +
+                '    useEffect(() => { console.log(label) }, [])\n    return null\n}\n',
         ],
         [
             'react-refresh/only-export-components',
@@ -107,7 +107,7 @@ try {
     assert.equal(cleanNative.status, 0, cleanNative.output)
     console.log(
         'Toolchain checks passed: native TypeScript 7, no legacy compiler, type errors, ' +
-        'TypeScript lint rules, React Hooks, Fast Refresh, caught errors and Prettier',
+            'TypeScript lint rules, React Hooks, Fast Refresh, caught errors and Prettier',
     )
 } finally {
     await rm(directory, { recursive: true, force: true })

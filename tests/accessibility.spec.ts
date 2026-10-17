@@ -4,9 +4,9 @@ import { snapshot } from 'lighthouse'
 import { openStop, seed } from './fixtures'
 
 test('Lighthouse accessibility scores at least 95 for every tab and route details', async ({
-                                                                                               browserName,
-                                                                                               baseURL,
-                                                                                           }) => {
+    browserName,
+    baseURL,
+}) => {
     test.skip(browserName !== 'chromium', 'Lighthouse requires Chromium; axe also covers WebKit.')
     test.setTimeout(180000)
     const auditBrowser = await puppeteer.launch({

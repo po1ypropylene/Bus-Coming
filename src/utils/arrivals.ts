@@ -13,8 +13,8 @@ export function arrivalCountdown(time: number | null, now: number, t: Copy): str
     return time === null
         ? '—'
         : time - now <= 60000
-            ? t.due
-            : String(Math.ceil((time - now) / 60000))
+          ? t.due
+          : String(Math.ceil((time - now) / 60000))
 }
 
 export function arrivalAge(fetchedAt: number, now: number, t: Copy): string {

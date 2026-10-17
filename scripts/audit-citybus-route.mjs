@@ -1,5 +1,5 @@
 // Read-only targeted audit: node scripts/audit-citybus-route.mjs N8P
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 const route = process.argv[2] ?? 'N8P'
 if (!/^[A-Z0-9]+$/.test(route)) throw new Error('Expected a route number')
 const base = 'https://rt.data.gov.hk/v2/transport/citybus'
@@ -38,7 +38,8 @@ for (const direction of ['inbound', 'outbound']) {
     evidence.directions.push({ direction, stops, checks })
     console.log(direction, JSON.stringify(checks.map(({ response, ...check }) => check)))
 }
+await mkdir('artifacts', { recursive: true })
 await writeFile(
-    `docs/citybus-${route.toLowerCase()}-audit.json`,
+    `artifacts/citybus-${route.toLowerCase()}-audit.json`,
     JSON.stringify(evidence, null, 4) + '\n',
 )

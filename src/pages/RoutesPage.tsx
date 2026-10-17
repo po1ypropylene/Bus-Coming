@@ -97,7 +97,7 @@ export function RoutesPage() {
                             aria-label={keypad ? t.hideKeypad : t.showKeypad}
                             onClick={() => setKeypad(!keypad)}
                         >
-                            <Keyboard size={20}/>
+                            <Keyboard size={20} />
                             <span>{keypad ? t.hideKeypad : t.showKeypad}</span>
                         </button>
                     </div>

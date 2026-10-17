@@ -1,10 +1,10 @@
 # Development guide
 
-Last updated: 21 September 2026.
+Last updated: 17 October 2026.
 
 ## Starting points
 
-Read [README](../README.md) for setup, commands, HTTPS and iPhone testing; [requirements and status](REQUIREMENTS-AND-STATUS.md) for behavior and limitations; [API research](API-RESEARCH.md) for operator endpoints and normalization. [AGENTS.md](../AGENTS.md) is the repository instruction file for future coding agents.
+Read [setup and deployment](SETUP.md) for commands, HTTPS and iPhone testing; [requirements and status](REQUIREMENTS-AND-STATUS.md) for behavior and limitations; [API research](API-RESEARCH.md) for operator endpoints and normalization. [AGENTS.md](../AGENTS.md) is the repository instruction file for future coding agents.
 
 ## Code style and editor setup
 
@@ -91,7 +91,7 @@ Do not apply KMB's sequence semantics indiscriminately to Citybus. The N8P live 
 
 `useAppUpdate` owns production-only native service-worker registration, using `updateViaCache: 'none'`. Vite PWA uses `registerType: 'prompt'` and `injectRegister: false`; do not reintroduce a second generated registration script. Workbox retains precaching and `clientsClaim`, with `SKIP_WAITING` activated only by the user's update button. The app checks at startup, foreground/pageshow/reconnection (one-minute throttle), hourly while active, and on demand in Settings. A downloaded update shows a bilingual reload notice; first installation does not force a reload. Failed/offline checks retain the working cache and display a retryable Settings status.
 
-Update activation never deletes localStorage or IndexedDB. The reload replaces in-memory UI state, so users choose when to apply it. An older deployed client cannot run this new updater until its existing service-worker lifecycle delivers the first new build; see README for close/reopen bootstrap and hosting cache headers. The same-origin service-worker URL and scope must remain stable.
+Update activation never deletes localStorage or IndexedDB. The reload replaces in-memory UI state, so users choose when to apply it. An older deployed client cannot run this new updater until its existing service-worker lifecycle delivers the first new build; see [setup and deployment](SETUP.md#updating-the-installed-iphone-app) for close/reopen bootstrap and hosting cache headers. The same-origin service-worker URL and scope must remain stable.
 
 `node scripts/update-smoke.mjs` serves three revisions of the production shell without modifying `dist`, verifying waiting-worker detection, explicit activation/reload, preference persistence and the current-version check and simulated resume detection. Run this and the offline smoke check for registration changes; Vite dev does not install the worker. Automatic checks cannot execute while iOS suspends or closes the app.
 
@@ -197,3 +197,26 @@ or different remarks use rows. No small-font fallback is used for due labels. Op
 affected departure; no GPS or scheduled classification is inferred from an empty remark. Retain untimed last-bus
 messages when supplied. Error states
 have a retry action; offline states preserve known results and explain that a connection is needed.
+
+## Generated output and regression fixtures
+
+Write audit JSON, screenshots and logs to ignored `artifacts/`, `test-results/` or `playwright-report/`, not `docs/`.
+These folders are disposable after reviewing a run. `npm run audit:apis` writes `artifacts/api-audit.json`;
+`node scripts/audit-citybus-route.mjs N8P` writes `artifacts/citybus-n8p-audit.json`. Both read live public APIs;
+run them only when current operator evidence is needed. Keep durable findings and reproduction commands in
+[API research](API-RESEARCH.md), and record verification scope in [requirements/status](REQUIREMENTS-AND-STATUS.md).
+Replace obsolete status summaries instead of appending a history of every test run; Git retains earlier versions.
+
+Keep `tests/fixtures.ts` and `src/services/joint/fixtures/{102,106}.json`: browser tests and joint-route/direction
+regressions consume them. The JSON files are dated operator captures, not runtime data or current route guarantees.
+Remove a fixture only after checking its test consumers and preserving meaningful coverage. Publisher checkpoints in
+`.citybus-checkpoints/` support interrupted downloads and are separate from disposable audit output.
+
+## Catalogue refresh and nearby discovery
+
+Downloads and normalization run in a Web Worker with four concurrent requests per operator and retry/backoff.
+Seven-day age checks run at launch, resume, reconnection and hourly while active. Successful request checkpoints
+resume interrupted downloads; complete snapshots remain available until replacements commit atomically.
+Citybus also publishes its lightweight route index immediately and caches selected route details on demand.
+Nearby discovery uses device location only after a user action, never sends coordinates to operators, and shows up to
+40 stops within 1 km in distance order. It requires downloaded stop coordinates.

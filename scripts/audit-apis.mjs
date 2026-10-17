@@ -61,5 +61,5 @@ for (const [name, url] of Object.entries(samples)) {
     }
     console.log(name, 'OK', cors)
 }
-await mkdir('docs', { recursive: true })
-await writeFile('docs/api-audit.json', JSON.stringify(output, null, 2) + '\n')
+await mkdir('artifacts', { recursive: true })
+await writeFile('artifacts/api-audit.json', JSON.stringify(output, null, 2) + '\n')

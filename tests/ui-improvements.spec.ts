@@ -31,8 +31,8 @@ test('keypad follows matching routes and leaves four rows visible at 390×844', 
 })
 
 test('last content clears navigation on each tab and details at requested widths', async ({
-                                                                                              page,
-                                                                                          }) => {
+    page,
+}) => {
     await seed(page, 2, { route, stop }, numbers)
     for (const width of [360, 390, 768]) {
         await page.setViewportSize({ width, height: 844 })
@@ -52,10 +52,10 @@ test('last content clears navigation on each tab and details at requested widths
                         tab === 'Saved'
                             ? '.home-note'
                             : tab === 'Settings'
-                                ? '.about'
-                                : tab === 'Nearby'
-                                    ? '.location-card'
-                                    : '.search-results',
+                              ? '.about'
+                              : tab === 'Nearby'
+                                ? '.location-card'
+                                : '.search-results',
                     )
                     .boundingBox()
                 const nav = await page.locator('.tab-bar').boundingBox()
@@ -76,8 +76,8 @@ test('last content clears navigation on each tab and details at requested widths
 })
 
 test('ETA states fit their content, retain remarks, and show full-size balanced due labels', async ({
-                                                                                                        page,
-                                                                                                    }) => {
+    page,
+}) => {
     await page.setViewportSize({ width: 390, height: 844 })
     const now = Date.now()
     await page.clock.install({ time: now })
@@ -97,13 +97,13 @@ test('ETA states fit their content, retain remarks, and show full-size balanced 
                     mode === 'empty'
                         ? []
                         : minutes.map((minute) => ({
-                            dir: 'O',
-                            seq: 1,
-                            service_type: 1,
-                            eta: new Date(now + minute * 60000).toISOString(),
-                            rmk_en: 'Scheduled',
-                            rmk_tc: '預定班次',
-                        })),
+                              dir: 'O',
+                              seq: 1,
+                              service_type: 1,
+                              eta: new Date(now + minute * 60000).toISOString(),
+                              rmk_en: 'Scheduled',
+                              rmk_tc: '預定班次',
+                          })),
             },
         })
     })
@@ -178,8 +178,8 @@ test('ETA states fit their content, retain remarks, and show full-size balanced 
 })
 
 test('polling pauses offscreen, hidden and unfocused, resumes, and marks old results stale', async ({
-                                                                                                        page,
-                                                                                                    }) => {
+    page,
+}) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.clock.install()
     await seed(page, 2, {
@@ -260,8 +260,8 @@ test('saving and removing a favourite persist without losing preferences', async
 })
 
 test('all five themes pass AA text contrast and accessibility on every tab in both appearances', async ({
-                                                                                                            page,
-                                                                                                        }) => {
+    page,
+}) => {
     test.setTimeout(180000)
     await page.setViewportSize({ width: 390, height: 844 })
     await seed(page)

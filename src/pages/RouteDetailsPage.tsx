@@ -11,7 +11,7 @@ import type { Route } from '../types/transit'
 export function RouteDetailsPage() {
     const { currentRoute: selectedRoute } = useApp()
     if (!selectedRoute) return null
-    return <RouteDetails key={selectedRoute.id} route={selectedRoute}/>
+    return <RouteDetails key={selectedRoute.id} route={selectedRoute} />
 }
 
 function RouteDetails({ route }: { route: Route }) {
@@ -60,7 +60,7 @@ function RouteDetails({ route }: { route: Route }) {
                         aria-label={`${t.flipDirection}: ${reverse.destination[lang]}`}
                         title={`${t.flipDirection}: ${reverse.destination[lang]}`}
                     >
-                        <ArrowRightLeft size={18}/>
+                        <ArrowRightLeft size={18} />
                         <span>
                             {t.flipDirection}
                             <small>

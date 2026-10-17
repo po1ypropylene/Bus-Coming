@@ -1,326 +1,99 @@
 # Requirements and implementation status
 
-Last updated: 21 September 2026. This document describes the implemented app, verified behavior, and remaining limitations. API formats and observations are in `API-RESEARCH.md` and `api-audit.json`.
-
-## Requirement checklist
-
-| Requirement                                  | Implementation                                                                                                                                     | Status                                                                     |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| React mobile web app                         | React 19, TypeScript, Vite; responsive mobile/desktop layouts                                                                                      | Implemented                                                                |
-| iOS Home Screen behavior                     | Standalone manifest, 192/512 PNG icons, Apple touch icon, safe-area spacing, production service worker                                             | Implemented; physical-device installation still requires manual validation |
-| Maintain user data                           | Local bookmark/language persistence, storage error reporting, JSON backup export and validated merging import, optional persistent-storage request | Implemented; local only                                                    |
-| Research APIs before implementation          | Official operator docs, endpoint tables, live catalogue letter audit and CORS checks                                                               | Completed                                                                  |
-| KMB + Long Win                               | Bulk route/stop/relationship import; direction and service variants; live ETA                                                                      | Implemented and live catalogue verified                                    |
-| Citybus                                      | Both directions per route; deduplicated individual stop fetching; live ETA                                                                         | Implemented and full live catalogue verified                               |
-| New Lantao Bus                               | Route-ID variants, ordered stops, bilingual ETA adapter and explicit HK timestamp parsing                                                          | Implemented and live catalogue verified                                    |
-| English + Traditional Chinese                | All main UI strings, bilingual operator names, stop/route names, ETA remarks and persisted preference                                              | Implemented; browser-tested                                                |
-| Download large route details on first launch | Worker starts automatically, commits each provider independently, shows download progress                                                          | Implemented                                                                |
-| Efficient local route structure              | Variant IDs, provider-prefixed stop records, route stop arrays and reverse stop-to-route index in IndexedDB                                        | Implemented                                                                |
-| Manual data refresh and timestamps           | Settings has per-provider last-success timestamps and refresh button                                                                               | Implemented                                                                |
-| Weekly nonblocking refresh                   | Checks on launch/resume/reconnection and hourly while active; seven-day threshold; prior snapshots remain usable                                   | Implemented within iOS execution constraints                               |
-| Interrupted downloads                        | Persisted per-request checkpoints and retry/backoff; provider snapshot commits atomically                                                          | Implemented                                                                |
-| Apple-style interface                        | System type, large titles, grouped lists, tab bar, touch controls, system dark mode, focus styles, reduced motion                                  | Implemented; visual inspection completed                                   |
-| Bookmark stops                               | Route, direction, service, stop and exact sequence retained                                                                                        | Implemented                                                                |
-| User-defined groups across routes            | Same named group joins arbitrary routes/stops; all ETAs shown together on Saved                                                                    | Implemented                                                                |
-| Nearby stops by GPS                          | User-triggered location, permission/error state, accuracy, 1km radius, distance ordering, route drill-down                                         | Implemented; simulated GPS tested                                          |
-| Route-number search                          | Offline substring search with exact matches first, company filters, paginated results                                                              | Implemented                                                                |
-| Custom numpad with actual route letters      | 0–9, clear/backspace and 18 verified letters; dynamically re-derived from downloaded catalogues; native mobile keyboard suppressed                 | Implemented                                                                |
-| WebStorm setup / iPhone 17 Pro Max           | Shared npm run configuration, 440×956 @3x WebKit profile, README mobile/HTTPS instructions                                                         | Implemented                                                                |
-| Requirement and state documentation          | This file plus API research and README                                                                                                             | Completed                                                                  |
-| Jointly operated routes                      | Automatic TD membership; merged journeys, itineraries and ETAs; existing bookmarks preserved                                                       | Implemented with conservative matching; see joint-route limits below       |
-| Popular packages                             | React, Vite, TypeScript, idb, Lucide, vite-plugin-pwa/Workbox, Vitest, Playwright                                                                  | Implemented                                                                |
-
-## User flows
-
-- **Saved:** real empty state on first use, add-stop shortcut, group filters, live arrival cards, edit group and remove stop. No sample routes or invented arrival times are presented as live data.
-- **Routes:** custom keypad, operator filter, offline catalogue, direction/variant-specific route details, ordered stops. Tap a stop for ETA and bookmark it; choose an existing group or name a new one.
-- **Nearby:** tap to grant location access, then see up to 40 nearest stops within 1km. Expand a stop to see its routes, then open a route at that stop.
-- **Settings:** language, saved theme colour (green, blue, yellow, red or purple), operator download progress/counts/timestamps, manual refresh, backup export/import and Home Screen instructions.
-
-## Correctness and resilience
-
-- ETA filtering distinguishes direction, service and repeated visits to a stop. Missing timestamps show operator remarks or an unavailable state.
-- NLB ETA timestamps are interpreted in UTC+08:00 even if the phone is elsewhere. `departed` is not misinterpreted as having passed the requested stop.
-- ETA requests deduplicate concurrent calls; short memory caching prevents rapid repeated taps from flooding an endpoint. Polling pauses while the document is hidden; resumes on visibility/connection changes. Failed updates retain only explicitly labelled last-known results.
-- Normalized provider snapshots replace old ones only after successful completion. Bookmarks are stored separately and never cleared by catalogue refresh.
-- KMB currently references one unavailable stop in two route variants. It is explicitly labelled as missing, not silently removed or assigned a fabricated GPS result. See API research for exact IDs.
-- On a later catalogue change, a bookmark whose exact route/stop sequence no longer exists is marked unavailable and directs the user to save it again.
-- Corrupt/incompatible backups are rejected. Imports merge by bookmark ID, with imported values winning on conflicts. No existing data is intentionally erased on invalid import.
-
-## Verification
-
-- TypeScript production build and ESLint checks are run on the final code.
-- 41 unit tests cover direction/service/sequence filtering, null ETAs, Hong Kong time parsing, route indexes, missing
-  references, dynamic keypad letters, distance calculations, validated backups and removed routes, plus joint
-  membership, pairing, ETA aggregation and refresh/cache failure handling.
-- **26 browser tests passed.** Playwright runs against mobile WebKit (440×956, DPR 3) and desktop Chromium. It covers
-  route search → stop ETA → grouped bookmark → reload → Traditional Chinese; simulated GPS; invalid/valid imports;
-  offline errors; layout overflow; all-provider first-launch normalization with a missing KMB stop; failed forced
-  refresh preserving old snapshots; joint-route search/arrivals, old Citybus bookmarks, partner-only stops and 2X
-  isolation.
-- The live audit fetched real route lists, stop lists/details, and ETA responses for all three APIs and confirmed CORS support. Evidence is saved in `api-audit.json`.
-- Production offline reload, persisted bookmarks, offline route search and standalone manifest checks passed in both Chromium and WebKit with a dedicated local origin server stopped. Chromium also used browser offline mode. WebKit’s automated offline toggle returned an internal engine error, so its cache test used the stopped origin and aborted upstream requests instead; this limitation remains distinct from real iPhone validation.
-
-## Known limits / remaining manual verification
-
-1. **iOS suspension:** no guaranteed weekly job while the app is closed. An overdue download runs when the app next becomes active. This is a platform limit, not a claim of background scheduling support.
-2. **Initial Citybus download is slow:** its documented API needs hundreds of route-direction requests plus thousands of
-   unique stop requests. The worker limits concurrency and resumes checkpoints. Citybus route search and on-demand route
-   details are now usable before the full download finishes; nearby Citybus discovery still requires its completed
-   offline snapshot. KMB/NLB are usable independently. An optional server-generated snapshot now shortens first launch
-   when configured; see [setup](CITYBUS-SNAPSHOTS.md). It uses official operator data.
-3. **Local persistence only:** no accounts or cloud synchronization. Browser eviction, clearing website data or reinstalling can remove local data. Export/import is the recovery path. Safari and the installed Home Screen app may have separate storage.
-4. **Physical iPhone validation:** Home Screen installation, Dynamic Island/safe areas, real GPS permission prompts, VoiceOver and large Dynamic Type settings require an actual iPhone test. WebKit emulation is not a substitute for those checks.
-5. **Live estimates depend on operators:** operator outages, no service and missing metadata are handled; estimates are not guaranteed bus arrivals. ETA requires a network connection.
-6. **GPS scope:** list-based discovery, straight-line distances, up to 40 results in 1km. No map tiles, walking directions, journey planning, fare calculations or push notifications are implemented; those were not requested.
-7. **Hosting:** the production build is ready to serve at `/` over HTTPS; no public deployment or production domain has been configured.
-8. **Testing scope:** simulated GPS and API fixtures provide reproducible interaction tests. Real phone geolocation and every individual route/service variant have not been exhaustively validated. No claim of an accessibility certification is made.
-
-9. **Joint-route coverage:** official membership is necessary; event services absent from TD stay separate. Special
-   variants, repeated/ambiguous stops and insufficient journey overlap are deliberately not guessed. Routes with
-   different endpoint names may wait for full stop data before merging.
-
-## Architecture / maintenance
-
-- `src/App.tsx`: 10-line entry point composing the app provider and shell.
-- `src/app/`: shared context/provider and page composition. `hooks/useAppController.ts` combines feature hooks and navigation state.
-- `src/pages/`: Saved, Routes, Nearby, Settings and Route Details screens.
-- `src/components/`: reusable arrivals, bookmarks, route keypad/rows/badges, download status, layout and illustration components.
-- `src/hooks/`: arrival polling, route search, route details, GPS, connectivity, backups, user preferences and catalogue lifecycle.
-- `src/services/api.ts`: request retry and arrival adapters. `src/services/catalog/`: separate KMB, Citybus and NLB importers, shared helpers, snapshot orchestration and on-demand route loading.
-- `src/services/joint/`: TD membership download/cache, journey and stop matching, and combined ETA requests.
-  `useJointItinerary` preserves partner-only stops.
-- `src/workers/catalog.worker.ts`: small worker message handler; delegates data import to services.
-- `src/storage/`: IndexedDB schema/migrations and local user-data reading. Existing database name and bookmark key are retained.
-- `src/types/`, `src/utils/`, `src/i18n/`, `src/styles/`: domain types, tested pure helpers, translation strings and styles.
-- `scripts/`: reproducible live API and production offline checks.
-- `tests/app.spec.ts`, `src/utils/transit.test.ts`: browser and unit regression tests.
-
-## Citybus visibility fix and refactor
-
-The original UI hid every Citybus route until the entire provider snapshot finished. The affected user session was inspected while Citybus was still downloading (551 of 813 route-list requests), although KMB/NLB were already usable. This was a visibility/availability design problem, rather than missing routes in the Citybus API.
-
-Citybus now publishes a persistent lightweight route index as soon as `/route/CTB` returns. Users can search this index immediately. Opening a route fetches just its ordered stops and details using the same adapter/checkpoint cache as the full importer. That route is cached separately for reuse, including offline. The full offline dataset continues downloading and still commits atomically; existing complete snapshots remain available during refreshes. Search now shows operator-specific pending/error status rather than suggesting an unfinished catalogue has no matching routes.
-
-IndexedDB version 2 adds `routeCatalogs` and `routeDetails` stores without deleting version-one snapshots, checkpoints or user data. A regression test verifies this upgrade and bookmark preservation. Another regression deliberately prevents Citybus's full download from completing and verifies route search, stop loading, ETA, bookmarking and persistence after reload in both browser engines.
-
-Live validation on a fresh development origin: Citybus 2X appeared while bulk import progress was only 61/813, its 16 stops loaded on demand, and live arrival estimates displayed successfully. The original user preview was also checked and showed Citybus routes after its initial full import finished. No user bookmarks were reset.
-
-## Final live verification results
-
-A complete browser import on 20 September 2026 completed in approximately 640 seconds (including development reloads that exercised checkpoint resumption), with zero recorded application runtime exceptions:
-
-| Provider       |        Stored route direction/service variants |                                           Stored stop records |
-| -------------- | ---------------------------------------------: | ------------------------------------------------------------: |
-| KMB / Long Win |                                          1,599 | 6,741 (6,740 supplied + 1 explicitly unavailable placeholder) |
-| Citybus        | 687 nonempty directions from 406 route numbers |                                                         2,584 |
-| New Lantao Bus |                                             64 |                                                           290 |
-
-The real KMB 1A route and its first stop's ETA rendered successfully after this import. Full-page mobile screenshots were visually inspected. Raw verification summaries are in `docs/verification-results.json`; generated screenshots remain in the ignored `artifacts/` and `test-results/` folders.
-
-Final checks: strict TypeScript production build, ESLint, Prettier, 23 unit tests, 20 browser tests, and production offline-cache smoke tests in Chromium/WebKit passed. Physical iPhone installation and GPS checks remain manual as described above.
-
-## Theme and contributor conventions update — 21 September 2026
-
-Implemented five persisted theme colours with light/dark palettes, translated accessible radio controls, selected checkmarks, and browser theme-colour metadata updates. Older user data/backups default to green; invalid supplied themes are rejected. Bookmark and language persistence are preserved. Fixed brand icons and manifest remain green.
-
-Four-space indentation observed in the source is now shared by Prettier, ESLint and EditorConfig. Formatting was normalized across project text. Future agents follow root `AGENTS.md`; `DEVELOPMENT.md` documents module ownership, WebStorm formatting, storage migrations, theme extension and verification.
-
-Verification for this update: production build, ESLint (including a deliberate invalid-format probe), Prettier check and 23 unit tests passed. All 20 browser cases passed across WebKit and Chromium (18 existing cases in the full run; two new theme cases passed after fixing an ambiguous test selector). Production offline reload checks passed in both engines. The purple Traditional Chinese mobile Settings screenshot was visually inspected. No new live API crawl or physical iPhone test was performed for this update.
-
-## N8P inbound ETA correction — 21 September 2026
-
-Live data reproduced valid Citybus ETAs being discarded because inbound route-stop sequences 1–18 differed from ETA sequences 12–29. All 18 inbound stops returned three ETAs during the audit. The Citybus adapter now uses stop identity for unique visits, while retaining direction filtering and strict sequence matching for repeated/unknown visits. KMB and NLB selection are unchanged. Existing cached routes and bookmarks work with this correction; no route refresh or data deletion is required.
-
-Regression coverage includes the two observed N8P sequence examples, wrong direction/route/stop/company rejection, repeated visits, incomplete stop lists, ordinary outbound sequences and null-ETA remarks. Browser coverage exercises inbound route details, bookmarking and reload. See `API-RESEARCH.md` and `citybus-n8p-audit.json` for evidence and the remaining upstream outbound-list anomaly. This was a targeted N8P audit, not an exhaustive all-route data review.
-
-N8P correction verification: production build, lint, formatting, 27 unit tests and all 22 browser tests passed (mobile WebKit and desktop Chromium). Persistence schema and offline caching were unchanged.
-
-## Keypad theme correction — 21 September 2026
-
-Completed each palette with light/dark border and secondary-text colours, explicit surfaces and theme-derived shadows. The keypad mixes its background from `--line` and `--bg`; previously `--line` and action-key `--muted` inherited the original green palette even when blue or another theme was selected. All five themes now supply these tokens.
-
-Verification: blue keypad screenshots and computed background/border/action colours checked in mobile WebKit in both light and dark appearance. Production build, lint, formatting, 27 unit tests and 22 existing browser tests passed.
-
-## Home Screen app update correction — 21 September 2026
-
-Previously the generated registration script registered the offline worker, but the app had no foreground update checks, update UI or controller-change handling to refresh the running page. Safari loading a new page did not refresh an already running installed app. Replaced the generated registration with a production-only lifecycle hook: startup/foreground/reconnection/hourly checks, manual Settings check, bilingual update notice and user-triggered activation/reload. Existing localStorage and IndexedDB data remain untouched. Deployment/header requirements and one-time upgrade instructions for older installed clients are in README. The external hosting configuration and physical iPhone behavior have not been inspected.
-
-Verification: build, lint, formatting, 27 unit tests and 22 browser tests passed. Production update activation/reload and saved preference preservation passed in Chromium and WebKit; production offline reload/bookmarks/search passed in both engines. Physical installed-iPhone verification remains manual.
-
-## Route results visible while typing — 21 September 2026
-
-Reworked mobile Routes to keep search controls above a scrollable matching-route list and a compact keypad below it.
-Letters scroll alongside the numbers, similar to the supplied reference. The selected theme, operator filters, keypad
-show/hide and bottom navigation remain available. The large decorative page heading is visually hidden on mobile Routes
-to leave room for matches; it remains accessible. Desktop and route-detail scrolling retain their previous layout.
-Results reset to the top when query or operator changes.
-
-Verified build, lint, formatting and 27 unit tests. All 22 existing browser cases passed; the two new geometry cases
-passed after correcting grid stretching, covering full-row visibility while typing at 440×956 and 320×568, keypad
-show/hide expansion, and opening route details. Mobile WebKit screenshot inspected. On short phone viewports the brand
-header is hidden to preserve results space; navigation remains available. Physical iPhone testing remains manual.
-
-## Joint-route aggregation — 21 September 2026
-
-Implemented automatic TD joint-route membership, cached independently and refreshed weekly/on demand. Removed the
-earlier manual registry and one-off evidence JSON. Joint journeys now use one search result under either operator
-filter, one itinerary including partner-only stops, and chronologically combined arrivals with source labels. Existing
-bookmarks retain their IDs and gain combined arrivals when matched; new bookmarks exclude derived membership. Settings
-includes the TD timestamp and refresh failure state.
-
-Pairing requires official membership plus compatible endpoints or substantial ordered stop overlap. Direction codes and
-stop sequences remain operator-specific; unrelated same-number services such as 2X and special KMB variants remain
-separate. Partial matching/request failures have bilingual notices. See `JOINT-ROUTES.md` for algorithms, lifecycle and
-limitations, including event routes absent from TD, ambiguous stops and delayed geographic matching during the initial
-Citybus download.
-
-Verification: production build, ESLint, formatting, 41 unit tests and all 26 browser tests passed. Production offline
-checks passed in Chromium and WebKit, now including cached joint membership restoring one merged route. The mobile
-joint-route screenshot was inspected. Live checks verified the TD query/CORS and both operators’ 102/106 stop lists;
-retained fixtures exercise both directions. This was not an exhaustive live ETA audit. Physical iPhone validation
-remains manual.
-
-## Bookmark reordering — 21 September 2026
-
-Added **Saved → Reorder** with a compact list and up/down controls, available when at least two bookmarks exist. Moves
-save immediately and survive reload; **Done** returns to ETA cards. Reordering within a group leaves hidden bookmarks
-in their existing positions. Group edits now preserve the saved order instead of moving an edited item to the end.
-English/Traditional Chinese labels, keyboard controls, 44px touch targets, disabled boundary buttons and announced
-positions are included. Existing data and backup format remain compatible; no drag gesture is required or implemented.
-
-Verification: build, lint, 44 unit tests, all 28 browser tests (mobile WebKit and desktop Chromium), and production
-offline smoke checks passed. Browser coverage verifies group isolation, saved array order, reload persistence, keyboard
-activation and Chinese labels. Physical iPhone and VoiceOver testing remain manual.
-
-## Chronological ETA display — 22 September 2026
-
-Fixed single-operator arrival panels preserving upstream response order. All providers now use shared display sorting
-before the three-prediction limit, including route details and bookmarks. The reported 720 order of 13, 2, 7 minutes
-now displays 2, 7, 13. Untimed remarks follow timed predictions; equal-time buses retain their remarks. Existing
-expiry, direction, service and stop filtering remain unchanged. Regression data reproduces the reported ordering;
-no current live rush-hour API audit was performed.
-
-Verification: build, lint, formatting, 47 unit tests and all 30 browser tests passed. The browser regression checks
-2, 7, 13 in both route details and saved bookmarks on mobile WebKit and desktop Chromium. Storage and offline behavior
-were unchanged; physical iPhone testing remains manual.
-
-## Route direction switch — 29 September 2026
-
-Added a bilingual **Switch direction** button at the right of the route heading. Wider screens show the target
-destination; phones use a 44px icon with a translated destination label for assistive technology.
-It opens the opposite journey and clears expanded stops/ETAs. Citybus 2X stays within Citybus; KMB 2X is never selected
-by number coincidence. Joint journeys retain the target direction's independently matched partners, including 106's
-reversed operator bounds and navigation from old Citybus bookmarks. A known partner may provide the return direction
-when the original operator has none. KMB service variants stay separate; NLB matches unique reversed terminals.
-One-way/unmatched/ambiguous journeys have no switch. Early Citybus index directions still require on-demand loading
-and can return the existing no-stops message if the direction is empty.
-
-Regression coverage includes provider isolation, special services, asymmetric terminals, circular/ambiguous journeys,
-NLB route IDs, real archived 106 fixtures in both directions, legacy Citybus bookmarks, cleared stop selection,
-return navigation, opposite stop ETA requests, and Traditional Chinese labels. No new live API audit or physical
-iPhone test was performed for this navigation change.
-
-Verification: production build, lint, formatting, 51 unit tests and all 34 browser tests passed on mobile WebKit and
-desktop Chromium. Storage, startup and service-worker behavior are unchanged.
-
-## Shared Citybus catalogue — 6 October 2026
-
-Implemented optional validated bulk download, shared normalization, a resumable scheduled publisher and a separate
-Cloudflare assets-only Worker configuration. Weekly/manual checks use a manifest and avoid unchanged payloads.
-Failures fall back to the official importer; existing snapshots/bookmarks remain intact. Setup and limitations are
-in [CITYBUS-SNAPSHOTS.md](CITYBUS-SNAPSHOTS.md). Deployment still requires GitHub/Cloudflare configuration and an app
-build with the published manifest URL. Verified production build, lint, formatting, 61 unit tests, publisher fixture
-checks and all 36 browser checks in
-Chromium/mobile WebKit. Production offline reload/bookmarks/search checks passed in both engines. Publisher fixtures
-cover stop deduplication, repeated visits, checksums, headers, previous-generation retention and refusing failed
-publication. The assets-only Wrangler deployment dry run passed. Builds with shared downloads enabled and disabled both
-passed;
-production offline checks also passed with shared downloads enabled. No full current live Citybus crawl, Cloudflare
-deployment or physical iPhone verification was performed.
-
-## Imminent arrivals and departure variants — 16 October 2026
-
-Removed the one-minute-past cutoff from all arrival panels. Negative, immediate and sub-minute estimates now display
-**Due / 即將到站**, without a minute suffix; operator refreshes control when a departure disappears. Chronological
-sorting, the first-three limit, direction/service/stop matching, and stale/error reporting remain intact.
-
-Citybus and KMB per-departure destinations are retained. If the displayed timed departures have different supplied
-destinations, show their destinations alongside the existing operator remarks in readable rows. Different remarks also
-use rows, including variants with the same terminus. Identical destinations stay hidden; missing destinations are not
-filled in from the catalogue. Both route details and saved stops use the shared panel. No storage migration is needed.
-
-The targeted evening 720 API check confirmed destination fields but did not reproduce the morning bypass service;
-see API research for timestamps and limitations. Routing notes depend on the public API supplying them. Physical iPhone
-and live morning-service validation remain manual.
-
-Verification: production build, lint, formatting, 63 unit tests and all 38 browser tests passed in desktop Chromium and
-mobile WebKit. New coverage checks negative/immediate/sub-minute predictions, mixed bilingual destinations and remarks,
-route details and saved stops, no repeated destination labels (including a different fourth departure outside the
-display
-limit), 320px layout, joint-arrival metadata preservation, and explicit stale state after failed refresh. The mobile
-mixed-destination screenshot was inspected. Production offline reload/bookmarks/search smoke checks passed in both
-engines. The required formatter also normalized existing formatting in several unrelated files; no behavior changed
-there.
-
-## TypeScript 7 upgrade — 16 October 2026
-
-The direct `typescript` dependency and build compiler are TypeScript 7.0.2. TypeScript 6, its compatibility package,
-and the native alias have been removed. Native parallel type checking runs during builds and through the new
-`typecheck` / `typecheck:watch` commands. Application behavior and compiler strictness are unchanged.
-
-Oxlint replaces the TypeScript-6-dependent `typescript-eslint` rules. ESLint retains React Hooks, Fast Refresh,
-Prettier and two core rules using an independent Babel parser. Explicit migrated rules preserve the previous lint
-policy; compiler and lint regression probes are part of `npm test`. The development runtime now requires Node 22.18+
-within 22.x, or Node 24.11+, for Babel 8's ESLint 10 support.
-
-Verification after a clean `npm ci`: the dependency tree contains only TypeScript 7.0.2 and has no peer conflicts.
-Native type checking, watch-mode startup, production build, both linters, Prettier, all 63 unit tests, the new toolchain
-regression probes, all 38 desktop Chromium/mobile WebKit browser tests, and Citybus publisher fixture checks passed.
-Production offline reload/bookmarks/search and app-update activation/preference-preservation checks passed in both
-engines. macOS watch mode was verified outside the execution sandbox because its FSEvents stream was blocked inside it.
-The required formatter normalized eight existing source, test and configuration files. No current live API audit,
-physical iPhone validation or comparative compiler performance benchmark was performed.
-
-## UI review and due-label spacing — 17 October 2026
-
-Implemented all six areas in the supplied UI review: shared bottom-nav clearance and opaque navigation; measured
-secondary/tertiary text contrast and 13px captions; memoised valid-next-character keypad enablement; explicit To/From
-route directions; visible/focused 30-second ETA polling with clocks, operator remarks, relative age,
-skeleton/empty/error/
-offline states and retry; and a compact sticky header with real request health and small titles outside the empty Saved
-screen. The user additionally requested full-size due labels: Chinese now uses **就到**, equal-width columns balance
-due buses (including three due buses together); only differing service descriptions/destinations use rows. The ETA body
-reserves space across
-states and permits scrolling longer operator descriptions. Existing user data and provider matching are preserved.
-
-Verification: production build, lint, Prettier, 67 unit tests and toolchain probes passed. The full browser suite passed
-51 cases with one intentional WebKit skip for the Chromium-only Lighthouse test. Geometry covers 360/390/768px on every
-tab and route details, four visible route rows at 390×844 with the keypad open, and the existing 320×568 regression.
-New browser checks cover dynamic key availability, equal full-size Chinese due labels including three due buses in one
-row, stable ETA
-footprints, remarks/clocks, ticking age, offscreen/hidden/unfocused polling pauses and resume, offline/stale health,
-retry, and saving/removing favourites across reloads. Mobile single/multiple-due screenshots were visually inspected.
-
-Lighthouse accessibility snapshots scored **100** for Saved, Nearby, Routes, Settings and route details in both English
-and Traditional Chinese (default green/light appearance). Axe found no WCAG A/AA violations on all five screens across
-all five themes in light and dark appearance, in both Chromium and mobile WebKit. Token measurements additionally
-assert at least 4.5:1 for ink/muted/accent/warning text against each main surface. Production offline reload, persisted
-bookmarks, route search and manifest checks passed in both engines. These are fixture/emulation results, not physical
-iPhone, VoiceOver, live operator or deployment verification. The test toolchain now requires Node 22.19+ within 22.x (or
-24.11+) for Lighthouse. The required formatter also normalized pre-existing formatting in several unrelated files.
-
-## Compact ETA cards and filtered letter keys — 17 October 2026
-
-Follow-up screenshot feedback supersedes the fixed-height ETA reservation above. Removed the 204px body and oversized
-footer spacing: cards now fit their content, with compact skeletons and naturally expanding service notes. Clocks,
-provider/remark text, full-size due labels and relative update seconds remain. Unavailable letter keys are hidden,
-remaining letters reflow from the top, and an empty letter section disappears so mobile digit keys fill the width.
-Digits retain their established positions and disabled states. No API, polling or storage behavior changed.
-
-Verification for this follow-up: build, lint, formatting, 67 unit tests/toolchain probes and all 51 browser cases passed
-(one intentional WebKit Lighthouse skip). Browser assertions check compact ETA heights on mobile and desktop, hidden
-invalid letters, their return after backspace/clear, and full-width digit keys when no letters remain. The mobile ETA
-and empty-letter keypad screenshots were inspected. Lighthouse remained 100 on every screen in both locales; all-theme
-axe checks passed in both engines. No new live API or physical-device validation was performed; offline/storage code
-was unchanged, so the production offline smoke was not repeated for this presentation-only follow-up.
+Last updated: 17 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
+deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
+
+## Implemented behavior
+
+| Area                     | Behavior                                                                                                                                                 |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Operators                | KMB / Long Win, Citybus and New Lantao Bus; provider-specific route, direction, service and stop identities                                              |
+| Languages and appearance | English and Traditional Chinese; five persisted theme colours; system light/dark appearance                                                              |
+| Home Screen app          | Standalone manifest, install icons, safe areas, production offline shell and user-controlled app updates                                                 |
+| Saved                    | Stop arrival cards, arbitrary named groups, edit/remove and persistent up/down ordering; filtering a group leaves other bookmarks in place               |
+| Routes                   | Offline substring search with exact matches first, operator filters, paginated results and direction-specific stop lists                                 |
+| Keypad                   | Catalogue-derived letters, hidden unavailable letters, stable disabled digits, clear/backspace and a show/hide control                                   |
+| Direction switch         | Opens a uniquely matched opposite journey and clears expanded stops; preserves provider/service identities and handles NLB's separate route IDs          |
+| Nearby                   | User-triggered location, permission/error state, accuracy and up to 40 closest stops within 1 km; coordinates remain on device                           |
+| Settings                 | Language/theme, provider and TD download status/timestamps, manual refresh, backup export/import, installation and app-update controls                   |
+| Catalogue downloads      | Automatic worker import, independent atomic provider commits, retry/backoff, resumable checkpoints and usable previous snapshots during refresh          |
+| Citybus availability     | Early searchable index and on-demand cached route details before full import completes; optional validated shared snapshot with official-import fallback |
+| Joint routes             | Automatic TD membership, conservative journey/stop matching, combined itineraries/arrivals, partial-data notices and preserved old bookmarks             |
+| Weekly refresh           | Seven-day age checks at launch, resume, reconnection and hourly while active; no promise of execution while iOS suspends the app                         |
+| Accessibility            | Keyboard focus, translated labels, reduced motion, at least 44px touch controls, 13px captions and measured theme contrast                               |
+
+## Arrival correctness and presentation
+
+- All panels sort supplied predictions chronologically before taking the first three. Equal-time departures remain
+  distinct; untimed operator messages follow timed predictions.
+- Intervals up to one minute, including negative estimates, display full-size **Due / 就到**. Operator refreshes
+  determine when predictions disappear. Overdue predictions are not proof that a bus has passed.
+- Hong Kong clocks, operator remarks and relative fetch age remain visible. Different supplied destinations or remarks
+  use rows; identical services use equal-width columns. Cards fit their content and longer notes expand naturally.
+- Requests run every 30 seconds only for visible cards in a focused, visible, online document. A 15-second memory cache
+  and request deduplication limit repeated calls. Existing requests may finish after focus is lost. Failed, partial,
+  offline or older-than-90-second results are explicitly stale; retries preserve known predictions.
+- KMB retains exact direction/service/sequence matching. Citybus uses stop identity and direction for unique visits,
+  retaining exact sequences for repeated/unknown visits because ETA sequences can differ from catalogue sequences.
+  NLB timestamps are parsed as UTC+08:00; `departed` does not mean the bus passed the requested stop.
+- No routes, GPS positions, departure destinations or arrival estimates are invented. Missing KMB stop metadata keeps
+  an explicit placeholder and original sequence, without entering GPS results. Missing/null ETAs show supplied remarks
+  or an unavailable state.
+
+## Data preservation
+
+Bookmarks, language and theme are local to the browser/app, separate from replaceable route snapshots. Older user data
+and backups remain supported. Invalid imports do not overwrite existing data; valid imports merge by bookmark ID with
+imported values winning conflicts. Existing positions remain, new IDs append in import order, and imported preferences
+are restored. Exports preserve bookmark order.
+
+IndexedDB schema version 2 preserves version-one snapshots and checkpoints while adding Citybus route-index/detail
+stores. Refresh failures retain the last good snapshots and successful timestamps. Joint partners are derived from the
+current TD catalogue, never trusted from backups or persisted as membership. A bookmark whose exact route/stop sequence
+no longer exists shows unavailable and asks the user to save it again. App updates preserve localStorage and IndexedDB.
+
+## Verification coverage
+
+- Unit tests cover provider normalization/filtering, arrival ordering/destinations, route indexes and direction
+  switching, keypad matching, backup validation/order, joint membership/matching/failures and snapshot validation.
+- Retained 102/106 operator captures exercise real joint journeys, including opposite operator bounds on 106.
+  `tests/fixtures.ts` supplies deterministic browser data. Fixtures are test inputs, not current live data.
+- Chromium desktop and 440×956 mobile WebKit cover search, ETA, groups/order, reloads, imports, simulated GPS, progressive
+  Citybus loading, migrations, failed refresh retention, joint routes, direction switches and both languages.
+- UI checks cover compact cards/due labels, polling pauses/resume, health/retry states, keypad availability, narrow
+  layouts, all-theme axe checks and token contrast. Lighthouse accessibility runs only in Chromium.
+- Production offline and update smoke scripts separately exercise cached reload, bookmarks/search, update activation
+  and preference preservation. Publisher fixture tests exercise normalization, hashes, headers, previous-generation
+  retention and failed-publication safety.
+
+Cleanup validation on 17 October 2026 passed build, lint, formatting, 67 unit tests/toolchain probes and 51 browser
+cases, with one intentional WebKit skip for Chromium-only Lighthouse. Local Markdown links and both audit scripts'
+output paths passed checks using mocked API responses in fresh temporary directories. Lighthouse scored 100 on
+all five screens in both languages in green/light appearance; all-theme axe checks passed in both engines. The required
+formatter also normalized 17 existing source/config/test files; those changes were verified as formatting only.
+Production offline smoke checks were last recorded earlier that day and were not repeated for this cleanup, which
+changes no persistence, startup or service-worker behavior. These are local fixture/emulation results, not live
+operator, deployment, physical iPhone or VoiceOver verification. Generated reports/screenshots were removed after review.
+
+Historical live checks are summarized in [API research](API-RESEARCH.md): initial operator/CORS and full catalogue
+checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on
+16 October. The 720 check did not reproduce the reported morning bypass service. One-off JSON reports and screenshots
+are disposable; rerun the documented scripts when fresh evidence is required.
+
+## Known limits and remaining manual checks
+
+- **Physical iPhone:** Home Screen lifecycle, safe areas, real GPS permission, VoiceOver and large text require hardware
+  checks. WebKit emulation and automated accessibility scores do not establish these or accessibility certification.
+- **Citybus first download:** direct import needs hundreds of route-direction requests and thousands of stop requests.
+  Search/details work early, but Nearby discovery needs a complete stop snapshot. See [shared catalogue setup](CITYBUS-SNAPSHOTS.md).
+- **Local data only:** no accounts or cloud sync. Browser eviction, clearing data or reinstalling can remove saved data;
+  export/import is the recovery path. Safari and Home Screen storage may differ.
+- **Live service:** ETA needs a connection and depends on operator availability and accuracy. Every individual
+  route/service variant has not been exhaustively validated.
+- **Joint routes:** event services absent from TD stay separate. Special variants, repeated/ambiguous stops and
+  insufficient overlap are not guessed; some journeys wait for full stop data. See [matching limits](JOINT-ROUTES.md).
+- **Scope:** Nearby uses straight-line distances. Maps, walking directions, journey planning, fares and push
+  notifications are not implemented.
+- **Deployment:** the public app address is in the README. Hosting headers, current deployed behavior, the optional
+  Cloudflare publisher deployment and a current full Citybus crawl are not established by local checks.

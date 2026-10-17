@@ -36,7 +36,7 @@ export function ArrivalPanel({
         <div ref={panelRef} className={`arrival-panel ${stale ? 'stale' : ''}`}>
             <div className="arrival-top">
                 <span>
-                    <i className={`live-dot ${stale ? 'muted' : !result ? 'waiting' : ''}`}/>
+                    <i className={`live-dot ${stale ? 'muted' : !result ? 'waiting' : ''}`} />
                     {!online ? t.offlineLabel : stale ? t.stale : t.eta}
                 </span>
                 <button
@@ -46,7 +46,7 @@ export function ArrivalPanel({
                     disabled={fetching || !online}
                     aria-busy={fetching}
                 >
-                    <RefreshCw size={16} className={fetching ? 'spin' : undefined}/>
+                    <RefreshCw size={16} className={fetching ? 'spin' : undefined} />
                 </button>
             </div>
             <div
@@ -58,7 +58,7 @@ export function ArrivalPanel({
                 {loading ? (
                     <div className="arrival-skeleton" role="status" aria-label={t.loadingEta}>
                         {[0, 1, 2].map((row) => (
-                            <div key={row}/>
+                            <div key={row} />
                         ))}
                     </div>
                 ) : arrivals.length ? (

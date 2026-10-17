@@ -5,7 +5,7 @@ import type { Copy } from '../../i18n'
 export function RouteKeypad({
     t,
     letters,
-                                availableKeys,
+    availableKeys,
     setQuery,
     onChange,
 }: {

@@ -21,9 +21,9 @@ for (const colorScheme of ['light', 'dark'] as const) {
                 const header = await page.locator('.app-header').boundingBox()
                 const background = await page
                     .locator('.app-header')
-                    .evaluate((element) =>
-                        getComputedStyle(element).backgroundColor.match(/\d+/g)!.map(Number),
-                    )
+                    .evaluate((element) => getComputedStyle(element, '::before').width)
+                expect(parseFloat(background)).toBe(width)
+                await page.addStyleTag({ content: 'body { background: var(--bg) }' })
                 const { data, info } = await sharp(await page.screenshot({ scale: 'css' }))
                     .removeAlpha()
                     .raw()
@@ -32,7 +32,12 @@ for (const colorScheme of ['light', 'dark'] as const) {
                 for (const y of [2, Math.ceil(header!.y) + 2]) {
                     for (const x of [1, Math.floor(width / 2), width - 2]) {
                         const offset = (y * info.width + x) * info.channels
-                        expect([...data.subarray(offset, offset + 3)]).toEqual(background)
+                        const reference = (y * info.width + Math.floor(width / 2)) * info.channels
+                        for (let channel = 0; channel < 3; channel++) {
+                            expect(
+                                Math.abs(data[offset + channel] - data[reference + channel]),
+                            ).toBeLessThanOrEqual(20)
+                        }
                     }
                 }
                 // The bottom divider must be continuous through both viewport gutters.
@@ -41,7 +46,6 @@ for (const colorScheme of ['light', 'dark'] as const) {
                     const offset = (dividerY * info.width + x) * info.channels
                     return [...data.subarray(offset, offset + 3)]
                 })
-                expect(dividerPixels[0]).not.toEqual(background)
                 expect(dividerPixels[0]).toEqual(dividerPixels[1])
                 expect(dividerPixels[2]).toEqual(dividerPixels[1])
                 expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)

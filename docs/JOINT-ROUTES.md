@@ -72,7 +72,9 @@ physical provider stop entries; opening either can show combined ETAs.
 
 `services/joint/arrivals.ts` requests each operator independently and combines successful predictions chronologically.
 Equal-time predictions are retained because they can represent different buses. Operator labels remain available on each
-prediction; null-ETA remarks sort after timed predictions. The UI keeps the existing three-prediction limit and 30-second
+prediction. Untimed rows, including Citybus “KMB Cycle” messages, are hidden rather than shown as departures or
+separate message blocks. Timed remarks stay with their predictions. Responses containing only untimed rows show the
+normal bilingual no-estimate state. The UI keeps the existing three-prediction limit and 30-second
 refresh cadence while the card is visible and the document is focused, visible and online.
 
 A failed request or unmatched stop shows a bilingual partial-data notice while retaining successful results. If all

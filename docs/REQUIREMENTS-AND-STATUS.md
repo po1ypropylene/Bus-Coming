@@ -26,14 +26,15 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 ## Arrival correctness and presentation
 
 The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, glossy operator-coloured
-route plates, softly highlighted cards, search/keypad controls and a frosted save sheet. It follows all five theme
+route plates, softly highlighted content cards, translucent search/keypad controls and a frosted save sheet. Header and
+tab chrome use backdrop blur and a translucent tint, with a stronger material on sheets. It follows all five theme
 palettes and system light/dark appearance. Reduced-transparency and higher-contrast preferences use opaque surfaces;
 unsupported backdrop-filter browsers retain opaque defaults. Features, text, data contracts and navigation behavior
 are unchanged.
 
 - Route details prefix the destination heading with **To / 往** in the selected language.
 - All panels sort supplied predictions chronologically before taking the first three. Equal-time departures remain
-  distinct; untimed operator messages follow timed predictions.
+  distinct; untimed operator messages are hidden.
 - Intervals up to one minute, including negative estimates, display **Due / 就到** at the same size as numeric predictions. Operator refreshes
   determine when predictions disappear. Overdue predictions are not proof that a bus has passed.
 - Hong Kong clocks, operator remarks and relative fetch age remain visible. All predictions use equal-width horizontal
@@ -124,6 +125,33 @@ simulated safe area. Mixed-service countdowns remain horizontal without overflow
 languages, with destinations and remarks retained. The mobile mixed-service screenshot was reviewed. Production
 offline and update smoke checks passed in both engines for version 1.0.2. No new live API, deployment or physical
 iPhone validation was performed.
+
+Version 1.0.4 hides untimed operator messages, including repeated Citybus “KMB Cycle” rows, and removes the
+“Message from Citybus” blocks. Timed remarks such as “Final Bus” remain under their departures. Responses with only
+untimed rows show the standard bilingual no-estimate state. Operator adapters and matching are unchanged.
+Regression responses are constructed fixtures, not a new live API capture. Build, lint, formatting, 72 unit tests,
+toolchain probes and 61 browser cases passed, with the intentional WebKit Lighthouse skip. Production offline and
+update smoke checks passed in Chromium and WebKit; the mobile screenshot was reviewed. No deployment or physical
+iPhone validation was performed.
+
+Glass refinement in version 1.0.5 replaces the tab bar's 88% surface tint with 62% in light appearance and 58%
+in dark appearance, with a restrained sheen. The header now shares a full-width backdrop material; controls, selections,
+sheets and toasts use coordinated materials while content cards remain readable. This follows Apple's current
+[materials hierarchy](https://developer.apple.com/design/human-interface-guidelines/materials), implemented in CSS;
+it is not the native iOS Liquid Glass renderer or verified iOS 27 parity.
+
+Build, lint, formatting, 72 unit tests, toolchain probes and 65 browser cases passed, with the intentional WebKit
+Lighthouse skip. New light/dark rendering checks measure actual colour transmission through the tab bar, exercise all
+tabs and higher-contrast fallback, and capture sheets. Existing checks cover all five palettes, both appearances,
+accessibility, header gutters/simulated safe areas and navigation clearance. Production offline and update smoke checks
+passed in Chromium and WebKit. Light/dark screenshots were reviewed.
+
+The automated WebKit runtime reports backdrop-filter support and transmits the tint but does not render blur in its
+screenshots. A separate minimal striped-backdrop probe reproduced this outside the app: a 20px blur left the sampled
+stripe range at 153–255, whereas Chromium flattened it to 204. This is a test-runtime observation, not evidence that
+physical Safari lacks backdrop filters. Chromium screenshots show the intended frosted rendering. Physical iPhone blur,
+scrolling performance, system transparency settings and native iOS 27 visual parity remain unverified. No deployment
+was performed.
 
 Historical live checks are summarized in [API research](API-RESEARCH.md): initial operator/CORS and full catalogue
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on

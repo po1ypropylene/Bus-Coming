@@ -6,7 +6,10 @@ import type { Arrival } from '../types/transit'
 export function upcomingArrivals(arrivals: Arrival[]): Arrival[] {
     // A past prediction can still describe an approaching bus. Let the operator
     // remove it on refresh; request failures are handled by the panel's stale state.
-    return [...arrivals].sort((a, b) => (a.time ?? Infinity) - (b.time ?? Infinity)).slice(0, 3)
+    return arrivals
+        .filter((a) => a.time !== null)
+        .sort((a, b) => (a.time ?? Infinity) - (b.time ?? Infinity))
+        .slice(0, 3)
 }
 
 export function arrivalCountdown(time: number | null, now: number, t: Copy): string {

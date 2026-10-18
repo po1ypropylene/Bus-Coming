@@ -99,9 +99,6 @@ export function ArrivalPanel({
                         {!online ? t.offline : failed ? t.unavailable : t.noEta}
                     </p>
                 )}
-                {!loading && arrivals.length > 0 && departures.length === 0 && (
-                    <p className="muted-text">{t.noEta}</p>
-                )}
                 {failed && arrivals.length > 0 && (
                     <p className="muted-text" role="status">
                         {t.unavailable}

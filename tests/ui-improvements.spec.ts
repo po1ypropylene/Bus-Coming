@@ -356,3 +356,60 @@ test('all five themes pass AA text contrast and accessibility on every tab in bo
         contentType: 'application/json',
     })
 })
+
+test('untimed operator messages are hidden with three predictions or no predictions', async ({
+    page,
+}) => {
+    await page.setViewportSize({ width: 320, height: 568 })
+    const now = Date.now()
+    await page.clock.install({ time: now })
+    await seed(page)
+    let timed = true
+    await page.route('**/eta/**', (request) =>
+        request.fulfill({
+            json: {
+                data: [
+                    {
+                        dir: 'O',
+                        seq: 1,
+                        service_type: 1,
+                        eta: null,
+                        rmk_en: 'No service',
+                        rmk_tc: '暫停服務',
+                    },
+                    ...(timed
+                        ? [6, 21, 30].map((minute) => ({
+                              dir: 'O',
+                              seq: 1,
+                              service_type: 1,
+                              eta: new Date(now + minute * 60000).toISOString(),
+                              rmk_en: 'Scheduled Bus',
+                              rmk_tc: '預定班次',
+                          }))
+                        : []),
+                ],
+            },
+        }),
+    )
+    await openStop(page)
+    await expect(page.locator('.arrival-time')).toHaveCount(3)
+    await expect(page.locator('.arrival-remark')).toHaveText([
+        'Scheduled Bus',
+        'Scheduled Bus',
+        'Scheduled Bus',
+    ])
+    await expect(page.locator('.arrival-message')).toHaveCount(0)
+    await expect(page.locator('.arrival-panel')).not.toContainText('No service')
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    timed = false
+    await page.clock.fastForward(16000)
+    await page.getByRole('button', { name: 'Refresh', exact: true }).click()
+    await expect(page.locator('.arrival-time')).toHaveCount(0)
+    await expect(page.locator('.arrival-panel')).toContainText('No arrival estimate')
+    await expect(page.locator('.arrival-message')).toHaveCount(0)
+    await expect(page.locator('.arrival-panel')).not.toContainText('No service')
+    await page.getByRole('button', { name: 'Language', exact: true }).click()
+    await expect(page.locator('.arrival-message')).toHaveCount(0)
+    await expect(page.locator('.arrival-panel')).not.toContainText('暫停服務')
+    await expect(page.locator('.arrival-panel')).toContainText('暫無班次資料')
+})

@@ -1,0 +1,69 @@
+import { expect, test } from '@playwright/test'
+import sharp from 'sharp'
+import { openStop, seed } from './fixtures'
+
+for (const colorScheme of ['light', 'dark'] as const) {
+    test(`glass chrome transmits its backdrop in ${colorScheme} appearance`, async ({ page }) => {
+        await page.emulateMedia({ colorScheme })
+        await page.setViewportSize({ width: 390, height: 844 })
+        await seed(page)
+        // A controlled underlay tests rendered transmission, not just a CSS declaration.
+        // It is independent of operator data and removed before capturing the real UI.
+        await page.evaluate(() => {
+            const probe = document.createElement('div')
+            probe.id = 'glass-probe'
+            Object.assign(probe.style, {
+                position: 'fixed',
+                inset: '0',
+                zIndex: '19',
+                pointerEvents: 'none',
+            })
+            document.body.append(probe)
+        })
+        const nav = page.locator('.tab-bar')
+        const sample = async (color: string) => {
+            await page.locator('#glass-probe').evaluate((element, color) => {
+                element.style.background = color
+            }, color)
+            const { data, info } = await sharp(await nav.screenshot({ scale: 'css' }))
+                .removeAlpha()
+                .raw()
+                .toBuffer({ resolveWithObject: true })
+            const offset = (3 * info.width + Math.floor(info.width / 2)) * info.channels
+            return [...data.subarray(offset, offset + 3)]
+        }
+        const red = await sample('rgb(150, 80, 80)')
+        const blue = await sample('rgb(80, 80, 150)')
+        expect(red[0] - blue[0]).toBeGreaterThan(15)
+        expect(blue[2] - red[2]).toBeGreaterThan(15)
+        await page.locator('#glass-probe').evaluate((element) => element.remove())
+        for (const tab of ['Saved', 'Nearby', 'Routes', 'Settings']) {
+            await page.getByRole('button', { name: tab, exact: true }).click()
+            const material = await nav.evaluate((element) => {
+                const style = getComputedStyle(element)
+                return {
+                    filter:
+                        style.backdropFilter || style.getPropertyValue('-webkit-backdrop-filter'),
+                    background: style.backgroundColor,
+                }
+            })
+            expect(material.filter).toContain('blur')
+            expect(material.background).toContain('0.')
+            expect(
+                await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+            ).toBe(true)
+        }
+        await page.screenshot({ path: test.info().outputPath(`glass-settings-${colorScheme}.png`) })
+        await openStop(page)
+        await page.getByRole('button', { name: 'Save stop', exact: true }).click()
+        await expect(page.getByRole('dialog')).toBeVisible()
+        await page.screenshot({ path: test.info().outputPath(`glass-sheet-${colorScheme}.png`) })
+        await page.getByRole('button', { name: 'Close', exact: true }).click()
+        await page.emulateMedia({ contrast: 'more' })
+        expect(await nav.evaluate((element) => getComputedStyle(element).backdropFilter)).toBe(
+            'none',
+        )
+        const fallback = await nav.evaluate((element) => getComputedStyle(element).backgroundColor)
+        expect(fallback).not.toContain('0.')
+    })
+}

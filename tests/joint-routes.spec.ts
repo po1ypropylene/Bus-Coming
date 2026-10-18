@@ -87,6 +87,24 @@ test('official joint data merges listings, combines ETAs, includes extra stops a
                                 (request.request().url().includes('/CTB/') ? 3 : 7) * 60000,
                         ).toISOString(),
                     },
+                    ...(request.request().url().includes('/CTB/')
+                        ? [
+                              {
+                                  dir: 'I',
+                                  seq: 12,
+                                  eta: null,
+                                  rmk_en: 'KMB Cycle',
+                                  rmk_tc: '九巴時段',
+                              },
+                              {
+                                  dir: 'I',
+                                  seq: 12,
+                                  eta: null,
+                                  rmk_en: 'KMB Cycle',
+                                  rmk_tc: '九巴時段',
+                              },
+                          ]
+                        : []),
                 ],
             },
         }),
@@ -137,6 +155,12 @@ test('official joint data merges listings, combines ETAs, includes extra stops a
     await page.locator('.stop-main').filter({ hasText: 'Stop 2' }).click()
     await expect(page.locator('.arrival-time')).toHaveCount(2)
     await expect(page.locator('.arrival-time').first()).toContainText('Citybus')
+    await expect(page.locator('.arrival-panel')).not.toContainText('KMB Cycle')
+    await expect(page.locator('.arrival-message')).toHaveCount(0)
+    await page.getByRole('button', { name: 'Language', exact: true }).click()
+    await expect(page.locator('.arrival-panel')).not.toContainText('九巴時段')
+    await page.getByRole('button', { name: '語言', exact: true }).click()
+    await expect(page.locator('.arrival-panel')).not.toContainText('KMB Cycle')
     await page.screenshot({
         path: `test-results/joint-route-${test.info().project.name}.png`,
         fullPage: true,

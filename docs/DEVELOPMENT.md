@@ -63,16 +63,30 @@ highlighted cards and controls, and a frosted save sheet. Neutral highlight toke
 fills, edges and shadows derive from the selected theme. Route plates retain separate KMB, Citybus and NLB
 colour tokens in both appearances.
 
-The header uses an opaque theme background extended across the viewport gutters and top safe area,
-including the mobile route-search shell, so the body gradient cannot form a lighter side strip.
-Its bottom divider extends through both viewport gutters using a clipped spread shadow.
-Only the floating tab bar and modal use backdrop blur; repeated cards and route plates use gradients
-and inset highlights to avoid a composited filter for every row. Supported browsers enhance opaque defaults
-with translucent fills. Reduced transparency or increased contrast restores opaque chrome and flat plates;
-forced colours retains outlined selection, and reduced motion disables the existing press scale. Preserve
-navigation clearance, mobile search grid geometry, focus rings and touch targets when refining the finish.
-The visual reference is [FreeFrontend's Liquid Glass collection](https://freefrontend.com/css-liquid-glass/);
-the implementation uses native CSS without external assets, SVG distortion filters or animation libraries.
+The header uses one viewport-wide material, including the gutters and top safe area. The tab bar uses a
+62% light / 58% dark surface tint plus a restrained sheen, so the blurred backdrop remains visible rather than being
+covered by the previous 88% fill. Active tabs use a translucent theme selection. Shared search fields, icon/language
+buttons, chips and keypad keys use the control material; the save sheet uses a denser 82% tint. Header, tab bar, sheet
+and transient toast use literal prefixed and unprefixed backdrop filters for WebKit and other supporting browsers.
+Avoid nested filters on individual controls or repeated rows. Content cards, ETA panels and operator plates retain
+readable fills and a consistent rim; making every content surface transparent would flatten the navigation hierarchy.
+
+Opaque defaults support browsers without backdrop filters. Reduced transparency or increased contrast removes blur
+and restores solid chrome, controls, selections and flat plates; forced colours retains outlined selection, and
+reduced motion disables press scaling. Preserve navigation clearance, full-width header/divider geometry, mobile
+search layout, focus rings and touch targets.
+
+Follow Apple's current [materials guidance](https://developer.apple.com/design/human-interface-guidelines/materials)
+and [Liquid Glass adoption guidance](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass):
+glass belongs to the navigation/control layer above content. This CSS implementation is a web approximation, not the
+native iOS renderer or proof of iOS 27 visual parity. Safari supports
+[backdrop filters](https://webkit.org/blog/3632/introducing-backdrop-filters/); physical iPhone rendering and scrolling
+performance still require device validation. The browser glass regression measures actual pixel transmission through
+the tab bar over controlled backdrops in light/dark appearance, exercises all tabs and captures the sheet. Header
+checks cover gutter/safe-area geometry; accessibility scans cover all palettes. The automated WebKit runtime currently
+advertises filter support without rendering blur in screenshots, also reproduced in an isolated striped-backdrop probe.
+Do not equate computed filter declarations or transmission with proof of blur; Chromium rendering and physical Safari
+validation must be reported separately. Avoid browser sniffing or extra compositor hacks to conceal this test limitation.
 
 ## Verification and release workflow
 
@@ -235,8 +249,7 @@ there is no fixed-height reservation or nested ETA scroller. Absolute arrival ti
 columns balance
 `Due / 就到` labels with numeric predictions, including when all three buses are due. Mobile countdowns and due labels
 scale together with the panel width (18–27px) so predictions remain horizontal; captions stay at 13px. Operator remarks appear under each
-affected departure; no GPS or scheduled classification is inferred from an empty remark. Retain untimed last-bus
-messages when supplied. Error states
+affected departure; no GPS or scheduled classification is inferred from an empty remark. Hide untimed operator messages. Error states
 have a retry action; offline states preserve known results and explain that a connection is needed.
 
 ## Generated output and regression fixtures
@@ -284,3 +297,7 @@ Keep each departure's clock, provider and supplied description beneath its count
 that column. Mobile countdowns scale with the panel's inline container width (18–27px), while captions remain 13px.
 Do not switch mixed services to vertical rows. Header pixel checks cover the full-width divider, and the mixed-service
 browser regression checks horizontal geometry and overflow at 320, 390, 440 and 1280px in both languages.
+
+`upcomingArrivals` selects up to three timed predictions. Untimed operator rows, including repeated Citybus
+“KMB Cycle” messages, are not displayed. Keep remarks attached to timed departures, such as “Final Bus”. A response
+with only untimed rows uses the normal bilingual no-estimate state. Network, stale and partial-data warnings remain.

@@ -623,7 +623,9 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
     await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
 })
 
-test('Citybus imminent buses and mixed destinations survive in details and saved stops', ;async ({ page }, testInfo) => {
+test('Citybus imminent buses and mixed destinations survive in details and saved stops', async ({
+    page,
+}, testInfo) => {
     const fixtureNow = Date.now()
     await page.clock.install({ time: new Date(fixtureNow) })
     const fixtureStop = { ...stop, id: 'CTB:003156', code: '003156', provider: 'CTB' }
@@ -732,7 +734,8 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     await expect(page.locator('.arrival-panel')).toContainText('上次預計時間')
     await expect(page.locator('.arrival-panel')).toContainText('無法更新到站時間')
     await expect(page.locator('.arrival-time strong').first()).toHaveText('就到')
-    await page.unroute('**/eta/**')
+    await expect(page.getByRole('button', { name: '重新整理', exact: true })).toBeEnabled()
+    // Override the failed response without exposing a gap to the live endpoint.
     // Reinstall a successful response with all destinations equal; no extra labels.
     await page.route('**/eta/**', (request) =>
         request.fulfill({

@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 17 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 18 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -34,10 +34,11 @@ are unchanged.
 - Route details prefix the destination heading with **To / 往** in the selected language.
 - All panels sort supplied predictions chronologically before taking the first three. Equal-time departures remain
   distinct; untimed operator messages follow timed predictions.
-- Intervals up to one minute, including negative estimates, display full-size **Due / 就到**. Operator refreshes
+- Intervals up to one minute, including negative estimates, display **Due / 就到** at the same size as numeric predictions. Operator refreshes
   determine when predictions disappear. Overdue predictions are not proof that a bus has passed.
-- Hong Kong clocks, operator remarks and relative fetch age remain visible. Different supplied destinations or remarks
-  use rows; identical services use equal-width columns. Cards fit their content and longer notes expand naturally.
+- Hong Kong clocks, operator remarks and relative fetch age remain visible. All predictions use equal-width horizontal
+  columns, including different destinations or remarks. Mobile countdowns shrink to fit narrow panels; clocks and
+  supplied descriptions remain beneath their prediction, with longer notes wrapping within each column.
 - Requests run every 30 seconds only for visible cards in a focused, visible, online document. A 15-second memory cache
   and request deduplication limit repeated calls. Existing requests may finish after focus is lost. Failed, partial,
   offline or older-than-90-second results are explicitly stale; retries preserve known predictions.
@@ -80,7 +81,7 @@ no longer exists shows unavailable and asks the user to save it again. App updat
 - Chromium desktop and 440×956 mobile WebKit cover search, ETA, groups/order, reloads, imports, simulated GPS, progressive
   Citybus loading, migrations, failed refresh retention, joint routes, direction switches and both languages.
 - Header pixel checks cover uniform light/dark backgrounds across both viewport gutters and a simulated
-  62px top safe area on Settings and Routes at 320px, 440px and 1280px widths in both browser engines.
+  62px top safe area and a continuous full-viewport bottom divider on Settings and Routes at 320px, 440px and 1280px widths in both browser engines.
 - UI checks cover compact cards/due labels, polling pauses/resume, health/retry states, keypad availability, narrow
   layouts, all-theme axe checks and token contrast. Lighthouse accessibility runs only in Chromium.
 - Production offline and update smoke scripts separately exercise cached reload, bookmarks/search, update activation
@@ -114,6 +115,15 @@ package version in the Settings footer in both languages. Production offline and
 Chromium and WebKit. The update smoke serves three simulated version-derived cache identities of the same built
 shell, verifying waiting-worker detection, explicit activation/reload, current-build status, resume detection and
 preference preservation. This is local browser evidence, not deployment or physical iPhone verification.
+
+Header-divider and horizontal-ETA validation on 18 October 2026 passed production build, lint, formatting,
+72 unit tests and toolchain probes. Browser verification covered 59 passing cases across Chromium and mobile WebKit,
+with the intentional WebKit Lighthouse skip; the mixed-service case passed a targeted rerun after adding waits for
+language-triggered ETA reloads. Divider pixels match across both viewport gutters in light/dark appearance with a
+simulated safe area. Mixed-service countdowns remain horizontal without overflow at 320, 390, 440 and 1280px in both
+languages, with destinations and remarks retained. The mobile mixed-service screenshot was reviewed. Production
+offline and update smoke checks passed in both engines for version 1.0.2. No new live API, deployment or physical
+iPhone validation was performed.
 
 Historical live checks are summarized in [API research](API-RESEARCH.md): initial operator/CORS and full catalogue
 checks on 20 September, targeted N8P and TD/102/106 checks on 21 September, and a targeted 720 evening response on

@@ -930,6 +930,7 @@ h1 {
     padding: 12px 15px;
     background: var(--soft);
     border-radius: 13px;
+    container-type: inline-size;
 }
 
 .arrival-top {
@@ -976,21 +977,6 @@ h1 {
     color: var(--muted);
     margin-top: 5px;
     overflow-wrap: anywhere;
-}
-
-.arrival-times.arrival-rows {
-    flex-direction: column;
-    gap: 12px;
-}
-
-.arrival-rows .arrival-time {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-}
-
-.arrival-rows .arrival-countdown {
-    flex: 0 0 7rem;
 }
 
 .arrival-description {
@@ -2189,11 +2175,11 @@ progress {
     }
 }
 
-.arrival-times:not(.arrival-rows) {
+.arrival-times {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
-    gap: 12px;
+    gap: 8px;
     text-align: center;
 }
 
@@ -2207,10 +2193,6 @@ progress {
     white-space: nowrap;
 }
 
-.arrival-times.arrival-rows {
-    justify-content: flex-start;
-}
-
 .arrival-time strong.arrival-due {
     font-size: 29px;
     letter-spacing: 0;
@@ -2218,8 +2200,9 @@ progress {
 
 @media (max-width: 760px) {
     .arrival-countdown,
+    .arrival-time strong,
     .arrival-time strong.arrival-due {
-        font-size: 27px;
+        font-size: clamp(18px, 8cqi, 27px);
     }
 }
 

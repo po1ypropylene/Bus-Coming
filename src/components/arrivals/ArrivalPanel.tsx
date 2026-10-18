@@ -31,7 +31,6 @@ export function ArrivalPanel({
         useArrivals(route, stop, seq, lang, availableStops)
     const departures = arrivals.filter((a) => a.time !== null)
     const showDestinations = new Set(departures.map((a) => a.destination).filter(Boolean)).size > 1
-    const showRows = showDestinations || new Set(departures.map((a) => a.remark.trim())).size > 1
     return (
         <div ref={panelRef} className={`arrival-panel ${stale ? 'stale' : ''}`}>
             <div className="arrival-top">
@@ -49,12 +48,7 @@ export function ArrivalPanel({
                     <RefreshCw size={16} className={fetching ? 'spin' : undefined} />
                 </button>
             </div>
-            <div
-                className={`arrival-times ${showRows ? 'arrival-rows' : ''}`}
-                aria-busy={loading}
-                role="region"
-                aria-label={t.eta}
-            >
+            <div className="arrival-times" aria-busy={loading} role="region" aria-label={t.eta}>
                 {loading ? (
                     <div className="arrival-skeleton" role="status" aria-label={t.loadingEta}>
                         {[0, 1, 2].map((row) => (

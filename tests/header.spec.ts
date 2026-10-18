@@ -35,6 +35,15 @@ for (const colorScheme of ['light', 'dark'] as const) {
                         expect([...data.subarray(offset, offset + 3)]).toEqual(background)
                     }
                 }
+                // The bottom divider must be continuous through both viewport gutters.
+                const dividerY = Math.round(header!.y + header!.height) - 1
+                const dividerPixels = [1, Math.floor(width / 2), width - 2].map((x) => {
+                    const offset = (dividerY * info.width + x) * info.channels
+                    return [...data.subarray(offset, offset + 3)]
+                })
+                expect(dividerPixels[0]).not.toEqual(background)
+                expect(dividerPixels[0]).toEqual(dividerPixels[1])
+                expect(dividerPixels[2]).toEqual(dividerPixels[1])
                 expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
             }
         }

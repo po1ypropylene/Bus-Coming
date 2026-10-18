@@ -1,6 +1,6 @@
 # Development guide
 
-Last updated: 17 October 2026.
+Last updated: 18 October 2026.
 
 ## Starting points
 
@@ -65,6 +65,7 @@ colour tokens in both appearances.
 
 The header uses an opaque theme background extended across the viewport gutters and top safe area,
 including the mobile route-search shell, so the body gradient cannot form a lighter side strip.
+Its bottom divider extends through both viewport gutters using a clipped spread shadow.
 Only the floating tab bar and modal use backdrop blur; repeated cards and route plates use gradients
 and inset highlights to avoid a composited filter for every row. Supported browsers enhance opaque defaults
 with translucent fills. Reduced transparency or increased contrast restores opaque chrome and flat plates;
@@ -169,9 +170,8 @@ Keep provider direction/service/stop filtering in the adapters; display sorting 
 
 KMB and Citybus arrival adapters retain the selected-language `dest_en` / `dest_tc` as optional per-departure
 `destination`, alongside existing remarks. Compare only the displayed timed departures: when at least two supplied
-destinations differ, show each available destination. Identical or missing destinations add no label. Mixed destinations
-or differing remarks use stacked rows so service descriptions remain readable on phones; identical services keep the
-compact countdown layout. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
+destinations differ, show each available destination. Identical or missing destinations add no label. All departures use equal-width horizontal columns, including mixed destinations
+or differing remarks; descriptions wrap beneath their respective countdowns. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
 Do not infer a bypass itinerary from the route number, clock time or catalogue destination.
 
 Live/scheduled departure labels must come from explicit operator data. Never approximate this status
@@ -233,8 +233,8 @@ with a neutral waiting state before any result, amber after failure/partial/90s 
 ETA cards use content-driven height with compact loading placeholders. Longer operator notes expand the card naturally;
 there is no fixed-height reservation or nested ETA scroller. Absolute arrival times use Hong Kong time. Equal-width
 columns balance
-full-size `Due / 就到` labels with numeric predictions, including when all three buses are due; only mixed destinations
-or different remarks use rows. No small-font fallback is used for due labels. Operator remarks appear under each
+`Due / 就到` labels with numeric predictions, including when all three buses are due. Mobile countdowns and due labels
+scale together with the panel width (18–27px) so predictions remain horizontal; captions stay at 13px. Operator remarks appear under each
 affected departure; no GPS or scheduled classification is inferred from an empty remark. Retain untimed last-bus
 messages when supplied. Error states
 have a retry action; offline states preserve known results and explain that a connection is needed.
@@ -276,3 +276,11 @@ resume interrupted downloads; complete snapshots remain available until replacem
 Citybus also publishes its lightweight route index immediately and caches selected route details on demand.
 Nearby discovery uses device location only after a user action, never sends coordinates to operators, and shows up to
 40 stops within 1 km in distance order. It requires downloaded stop coordinates.
+
+### Horizontal ETA layout
+
+Arrival panels always use three equal-width columns, including departures with different destinations or remarks.
+Keep each departure's clock, provider and supplied description beneath its countdown; long descriptions wrap within
+that column. Mobile countdowns scale with the panel's inline container width (18–27px), while captions remain 13px.
+Do not switch mixed services to vertical rows. Header pixel checks cover the full-width divider, and the mixed-service
+browser regression checks horizontal geometry and overflow at 320, 390, 440 and 1280px in both languages.

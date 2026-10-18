@@ -623,9 +623,7 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
     await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
 })
 
-test('Citybus imminent buses and mixed destinations survive in details and saved stops', async ({
-    page,
-}, testInfo) => {
+test('Citybus imminent buses and mixed destinations survive in details and saved stops', ;async ({ page }, testInfo) => {
     const fixtureNow = Date.now()
     await page.clock.install({ time: new Date(fixtureNow) })
     const fixtureStop = { ...stop, id: 'CTB:003156', code: '003156', provider: 'CTB' }
@@ -696,6 +694,37 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
     ).toBe(true)
+    // Different destinations and remarks must retain horizontal predictions in both languages.
+    for (const width of [320, 390, 440, 1280]) {
+        await page.setViewportSize({ width, height: 900 })
+        for (const language of ['tc', 'en']) {
+            if (language === 'en') {
+                await page.getByRole('button', { name: '語言', exact: true }).click()
+            }
+            await expect(page.locator('.arrival-time')).toHaveCount(3)
+            const geometry = await page.locator('.arrival-time').evaluateAll((elements) =>
+                elements.map((element) => {
+                    const box = element.getBoundingClientRect()
+                    const countdown = element.querySelector('.arrival-countdown')!
+                    return {
+                        top: box.top,
+                        left: box.left,
+                        right: box.right,
+                        countdownWidth: countdown.scrollWidth,
+                        width: box.width,
+                    }
+                }),
+            )
+            expect(new Set(geometry.map((box) => box.top)).size).toBe(1)
+            expect(geometry[0].right).toBeLessThanOrEqual(geometry[1].left)
+            expect(geometry[1].right).toBeLessThanOrEqual(geometry[2].left)
+            for (const box of geometry)
+                expect(box.countdownWidth).toBeLessThanOrEqual(box.width + 1)
+            expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
+        }
+        await page.getByRole('button', { name: 'Language', exact: true }).click()
+        await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '6', '14'])
+    }
     // A failed refresh must keep the operator prediction explicitly labelled as stale.
     await page.route('**/eta/**', (request) => request.abort('internetdisconnected'))
     await page.clock.fastForward(16000)

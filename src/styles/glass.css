@@ -46,6 +46,18 @@ body {
     clip-path: inset(0 -100vmax);
 }
 
+/* Continue the divider through the same viewport gutters as the header background. */
+.app-header::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -1px;
+    height: 1px;
+    pointer-events: none;
+    background: var(--glass-edge);
+    box-shadow: 0 0 0 100vmax var(--glass-edge);
+    clip-path: inset(0 -100vmax);
+}
+
 .tab-bar {
     border-color: var(--glass-edge);
     border-radius: 38px;

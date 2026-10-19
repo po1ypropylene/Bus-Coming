@@ -26,3 +26,10 @@ Follow the existing four-space source convention observed in `src/types/transit.
 - `package.json` → `version` is the single editable app-version source. Use `npm version patch --no-git-tag-version`, `npm version minor --no-git-tag-version` or `npm version major --no-git-tag-version` to update it and the generated `package-lock.json` metadata together, without creating a commit or tag. Do not hand-edit version literals in UI or service workers.
 - Vite injects `__APP_VERSION__` into the UI and derives the Workbox cache identity from that same value. The Settings footer displays the full version. The existing waiting-service-worker flow determines when a downloaded build is ready to apply; keep activation user-controlled and preserve stored user data. Never couple app versions to backup or IndexedDB schema versions.
 - Rebuild after advancing the version. Run the required checks, including `npm run test:offline` and `node scripts/update-smoke.mjs` when changing version/update wiring. A version bump does not authorize deployment.
+
+## Git commits and pushes
+
+- After completing the requested changes and relevant verification, automatically commit the task's changes and push them to GitHub, including instruction-only updates such as this one. Do not wait for a separate commit or push request unless the user explicitly asks otherwise.
+- Keep commit messages generic and as short as possible while naming the change, for example `Add sort ETAs`, `Tab bar UI improvements` or `Update agent instructions`. Detailed commit bodies are unnecessary.
+- Review the diff before committing, stage only changes belonging to the task, and preserve unrelated user work. Push the current task branch to its configured remote; set its upstream when needed. Never force-push or rewrite shared history without explicit authorization.
+- If verification, committing or pushing fails, report the actual failure and remaining work. Committing and pushing do not authorize deployment.

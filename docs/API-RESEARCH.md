@@ -217,3 +217,23 @@ website checks; this is a bounded finding, not proof that no other source exists
 The user's decision is to require explicit source-backed status and never use approximate labels.
 Stop position, timestamp rounding and ETA movement must not be used as classification heuristics.
 Keep existing Citybus estimates and supplied remarks until a reliable source supports the distinction.
+
+## Missing third prediction investigation — 20 October 2026
+
+Ran `node scripts/audit-citybus-route.mjs 720` at 08:42 HKT after a report of two predictions at
+outbound origin `003155` and three at the next stop `003156` around 08:36. At capture time both
+stops supplied three predictions: 08:50/09:00/09:10 at the origin and 08:51:14/09:01:18/09:11:18
+at the next stop. This later capture cannot establish what the API returned at 08:36.
+
+The same audit captured outbound stop `001207` with only two timed rows (`eta_seq` 2 and 3),
+08:47:31 and 08:56:06, while the next stop `001301` supplied three: 08:45:41, 08:51:01 and
+08:59:14. Their source timestamps differed: 08:42:07 versus 08:41:08, respectively. Other stops
+also supplied only two predictions. Thus adjacent stops can expose different prediction counts
+and source generations directly in the public API; a downstream third estimate does not establish
+that the upstream endpoint supplied it. Do not copy or extrapolate downstream times upstream.
+
+The current adapter does not filter on `eta_seq`; the display removes untimed rows, sorts all
+timed predictions, then limits to three. Added constructed browser and unit regressions for a
+withdrawn first prediction, remaining rank gaps, two supplied predictions and subsequent replenishment.
+The original screenshot event remains unconfirmed; no shipped matching or display change was justified.
+Raw audit output is ignored at `artifacts/citybus-720-audit.json`.

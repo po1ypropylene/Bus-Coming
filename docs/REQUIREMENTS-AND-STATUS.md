@@ -189,3 +189,14 @@ missing destinations. Across the suite and isolated reruns, 65 browser cases pas
 WebKit Lighthouse skip. Slow fixture-clock assertions were stabilized; interrupted and artifact-collision runs
 were completed with isolated output and sequential reruns. The expanded mobile screenshot was reviewed.
 No new live API, deployment or physical iPhone validation was performed.
+
+The 20 October 2026 missing-third-ETA investigation found no UI truncation in the current code.
+A fresh 720 audit at 08:42 HKT returned three predictions at both screenshot stops, and two
+predictions at another stop with three at its next stop (with different operator source timestamps).
+This does not establish the source response at the screenshot's 08:36 event. See
+[the audit findings](API-RESEARCH.md#missing-third-prediction-investigation--20-october-2026).
+Added regressions verify third-column replenishment after a withdrawn prediction and faithfully
+showing only two supplied predictions. Build, lint, formatting, 73 unit tests, toolchain probes and
+the two targeted browser cases passed in Chromium and mobile WebKit. No shipped code, app version,
+persistence or update behavior changed; offline/update smoke and the full browser suite were not
+repeated. No deployment or physical iPhone verification was performed.

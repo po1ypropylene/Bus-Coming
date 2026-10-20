@@ -41,3 +41,11 @@ it('formats ticking age in both languages without negative ages after a clock co
     expect(arrivalAge(now, now + 91000, strings.tc)).toBe('91 秒前更新')
     expect(arrivalAge(now, now - 1000, strings.en)).toBe('Updated 0s ago')
 })
+
+it('fills the third slot after a withdrawn ETA without limiting raw response rows first', () => {
+    const withdrawn = { time: null, remark: '' }
+    const following = [eta(5), eta(14), eta(24)]
+    expect(upcomingArrivals([eta(0), ...following])).toEqual([eta(0), eta(5), eta(14)])
+    expect(upcomingArrivals([withdrawn, ...following])).toEqual(following)
+    expect(upcomingArrivals([withdrawn, ...following.slice(0, 2)])).toEqual(following.slice(0, 2))
+})

@@ -5,6 +5,7 @@ import { extname, resolve } from 'node:path'
 
 await mkdir('artifacts', { recursive: true })
 const results = []
+const variantFixture = JSON.parse(await readFile('src/services/variants/fixtures/720.json', 'utf8'))
 for (const [name, engine] of [
     ['Chromium', chromium],
     ['WebKit', webkit],
@@ -45,13 +46,14 @@ for (const [name, engine] of [
         await context.route('https://data.etabus.gov.hk/**', (req) => req.abort())
         await context.route('https://rt.data.gov.hk/**', (req) => req.abort())
         await context.route('https://portal.csdi.gov.hk/**', (req) => req.abort())
+        await context.route('https://static.data.gov.hk/td/pt-headway-*/**', (req) => req.abort())
         const page = await context.newPage()
         const errors = []
         page.on('pageerror', (error) => errors.push(error.message))
         await page.goto('http://127.0.0.1:4181')
         await page.evaluate(() => navigator.serviceWorker.ready)
         await page.waitForFunction(() => navigator.serviceWorker.controller !== null)
-        await page.evaluate(async () => {
+        await page.evaluate(async (variantFixture) => {
             const stop = {
                 id: 'KMB:ABC',
                 code: 'ABC',
@@ -109,17 +111,32 @@ for (const [name, engine] of [
                         },
                         'td-joint-routes-v1',
                     )
+                    tx.objectStore('responses').put(
+                        {
+                            at: Date.now(),
+                            generation: 1,
+                            data: { ...variantFixture.catalog, updatedAt: Date.now() },
+                        },
+                        'td-citybus-variants-v1',
+                    )
                     for (const provider of ['KMB', 'CTB', 'NLB'])
                         tx.objectStore('snapshots').put({
                             provider,
                             updatedAt: Date.now(),
                             routes:
-                                provider === 'KMB' ? [route] : provider === 'CTB' ? [partner] : [],
+                                provider === 'KMB'
+                                    ? [route]
+                                    : provider === 'CTB'
+                                      ? [partner, ...variantFixture.operator.routes]
+                                      : [],
                             stops:
                                 provider === 'KMB'
                                     ? { [stop.id]: stop }
                                     : provider === 'CTB'
-                                      ? { [partnerStop.id]: partnerStop }
+                                      ? {
+                                            [partnerStop.id]: partnerStop,
+                                            ...variantFixture.operator.stops,
+                                        }
                                       : {},
                             stopRoutes: {},
                         })
@@ -129,7 +146,7 @@ for (const [name, engine] of [
                     }
                 }
             })
-        })
+        }, variantFixture)
         // Stop the actual origin for both engines. WebKit's emulated offline switch
         // fails navigations internally on this runtime even with a populated cache.
         server.closeAllConnections()
@@ -152,12 +169,22 @@ for (const [name, engine] of [
         }
         await page.locator('.bookmark-card').waitFor()
         await page.getByRole('button', { name: 'Routes', exact: true }).click()
-        await page.locator('.route-row').waitFor()
+        await page.locator('.route-row').first().waitFor()
         if (
-            (await page.locator('.route-row').count()) !== 1 ||
-            !(await page.locator('.route-row').textContent()).includes('Joint route')
+            (await page.locator('.route-row').count()) !== 3 ||
+            (await page.locator('.route-row').filter({ hasText: 'Joint route' }).count()) !== 1
         )
             throw new Error('Offline joint membership was not restored')
+        await page.getByRole('textbox', { name: 'Route number' }).fill('720')
+        await page.locator('.route-row').first().click()
+        await page.locator('.variant-name').waitFor()
+        if (
+            (await page
+                .getByRole('combobox', { name: 'Route variant', exact: true })
+                .locator('option')
+                .count()) < 5
+        )
+            throw new Error('Offline timetable variants were not restored')
         const overflow = await page.evaluate(
             () => document.documentElement.scrollWidth > innerWidth,
         )
@@ -187,11 +214,15 @@ for (const [name, engine] of [
             offlineReload: 'passed',
             bookmarkPersistence: 'passed',
             cachedRouteSearch: 'passed',
+            cachedTimetableVariants: 'passed',
             standaloneManifest: 'passed',
             blueDefaultAndManifest: 'passed',
             errors,
         })
-        console.log(name, 'offline app reload, bookmarks, route search, manifest: PASS')
+        console.log(
+            name,
+            'offline app reload, bookmarks, route search, timetable variants, manifest: PASS',
+        )
     } finally {
         server.closeAllConnections()
         server.close()

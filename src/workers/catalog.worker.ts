@@ -1,6 +1,7 @@
 /// <reference lib="webworker" />
 import { download } from '../services/catalog/download'
 import { downloadJointCatalog } from '../services/joint/catalog'
+import { downloadVariantCatalog } from '../services/variants/catalog'
 import { PROVIDERS } from '../types/transit'
 
 let busy = false
@@ -8,6 +9,9 @@ self.onmessage = async (event: MessageEvent<{ force: boolean }>) => {
     if (busy) return
     busy = true
     await Promise.all([
+        downloadVariantCatalog(event.data.force, (message) => self.postMessage(message)).catch(() =>
+            self.postMessage({ type: 'variantsError' }),
+        ),
         downloadJointCatalog(event.data.force, (message) => self.postMessage(message)).catch(() =>
             self.postMessage({ type: 'jointError' }),
         ),

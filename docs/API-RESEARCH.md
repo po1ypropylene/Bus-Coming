@@ -238,3 +238,46 @@ timed predictions, then limits to three. Added constructed browser and unit regr
 withdrawn first prediction, remaining rank gaps, two supplied predictions and subsequent replenishment.
 The original screenshot event remains unconfirmed; no shipped matching or display change was justified.
 Raw audit output is ignored at `artifacts/citybus-720-audit.json`.
+
+## Citybus route variants and TD timetables — 20 October 2026
+
+The Citybus public route contract exposes no service-variant ID or calendar. A current 720 route
+response at approximately 16:21 HKT combined its destination as `Central (Macao Ferry / Wing Wo Street)`.
+Its outbound stop list contained 18 entries; the sampled stop `003156` returned three Macao Ferry
+predictions with empty remarks. This afternoon sample does not verify morning ETA classification.
+
+TD supplies the missing static patterns and operating periods through its
+[headway dataset](https://data.gov.hk/en-data/dataset/hk-td-tis_11-pt-headway-en) and
+[GTFS specification](https://static.data.gov.hk/td/pt-headway-en/dataspec/ptheadway_dataspec.pdf):
+
+- `https://static.data.gov.hk/td/pt-headway-en/gtfs.zip`
+- `https://static.data.gov.hk/td/pt-headway-tc/routes.txt`
+- `https://static.data.gov.hk/td/pt-headway-tc/stops.txt`
+
+All three resources returned HTTP 200 and `Access-Control-Allow-Origin: *` with an Origin header on
+this date. The English ZIP was 13,742,983 bytes, with source Last-Modified 14 October 2026. The actual
+application parser normalized 855 Citybus/joint patterns and 2,625 TD stops, passing catalogue validation.
+These counts are dated evidence. Fare tables are not inflated. Parser validation in Node took about
+7.3 seconds here; parsing runs off the main thread, and this is not a physical iPhone performance result.
+
+720 contained TD route IDs `1775` (Wing Wo circular), `1000281` (Wing Wo terminating), `1776`
+(normal Macao Ferry, two directions) and `8142` (Macao Ferry → Grand Promenade via Queensway and
+Lockhart Road). The morning patterns omit the westbound Cityplaza/Admiralty Centre stops. Calendar
+287 is Monday–Friday with holiday removals; the terminating morning trips include 07:10 through
+08:55. Current GTFS stop patterns were matched against fresh Citybus route-stop and stop responses
+later this afternoon. All 13 terminating, 17 normal outbound and 20 normal/Queensway return stops
+mapped conservatively. The circular pattern mapped 25 of 26 visits; the Wing Wo turn remains
+ambiguous between API directions. Keep that visit unavailable rather than guessing.
+
+The application now chooses a default variant using scheduled origin departures, not the next live
+ETA. The retained real-data fixture verifies outbound defaults at 07:55 (circular), 08:50 (terminating)
+and 09:05 (normal), and inbound at 19:00 (Queensway/Lockhart Road). These are deterministic evaluations
+of the published timetable for 20 October, not observed bus departures. Official-app internal selection
+logic and individual morning ETA-to-variant matching have not been established.
+
+Intermediate GTFS times are mostly blank, so the UI explicitly states that the selection window uses
+the origin. A bus already travelling along the route may outlast its origin's scheduled service period.
+No timetable-to-live trip key is exposed by Citybus. Shared-stop ETAs therefore retain their existing
+operator direction/visit filtering and may include other variants; destination labels/remarks remain
+available. TD/operator stop IDs and direction codes must never be equated. Timetables can lag temporary
+diversions, and patterns without sufficient safe direction/stop matches retain the operator stop list.

@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { expect, test } from '@playwright/test'
+import { expect, test } from './test'
 
 test('first launch downloads shared Citybus data and preserves it across offline reload', async ({
     page,

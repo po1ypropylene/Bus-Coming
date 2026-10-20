@@ -310,3 +310,45 @@ browser regression checks horizontal geometry and overflow at 320, 390, 440 and 
 `upcomingArrivals` selects up to three timed predictions. Untimed operator rows, including repeated Citybus
 “KMB Cycle” messages, are not displayed. Keep remarks attached to timed departures, such as “Final Bus”. A response
 with only untimed rows uses the normal bilingual no-estimate state. Network, stale and partial-data warnings remain.
+
+## Citybus timetable variants
+
+`services/variants/` imports TD's English GTFS ZIP plus the small Traditional Chinese route/stop
+name tables. `fflate` inflates only the required tables inside the catalogue worker; fare tables are
+excluded. CSV parsing iterates records, preserving quoted commas/newlines. Stops, service calendars,
+holiday exceptions, fixed departures and frequency periods normalize into a separate validated
+`td-citybus-variants-v1` entry in the existing IndexedDB `responses` store. There is no database,
+bookmark or backup schema change. Refresh follows the existing weekly/forced policy and commits only
+a complete valid catalogue; failed refreshes preserve the last saved timetable. Search, operator
+snapshots and on-demand Citybus details do not depend on timetable availability. Settings reports
+this download independently.
+
+`useRouteVariants` selects among safely matched Citybus patterns for the opened direction. It checks
+scheduled origin departures in the next 60 minutes, chooses the earliest when several qualify, and
+otherwise uses the next departure within its 14-day lookahead. With no eligible departure it retains
+the operator stop list. Calendars use Hong Kong time, weekday rules, holiday exceptions and GTFS
+service-day times after 24:00. Frequency end times are exclusive. Blank intermediate times are never
+interpolated. A saved/nearby stop restricts the automatic candidates to patterns that can be safely
+mapped to that stop. Selection recomputes every 30 seconds and on visibility changes. A manual pattern
+or the operator stop list stays selected until the route detail screen closes; Automatic restores the
+schedule rule. If a refresh removes a manually selected pattern, the picker falls back explicitly
+to the operator stop list. Other operators retain their existing service identities and behavior.
+
+TD direction and stop IDs are not operator API identifiers. Pair stops only within the selected
+Citybus route family using close, unambiguous physical/name matches and ordered direction evidence
+(at least three matched visits). Repeated operator visits remain unmatched, including when the same stop has a unique visit in the
+opposite direction. Ordered neighbours reject isolated opposite-direction or out-of-order matches. A circular TD pattern can
+contain both directions and is displayed as a complete loop, with each mapped visit retaining its
+operator direction and original sequence. Ambiguous visits remain visible with bilingual names but
+cannot request ETAs or be saved. The 720 circular Wing Wo Street turn is one such case. Never pass a TD
+ID or sequence to an operator ETA endpoint. Safely mapped stops save the original operator route,
+stop and sequence, so existing backups/bookmarks remain valid. Live ETA filtering and joint-provider
+matching remain unchanged: a timetable selection does not prove that a shared-stop arrival belongs
+to that variant.
+
+The dated real 720 fixture in `services/variants/fixtures/720.json` covers morning circular,
+Wing Wo terminating, normal directions and the Queensway/Lockhart Road return variant. Keep it separate
+from constructed UI fixtures. Browser tests use a shared context fixture to block background live TD
+downloads; individual tests can supply explicit timetable fixtures. Production offline tests separately
+exercise the service worker. Physical iPhone rendering, memory use and suspended-app behavior still
+need device verification.

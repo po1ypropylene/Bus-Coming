@@ -20,6 +20,9 @@ export const route = {
 }
 
 export async function seed(page: Page, version = 2, fixture = { route, stop }, numbers?: string[]) {
+    await page
+        .context()
+        .route('https://static.data.gov.hk/td/pt-headway-*/**', (request) => request.abort())
     await page.context().route('https://portal.csdi.gov.hk/**', (request) =>
         request.fulfill({
             json: {

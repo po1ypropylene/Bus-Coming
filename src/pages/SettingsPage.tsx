@@ -22,6 +22,8 @@ export function SettingsPage() {
         lang,
         updateUser,
         snapshots,
+        variantCatalog,
+        variantError,
         jointCatalog,
         jointError,
         progress,
@@ -141,6 +143,18 @@ export function SettingsPage() {
                                 : '—'}
                         </p>
                         {jointError && <p className="error-text">{t.failed}</p>}
+                    </div>
+                    <div className="provider-setting">
+                        <strong>{t.variantData}</strong>
+                        <p>
+                            {t.lastDownloaded}:{' '}
+                            {variantCatalog
+                                ? new Date(variantCatalog.updatedAt).toLocaleString(
+                                      tc ? 'zh-HK' : 'en-GB',
+                                  )
+                                : '—'}
+                        </p>
+                        {variantError && <p className="error-text">{t.failed}</p>}
                     </div>
                     <button className="setting-action" disabled={busy} onClick={() => refresh()}>
                         <RefreshCw size={18} className={busy ? 'spin' : ''} />

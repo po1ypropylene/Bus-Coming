@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { db } from '../storage/catalogDb'
+import { cachedVariantCatalog, VARIANT_CACHE_KEY } from '../services/variants/catalog'
+import type { VariantCatalog } from '../services/variants/types'
 import { cachedJointCatalog, JOINT_CACHE_KEY } from '../services/joint/catalog'
 import type { CatalogEvent, JointCatalog, Progress, RouteCatalog, Snapshot } from '../types/transit'
 
 export function useCatalog() {
+    const [variantCatalog, setVariantCatalog] = useState<VariantCatalog | null>(null)
+    const [variantError, setVariantError] = useState(false)
     const [jointCatalog, setJointCatalog] = useState<JointCatalog | null>(null)
     const [jointError, setJointError] = useState(false)
     const [catalogs, setCatalogs] = useState<RouteCatalog[]>([])
@@ -26,6 +30,11 @@ export function useCatalog() {
         worker.current = instance
         instance.onmessage = (event) => {
             const data = event.data as CatalogEvent
+            if (data.type === 'variants') {
+                setVariantCatalog(data.catalog)
+                setVariantError(false)
+            }
+            if (data.type === 'variantsError') setVariantError(true)
             if (data.type === 'joint') {
                 setJointCatalog(data.catalog)
                 setJointError(false)
@@ -59,13 +68,15 @@ export function useCatalog() {
                         database.getAll('snapshots'),
                         database.getAll('routeCatalogs'),
                         database.get('responses', JOINT_CACHE_KEY),
+                        database.get('responses', VARIANT_CACHE_KEY),
                     ])
                 } finally {
                     database.close()
                 }
             })
-            .then(([saved, catalogs, joint]) => {
+            .then(([saved, catalogs, joint, variants]) => {
                 if (active) {
+                    setVariantCatalog(cachedVariantCatalog(variants?.data))
                     setJointCatalog(cachedJointCatalog(joint?.data))
                     setSnapshots(saved)
                     setCatalogs(catalogs)
@@ -90,5 +101,16 @@ export function useCatalog() {
             window.removeEventListener('online', resume)
         }
     }, [refresh])
-    return { jointCatalog, jointError, snapshots, catalogs, progress, busy, storageError, refresh }
+    return {
+        variantCatalog,
+        variantError,
+        jointCatalog,
+        jointError,
+        snapshots,
+        catalogs,
+        progress,
+        busy,
+        storageError,
+        refresh,
+    }
 }

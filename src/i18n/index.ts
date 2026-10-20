@@ -2,6 +2,21 @@ import type { Route } from '../types/transit'
 
 export const strings = {
     en: {
+        routeVariant: 'Route variant',
+        variantAutomatic: 'Automatic · next 60 minutes',
+        variantOperatorList: 'Operator stop list',
+        variantNext: 'Next scheduled departure from origin (Hong Kong time)',
+        variantScheduleHint:
+            'Selection uses scheduled departures from the origin. Live arrivals at shared stops may include other variants. All variants remain selectable.',
+        variantStopUnavailable:
+            'Live arrivals and saving are unavailable for this visit. You can still view its timetable stop information.',
+        variantLoading: 'Loading route variants. The operator stop list remains available.',
+        variantLoadError:
+            'Could not refresh route variants. Saved timetable data, when available, remains in use. Retry in Settings.',
+        variantNoMatch:
+            'Timetable variants are unavailable for this direction. Showing the operator stop list.',
+        variantData: 'Citybus route variants · TD timetable',
+
         offlineLabel: 'Offline',
         etaWaiting: 'Awaiting arrivals',
         etaStale: 'Arrivals stale',
@@ -158,6 +173,19 @@ export const strings = {
         nlbEstimate: 'NLB estimates may be based on schedules and historical journey times.',
     },
     tc: {
+        routeVariant: '路線班次',
+        variantAutomatic: '自動 · 未來60分鐘',
+        variantOperatorList: '營辦商站序',
+        variantNext: '下班預定由起點開出時間（香港時間）',
+        variantScheduleHint:
+            '按起點的預定開出時間選擇路線。共用巴士站的實時到站時間可能包括其他路線班次。你仍可手動選擇所有班次。',
+        variantStopUnavailable:
+            '此停站暫無法提供實時到站時間或儲存功能，你仍可查看時間表的車站資料。',
+        variantLoading: '正在載入路線班次，營辦商站序仍可使用。',
+        variantLoadError: '未能更新路線班次。如有已儲存的時間表，仍會繼續使用。請在設定重試。',
+        variantNoMatch: '此方向暫無時間表班次資料，現顯示營辦商站序。',
+        variantData: '城巴路線班次 · 運輸署時間表',
+
         offlineLabel: '離線',
         etaWaiting: '等待到站資料',
         etaStale: '到站資料未更新',

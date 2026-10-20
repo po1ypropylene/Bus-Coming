@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './test'
 import fixture from '../src/services/joint/fixtures/106.json' with { type: 'json' }
 
 for (const joint of [false, true]) {

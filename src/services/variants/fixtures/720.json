@@ -1,0 +1,1673 @@
+{
+    "checkedAt": "2026-10-20",
+    "catalog": {
+        "schema": 1,
+        "updatedAt": 1792485700921,
+        "variants": [
+            {
+                "id": "TD:1775:1240813188",
+                "number": "720",
+                "name": {
+                    "en": "GRAND PROMENADE - CENTRAL (WING WO STREET) (CIRCULAR)",
+                    "tc": "嘉亨灣 - 中環 (永和街)(循環線)"
+                },
+                "stops": [
+                    "3000",
+                    "10229",
+                    "747",
+                    "550",
+                    "101",
+                    "102",
+                    "173",
+                    "174",
+                    "18",
+                    "19",
+                    "21",
+                    "23",
+                    "8008",
+                    "28",
+                    "647",
+                    "13071",
+                    "30",
+                    "31",
+                    "181",
+                    "152",
+                    "3001",
+                    "1307",
+                    "550",
+                    "10226",
+                    "10227",
+                    "3000"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 21000,
+                        "end": 24600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 24600,
+                        "end": 25200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25200,
+                        "end": 26280,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 26280,
+                        "end": 28560,
+                        "headway": 1140
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28560,
+                        "end": 29580,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 29580,
+                        "end": 30120,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 30120,
+                        "end": 30600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 30600,
+                        "end": 31620,
+                        "headway": 1020
+                    }
+                ]
+            },
+            {
+                "id": "TD:1776:1562995830",
+                "number": "720",
+                "name": {
+                    "en": "GRAND PROMENADE - CENTRAL (MACAO FERRY)",
+                    "tc": "嘉亨灣 - 中環 (港澳碼頭)"
+                },
+                "stops": [
+                    "3000",
+                    "10229",
+                    "747",
+                    "550",
+                    "101",
+                    "102",
+                    "173",
+                    "103",
+                    "1515",
+                    "7130",
+                    "18",
+                    "19",
+                    "8050",
+                    "21",
+                    "23",
+                    "8008",
+                    "125"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 32580,
+                        "end": 33000,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 33000,
+                        "end": 33480,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 33480,
+                        "end": 33900,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 33900,
+                        "end": 34560,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 34560,
+                        "end": 36000,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36000,
+                        "end": 43200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43200,
+                        "end": 51840,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 51840,
+                        "end": 55440,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55440,
+                        "end": 56400,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56400,
+                        "end": 76200,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 76200,
+                        "end": 83400,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 83400,
+                        "end": 84300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21000,
+                        "end": 24600,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 24600,
+                        "end": 25500,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 25500,
+                        "end": 34140,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 34140,
+                        "end": 34800,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 34800,
+                        "end": 46800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46800,
+                        "end": 47460,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47460,
+                        "end": 48180,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48180,
+                        "end": 48840,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48840,
+                        "end": 58200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 58200,
+                        "end": 61800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61800,
+                        "end": 65400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 65400,
+                        "end": 73500,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 73500,
+                        "end": 84300,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21000,
+                        "end": 28200,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 28200,
+                        "end": 29100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29100,
+                        "end": 39900,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 39900,
+                        "end": 50700,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50700,
+                        "end": 54300,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 54300,
+                        "end": 65100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65100,
+                        "end": 84300,
+                        "headway": 1200
+                    }
+                ]
+            },
+            {
+                "id": "TD:1776:912432326",
+                "number": "720",
+                "name": {
+                    "en": "GRAND PROMENADE - CENTRAL (MACAO FERRY)",
+                    "tc": "嘉亨灣 - 中環 (港澳碼頭)"
+                },
+                "stops": [
+                    "125",
+                    "127",
+                    "3030",
+                    "28",
+                    "647",
+                    "13071",
+                    "30",
+                    "31",
+                    "32",
+                    "7130",
+                    "912",
+                    "10230",
+                    "151",
+                    "152",
+                    "3001",
+                    "1307",
+                    "550",
+                    "10226",
+                    "10227",
+                    "3000"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 34320,
+                        "end": 35400,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 35400,
+                        "end": 37800,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 37800,
+                        "end": 47700,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 47700,
+                        "end": 53700,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 53700,
+                        "end": 54600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54600,
+                        "end": 60600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 60600,
+                        "end": 63000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63000,
+                        "end": 66780,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66780,
+                        "end": 67260,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 67260,
+                        "end": 67800,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 23400,
+                        "end": 24300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 24300,
+                        "end": 45900,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45900,
+                        "end": 46800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46800,
+                        "end": 47760,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47760,
+                        "end": 48660,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48660,
+                        "end": 57300,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 57300,
+                        "end": 60900,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 60900,
+                        "end": 67200,
+                        "headway": 900
+                    }
+                ]
+            },
+            {
+                "id": "TD:8142:535220114",
+                "number": "720",
+                "name": {
+                    "en": "CENTRAL (MACAO FERRY) - GRAND PROMENADE (VIA QUEENSWAY AND LOCKHART ROAD)",
+                    "tc": "中環 (港澳碼頭) - 嘉亨灣(經金鐘道和駱克道)"
+                },
+                "stops": [
+                    "125",
+                    "127",
+                    "3030",
+                    "28",
+                    "647",
+                    "130",
+                    "3251",
+                    "31",
+                    "32",
+                    "7130",
+                    "912",
+                    "10230",
+                    "151",
+                    "152",
+                    "3001",
+                    "1307",
+                    "550",
+                    "10226",
+                    "10227",
+                    "3000"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 68340,
+                        "end": 69420,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 69420,
+                        "end": 78780,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 78780,
+                        "end": 79800,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79800,
+                        "end": 87000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68100,
+                        "end": 71700,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 71700,
+                        "end": 75300,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 75300,
+                        "end": 79800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 79800,
+                        "end": 87000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 23400,
+                        "end": 43800,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 43800,
+                        "end": 53700,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53700,
+                        "end": 71700,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71700,
+                        "end": 72600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72600,
+                        "end": 87000,
+                        "headway": 1200
+                    }
+                ]
+            },
+            {
+                "id": "TD:1000281:186825235",
+                "number": "720",
+                "name": {
+                    "en": "GRAND PROMENADE - CENTRAL (WING WO STREET) (DEPARTURE TERMINATE AT WING WO STREET)",
+                    "tc": "嘉亨灣 - 中環 (永和街)(以永和街為終點班次)"
+                },
+                "stops": [
+                    "3000",
+                    "10229",
+                    "747",
+                    "550",
+                    "101",
+                    "102",
+                    "173",
+                    "174",
+                    "18",
+                    "19",
+                    "21",
+                    "23",
+                    "8008"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 25800,
+                        "end": 25800,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 26640,
+                        "end": 26640,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27000,
+                        "end": 27000,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27780,
+                        "end": 27780,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28200,
+                        "end": 28200,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28980,
+                        "end": 28980,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 29280,
+                        "end": 29280,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 29880,
+                        "end": 29880,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 30360,
+                        "end": 30360,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 30900,
+                        "end": 30900,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 31260,
+                        "end": 31260,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 32100,
+                        "end": 32100,
+                        "headway": 0
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "18": {
+                "id": "18",
+                "name": {
+                    "en": "INTERNATIONAL ORGANIZATION FOR MEDIATION, GLOUCESTER ROAD",
+                    "tc": "國際調解院, 告士打道"
+                },
+                "lat": 22.27936,
+                "lng": 114.1752
+            },
+            "19": {
+                "id": "19",
+                "name": {
+                    "en": "FENWICK STREET, GLOUCESTER ROAD",
+                    "tc": "分域街, 告士打道"
+                },
+                "lat": 22.27915,
+                "lng": 114.17081
+            },
+            "21": {
+                "id": "21",
+                "name": {
+                    "en": "STATUE SQUARE, CONNAUGHT ROAD CENTRAL",
+                    "tc": "皇后像廣場, 干諾道中"
+                },
+                "lat": 22.28195,
+                "lng": 114.16013
+            },
+            "23": {
+                "id": "23",
+                "name": {
+                    "en": "POTTINGER STREET, CONNAUGHT ROAD CENTRAL",
+                    "tc": "砵典乍街, 干諾道中"
+                },
+                "lat": 22.28331,
+                "lng": 114.1575
+            },
+            "28": {
+                "id": "28",
+                "name": {
+                    "en": "JARDINE HOUSE, CONNAUGHT ROAD CENTRAL",
+                    "tc": "怡和大廈, 干諾道中"
+                },
+                "lat": 22.28268,
+                "lng": 114.15926
+            },
+            "30": {
+                "id": "30",
+                "name": {
+                    "en": "THE HK ACADEMY FOR PERFORMING ARTS, GLOUCESTER ROAD",
+                    "tc": "香港演藝學院, 告士打道"
+                },
+                "lat": 22.27967,
+                "lng": 114.16949
+            },
+            "31": {
+                "id": "31",
+                "name": {
+                    "en": "IMMIGRATION TOWER, GLOUCESTER ROAD",
+                    "tc": "入境事務大樓, 告士打道"
+                },
+                "lat": 22.27947,
+                "lng": 114.17291
+            },
+            "32": {
+                "id": "32",
+                "name": {
+                    "en": "WAN CHAI FERRY PIER, HUNG HING ROAD",
+                    "tc": "灣仔碼頭, 鴻興道"
+                },
+                "lat": 22.2821,
+                "lng": 114.176
+            },
+            "101": {
+                "id": "101",
+                "name": {
+                    "en": "SUN SING STREET, SHAU KEI WAN ROAD",
+                    "tc": "新成街, 筲箕灣道"
+                },
+                "lat": 22.27897,
+                "lng": 114.22607
+            },
+            "102": {
+                "id": "102",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28071,
+                "lng": 114.22345
+            },
+            "103": {
+                "id": "103",
+                "name": {
+                    "en": "TAI CHEONG STREET, SHAU KEI WAN ROAD",
+                    "tc": "太祥街, 筲箕灣道"
+                },
+                "lat": 22.28345,
+                "lng": 114.22072
+            },
+            "125": {
+                "id": "125",
+                "name": {
+                    "en": "CENTRAL (MACAO FERRY)",
+                    "tc": "中環 (港澳碼頭)"
+                },
+                "lat": 22.28855,
+                "lng": 114.15003
+            },
+            "127": {
+                "id": "127",
+                "name": {
+                    "en": "RUMSEY STREET, DES VOEUX ROAD CENTRAL",
+                    "tc": "林士街, 德輔道中"
+                },
+                "lat": 22.28596,
+                "lng": 114.15392
+            },
+            "130": {
+                "id": "130",
+                "name": {
+                    "en": "ADMIRALTY - ADMIRALTY GARDEN, QUEENSWAY",
+                    "tc": "金鐘 - 金鐘花園, 金鐘道"
+                },
+                "lat": 22.27866,
+                "lng": 114.16416
+            },
+            "151": {
+                "id": "151",
+                "name": {
+                    "en": "TAI ON BUILDING, SHAU KEI WAN ROAD",
+                    "tc": "太安樓, 筲箕灣道"
+                },
+                "lat": 22.2826,
+                "lng": 114.22167
+            },
+            "152": {
+                "id": "152",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28081,
+                "lng": 114.2236
+            },
+            "173": {
+                "id": "173",
+                "name": {
+                    "en": "SAI WAN HO CIVIC CENTRE, SHAU KEI WAN ROAD",
+                    "tc": "西灣河文娛中心, 筲箕灣道"
+                },
+                "lat": 22.28173,
+                "lng": 114.22207
+            },
+            "174": {
+                "id": "174",
+                "name": {
+                    "en": "TAI HONG HOUSE, TAI HONG STREET",
+                    "tc": "太康樓, 太康街"
+                },
+                "lat": 22.28331,
+                "lng": 114.22172
+            },
+            "181": {
+                "id": "181",
+                "name": {
+                    "en": "SAI WAN HO STATION, TAI ON STREET",
+                    "tc": "西灣河站, 太安街"
+                },
+                "lat": 22.28235,
+                "lng": 114.22249
+            },
+            "550": {
+                "id": "550",
+                "name": {
+                    "en": "SHAU KEI WAN",
+                    "tc": "筲箕灣"
+                },
+                "lat": 22.27842,
+                "lng": 114.22833
+            },
+            "647": {
+                "id": "647",
+                "name": {
+                    "en": "CITY HALL, CONNAUGHT ROAD CENTRAL",
+                    "tc": "大會堂, 干諾道中"
+                },
+                "lat": 22.28195,
+                "lng": 114.16125
+            },
+            "747": {
+                "id": "747",
+                "name": {
+                    "en": "ALDRICH GARDEN, OI YIN STREET",
+                    "tc": "愛蝶灣, 愛賢街"
+                },
+                "lat": 22.2809,
+                "lng": 114.2283
+            },
+            "912": {
+                "id": "912",
+                "name": {
+                    "en": "LOTUS MANSION TAIKOO SHING, TAIKOO WAN ROAD",
+                    "tc": "太古城雅蓮閣, 太古灣道"
+                },
+                "lat": 22.2874,
+                "lng": 114.21932
+            },
+            "1307": {
+                "id": "1307",
+                "name": {
+                    "en": "NAM HONG STREET, SHAU KEI WAN ROAD",
+                    "tc": "南康街, 筲箕灣道"
+                },
+                "lat": 22.27894,
+                "lng": 114.22627
+            },
+            "1515": {
+                "id": "1515",
+                "name": {
+                    "en": "KAO SHAN TERRACE, TAIKOO SHING ROAD",
+                    "tc": "高山臺, 太古城道"
+                },
+                "lat": 22.28612,
+                "lng": 114.21904
+            },
+            "3000": {
+                "id": "3000",
+                "name": {
+                    "en": "SAI WAN HO (GRAND PROMENADE)",
+                    "tc": "西灣河 (嘉亨灣)"
+                },
+                "lat": 22.28479,
+                "lng": 114.22428
+            },
+            "3001": {
+                "id": "3001",
+                "name": {
+                    "en": "ALDRICH BAY ROAD, SHAU KEI WAN ROAD",
+                    "tc": "愛秩序灣道, 筲箕灣道"
+                },
+                "lat": 22.28031,
+                "lng": 114.22532
+            },
+            "3030": {
+                "id": "3030",
+                "name": {
+                    "en": "DOUGLAS STREET, DES VOEUX ROAD CENTRAL",
+                    "tc": "德忌利士街, 德輔道中"
+                },
+                "lat": 22.28294,
+                "lng": 114.15715
+            },
+            "3251": {
+                "id": "3251",
+                "name": {
+                    "en": "GOLDEN STAR BUILDING, LOCKHART ROAD",
+                    "tc": "金星大廈, 駱克道"
+                },
+                "lat": 22.27819,
+                "lng": 114.16994
+            },
+            "7130": {
+                "id": "7130",
+                "name": {
+                    "en": "CITYPLAZA, TAIKOO SHING ROAD",
+                    "tc": "太古城中心, 太古城道"
+                },
+                "lat": 22.28613,
+                "lng": 114.21734
+            },
+            "8008": {
+                "id": "8008",
+                "name": {
+                    "en": "WING WO STREET, CONNAUGHT ROAD CENTRAL",
+                    "tc": "永和街, 干諾道中"
+                },
+                "lat": 22.28617,
+                "lng": 114.15457
+            },
+            "8050": {
+                "id": "8050",
+                "name": {
+                    "en": "ADMIRALTY - ADMIRALTY CENTRE, HARCOURT ROAD",
+                    "tc": "金鐘 - 海富中心, 夏慤道"
+                },
+                "lat": 22.27952,
+                "lng": 114.16519
+            },
+            "10226": {
+                "id": "10226",
+                "name": {
+                    "en": "OI TUNG SHOPPING CENTRE, OI YIN STREET",
+                    "tc": "愛東商場, 愛賢街"
+                },
+                "lat": 22.28108,
+                "lng": 114.22805
+            },
+            "10227": {
+                "id": "10227",
+                "name": {
+                    "en": "TUNG HIU HOUSE TUNG YUK COURT, OI KAN ROAD",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.28272,
+                "lng": 114.2272
+            },
+            "10229": {
+                "id": "10229",
+                "name": {
+                    "en": "TUNG HIU HOUSE TUNG YUK COURT, OI KAN ROAD",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.28288,
+                "lng": 114.22687
+            },
+            "10230": {
+                "id": "10230",
+                "name": {
+                    "en": "TAI WOO MANSION TAIKOO SHING, TAIKOO SHING ROAD",
+                    "tc": "太古城太湖閣, 太古城道"
+                },
+                "lat": 22.28468,
+                "lng": 114.22045
+            },
+            "13071": {
+                "id": "13071",
+                "name": {
+                    "en": "CENTRAL GOVERNMENT OFFICES, HARCOURT ROAD",
+                    "tc": "政府總部, 夏慤道"
+                },
+                "lat": 22.28005,
+                "lng": 114.16516
+            }
+        },
+        "calendars": {
+            "287": {
+                "id": "287",
+                "days": [1, 2, 3, 4, 5],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": false,
+                    "20260217": false,
+                    "20260218": false,
+                    "20260219": false,
+                    "20260403": false,
+                    "20260406": false,
+                    "20260407": false,
+                    "20260501": false,
+                    "20260525": false,
+                    "20260619": false,
+                    "20260701": false,
+                    "20261001": false,
+                    "20261019": false,
+                    "20261225": false
+                }
+            },
+            "288": {
+                "id": "288",
+                "days": [6],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260404": false,
+                    "20260926": false,
+                    "20261226": false
+                }
+            },
+            "448": {
+                "id": "448",
+                "days": [0],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": true,
+                    "20260217": true,
+                    "20260218": true,
+                    "20260219": true,
+                    "20260403": true,
+                    "20260404": true,
+                    "20260406": true,
+                    "20260407": true,
+                    "20260501": true,
+                    "20260525": true,
+                    "20260619": true,
+                    "20260701": true,
+                    "20260926": true,
+                    "20261001": true,
+                    "20261019": true,
+                    "20261225": true,
+                    "20261226": true
+                }
+            }
+        }
+    },
+    "operator": {
+        "routes": [
+            {
+                "id": "CTB:720:O:1",
+                "number": "720",
+                "provider": "CTB",
+                "bound": "O",
+                "service": "1",
+                "origin": {
+                    "en": "Grand Promenade",
+                    "tc": "嘉亨灣"
+                },
+                "destination": {
+                    "en": "Central (Macao Ferry / Wing Wo Street)",
+                    "tc": "中環 (港澳碼頭 / 永和街)"
+                },
+                "stops": [
+                    {
+                        "id": "CTB:003155",
+                        "seq": 1
+                    },
+                    {
+                        "id": "CTB:003156",
+                        "seq": 2
+                    },
+                    {
+                        "id": "CTB:001389",
+                        "seq": 3
+                    },
+                    {
+                        "id": "CTB:001207",
+                        "seq": 4
+                    },
+                    {
+                        "id": "CTB:001301",
+                        "seq": 5
+                    },
+                    {
+                        "id": "CTB:001302",
+                        "seq": 6
+                    },
+                    {
+                        "id": "CTB:001303",
+                        "seq": 7
+                    },
+                    {
+                        "id": "CTB:001313",
+                        "seq": 8
+                    },
+                    {
+                        "id": "CTB:001304",
+                        "seq": 9
+                    },
+                    {
+                        "id": "CTB:002791",
+                        "seq": 10
+                    },
+                    {
+                        "id": "CTB:001379",
+                        "seq": 11
+                    },
+                    {
+                        "id": "CTB:002417",
+                        "seq": 12
+                    },
+                    {
+                        "id": "CTB:002421",
+                        "seq": 13
+                    },
+                    {
+                        "id": "CTB:001074",
+                        "seq": 14
+                    },
+                    {
+                        "id": "CTB:001033",
+                        "seq": 15
+                    },
+                    {
+                        "id": "CTB:001034",
+                        "seq": 16
+                    },
+                    {
+                        "id": "CTB:001185",
+                        "seq": 17
+                    },
+                    {
+                        "id": "CTB:001027",
+                        "seq": 18
+                    }
+                ]
+            },
+            {
+                "id": "CTB:720:I:1",
+                "number": "720",
+                "provider": "CTB",
+                "bound": "I",
+                "service": "1",
+                "origin": {
+                    "en": "Central (Macao Ferry / Wing Wo Street)",
+                    "tc": "中環 (港澳碼頭 / 永和街)"
+                },
+                "destination": {
+                    "en": "Grand Promenade",
+                    "tc": "嘉亨灣"
+                },
+                "stops": [
+                    {
+                        "id": "CTB:001185",
+                        "seq": 1
+                    },
+                    {
+                        "id": "CTB:001027",
+                        "seq": 2
+                    },
+                    {
+                        "id": "CTB:001044",
+                        "seq": 3
+                    },
+                    {
+                        "id": "CTB:001049",
+                        "seq": 4
+                    },
+                    {
+                        "id": "CTB:001030",
+                        "seq": 5
+                    },
+                    {
+                        "id": "CTB:001031",
+                        "seq": 6
+                    },
+                    {
+                        "id": "CTB:001136",
+                        "seq": 7
+                    },
+                    {
+                        "id": "CTB:002967",
+                        "seq": 8
+                    },
+                    {
+                        "id": "CTB:003337",
+                        "seq": 9
+                    },
+                    {
+                        "id": "CTB:002422",
+                        "seq": 10
+                    },
+                    {
+                        "id": "CTB:002423",
+                        "seq": 11
+                    },
+                    {
+                        "id": "CTB:001316",
+                        "seq": 12
+                    },
+                    {
+                        "id": "CTB:002559",
+                        "seq": 13
+                    },
+                    {
+                        "id": "CTB:001379",
+                        "seq": 14
+                    },
+                    {
+                        "id": "CTB:001378",
+                        "seq": 15
+                    },
+                    {
+                        "id": "CTB:002792",
+                        "seq": 16
+                    },
+                    {
+                        "id": "CTB:001296",
+                        "seq": 17
+                    },
+                    {
+                        "id": "CTB:001297",
+                        "seq": 18
+                    },
+                    {
+                        "id": "CTB:001298",
+                        "seq": 19
+                    },
+                    {
+                        "id": "CTB:001380",
+                        "seq": 20
+                    },
+                    {
+                        "id": "CTB:001207",
+                        "seq": 21
+                    },
+                    {
+                        "id": "CTB:001390",
+                        "seq": 22
+                    },
+                    {
+                        "id": "CTB:003157",
+                        "seq": 23
+                    },
+                    {
+                        "id": "CTB:003155",
+                        "seq": 24
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "CTB:001301": {
+                "id": "CTB:001301",
+                "code": "001301",
+                "provider": "CTB",
+                "lat": 22.278724872091,
+                "lng": 114.22622512053,
+                "name": {
+                    "en": "Sun Sing Street, Shau Kei Wan Road",
+                    "tc": "新成街, 筲箕灣道"
+                }
+            },
+            "CTB:001389": {
+                "id": "CTB:001389",
+                "code": "001389",
+                "provider": "CTB",
+                "lat": 22.281199452091,
+                "lng": 114.22826243053,
+                "name": {
+                    "en": "Aldrich Garden, Oi Yin Street",
+                    "tc": "愛蝶灣, 愛賢街"
+                }
+            },
+            "CTB:003156": {
+                "id": "CTB:003156",
+                "code": "003156",
+                "provider": "CTB",
+                "lat": 22.282842192091,
+                "lng": 114.22700325053,
+                "name": {
+                    "en": "Tung Hiu House Tung Yuk Court, Oi Kan Road",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                }
+            },
+            "CTB:003155": {
+                "id": "CTB:003155",
+                "code": "003155",
+                "provider": "CTB",
+                "lat": 22.284739002091,
+                "lng": 114.22425488053,
+                "name": {
+                    "en": "Sai Wan Ho (Grand Promenade)",
+                    "tc": "西灣河 (嘉亨灣)"
+                }
+            },
+            "CTB:001207": {
+                "id": "CTB:001207",
+                "code": "001207",
+                "provider": "CTB",
+                "lat": 22.278421122091,
+                "lng": 114.22833128053,
+                "name": {
+                    "en": "Shau Kei Wan",
+                    "tc": "筲箕灣"
+                }
+            },
+            "CTB:001303": {
+                "id": "CTB:001303",
+                "code": "001303",
+                "provider": "CTB",
+                "lat": 22.281794772091,
+                "lng": 114.22202073053,
+                "name": {
+                    "en": "Sai Wan Ho Civic Centre, Shau Kei Wan Road",
+                    "tc": "西灣河文娛中心, 筲箕灣道"
+                }
+            },
+            "CTB:001302": {
+                "id": "CTB:001302",
+                "code": "001302",
+                "provider": "CTB",
+                "lat": 22.280716692091,
+                "lng": 114.22345551053,
+                "name": {
+                    "en": "Hoi An Street, Shau Kei Wan Road",
+                    "tc": "海晏街, 筲箕灣道"
+                }
+            },
+            "CTB:002791": {
+                "id": "CTB:002791",
+                "code": "002791",
+                "provider": "CTB",
+                "lat": 22.286132142091,
+                "lng": 114.21889191053,
+                "name": {
+                    "en": "Kao Shan Terrace, Taikoo Shing Road",
+                    "tc": "高山臺, 太古城道"
+                }
+            },
+            "CTB:001304": {
+                "id": "CTB:001304",
+                "code": "001304",
+                "provider": "CTB",
+                "lat": 22.283579282091,
+                "lng": 114.22061919053,
+                "name": {
+                    "en": "Tai Cheong Street, Shau Kei Wan Road",
+                    "tc": "太祥街, 筲箕灣道"
+                }
+            },
+            "CTB:001313": {
+                "id": "CTB:001313",
+                "code": "001313",
+                "provider": "CTB",
+                "lat": 22.283340892091,
+                "lng": 114.22177946053,
+                "name": {
+                    "en": "Tai Hong House, Tai Hong Street",
+                    "tc": "太康樓, 太康街"
+                }
+            },
+            "CTB:001074": {
+                "id": "CTB:001074",
+                "code": "001074",
+                "provider": "CTB",
+                "lat": 22.279523082091,
+                "lng": 114.16514437053,
+                "name": {
+                    "en": "Admiralty - Admiralty Centre, Harcourt Road",
+                    "tc": "金鐘 - 海富中心, 夏慤道"
+                }
+            },
+            "CTB:002421": {
+                "id": "CTB:002421",
+                "code": "002421",
+                "provider": "CTB",
+                "lat": 22.279171322091,
+                "lng": 114.17096442053,
+                "name": {
+                    "en": "Fenwick Street, Gloucester Road",
+                    "tc": "分域街, 告士打道"
+                }
+            },
+            "CTB:001033": {
+                "id": "CTB:001033",
+                "code": "001033",
+                "provider": "CTB",
+                "lat": 22.281992192091,
+                "lng": 114.16003822053,
+                "name": {
+                    "en": "Statue Square, Connaught Road Central",
+                    "tc": "皇后像廣場, 干諾道中"
+                }
+            },
+            "CTB:002417": {
+                "id": "CTB:002417",
+                "code": "002417",
+                "provider": "CTB",
+                "lat": 22.279365262091,
+                "lng": 114.17502194053,
+                "name": {
+                    "en": "International Organization for Mediation, Gloucester Road",
+                    "tc": "國際調解院, 告士打道"
+                }
+            },
+            "CTB:001379": {
+                "id": "CTB:001379",
+                "code": "001379",
+                "provider": "CTB",
+                "lat": 22.286124572091,
+                "lng": 114.21685857053,
+                "name": {
+                    "en": "Cityplaza, Taikoo Shing Road",
+                    "tc": "太古城中心, 太古城道"
+                }
+            },
+            "CTB:001027": {
+                "id": "CTB:001027",
+                "code": "001027",
+                "provider": "CTB",
+                "lat": 22.288274152091,
+                "lng": 114.15042248053,
+                "name": {
+                    "en": "Central (Macao Ferry)",
+                    "tc": "中環 (港澳碼頭)"
+                }
+            },
+            "CTB:001049": {
+                "id": "CTB:001049",
+                "code": "001049",
+                "provider": "CTB",
+                "lat": 22.282866402091,
+                "lng": 114.15717776053,
+                "name": {
+                    "en": "Douglas Street, Des Voeux Road Central",
+                    "tc": "德忌利士街, 德輔道中"
+                }
+            },
+            "CTB:001044": {
+                "id": "CTB:001044",
+                "code": "001044",
+                "provider": "CTB",
+                "lat": 22.286050072091,
+                "lng": 114.15372775053,
+                "name": {
+                    "en": "Rumsey Street, Des Voeux Road Central",
+                    "tc": "林士街, 德輔道中"
+                }
+            },
+            "CTB:001034": {
+                "id": "CTB:001034",
+                "code": "001034",
+                "provider": "CTB",
+                "lat": 22.283587582091,
+                "lng": 114.15730419053,
+                "name": {
+                    "en": "Pottinger Street, Connaught Road Central",
+                    "tc": "砵典乍街, 干諾道中"
+                }
+            },
+            "CTB:001185": {
+                "id": "CTB:001185",
+                "code": "001185",
+                "provider": "CTB",
+                "lat": 22.285954582091,
+                "lng": 114.15497687053,
+                "name": {
+                    "en": "Wing Wo Street, Connaught Road Central",
+                    "tc": "永和街, 干諾道中"
+                }
+            },
+            "CTB:001136": {
+                "id": "CTB:001136",
+                "code": "001136",
+                "provider": "CTB",
+                "lat": 22.278493752091,
+                "lng": 114.16445856053,
+                "name": {
+                    "en": "Admiralty - Admiralty Garden, Queensway",
+                    "tc": "金鐘 - 金鐘花園, 金鐘道"
+                }
+            },
+            "CTB:001031": {
+                "id": "CTB:001031",
+                "code": "001031",
+                "provider": "CTB",
+                "lat": 22.281868122091,
+                "lng": 114.16153245053,
+                "name": {
+                    "en": "City Hall, Connaught Road Central",
+                    "tc": "大會堂, 干諾道中"
+                }
+            },
+            "CTB:001030": {
+                "id": "CTB:001030",
+                "code": "001030",
+                "provider": "CTB",
+                "lat": 22.282618792091,
+                "lng": 114.15929917053,
+                "name": {
+                    "en": "Jardine House, Connaught Road Central",
+                    "tc": "怡和大廈, 干諾道中"
+                }
+            },
+            "CTB:002967": {
+                "id": "CTB:002967",
+                "code": "002967",
+                "provider": "CTB",
+                "lat": 22.278188642091,
+                "lng": 114.16975256053,
+                "name": {
+                    "en": "Golden Star Building, Lockhart Road",
+                    "tc": "金星大廈, 駱克道"
+                }
+            },
+            "CTB:003337": {
+                "id": "CTB:003337",
+                "code": "003337",
+                "provider": "CTB",
+                "lat": 22.280100202091,
+                "lng": 114.16505392053,
+                "name": {
+                    "en": "Central Government Offices, Harcourt Road",
+                    "tc": "政府總部, 夏慤道"
+                }
+            },
+            "CTB:002559": {
+                "id": "CTB:002559",
+                "code": "002559",
+                "provider": "CTB",
+                "lat": 22.282102142091,
+                "lng": 114.17584424053,
+                "name": {
+                    "en": "Wan Chai Ferry Pier, Hung Hing Road",
+                    "tc": "灣仔碼頭, 鴻興道"
+                }
+            },
+            "CTB:001316": {
+                "id": "CTB:001316",
+                "code": "001316",
+                "provider": "CTB",
+                "lat": 22.282354632091,
+                "lng": 114.22239868053,
+                "name": {
+                    "en": "Sai Wan Ho Station, Tai On Street",
+                    "tc": "西灣河站, 太安街"
+                }
+            },
+            "CTB:001378": {
+                "id": "CTB:001378",
+                "code": "001378",
+                "provider": "CTB",
+                "lat": 22.287362762091,
+                "lng": 114.21924311053,
+                "name": {
+                    "en": "Lotus Mansion Taikoo Shing, Taikoo Wan Road",
+                    "tc": "太古城雅蓮閣, 太古灣道"
+                }
+            },
+            "CTB:002422": {
+                "id": "CTB:002422",
+                "code": "002422",
+                "provider": "CTB",
+                "lat": 22.279624122091,
+                "lng": 114.16973450053,
+                "name": {
+                    "en": "The HK Academy for Performing Arts, Gloucester Road",
+                    "tc": "香港演藝學院, 告士打道"
+                }
+            },
+            "CTB:002423": {
+                "id": "CTB:002423",
+                "code": "002423",
+                "provider": "CTB",
+                "lat": 22.279435952091,
+                "lng": 114.17270317053,
+                "name": {
+                    "en": "Immigration Tower, Gloucester Road",
+                    "tc": "入境事務大樓, 告士打道"
+                }
+            },
+            "CTB:001298": {
+                "id": "CTB:001298",
+                "code": "001298",
+                "provider": "CTB",
+                "lat": 22.280349712091,
+                "lng": 114.22504094053,
+                "name": {
+                    "en": "Aldrich Bay Road, Shau Kei Wan Road",
+                    "tc": "愛秩序灣道, 筲箕灣道"
+                }
+            },
+            "CTB:001297": {
+                "id": "CTB:001297",
+                "code": "001297",
+                "provider": "CTB",
+                "lat": 22.280776032091,
+                "lng": 114.22363882053,
+                "name": {
+                    "en": "Hoi An Street, Shau Kei Wan Road",
+                    "tc": "海晏街, 筲箕灣道"
+                }
+            },
+            "CTB:001296": {
+                "id": "CTB:001296",
+                "code": "001296",
+                "provider": "CTB",
+                "lat": 22.282504342091,
+                "lng": 114.22170603053,
+                "name": {
+                    "en": "Tai On Building, Shau Kei Wan Road",
+                    "tc": "太安樓, 筲箕灣道"
+                }
+            },
+            "CTB:001380": {
+                "id": "CTB:001380",
+                "code": "001380",
+                "provider": "CTB",
+                "lat": 22.278882572091,
+                "lng": 114.22627158053,
+                "name": {
+                    "en": "Nam Hong Street, Shau Kei Wan Road",
+                    "tc": "南康街, 筲箕灣道"
+                }
+            },
+            "CTB:002792": {
+                "id": "CTB:002792",
+                "code": "002792",
+                "provider": "CTB",
+                "lat": 22.284671572091,
+                "lng": 114.22038694053,
+                "name": {
+                    "en": "Tai Woo Mansion Taikoo Shing, Taikoo Shing Road",
+                    "tc": "太古城太湖閣, 太古城道"
+                }
+            },
+            "CTB:001390": {
+                "id": "CTB:001390",
+                "code": "001390",
+                "provider": "CTB",
+                "lat": 22.281464672091,
+                "lng": 114.22809528053,
+                "name": {
+                    "en": "Oi Tung Shopping Centre, Oi Yin Street",
+                    "tc": "愛東商場, 愛賢街"
+                }
+            },
+            "CTB:003157": {
+                "id": "CTB:003157",
+                "code": "003157",
+                "provider": "CTB",
+                "lat": 22.282753852091,
+                "lng": 114.22711622053,
+                "name": {
+                    "en": "Tung Hiu House Tung Yuk Court, Oi Kan Road",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                }
+            }
+        }
+    }
+}

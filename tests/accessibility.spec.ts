@@ -1,4 +1,4 @@
-import { chromium, expect, test } from '@playwright/test'
+import { chromium, expect, test } from './test'
 import puppeteer from 'puppeteer-core'
 import { snapshot } from 'lighthouse'
 import { openStop, seed } from './fixtures'

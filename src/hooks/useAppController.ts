@@ -13,8 +13,18 @@ import { useUserData } from './useUserData'
 
 export function useAppController() {
     const appUpdate = useAppUpdate()
-    const { snapshots, catalogs, jointCatalog, jointError, progress, busy, storageError, refresh } =
-        useCatalog()
+    const {
+        snapshots,
+        catalogs,
+        variantCatalog,
+        variantError,
+        jointCatalog,
+        jointError,
+        progress,
+        busy,
+        storageError,
+        refresh,
+    } = useCatalog()
     const { user, saveError, updateUser } = useUserData()
     useTheme(user.theme)
     const [tab, setTab] = useState<Tab>('saved')
@@ -94,6 +104,8 @@ export function useAppController() {
     const currentRoute = selectedRoute ? (byRoute.get(selectedRoute.id) ?? selectedRoute) : null
     return {
         appUpdate,
+        variantCatalog,
+        variantError,
         jointCatalog,
         jointError,
         snapshots,

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './test'
 import { route, seed, stop } from './fixtures'
 
 test('Citybus replaces a departed prediction and fills the third column when supplied', async ({

@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs'
-import { expect, test } from '@playwright/test'
+import { expect, test } from './test'
 import { openStop, route, seed, stop } from './fixtures'
 
 test('custom keypad, exact arrival filtering, grouped bookmarks, persistence and Chinese', async ({
@@ -228,7 +228,10 @@ test('failed forced refresh keeps old snapshots and user bookmarks intact', asyn
     await page.getByRole('button', { name: 'Settings', exact: true }).click()
     await page.getByRole('button', { name: 'Refresh route data', exact: true }).click()
     await expect(
-        page.getByText('Download interrupted. Tap refresh to resume.', { exact: true }),
+        page
+            .locator('.provider-setting')
+            .filter({ has: page.locator('.status-pill') })
+            .getByText('Download interrupted. Tap refresh to resume.', { exact: true }),
     ).toHaveCount(3, { timeout: 25000 })
     await expect(page.getByText('Ready offline', { exact: true })).toHaveCount(3)
     await page.getByRole('button', { name: 'Routes', exact: true }).click()

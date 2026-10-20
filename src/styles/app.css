@@ -2269,3 +2269,37 @@ progress {
         margin-block: 2px;
     }
 }
+
+.variant-picker {
+    display: grid;
+    gap: 10px;
+    margin: 16px 0;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.variant-picker label {
+    font-weight: 650;
+}
+
+.variant-picker select {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+}
+
+.variant-picker p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.variant-name {
+    font-weight: 600;
+}

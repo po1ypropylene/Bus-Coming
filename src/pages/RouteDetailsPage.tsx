@@ -1,7 +1,10 @@
 import { oppositeRoute } from '../utils/routeDirection'
-import { ArrowLeft, ArrowRightLeft, Bookmark as BookmarkIcon, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ArrowRightLeft } from 'lucide-react'
 import { useApp } from '../app/AppContext'
-import { ArrivalPanel } from '../components/arrivals/ArrivalPanel'
+import { useMemo } from 'react'
+import { RouteStopList, type DisplayStop } from '../components/routes/RouteStopList'
+import { VariantPicker } from '../components/routes/VariantPicker'
+import { useRouteVariants } from '../hooks/useRouteVariants'
 import { RouteBadge } from '../components/routes/RouteBadge'
 import { useJointItinerary } from '../hooks/useJointItinerary'
 import { useRouteDetails } from '../hooks/useRouteDetails'
@@ -23,11 +26,9 @@ function RouteDetails({ route }: { route: Route }) {
         tc,
         lang,
         tab,
-        user,
         selectedStop,
-        setSelectedStop,
-        bookmark,
         stops: downloadedStops,
+        variantCatalog,
     } = useApp()
     const {
         route: currentRoute,
@@ -37,7 +38,44 @@ function RouteDetails({ route }: { route: Route }) {
         retry,
     } = useRouteDetails(route, downloadedStops)
     const reverse = oppositeRoute(route, byRoute.values())
+    const otherDetails = useRouteDetails(reverse ?? route, downloadedStops)
+    const family = useMemo(
+        () => (reverse ? [currentRoute, otherDetails.route] : [currentRoute]),
+        [currentRoute, otherDetails.route, reverse],
+    )
+    const knownStops = useMemo(
+        () => ({ ...downloadedStops, ...stops, ...otherDetails.stops }),
+        [downloadedStops, stops, otherDetails.stops],
+    )
+    const variants = useRouteVariants(
+        currentRoute,
+        family,
+        knownStops,
+        variantCatalog,
+        selectedStop,
+    )
     const itinerary = useJointItinerary(currentRoute, stops, downloadedStops)
+    const displayStops: DisplayStop[] = variants.selected
+        ? variants.selected.entries.map(({ stop, api }, index) => ({
+              key: api ? `${api.stop.id}:${api.seq}` : `TD:${stop.id}:${index}`,
+              stop: api?.stop ?? { ...stop, id: `TD:${stop.id}`, code: stop.id, provider: 'CTB' },
+              api,
+          }))
+        : itinerary.entries.flatMap(({ id, seq, route: stopRoute }) =>
+              itinerary.stops[id]
+                  ? [
+                        {
+                            key: `${id}:${seq}`,
+                            stop: itinerary.stops[id],
+                            api: { route: stopRoute, stop: itinerary.stops[id], seq },
+                        },
+                    ]
+                  : [],
+          )
+    const first = variants.selected?.entries[0]
+    const last = variants.selected?.entries.at(-1)
+    const origin = first ? (first.api?.stop.name ?? first.stop.name) : currentRoute.origin
+    const destination = last ? (last.api?.stop.name ?? last.stop.name) : currentRoute.destination
     return (
         <>
             <button className="back-button" onClick={() => setSelectedRoute(null)}>
@@ -49,10 +87,10 @@ function RouteDetails({ route }: { route: Route }) {
                 <div className="route-heading-copy">
                     <p className="eyebrow">{routeCompany(currentRoute, tc)}</p>
                     <h1>
-                        {t.toward} {currentRoute.destination[lang]}
+                        {t.toward} {destination[lang]}
                     </h1>
                     <p>
-                        {t.from} {currentRoute.origin[lang]}
+                        {t.from} {origin[lang]}
                     </p>
                 </div>
                 {reverse && (
@@ -72,10 +110,11 @@ function RouteDetails({ route }: { route: Route }) {
                     </button>
                 )}
             </section>
+            {currentRoute.provider === 'CTB' && <VariantPicker state={variants} />}
             <div className="section-heading">
                 <h2>{t.routeStops}</h2>
                 <span>
-                    {itinerary.entries.length} {t.stops}
+                    {displayStops.length} {t.stops}
                 </span>
             </div>
             {loading && (
@@ -94,56 +133,10 @@ function RouteDetails({ route }: { route: Route }) {
             {!loading && !error && !currentRoute.stops.length && (
                 <p className="banner">{t.noDirectionStops}</p>
             )}
-            <div className="stop-list">
-                {itinerary.entries.map(({ id, seq, route: stopRoute }, index) => {
-                    const stop = itinerary.stops[id]
-                    if (!stop) return null
-                    const key = `${id}:${seq}`,
-                        expanded = selectedStop === key
-                    const saved = user.bookmarks.some(
-                        (b) => b.routeId === stopRoute.id && b.stopId === id && b.seq === seq,
-                    )
-                    return (
-                        <article key={key} className={`stop-row ${expanded ? 'expanded' : ''}`}>
-                            <button
-                                className="stop-main"
-                                onClick={() => setSelectedStop(expanded ? null : key)}
-                                aria-expanded={expanded}
-                            >
-                                <span className="stop-sequence">{index + 1}</span>
-                                <span>
-                                    <strong>{stop.name[lang]}</strong>
-                                    <small>{stop.name[tc ? 'en' : 'tc']}</small>
-                                </span>
-                                <ChevronRight size={18} />
-                            </button>
-                            {expanded && (
-                                <div className="stop-expanded">
-                                    <ArrivalPanel
-                                        key={`${currentRoute.id}:${key}:${lang}`}
-                                        route={stopRoute}
-                                        knownStops={itinerary.stops}
-                                        stop={stop}
-                                        seq={seq}
-                                        lang={lang}
-                                        t={t}
-                                    />
-                                    <button
-                                        className="text-button full"
-                                        onClick={() => bookmark(stopRoute, stop, seq)}
-                                    >
-                                        <BookmarkIcon
-                                            size={17}
-                                            fill={saved ? 'currentColor' : 'none'}
-                                        />
-                                        {saved ? t.savedStop : t.save}
-                                    </button>
-                                </div>
-                            )}
-                        </article>
-                    )
-                })}
-            </div>
+            <RouteStopList
+                entries={displayStops}
+                stops={variants.selected ? knownStops : itinerary.stops}
+            />
             <p className="footnote">{t.minuteRefresh}</p>
         </>
     )

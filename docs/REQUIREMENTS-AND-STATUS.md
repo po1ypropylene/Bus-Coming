@@ -207,3 +207,38 @@ and both engines passed the rerun. New regressions cover immediate manual refres
 shared refresh requests, third-column replenishment after 15 seconds, return to 30-second polling, empty
 responses and a missed browser focus event. Production offline and update smoke checks passed in Chromium
 and WebKit. No new live API audit, deployment or physical iPhone validation was performed.
+
+## Citybus route variants — 20 October 2026
+
+Citybus route details now offer an English/Traditional Chinese variant selector from the official TD
+timetable. Automatic selects the earliest scheduled origin departure within 60 minutes, or the next
+scheduled variant within 14 days when none qualifies. Operating weekdays, holiday exceptions,
+after-midnight service times and frequency periods use Hong Kong time. Opening a saved/nearby stop
+restricts automatic candidates to variants serving its safely mapped operator stop. Every safely
+matched pattern for that direction remains manually selectable, including outside its operating hours;
+the manual choice lasts while the route screen is open. The operator stop list remains an explicit
+choice and the fallback while data is missing, unavailable or cannot be matched safely.
+
+Variant stops retain the operator route, bound and sequence for ETAs and bookmarking. Full circular
+patterns display the whole loop. Unmatched or ambiguous TD visits stay visible but cannot request
+arrivals or be saved. Existing bookmarks, backups, IndexedDB schema, joint-arrival aggregation and
+operator ETA filters are preserved. Variant selection does not filter shared-stop live predictions by
+an unverified trip identity. KMB/LWB and NLB keep their existing service selection behavior.
+
+The independent worker import caches a complete validated timetable for offline use, refreshes weekly
+and through Settings, and retains saved data on failure. Its timestamp/error is visible in Settings.
+The origin-based window can switch before a bus already en route reaches an intermediate stop; the UI
+labels the origin explicitly, and missing intermediate times are not fabricated. At least three ordered
+operator visits are needed to associate a TD pattern with a direction; short/ambiguous patterns fall
+back to operator data. Physical iPhone performance and official-app implementation parity remain
+unverified.
+
+Verification for 1.2.0: formatting, lint, build, 94 unit tests and the toolchain probes passed. The complete
+Chromium/mobile-WebKit browser run had 71 passes, one intentional WebKit Lighthouse skip and two failures
+from the old global Settings error-count assertion after the new timetable status row was added. That
+assertion now scopes the three operator rows; all 20 relevant refresh, direction, joint, progressive
+Citybus and variant rechecks passed in both engines. All six final variant checks also passed after the
+mobile wording/heading adjustment, including axe AA checks, manual/default selection, automatic clock
+changes, Chinese controls, original bookmark identities and cached timetable restoration. Production
+origin-stopped offline reload (including real 720 variants) and explicit update/reload/preference/resume
+smoke checks passed in both engines. These are browser-engine checks, not physical iPhone validation.

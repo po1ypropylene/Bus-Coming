@@ -100,6 +100,8 @@ export type CatalogEvent =
     | { type: 'progress'; progress: Progress }
     | { type: 'joint'; catalog: JointCatalog }
     | { type: 'jointError' }
+    | { type: 'variants'; catalog: import('../services/variants/types').VariantCatalog }
+    | { type: 'variantsError' }
     | { type: 'complete' }
 
 export interface JointCatalog {

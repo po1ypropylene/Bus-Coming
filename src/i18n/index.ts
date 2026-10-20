@@ -146,7 +146,8 @@ export const strings = {
         ungrouped: 'Other stops',
         installOffline: 'Open once online after installation to prepare offline access.',
         backupDownloaded: 'Backup downloaded.',
-        minuteRefresh: 'Updates every 30 seconds while the card is visible and the app is active.',
+        minuteRefresh:
+            'Updates every 15–30 seconds while the card is visible and the app is active.',
         routeChanged: 'Route data is updating.',
         gpsUnsupported: 'Location is not supported by this browser.',
         showKeypad: 'Show keypad',
@@ -290,7 +291,7 @@ export const strings = {
         ungrouped: '其他車站',
         installOffline: '安裝後請連線開啟一次，以準備離線使用。',
         backupDownloaded: '已下載備份。',
-        minuteRefresh: '卡片可見且應用程式使用中時，每 30 秒更新。',
+        minuteRefresh: '卡片可見且應用程式使用中時，每 15–30 秒更新。',
         routeChanged: '正在更新路線資料。',
         gpsUnsupported: '此瀏覽器不支援定位功能。',
         showKeypad: '顯示鍵盤',

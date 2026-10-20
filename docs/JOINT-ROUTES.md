@@ -74,8 +74,10 @@ physical provider stop entries; opening either can show combined ETAs.
 Equal-time predictions are retained because they can represent different buses. Operator labels remain available on each
 prediction. Untimed rows, including Citybus “KMB Cycle” messages, are hidden rather than shown as departures or
 separate message blocks. Timed remarks stay with their predictions. Responses containing only untimed rows show the
-normal bilingual no-estimate state. The UI keeps the existing three-prediction limit and 30-second
-refresh cadence while the card is visible and the document is focused, visible and online.
+normal bilingual no-estimate state. The UI keeps the three-prediction limit. Successful, non-partial combined results
+with one or two timed predictions recheck after 15 seconds; full cards, empty results, partial results and failures
+use 30 seconds. Requests run while the card is visible and the document is focused, visible and online. Manual
+refresh/retry bypasses completed ETA caches for both matched operators while sharing their in-flight requests.
 
 A failed request or unmatched stop shows a bilingual partial-data notice while retaining successful results. If all
 requests fail, the existing stale/unavailable behavior applies. Errors are retried on the normal ETA cadence or refresh

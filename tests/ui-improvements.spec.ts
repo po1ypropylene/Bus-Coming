@@ -116,6 +116,7 @@ test('ETA states fit their content, retain remarks, and show full-size balanced 
     await page.setViewportSize({ width: 390, height: 844 })
     const now = Date.now()
     await page.clock.install({ time: now })
+    await page.clock.pauseAt(now + 1000)
     await seed(page)
     let release: (() => void) | undefined
     const gate = new Promise<void>((resolve) => {

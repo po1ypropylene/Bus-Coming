@@ -6,6 +6,7 @@ test('Citybus replaces a departed prediction and fills the third column when sup
 }) => {
     const now = Date.parse('2026-10-20T08:36:00+08:00')
     await page.clock.install({ time: new Date(now) })
+    await page.clock.pauseAt(new Date(now + 1000))
     const fixtureStop = { ...stop, id: 'CTB:003155', code: '003155', provider: 'CTB' }
     const fixtureRoute = {
         ...route,
@@ -42,9 +43,9 @@ test('Citybus replaces a departed prediction and fills the third column when sup
 
     const refresh = async () => {
         const previous = requests
-        await page.clock.fastForward(16000)
         await page.getByRole('button', { name: 'Refresh', exact: true }).click()
-        await expect.poll(() => requests).toBeGreaterThan(previous)
+        await expect.poll(() => requests).toBe(previous + 1)
+        await expect(page.getByRole('button', { name: 'Refresh', exact: true })).toBeEnabled()
     }
     minutes = [null, 5, 14, 24]
     await refresh()
@@ -54,7 +55,45 @@ test('Citybus replaces a departed prediction and fills the third column when sup
     await refresh()
     await expect(page.locator('.arrival-clock')).toHaveText(['08:41', '08:50'])
 
+    // A newly available third prediction is picked up automatically after 15s.
     minutes = [null, 5, 14, 24]
-    await refresh()
+    const sparseRequests = requests
+    await page.clock.fastForward(14999)
+    expect(requests).toBe(sparseRequests)
+    await page.clock.fastForward(1)
     await expect(page.locator('.arrival-clock')).toHaveText(['08:41', '08:50', '09:00'])
+    expect(requests).toBe(sparseRequests + 1)
+    await expect(page.getByRole('button', { name: 'Refresh', exact: true })).toBeEnabled()
+
+    // A full card returns to the normal 30s cadence.
+    const fullRequests = requests
+    await page.clock.fastForward(15000)
+    expect(requests).toBe(fullRequests)
+    await page.clock.fastForward(15000)
+    await expect.poll(() => requests).toBe(fullRequests + 1)
+    await expect(page.getByRole('button', { name: 'Refresh', exact: true })).toBeEnabled()
+
+    // No-service responses do not trigger the faster sparse-card cadence.
+    minutes = []
+    await refresh()
+    await expect(page.locator('.arrival-time')).toHaveCount(0)
+    const emptyRequests = requests
+    await page.clock.fastForward(15000)
+    expect(requests).toBe(emptyRequests)
+    await page.clock.fastForward(15000)
+    await expect.poll(() => requests).toBe(emptyRequests + 1)
+    await expect(page.getByRole('button', { name: 'Refresh', exact: true })).toBeEnabled()
+
+    // Eligibility is still checked if a browser misses the focus event on resume.
+    await page.evaluate(() => {
+        Object.defineProperty(document, 'hasFocus', { configurable: true, value: () => false })
+    })
+    const backgroundRequests = requests
+    await page.clock.fastForward(30000)
+    expect(requests).toBe(backgroundRequests)
+    await page.evaluate(() => {
+        Object.defineProperty(document, 'hasFocus', { configurable: true, value: () => true })
+    })
+    await page.clock.fastForward(30000)
+    await expect.poll(() => requests).toBe(backgroundRequests + 1)
 })

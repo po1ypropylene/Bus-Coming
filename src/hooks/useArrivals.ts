@@ -20,17 +20,25 @@ export function useArrivals(
         failed: boolean
         fetching: boolean
     }>({ key, result: null, failed: false, fetching: false })
-    const [tick, setTick] = useState(0)
+    const refreshRef = useRef<() => void>(() => {})
     const [now, setNow] = useState(Date.now)
     const online = useOnline()
     useEffect(() => {
         let active = true,
             running = false,
             visible = false
+        let timer: ReturnType<typeof setTimeout> | undefined
         const foreground = () => visible && !document.hidden && document.hasFocus()
-        async function update() {
-            if (!foreground() || !navigator.onLine || running) return
+        async function update(forceRefresh = false) {
+            if (!active || running) return
+            clearTimeout(timer)
+            if (!foreground() || !navigator.onLine) {
+                // Keep a fallback check in case a browser misses a resume event.
+                timer = setTimeout(() => void update(), 30000)
+                return
+            }
             running = true
+            let delay = 30000
             setState((previous) => ({
                 key,
                 result: previous.key === key ? previous.result : null,
@@ -38,7 +46,13 @@ export function useArrivals(
                 fetching: true,
             }))
             try {
-                const result = await getJointArrivals(route, stop, seq, lang, stops)
+                const result = await getJointArrivals(route, stop, seq, lang, stops, {
+                    forceRefresh,
+                })
+                // Recheck a partly filled panel sooner; empty service and failures
+                // keep the normal cadence rather than repeatedly chasing unavailable buses.
+                const count = upcomingArrivals(result.arrivals).length
+                if (!result.partial && count > 0 && count < 3) delay = 15000
                 if (active) {
                     setState({ key, result, failed: false, fetching: false })
                     setNow(Date.now())
@@ -51,17 +65,16 @@ export function useArrivals(
                 }
             } finally {
                 running = false
+                if (active) timer = setTimeout(() => void update(), delay)
             }
         }
 
+        refreshRef.current = () => void update(true)
         const observer = new IntersectionObserver(([entry]) => {
             visible = entry.isIntersecting
             if (visible) void update()
         })
         if (panelRef.current) observer.observe(panelRef.current)
-        const timer = setInterval(() => {
-            void update()
-        }, 30000)
         const clock = setInterval(() => {
             if (foreground()) setNow(Date.now())
         }, 1000)
@@ -75,13 +88,14 @@ export function useArrivals(
         return () => {
             active = false
             observer.disconnect()
-            clearInterval(timer)
+            clearTimeout(timer)
+            refreshRef.current = () => {}
             clearInterval(clock)
             document.removeEventListener('visibilitychange', resume)
             window.removeEventListener('focus', resume)
             window.removeEventListener('online', resume)
         }
-    }, [route, stop, seq, lang, tick, stops, key])
+    }, [route, stop, seq, lang, stops, key])
     const result = state.key === key ? state.result : null
     const failed = state.key === key && state.failed
     const fetching = state.key === key && state.fetching
@@ -99,6 +113,6 @@ export function useArrivals(
         now,
         stale,
         arrivals,
-        refresh: () => setTick((v) => v + 1),
+        refresh: () => refreshRef.current(),
     }
 }

@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 18 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 20 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -43,8 +43,12 @@ are unchanged.
 - Mixed departure destinations appear automatically. Tap an ETA card to show or hide supplied destinations,
   including when they are all the same. The choice lasts until the card remounts (including language changes); refresh/retry do not toggle it.
   Keyboard activation and English/Traditional Chinese accessibility labels are supported. Missing destinations stay absent.
-- Requests run every 30 seconds only for visible cards in a focused, visible, online document. A 15-second memory cache
-  and request deduplication limit repeated calls. Existing requests may finish after focus is lost. Failed, partial,
+- Requests run only for visible cards in a focused, visible, online document. After each completed request, the next
+  check is scheduled in 15 seconds for successful, non-partial results with one or two timed predictions; full cards,
+  empty results, partial results and failures use 30 seconds. A 15-second memory cache and request deduplication limit
+  automatic calls. Manual refresh/retry bypasses completed cached responses for every matched operator, sharing any
+  active request. Automatic callers join an active refresh rather than reuse older cached data. Existing requests may
+  finish after focus is lost. Failed, partial,
   offline or older-than-90-second results are explicitly stale; retries preserve known predictions.
 - KMB retains exact direction/service/sequence matching. Citybus uses stop identity and direction for unique visits,
   retaining exact sequences for repeated/unknown visits because ETA sequences can differ from catalogue sequences.
@@ -190,13 +194,16 @@ WebKit Lighthouse skip. Slow fixture-clock assertions were stabilized; interrupt
 were completed with isolated output and sequential reruns. The expanded mobile screenshot was reviewed.
 No new live API, deployment or physical iPhone validation was performed.
 
-The 20 October 2026 missing-third-ETA investigation found no UI truncation in the current code.
-A fresh 720 audit at 08:42 HKT returned three predictions at both screenshot stops, and two
-predictions at another stop with three at its next stop (with different operator source timestamps).
-This does not establish the source response at the screenshot's 08:36 event. See
-[the audit findings](API-RESEARCH.md#missing-third-prediction-investigation--20-october-2026).
-Added regressions verify third-column replenishment after a withdrawn prediction and faithfully
-showing only two supplied predictions. Build, lint, formatting, 73 unit tests, toolchain probes and
-the two targeted browser cases passed in Chromium and mobile WebKit. No shipped code, app version,
-persistence or update behavior changed; offline/update smoke and the full browser suite were not
-repeated. No deployment or physical iPhone verification was performed.
+Version 1.1.1 reduces client refresh delays: manual refresh/retry bypasses the short completed-response
+cache for all matched operators, and successful cards with one or two predictions recheck after 15 seconds.
+Full cards, empty responses, partial results and failures use 30 seconds. In-flight requests remain shared;
+foreground/visibility/online checks, source filtering and stored user data are preserved. This cannot supply
+predictions absent from the selected stop's operator response.
+
+Verification on 20 October 2026 passed build, lint, formatting, 77 unit tests and toolchain probes.
+The full browser suite plus targeted reruns covered 67 passing cases and the intentional WebKit Lighthouse skip.
+An existing age assertion initially drifted while screenshots were taken; freezing its test clock fixed it,
+and both engines passed the rerun. New regressions cover immediate manual refresh inside the cache window,
+shared refresh requests, third-column replenishment after 15 seconds, return to 30-second polling, empty
+responses and a missed browser focus event. Production offline and update smoke checks passed in Chromium
+and WebKit. No new live API audit, deployment or physical iPhone validation was performed.

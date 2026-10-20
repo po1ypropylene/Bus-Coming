@@ -78,8 +78,9 @@ Initial download starts automatically. Weekly refresh is checked at launch, on b
 active. Existing routes and live ETA remain available during updates. iOS does not promise background execution while a
 PWA is closed or suspended: refresh resumes the next time the app is active. Manual refresh and each provider's last
 successful download time appear in Settings. HTTPS is required for service workers and phone geolocation. ETA is
-network-only, requested every 30 seconds while its card is visible and the document is focused, with stale/error state
-kept explicit.
+network-only, checked every 15–30 seconds while its card is visible and the document is focused, with stale/error
+state kept explicit. See the development guide for sparse-card scheduling and manual cache bypass. Client polling
+does not guarantee that an operator regenerates predictions at that rate.
 
 ## UI and platform references
 

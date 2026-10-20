@@ -1,6 +1,6 @@
 # Development guide
 
-Last updated: 18 October 2026.
+Last updated: 20 October 2026.
 
 ## Starting points
 
@@ -238,9 +238,15 @@ positions and sizes as letters disappear or return. Digits use native `disabled`
 and `aria-disabled`; clear/backspace remain available. New catalogue entries automatically update available keys.
 Mobile keypad rows are 48px (44px on short screens); the labelled keyboard icon toggles visibility beside the input.
 
-`useArrivals` polls every 30 seconds only when its IntersectionObserver sees the card, the document is visible and
-focused, and the browser reports a connection. Focus, visibility, reconnection and re-entry resume checking through
-the existing 15-second cache and request deduplication. Existing in-flight HTTP requests can finish after focus is lost;
+`useArrivals` schedules its next poll after each completed request: 15 seconds for a successful, non-partial
+result with one or two timed predictions, and 30 seconds for a full card, an empty result, a partial result or failure.
+Requests run only when its IntersectionObserver sees the card, the document is visible and focused, and the browser
+reports a connection. Focus, visibility, reconnection and re-entry resume checking through the existing 15-second
+cache and request deduplication. Manual refresh/retry bypasses the completed-response cache for every matched
+operator, while sharing any in-flight request. Automatic callers also join an active refresh before using older cached
+data. Completion schedules a single timeout; suspended/offscreen cards resume through visibility/focus/re-entry events,
+with a 30-second eligibility check as a fallback for missed events. Existing in-flight HTTP requests can finish after
+focus is lost;
 new polling requests pause. Results are keyed by route, stop, sequence and language so a previous selection cannot flash
 in a new panel. Relative request age/countdowns tick each second while active. Failed, partial, offline or
 older-than-90s

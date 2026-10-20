@@ -1,5 +1,5 @@
 import type { ArrivalResult, Lang, Route, Stop } from '../../types/transit'
-import { getArrivals } from '../api'
+import { getArrivals, type ArrivalRequestOptions } from '../api'
 import { loadRouteDetails } from '../catalog/routeDetails'
 import { matchJointStop } from './matching'
 
@@ -9,8 +9,9 @@ export async function getJointArrivals(
     seq: number,
     lang: Lang,
     downloadedStops: Record<string, Stop>,
+    options?: ArrivalRequestOptions,
 ): Promise<ArrivalResult> {
-    if (!route.jointPartners?.length) return getArrivals(route, stop, seq, lang)
+    if (!route.jointPartners?.length) return getArrivals(route, stop, seq, lang, options)
     const primary = { ...route, jointPartners: undefined }
     const sources = [primary, ...route.jointPartners]
     const results = await Promise.allSettled(
@@ -30,7 +31,7 @@ export async function getJointArrivals(
                 selectedStop = stops[link.id]
                 selectedSeq = link.seq
             }
-            const result = await getArrivals(selected, selectedStop, selectedSeq, lang)
+            const result = await getArrivals(selected, selectedStop, selectedSeq, lang, options)
             return {
                 ...result,
                 arrivals: result.arrivals.map((a) => ({ ...a, provider: source.provider })),

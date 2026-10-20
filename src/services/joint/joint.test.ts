@@ -142,8 +142,21 @@ describe('combined arrivals', () => {
         expect(result.arrivals[0].provider).toBe('CTB')
         expect(result.arrivals[0].destination).toBe('CTB')
         expect(result.arrivals[1].destination).toBe('KMB')
-        expect(getArrivals).toHaveBeenCalledWith(ctb, stops['CTB:2'], 12, 'en')
+        expect(getArrivals).toHaveBeenCalledWith(ctb, stops['CTB:2'], 12, 'en', undefined)
         expect(result.partial).toBe(false)
+    })
+    it('forwards explicit refresh to both matched operators', async () => {
+        vi.mocked(getArrivals).mockResolvedValue({ fetchedAt: 100, arrivals: [] })
+        const options = { forceRefresh: true }
+        await getJointArrivals(joint, stops['KMB:2'], 2, 'en', stops, options)
+        expect(getArrivals).toHaveBeenCalledWith(
+            expect.objectContaining({ id: kmb.id }),
+            stops['KMB:2'],
+            2,
+            'en',
+            options,
+        )
+        expect(getArrivals).toHaveBeenCalledWith(ctb, stops['CTB:2'], 12, 'en', options)
     })
     it('keeps successful arrivals when the other operator fails and reports partial data', async () => {
         vi.mocked(getArrivals).mockImplementation(async (r) => {

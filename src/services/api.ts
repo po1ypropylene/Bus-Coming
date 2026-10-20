@@ -33,6 +33,10 @@ export async function request(url: string): Promise<unknown> {
     throw new Error('Network unavailable')
 }
 
+export interface ArrivalRequestOptions {
+    forceRefresh?: boolean
+}
+
 const inflight = new Map<string, Promise<ArrivalResult>>()
 const recent = new Map<string, ArrivalResult>()
 
@@ -41,11 +45,14 @@ export function getArrivals(
     stop: Stop,
     seq: number,
     lang: Lang,
+    options?: ArrivalRequestOptions,
 ): Promise<ArrivalResult> {
     const key = `${route.id}:${stop.id}:${seq}:${lang}`
-    const cached = recent.get(key)
-    if (cached && Date.now() - cached.fetchedAt < 15000) return Promise.resolve(cached)
+    // Share an active refresh even if an older completed response is still cached.
     if (inflight.has(key)) return inflight.get(key)!
+    const cached = recent.get(key)
+    if (!options?.forceRefresh && cached && Date.now() - cached.fetchedAt < 15000)
+        return Promise.resolve(cached)
     const work = (async () => {
         const url =
             route.provider === 'KMB'

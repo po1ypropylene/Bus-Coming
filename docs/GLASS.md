@@ -36,8 +36,9 @@ explicit glass preferences. The nonportable performance decision is stored in se
 
 The bar's real buttons remain keyboard/VoiceOver targets; decorative copies are inert and hidden
 from accessibility. Dragging snaps to the nearest tab. Scroll minimisation restores on upward scroll
-or touch. The mobile keypad hides navigation immediately and restores it when hidden; it does not
-morph the bar. Header state uses IntersectionObserver. Compact route navigation appears after its
+or touch. The mobile Search screen keeps navigation visible with the keypad open or closed. Navigation
+occupies a separate, non-shrinking row in the viewport flex layout, below the keypad; only the results
+scroll. The safe-area padding belongs to the search shell and is not counted again on the bar. Header state uses IntersectionObserver. Compact route navigation appears after its
 expanded heading passes. Buttons inside material surfaces use fill and rim without another blur.
 No optional pinned-ETA accessory, gyro permission, haptics, menu system, sheet detents or decorative
 empty-state refraction was added.
@@ -98,3 +99,23 @@ suite passed 99 tests with one expected WebKit Lighthouse skip; this includes th
 matrix and stronger rendered transmission checks. Production offline and update smoke checks passed
 in both engines. Physical Safari appearance, standalone safe areas and hardware performance remain
 unverified.
+
+### Search navigation correction — 20 October 2026
+
+Version 1.3.2 removes the guide's hide-on-keypad behaviour. Opening Search previously added
+`keypad-open` and set the entire mobile tab bar to `display: none`; the keypad is open by default.
+This directly accounts for the reported disappearance in an installed PWA. The tab bar now stays
+visible and usable beside the custom keypad, with its own reserved viewport row. The mobile main
+area no longer reserves additional fixed-bar padding, avoiding overlapping or double-counted space.
+The original hiding rule and the test-helper workaround that silently hid the keypad before leaving
+Search are removed. New regressions switch directly from Search to other tabs with the keypad open,
+repeat visits, exercise hide/show, and check geometry at 320×568, 390×844 and 440×956 with and without
+synthetic top/bottom safe areas. Production offline smoke checks also assert visible navigation and
+no keypad overlap after opening Search. Emulation does not establish physical iPhone validation.
+
+Verification for 1.3.2: lint, formatting, production build, 119 unit tests, 26 focused navigation/UI
+checks and both engines' production offline/update smoke checks passed. The full browser run passed
+101 cases with one expected skip; two existing short-screen cases were then corrected for subpixel
+grid rounding (less than 0.2px) and passed in both engines on rerun. The new regressions require the
+keypad and tab bar to occupy separate non-overlapping rows. Screenshot review confirmed Search with
+the keypad and bottom navigation visible together. Physical iPhone retesting remains outstanding.

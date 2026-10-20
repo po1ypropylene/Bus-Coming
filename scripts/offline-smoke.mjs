@@ -169,6 +169,13 @@ for (const [name, engine] of [
         }
         await page.locator('.bookmark-card').waitFor()
         await page.getByRole('button', { name: 'Routes', exact: true }).click()
+        // Production/offline shell must retain navigation with the search keypad open.
+        const navigation = page.getByRole('navigation')
+        if (!(await navigation.isVisible())) throw new Error('Search hid bottom navigation')
+        const navBounds = await navigation.boundingBox()
+        const keypadBounds = await page.locator('.keypad').boundingBox()
+        if (!navBounds || !keypadBounds || keypadBounds.y + keypadBounds.height > navBounds.y)
+            throw new Error('Search keypad overlaps bottom navigation')
         await page.locator('.route-row').first().waitFor()
         if (
             (await page.locator('.route-row').count()) !== 3 ||

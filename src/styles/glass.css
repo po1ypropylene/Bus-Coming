@@ -546,16 +546,21 @@ body:has(dialog[open]) .scroll-edge {
 }
 
 @media (max-width: 700px) {
-    .tab-bar.keypad-open {
-        display: none;
+    /* Search reserves navigation in the viewport flex layout, beside the keypad. */
+    .route-search-shell .tab-bar {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        flex-shrink: 0;
+        margin-bottom: 4px;
     }
     .route-search-shell .scroll-edge {
         display: none;
     }
     .route-search-shell main {
-        padding-bottom: var(--nav-clearance);
-    }
-    .route-search-shell:has(.keypad) main {
         padding-bottom: 8px;
     }
     .route-search-shell .search-box {

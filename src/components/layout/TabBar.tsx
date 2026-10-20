@@ -11,7 +11,7 @@ const tabs = [
 ] as const
 
 export function TabBar() {
-    const { tab, tc, t, navigate, keypad, currentRoute } = useApp()
+    const { tab, tc, t, navigate } = useApp()
     const host = useRef<HTMLElement>(null)
     const [dragIndex, setDragIndex] = useState<number | null>(null)
     const [minimized, setMinimized] = useState(false)
@@ -35,7 +35,7 @@ export function TabBar() {
     return (
         <nav
             ref={host}
-            className={`tab-bar ${minimized ? 'is-minimized' : ''} ${tab === 'search' && !currentRoute && keypad ? 'keypad-open' : ''}`}
+            className={`tab-bar ${minimized ? 'is-minimized' : ''}`}
             aria-label={tc ? '主導覽' : 'Main navigation'}
             onPointerDown={(event) => {
                 if (event.button !== 0) return

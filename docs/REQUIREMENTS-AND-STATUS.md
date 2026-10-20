@@ -271,8 +271,8 @@ was performed.
 The control layer now uses shared translucent glass tokens, top-left rims and a static ambient
 backdrop. Cards, ETAs, route rows and badges remain matte. The floating tab bar has a spring-driven,
 draggable SVG selection lens over a highlighted copy of its labels; the operator selector shares the
-small-lens renderer. Navigation hides while the mobile route keypad is open and returns through the
-existing Hide keypad control. Scroll minimisation, an observed scroll-state header and a compact
+small-lens renderer. Navigation stays visible while the mobile route keypad is open or closed, in a separate
+reserved row below the keypad. Scroll minimisation, an observed scroll-state header and a compact
 route header keep navigation above the content. See [GLASS.md](GLASS.md) for implementation and limits.
 
 Settings includes bilingual Clear–Tinted intensity, Auto/Full/Reduced mode and a refraction switch.
@@ -299,3 +299,18 @@ Chromium/WebKit browser suite passed (99 passed; one expected WebKit Lighthouse 
 badge colour/contrast and the stronger content-depth transmission checks passed in both engines.
 Production offline reload and explicit update/preference-preservation smoke checks also passed in
 both engines. No live API audit or physical iPhone verification was performed.
+
+## Search navigation availability — 20 October 2026
+
+Version 1.3.2 fixes the mobile tab bar disappearing on entry to Search. The prior hide-on-keypad CSS
+rule hid navigation immediately because Search opens its keypad by default. Search now reserves
+separate space for navigation below the keypad, with independent result scrolling and no additional
+fixed-bar clearance. Users can switch directly to Saved, Nearby or Settings without hiding the keypad.
+The keypad toggle no longer changes navigation availability. No stored-data change or reset is needed.
+
+Verification: lint, formatting, production build, 119 unit tests, production offline navigation and
+update smoke checks passed. All 26 focused navigation/UI checks passed. The full browser run passed
+101 cases with one expected WebKit Lighthouse skip; its two short-screen cases initially failed on
+less-than-0.2px grid rounding. After adding a 1px tolerance to that shared-edge assertion, both cases
+passed on targeted rerun. The new navigation/keypad overlap assertions remain strict. Synthetic
+safe-area geometry and browser emulation do not establish physical iPhone standalone validation.

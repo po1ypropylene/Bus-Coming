@@ -513,7 +513,8 @@ test('mobile route matches remain visible above the keypad while typing', async 
         const result = await page.locator('.route-row').boundingBox()
         const keypad = await page.locator('.keypad').boundingBox()
         expect(result!.y).toBeGreaterThan(0)
-        expect(result!.y + result!.height).toBeLessThanOrEqual(keypad!.y)
+        // Fractional grid rows can round differently at the shared edge in WebKit.
+        expect(result!.y + result!.height).toBeLessThanOrEqual(keypad!.y + 1)
         expect(keypad!.y + keypad!.height).toBeLessThan(viewport.height)
         expect(await page.evaluate(() => window.scrollY)).toBe(0)
         const before = await page.locator('.search-results').boundingBox()

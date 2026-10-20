@@ -65,7 +65,7 @@ test('lenses rotate IDs, settle, drag, and disable refraction cleanly', async ({
     ).toBe('none')
     await navigateTab(page, 'Routes')
     if ((page.viewportSize()?.width ?? 0) <= 700) {
-        await expect(page.locator('.tab-bar')).toBeHidden()
+        await expect(page.locator('.tab-bar')).toBeVisible()
         await page.getByRole('button', { name: 'Hide keypad', exact: true }).click()
         await expect(page.locator('.tab-bar')).toBeVisible()
     }

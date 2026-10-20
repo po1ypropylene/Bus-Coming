@@ -130,7 +130,8 @@ Update activation never deletes localStorage or IndexedDB. The reload replaces i
 
 At widths up to 700px, `.route-search-shell` uses the dynamic viewport height and safe-area padding. Search controls, an
 independently scrollable result list, and the custom keypad occupy separate grid rows; the tab bar stays in normal flex
-flow below them. Numbers remain in a 3-column pad, with a separate 2-column scrolling letter list. Hiding the keypad
+flow below them. Never hide the tab bar when the custom keypad opens; navigation must remain directly usable.
+Numbers remain in a 3-column pad, with a separate 2-column scrolling letter list. Hiding the keypad
 expands the results. Query/operator changes reset only the results scroll position, so matches stay visible while
 typing. Route details leave this constrained shell and use normal page scrolling. Desktop retains its sidebar layout.
 Keep keyboard focus, 44px keys and the 320×568 / 440×956 geometry regression when changing this screen.

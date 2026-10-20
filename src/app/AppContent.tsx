@@ -34,6 +34,7 @@ export function AppContent() {
         <div
             className={`app-shell ${tab === 'search' && !currentRoute ? 'route-search-shell' : ''}`}
         >
+            <div className="scroll-edge scroll-edge-bottom" aria-hidden="true" />
             <AppHeader />
             <main id="main">
                 {appUpdate.status === 'ready' && (

@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { expect, test } from './test'
 import sharp from 'sharp'
 import { openStop, seed } from './fixtures'
@@ -38,9 +39,9 @@ for (const colorScheme of ['light', 'dark'] as const) {
         expect(blue[2] - red[2]).toBeGreaterThan(15)
         await page.locator('#glass-probe').evaluate((element) => element.remove())
         for (const tab of ['Saved', 'Nearby', 'Routes', 'Settings']) {
-            await page.getByRole('button', { name: tab, exact: true }).click()
+            await navigateTab(page, tab)
             const material = await nav.evaluate((element) => {
-                const style = getComputedStyle(element)
+                const style = getComputedStyle(element.querySelector('.tab-bar-surface')!)
                 return {
                     filter:
                         style.backdropFilter || style.getPropertyValue('-webkit-backdrop-filter'),
@@ -60,10 +61,52 @@ for (const colorScheme of ['light', 'dark'] as const) {
         await page.screenshot({ path: test.info().outputPath(`glass-sheet-${colorScheme}.png`) })
         await page.getByRole('button', { name: 'Close', exact: true }).click()
         await page.emulateMedia({ contrast: 'more' })
-        expect(await nav.evaluate((element) => getComputedStyle(element).backdropFilter)).toBe(
-            'none',
+        await expect(page.locator('html')).toHaveAttribute('data-glass-effective', 'reduced')
+        expect(
+            await nav.evaluate(
+                (element) =>
+                    getComputedStyle(element.querySelector('.tab-bar-surface')!).backdropFilter,
+            ),
+        ).toBe('none')
+        const fallback = await nav.evaluate(
+            (element) =>
+                getComputedStyle(element.querySelector('.tab-bar-surface')!).backgroundColor,
         )
-        const fallback = await nav.evaluate((element) => getComputedStyle(element).backgroundColor)
         expect(fallback).not.toContain('0.')
     })
 }
+
+test('the lens paints the selected label rather than the first label', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' })
+    await seed(page)
+    await navigateTab(page, 'Settings')
+    await page.addStyleTag({ content: '.tab-bar > button { visibility: hidden }' })
+    const clip = page.locator('.tab-bar .selection-lens-clip')
+    const actual = await sharp(await clip.screenshot({ scale: 'css' }))
+        .raw()
+        .toBuffer()
+    // An independent local reference contains only the selected label. Comparing rendered
+    // pixels catches Safari shifting the first label into the lens despite correct DOM bounds.
+    await page.locator('.tab-bar .selection-lens-copy').evaluate((element) => {
+        const selected = element.lastElementChild!.cloneNode(true)
+        element.replaceChildren(selected)
+        const copy = element as HTMLElement
+        copy.style.left = '0'
+        copy.style.width = '100%'
+        copy.style.gridTemplateColumns = '1fr'
+        const nav = element.closest('nav')!
+        const old = nav.querySelector('filter')!
+        const filter = old.cloneNode(true) as SVGFilterElement
+        filter.id = 'reference-lens'
+        old.parentElement!.append(filter)
+        ;(nav.querySelector('.selection-lens-refract') as HTMLElement).style.filter =
+            'url(#reference-lens)'
+    })
+    const reference = await sharp(await clip.screenshot({ scale: 'css' }))
+        .raw()
+        .toBuffer()
+    expect(actual.length).toBe(reference.length)
+    let changed = 0
+    for (let i = 0; i < actual.length; i++) if (Math.abs(actual[i] - reference[i]) > 20) changed++
+    expect(changed / actual.length).toBeLessThan(0.02)
+})

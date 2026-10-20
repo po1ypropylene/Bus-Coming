@@ -5,7 +5,7 @@ import { CatalogStatus } from '../components/catalog/CatalogStatus'
 import { DownloadCard } from '../components/catalog/DownloadCard'
 import { RouteKeypad } from '../components/routes/RouteKeypad'
 import { RouteRow } from '../components/routes/RouteRow'
-import { PROVIDERS } from '../types/transit'
+import { OperatorFilter } from '../components/routes/OperatorFilter'
 
 export function RoutesPage() {
     const {
@@ -14,7 +14,6 @@ export function RoutesPage() {
         query,
         setQuery,
         operator,
-        setOperator,
         limit,
         setLimit,
         keypad,
@@ -64,32 +63,7 @@ export function RoutesPage() {
                             </button>
                         )}
                     </div>
-                    <div className="operator-tabs" aria-label={t.allOperators}>
-                        {['all', ...PROVIDERS].map((co) => (
-                            <button
-                                key={co}
-                                className={operator === co ? 'selected' : ''}
-                                onClick={() => {
-                                    setOperator(co)
-                                    setLimit(40)
-                                }}
-                            >
-                                {co === 'all'
-                                    ? t.all
-                                    : co === 'KMB'
-                                      ? tc
-                                          ? '九巴/龍運'
-                                          : 'KMB/LWB'
-                                      : co === 'CTB'
-                                        ? tc
-                                            ? '城巴'
-                                            : 'Citybus'
-                                        : tc
-                                          ? '嶼巴'
-                                          : 'NLB'}
-                            </button>
-                        ))}
-                    </div>
+                    <OperatorFilter />
                     <div className="keypad-heading">
                         <span>{t.keyHint}</span>
                         <button

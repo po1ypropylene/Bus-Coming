@@ -1,3 +1,4 @@
+import { useGlass } from './useGlass'
 import { jointRoutes } from '../services/joint/matching'
 import { useAppUpdate } from './useAppUpdate'
 import { useEffect, useMemo, useState } from 'react'
@@ -27,6 +28,7 @@ export function useAppController() {
     } = useCatalog()
     const { user, saveError, updateUser } = useUserData()
     useTheme(user.theme)
+    useGlass(user.glass)
     const [tab, setTab] = useState<Tab>('saved')
     const [selectedRoute, setSelectedRoute] = useState<Route | null>(null)
     const [selectedStop, setSelectedStop] = useState<string | null>(null)

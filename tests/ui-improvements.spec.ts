@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { expect, test } from './test'
 import AxeBuilder from '@axe-core/playwright'
 import { openStop, route, seed, stop } from './fixtures'
@@ -7,7 +8,7 @@ const numbers = ['1A', '1B', '11X', '12', '15', '18', '2', 'N1']
 test('keypad follows matching routes and leaves four rows visible at 390×844', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await seed(page, 2, { route, stop }, numbers)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('button', { name: '1', exact: true }).click()
     await expect(page.getByRole('button', { name: 'A', exact: true })).toBeEnabled()
     await expect(page.getByRole('button', { name: 'N', exact: true })).toHaveCount(0)
@@ -31,7 +32,7 @@ test('number and action keys stay in place when filtered letters disappear and r
     page,
 }) => {
     await seed(page, 2, { route, stop }, numbers)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     const keyBounds = () =>
         page.locator('.number-keys button').evaluateAll((keys) =>
             keys.map((key) => {
@@ -72,7 +73,7 @@ test('last content clears navigation on each tab and details at requested widths
     for (const width of [360, 390, 768]) {
         await page.setViewportSize({ width, height: 844 })
         for (const tab of ['Saved', 'Nearby', 'Settings', 'Routes']) {
-            await page.getByRole('button', { name: tab, exact: true }).last().click()
+            await navigateTab(page, tab)
             if (tab === 'Routes' && width <= 700) {
                 await page.locator('.search-results').evaluate((el) => {
                     el.scrollTop = el.scrollHeight
@@ -241,7 +242,7 @@ test('polling pauses offscreen, hidden and unfocused, resumes, and marks old res
             },
         })
     })
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.locator('.route-row').first().click()
     await page.locator('.stop-main').first().click()
     await expect(page.locator('.arrival-time')).toHaveCount(1)
@@ -308,7 +309,7 @@ test('all five themes pass AA text contrast and accessibility on every tab in bo
     for (const scheme of ['light', 'dark'] as const) {
         await page.emulateMedia({ colorScheme: scheme })
         for (const theme of ['Green', 'Blue', 'Yellow', 'Red', 'Purple']) {
-            await page.getByRole('button', { name: 'Settings', exact: true }).click()
+            await navigateTab(page, 'Settings')
             await page.getByRole('radio', { name: theme, exact: true }).check()
             const tokens = await page.evaluate(() => {
                 const style = getComputedStyle(document.documentElement)
@@ -336,13 +337,13 @@ test('all five themes pass AA text contrast and accessibility on every tab in bo
                 }
             }
             for (const tab of ['Settings', 'Saved', 'Routes', 'Nearby']) {
-                await page.getByRole('button', { name: tab, exact: true }).click()
+                await navigateTab(page, tab)
                 const scan = await new AxeBuilder({ page })
                     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
                     .analyze()
                 expect(scan.violations, `${scheme} ${theme} ${tab}`).toEqual([])
             }
-            await page.getByRole('button', { name: 'Routes', exact: true }).click()
+            await navigateTab(page, 'Routes')
             await page.locator('.route-row').first().click()
             await page.locator('.stop-main').click()
             await expect(page.locator('.arrival-time')).toHaveCount(1)

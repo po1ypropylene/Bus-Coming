@@ -1,3 +1,4 @@
+import { GlassSettings } from '../components/settings/GlassSettings'
 import { ThemePicker } from '../components/settings/ThemePicker'
 import {
     ArrowDownToLine,
@@ -85,6 +86,7 @@ export function SettingsPage() {
                         </select>
                     </div>
                     <ThemePicker />
+                    <GlassSettings />
                 </section>
                 <div className="section-heading">
                     <h2>{t.routeData}</h2>

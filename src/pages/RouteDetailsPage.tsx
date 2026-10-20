@@ -1,3 +1,4 @@
+import { RouteStickyHeader } from '../components/routes/RouteStickyHeader'
 import { oppositeRoute } from '../utils/routeDirection'
 import { ArrowLeft, ArrowRightLeft } from 'lucide-react'
 import { useApp } from '../app/AppContext'
@@ -80,9 +81,13 @@ function RouteDetails({ route }: { route: Route }) {
     const destination = last ? (last.api?.stop.name ?? last.stop.name) : currentRoute.destination
     return (
         <>
-            <button className="back-button" onClick={() => setSelectedRoute(null)}>
+            <button
+                className="back-button glass-circle"
+                aria-label={t[tab]}
+                onClick={() => setSelectedRoute(null)}
+            >
                 <ArrowLeft size={18} />
-                {t[tab]}
+                <span className="visually-hidden">{t[tab]}</span>
             </button>
             <section className="route-heading">
                 <RouteBadge route={currentRoute} />
@@ -97,7 +102,7 @@ function RouteDetails({ route }: { route: Route }) {
                 </div>
                 {reverse && (
                     <button
-                        className="text-button direction-switch"
+                        className="text-button direction-switch glass-circle"
                         onClick={() => openRoute(reverse)}
                         aria-label={`${t.flipDirection}: ${reverse.destination[lang]}`}
                         title={`${t.flipDirection}: ${reverse.destination[lang]}`}
@@ -112,6 +117,15 @@ function RouteDetails({ route }: { route: Route }) {
                     </button>
                 )}
             </section>
+            <RouteStickyHeader title={`${currentRoute.number} · ${destination[lang]}`}>
+                <button
+                    className="icon-button"
+                    aria-label={t[tab]}
+                    onClick={() => setSelectedRoute(null)}
+                >
+                    <ArrowLeft size={18} />
+                </button>
+            </RouteStickyHeader>
             {currentRoute.provider === 'CTB' && <VariantPicker state={variants} />}
             <div className="section-heading">
                 <h2>{t.routeStops}</h2>

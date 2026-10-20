@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { chromium, expect, test } from './test'
 import puppeteer from 'puppeteer-core'
 import { snapshot } from 'lighthouse'
@@ -44,7 +45,7 @@ test('Lighthouse accessibility scores at least 95 for every tab and route detail
                     await page.locator('.stop-main').click()
                     await expect(page.locator('.arrival-time')).toHaveCount(1)
                 } else {
-                    await page.getByRole('button', { name: tab, exact: true }).click()
+                    await navigateTab(page, tab)
                 }
                 const result = await snapshot(auditPage, {
                     flags: {

@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { expect, test } from './test'
 import { route, seed, stop } from './fixtures'
 
@@ -36,7 +37,7 @@ test('Citybus replaces a departed prediction and fills the third column when sup
             },
         })
     })
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.locator('.route-row').click()
     await page.locator('.stop-main').click()
     await expect(page.locator('.arrival-clock')).toHaveText(['08:36', '08:41', '08:50'])

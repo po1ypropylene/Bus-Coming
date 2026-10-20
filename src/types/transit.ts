@@ -51,6 +51,7 @@ export interface UserData {
     version: 1
     language: Lang
     theme: Theme
+    glass?: import('../utils/glass').GlassPreferences
     bookmarks: Bookmark[]
 }
 

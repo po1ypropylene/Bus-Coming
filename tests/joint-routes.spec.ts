@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { expect, test } from './test'
 import type { Bookmark, Route, Snapshot, Stop } from '../src/types/transit'
 
@@ -143,7 +144,7 @@ test('official joint data merges listings, combines ETAs, includes extra stops a
     await expect(page.locator('.bookmark-bottom')).toContainText('Joint route')
     await expect(page.locator('.arrival-time')).toHaveCount(2)
     await expect(page.locator('.arrival-time').first()).toContainText('Citybus')
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     for (const key of ['1', '0', '6'])
         await page.getByRole('button', { name: key, exact: true }).click()
     await expect(page.locator('.route-row')).toHaveCount(1)
@@ -173,10 +174,10 @@ test('official joint data merges listings, combines ETAs, includes extra stops a
     expect(saved.theme).toBe('blue')
     expect(saved.bookmarks[0].routeId).toBe(partner.id)
     expect(saved.bookmarks[1].route.jointPartners).toBeUndefined()
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     for (const key of ['2', 'X']) await page.getByRole('button', { name: key, exact: true }).click()
     await expect(page.locator('.route-row')).toHaveCount(2)
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.getByText('Joint routes · Transport Department')).toBeVisible()
     await page.getByRole('combobox', { name: 'Language' }).selectOption('tc')
     await expect(page.getByText('聯營路線 · 運輸署')).toBeVisible()

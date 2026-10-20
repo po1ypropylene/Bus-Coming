@@ -265,3 +265,24 @@ pattern UI in both languages, and retained 720 automatic/manual variants. Produc
 update/reload/preference/resume smoke checks passed in both engines. The fresh Citybus audit covered
 static route/stop data; browser ETA responses were fixtures. No deployment or physical iPhone check
 was performed.
+
+## Safari glass controls — 20 October 2026
+
+The control layer now uses shared translucent glass tokens, top-left rims and a static ambient
+backdrop. Cards, ETAs, route rows and badges remain matte. The floating tab bar has a spring-driven,
+draggable SVG selection lens over a highlighted copy of its labels; the operator selector shares the
+small-lens renderer. Navigation hides while the mobile route keypad is open and returns through the
+existing Hide keypad control. Scroll minimisation, an observed scroll-state header and a compact
+route header keep navigation above the content. See [GLASS.md](GLASS.md) for implementation and limits.
+
+Settings includes bilingual Clear–Tinted intensity, Auto/Full/Reduced mode and a refraction switch.
+Preferences preserve existing bookmarks, themes and version-one backups. Increased contrast and
+reduced transparency resolve Auto to solid controls. Reduced motion removes lens spring motion and
+press scaling. A two-second slow-animation budget disables refraction for the current browser session.
+The PWA status-bar style is black-translucent; safe-area/device rendering still requires real hardware.
+
+Verification: formatting, lint, 119 unit tests, toolchain probes and production build passed. The full
+browser suite passed 93 tests with one expected WebKit Lighthouse skip; after the final lens-paint
+correction, 16 focused glass/settings/header tests passed, including rendered label alignment in both
+engines. Final production offline and update smoke checks passed in Chromium and WebKit. Physical
+iPhone standalone rendering, bright-backdrop contrast and hardware performance remain unverified.

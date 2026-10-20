@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { readFileSync } from 'node:fs'
 import { expect, test } from './test'
 import { openStop, route, seed, stop } from './fixtures'
@@ -11,7 +12,7 @@ test('custom keypad, exact arrival filtering, grouped bookmarks, persistence and
     await page.getByRole('button', { name: 'Save stop', exact: true }).click()
     await page.getByLabel('Group (optional)').fill('To work')
     await page.getByRole('button', { name: 'Done', exact: true }).click()
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.bookmark-card')).toHaveCount(1)
     await expect(page.locator('.bookmark-label')).toContainText('To work')
     await page.reload()
@@ -43,7 +44,7 @@ test('GPS returns ordered nearby stops and routes', async ({ page, context, brow
         await context.setGeolocation({ latitude: 22.2941, longitude: 114.168 })
     }
     await seed(page)
-    await page.getByRole('button', { name: 'Nearby', exact: true }).click()
+    await navigateTab(page, 'Nearby')
     await page.getByRole('button', { name: 'Use my location', exact: true }).click()
     await expect(page.locator('.near-stop')).toHaveCount(1)
     await page.locator('.near-stop').click()
@@ -53,7 +54,7 @@ test('GPS returns ordered nearby stops and routes', async ({ page, context, brow
 })
 test('invalid backup does not overwrite bookmarks; valid backups merge', async ({ page }) => {
     await seed(page)
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await page.locator('input[type=file]').setInputFiles({
         name: 'bad.json',
         mimeType: 'application/json',
@@ -81,7 +82,7 @@ test('invalid backup does not overwrite bookmarks; valid backups merge', async (
         buffer: Buffer.from(JSON.stringify(backup)),
     })
     await expect(page.getByRole('status')).toContainText('Backup imported')
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.bookmark-card')).toHaveCount(1)
 })
 test('offline ETA errors are explicit and saved route search remains usable', async ({
@@ -97,7 +98,7 @@ test('offline ETA errors are explicit and saved route search remains usable', as
     })
     await context.setOffline(true)
     await expect(page.locator('.banner')).toContainText('You’re offline')
-    await page.getByRole('button', { name: 'Routes', exact: true }).last().click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(1)
 })
 test('empty, keypad, settings and dark mobile layouts have no horizontal overflow', async ({
@@ -110,7 +111,7 @@ test('empty, keypad, settings and dark mobile layouts have no horizontal overflo
         fullPage: true,
     })
     for (const name of ['Routes', 'Nearby', 'Settings']) {
-        await page.getByRole('button', { name, exact: true }).click()
+        await navigateTab(page, name)
         expect(
             await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
         ).toBe(true)
@@ -207,11 +208,11 @@ test('first launch normalizes all operators and handles missing upstream stop me
         return req.fulfill({ json: data, headers: { 'access-control-allow-origin': '*' } })
     })
     await page.goto('/')
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.getByText('Ready offline', { exact: true })).toHaveCount(3, {
         timeout: 15000,
     })
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(4)
     await page.locator('.route-row').first().click()
     await expect(page.locator('.stop-list')).toContainText('Stop details unavailable')
@@ -225,7 +226,7 @@ test('failed forced refresh keeps old snapshots and user bookmarks intact', asyn
     await page.route('https://rt.data.gov.hk/**', (req) =>
         req.fulfill({ status: 503, body: 'Unavailable' }),
     )
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await page.getByRole('button', { name: 'Refresh route data', exact: true }).click()
     await expect(
         page
@@ -234,7 +235,7 @@ test('failed forced refresh keeps old snapshots and user bookmarks intact', asyn
             .getByText('Download interrupted. Tap refresh to resume.', { exact: true }),
     ).toHaveCount(3, { timeout: 25000 })
     await expect(page.getByText('Ready offline', { exact: true })).toHaveCount(3)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(2)
 })
 
@@ -284,7 +285,7 @@ test('Citybus is searchable and usable before its full offline download finishes
         return req.fulfill({ json: data, headers: { 'access-control-allow-origin': '*' } })
     })
     await page.goto('/')
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('button', { name: 'Citybus', exact: true }).click()
     await page.getByRole('textbox', { name: 'Route number' }).fill('2X')
     await expect(page.locator('.route-row')).toHaveCount(2)
@@ -297,12 +298,12 @@ test('Citybus is searchable and usable before its full offline download finishes
     await expect(page.locator('.arrival-time')).toHaveCount(1)
     await page.getByRole('button', { name: 'Save stop', exact: true }).click()
     await page.getByRole('button', { name: 'Done', exact: true }).click()
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.bookmark-card')).toHaveCount(1)
     // A refresh/reload must keep the published index and cached selected route.
     await page.reload()
     await expect(page.locator('.bookmark-card')).toHaveCount(1)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('button', { name: 'Citybus', exact: true }).click()
     await page.getByRole('textbox', { name: 'Route number' }).fill('2X')
     await expect(page.locator('.route-row')).toHaveCount(2)
@@ -338,7 +339,7 @@ test('database upgrade preserves version-one snapshots and bookmarks', async ({ 
     )
     await seed(page, 1)
     await expect(page.locator('.bookmark-card')).toHaveCount(1)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(2)
     const schema = await page.evaluate(
         () =>
@@ -370,7 +371,7 @@ test('theme colours persist, support both appearances and survive backup import'
     page,
 }) => {
     await seed(page)
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.getByRole('radio', { name: 'Blue', exact: true })).toBeChecked()
     const colours = new Set<string>()
     for (const scheme of ['light', 'dark'] as const) {
@@ -406,7 +407,7 @@ test('theme colours persist, support both appearances and survive backup import'
     }
     expect(colours.size).toBe(10)
     await page.reload()
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.getByRole('radio', { name: 'Purple', exact: true })).toBeChecked()
     const downloadPromise = page.waitForEvent('download')
     await page.getByRole('button', { name: 'Export bookmarks', exact: true }).click()
@@ -481,7 +482,7 @@ test('N8P inbound offset sequences display ETAs in route details and saved stops
         }),
     )
     await page.reload()
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('textbox', { name: 'Route number' }).fill('N8P')
     await page.locator('.route-row').click()
     await page.locator('.stop-main').click()
@@ -490,7 +491,7 @@ test('N8P inbound offset sequences display ETAs in route details and saved stops
     await expect(page.locator('.arrival-panel')).not.toContainText('Wrong direction')
     await page.getByRole('button', { name: 'Save stop', exact: true }).click()
     await page.getByRole('button', { name: 'Done', exact: true }).click()
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.arrival-time')).toHaveCount(1)
     await page.reload()
     await expect(page.locator('.arrival-time')).toHaveCount(1)
@@ -503,7 +504,7 @@ test('mobile route matches remain visible above the keypad while typing', async 
         { width: 320, height: 568 },
     ]) {
         await page.setViewportSize(viewport)
-        await page.getByRole('button', { name: 'Routes', exact: true }).click()
+        await navigateTab(page, 'Routes')
         await expect(page.locator('.app-header')).toBeVisible()
         await page.getByRole('button', { name: 'Clear', exact: true }).last().click()
         await page.getByRole('button', { name: '1', exact: true }).click()
@@ -616,13 +617,13 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
             },
         }),
     )
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.locator('.route-row').click()
     await page.locator('.stop-main').click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
     await page.getByRole('button', { name: 'Save stop', exact: true }).click()
     await page.getByRole('button', { name: 'Done', exact: true }).click()
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.arrival-time strong')).toHaveText(['2', '7', '13'])
 })
 
@@ -665,7 +666,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
             },
         }),
     )
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.locator('.route-row').click()
     await page.locator('.stop-main').click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['Due', '6', '14'])
@@ -690,7 +691,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     ).toHaveCount(0)
     await page.getByRole('button', { name: 'Save stop', exact: true }).click()
     await page.getByRole('button', { name: 'Done', exact: true }).click()
-    await page.getByRole('button', { name: 'Saved', exact: true }).click()
+    await navigateTab(page, 'Saved')
     await expect(page.locator('.arrival-time strong')).toHaveText(['Due', '6', '14'])
     await page.getByRole('button', { name: 'Language', exact: true }).click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '6', '14'])
@@ -835,7 +836,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
 test('Settings footer uses the package version in both languages', async ({ page }) => {
     const { version } = JSON.parse(readFileSync('package.json', 'utf8'))
     await seed(page)
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.locator('.about')).toContainText(`Bus Coming · v${version}`)
     await page.getByRole('button', { name: 'Language', exact: true }).click()
     await expect(page.locator('.about')).toContainText(`Bus Coming · v${version}`)

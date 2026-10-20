@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { createHash } from 'node:crypto'
 import { expect, test } from './test'
 
@@ -57,9 +58,9 @@ test('first launch downloads shared Citybus data and preserves it across offline
     await context.route('https://data.etabus.gov.hk/**', (req) => req.abort())
     await context.route('https://rt.data.gov.hk/v2/transport/nlb/**', (req) => req.abort())
     await page.goto('/')
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await expect(page.getByText('Ready offline', { exact: true })).toHaveCount(1)
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(1)
     await page.locator('.route-row').click()
     await expect(page.locator('.stop-list')).toContainText('Shared stop')
@@ -68,7 +69,7 @@ test('first launch downloads shared Citybus data and preserves it across offline
     // Block all external data while leaving the dev shell reachable; production offline is checked separately.
     await context.route('**/catalog/citybus/**', (req) => req.abort())
     await page.reload()
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await expect(page.locator('.route-row')).toHaveCount(1)
     await page.locator('.route-row').click()
     await expect(page.locator('.stop-list')).toContainText('Shared stop')

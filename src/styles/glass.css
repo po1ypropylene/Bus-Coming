@@ -1,45 +1,143 @@
-/* Presentation only: retain component geometry, hit targets and semantic colours. */
+/* Safari glass: blur the controls layer; only small owned label copies refract. */
 :root {
-    --glass-glint: rgb(255 255 255 / 62%);
-    --glass-sheen: rgb(255 255 255 / 14%);
-    --glass-edge: color-mix(in srgb, var(--accent) 14%, var(--surface));
-    --glass-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 7%, transparent);
+    --glass-intensity: 0.45;
+    --glass-blur: calc(10px + 14px * (1 - var(--glass-intensity)));
+    --glass-saturate: 170%;
+    --glass-brightness: 1.06;
+    --glass-tint-alpha: calc(0.06 + 0.34 * var(--glass-intensity));
+    --glass-tint: color-mix(
+        in srgb,
+        var(--surface) calc(var(--glass-tint-alpha) * 100%),
+        transparent
+    );
+    --glass-solid: var(--surface);
+    --glass-glint: rgb(255 255 255 / 70%);
     --glass-rim:
-        inset 0 1px 0 var(--glass-glint),
-        inset 1px 0 0 color-mix(in srgb, var(--glass-glint) 45%, transparent),
-        inset 0 -1px 0 color-mix(in srgb, var(--accent) 9%, transparent);
-    --glass-wash: linear-gradient(145deg, var(--glass-sheen), transparent 48%);
-    --glass-panel: linear-gradient(155deg, var(--surface), var(--bg));
-    --glass-chrome: color-mix(in srgb, var(--surface) 62%, transparent);
-    --glass-sheet: color-mix(in srgb, var(--surface) 82%, transparent);
-    --glass-control: color-mix(in srgb, var(--surface) 78%, transparent);
-    --glass-selection: color-mix(in srgb, var(--soft) 72%, transparent);
+        inset 0 1.5px 0 var(--glass-glint), inset 1px 0 0 rgb(255 255 255 / 18%),
+        inset 0 -1px 0 rgb(255 255 255 / 12%);
+    --glass-shadow: 0 10px 30px rgb(0 0 0 / 15%), 0 2px 6px rgb(0 0 0 / 8%);
+    --glass-wash: radial-gradient(120% 90% at 20% 0%, rgb(255 255 255 / 16%), transparent 55%);
+    --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate))
+        brightness(var(--glass-brightness));
+    --glass-rim-image: linear-gradient(
+        135deg,
+        rgb(255 255 255 / 75%),
+        rgb(255 255 255 / 6%) 40%,
+        rgb(255 255 255 / 2%) 60%,
+        rgb(255 255 255 / 28%)
+    );
+    --nav-bottom: max(10px, calc(env(safe-area-inset-bottom) - 8px));
+    --nav-clearance: calc(96px + env(safe-area-inset-bottom));
+    --lens-filter: initial;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --glass-glint: rgb(255 255 255 / 20%);
-        --glass-sheen: rgb(255 255 255 / 7%);
-        --glass-chrome: color-mix(in srgb, var(--surface) 58%, transparent);
-        --glass-edge: color-mix(in srgb, var(--accent) 20%, var(--surface));
-        --glass-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+        --glass-glint: rgb(255 255 255 / 42%);
+        --glass-shadow: 0 10px 30px rgb(0 0 0 / 38%), 0 2px 6px rgb(0 0 0 / 28%);
+        --glass-brightness: 0.94;
     }
 }
 
+html,
+body {
+    min-height: 100%;
+}
 body {
     min-height: 100dvh;
-    background:
-        radial-gradient(ellipse at 8% 0, var(--soft), transparent 55%),
-        radial-gradient(ellipse at 100% 75%, var(--soft), transparent 50%), var(--bg);
-}
-
-/* Opaque defaults also serve browsers without backdrop filtering. */
-.app-header {
     background: var(--bg);
-    border-bottom-color: var(--glass-edge);
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 8% 5%,
+            color-mix(in srgb, var(--accent) 14%, transparent),
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse at 100% 70%,
+            color-mix(in srgb, var(--accent) 10%, transparent),
+            transparent 55%
+        );
 }
 
-/* One material spans the content, viewport gutters and top safe area. */
+/* One reusable material. Unsupported browsers start with an opaque surface. */
+.glass,
+.app-header.is-scrolled::before,
+.search-box,
+.operator-tabs,
+.keypad,
+.save-dialog,
+.toast {
+    background: var(--glass-wash), var(--glass-solid);
+    box-shadow: var(--glass-rim), var(--glass-shadow);
+    border: 1px solid color-mix(in srgb, var(--muted) 24%, transparent);
+}
+.glass {
+    position: relative;
+    isolation: isolate;
+    border-radius: 28px;
+}
+.glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--glass-rim-image);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#000 0 0) content-box exclude,
+        linear-gradient(#000 0 0);
+    pointer-events: none;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass,
+    .app-header.is-scrolled::before,
+    .search-box,
+    .operator-tabs,
+    .keypad,
+    .save-dialog,
+    .toast {
+        background: var(--glass-wash), var(--glass-tint);
+        -webkit-backdrop-filter: var(--glass-filter);
+        backdrop-filter: var(--glass-filter);
+    }
+}
+
+/* Matte content surfaces retain readable, theme-aware operator colours. */
+.list-card,
+.bookmark-card,
+.empty-saved,
+.download-card,
+.location-card,
+.stop-list {
+    background: var(--surface);
+    box-shadow: none;
+    border-color: var(--line);
+}
+.route-badge,
+.arrival-panel {
+    box-shadow: none;
+}
+
+.header-sentinel {
+    height: 1px;
+    margin-bottom: -1px;
+    flex-shrink: 0;
+}
+.app-header {
+    background: transparent;
+    border-bottom-color: transparent;
+}
 .app-header::before {
     content: '';
     position: absolute;
@@ -49,273 +147,399 @@ body {
     transform: translateX(-50%);
     z-index: -1;
     pointer-events: none;
-    background: var(--bg);
 }
-
-/* Continue the divider through the same viewport gutters as the header background. */
-.app-header::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 -1px;
-    height: 1px;
-    pointer-events: none;
-    background: var(--glass-edge);
-    box-shadow: 0 0 0 100vmax var(--glass-edge);
-    clip-path: inset(0 -100vmax);
+.app-header.is-scrolled::before {
+    /* A single masked material supplies the top scroll edge. */
+    -webkit-mask-image: linear-gradient(#000 80%, transparent);
+    mask-image: linear-gradient(#000 80%, transparent);
 }
-
-.tab-bar {
-    border-color: var(--glass-edge);
-    border-radius: 38px;
-    background: var(--glass-wash), var(--surface);
-    box-shadow:
-        var(--glass-rim),
-        0 12px 36px color-mix(in srgb, var(--ink) 14%, transparent),
-        0 2px 5px color-mix(in srgb, var(--ink) 5%, transparent);
+.connection {
+    padding: 8px 10px;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
 }
-
-.tab {
-    border-radius: 30px;
-}
-
-.tab.active {
-    background: var(--glass-wash), var(--glass-selection);
-    box-shadow:
-        var(--glass-rim),
-        0 2px 8px color-mix(in srgb, var(--ink) 8%, transparent);
-}
-
-.list-card,
-.bookmark-card,
-.empty-saved,
-.download-card,
-.location-card,
-.stop-list {
-    background: var(--glass-panel);
-    border-color: var(--glass-edge);
-    box-shadow: var(--glass-rim), var(--glass-shadow);
-}
-
-.nearby-promo,
-.install-card {
-    background: var(--glass-wash), linear-gradient(135deg, var(--soft), var(--bg));
-    box-shadow: var(--glass-rim), var(--glass-shadow);
-}
-
-.search-box,
 .language-toggle,
 .add-button,
-.chip:not(.active),
-.save-dialog input,
 .icon-button {
-    background: var(--glass-wash), var(--surface);
-    border-color: var(--glass-edge);
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--glass-wash), color-mix(in srgb, var(--surface) 80%, transparent);
     box-shadow:
         var(--glass-rim),
-        0 3px 10px color-mix(in srgb, var(--ink) 4%, transparent);
+        0 3px 10px rgb(0 0 0 / 8%);
+}
+.primary,
+.secondary {
+    border-radius: 28px;
+    box-shadow:
+        var(--glass-rim),
+        0 3px 10px rgb(0 0 0 / 10%);
+}
+.primary {
+    background: var(--glass-wash), var(--accent);
+    color: var(--surface);
+}
+.secondary,
+.chip,
+.save-dialog input {
+    background: var(--glass-wash), var(--soft);
+}
+.primary,
+.secondary,
+.language-toggle,
+.add-button,
+.icon-button,
+.number-keys button,
+.letter-keys button {
+    transition: transform 220ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.primary:active:not(:disabled),
+.secondary:active:not(:disabled),
+.language-toggle:active,
+.add-button:active,
+.icon-button:active,
+.number-keys button:active:not(:disabled),
+.letter-keys button:active:not(:disabled) {
+    transform: scale(1.06);
 }
 
-.search-box {
+.tab-bar,
+.route-search-shell .tab-bar {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    bottom: var(--nav-bottom);
+    transform: translateX(-50%);
+    width: min(520px, calc(100% - 24px));
+    max-width: none;
+    height: 64px;
+    padding: 4px;
+    margin: 0;
+    border: 0;
+    border-radius: 32px;
+    background: transparent;
+    box-shadow: none;
+    isolation: isolate;
+    touch-action: pan-y;
+}
+.tab-bar-surface {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+}
+.tab {
+    position: relative;
+    min-height: 44px;
+    height: 56px;
+    border-radius: 28px;
+    z-index: 1;
+    color: var(--ink);
+    font-weight: 550;
+}
+.tab.active {
+    background: transparent;
+    color: var(--accent);
+    box-shadow: none;
+}
+.selection-lens {
+    position: absolute;
+    inset: 4px auto 4px 4px;
+    pointer-events: none;
+    border-radius: 28px;
+    z-index: 2;
+    will-change: transform;
+}
+.selection-lens-surface {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--glass-wash), color-mix(in srgb, var(--soft) 88%, transparent);
+    box-shadow:
+        var(--glass-rim),
+        0 2px 8px rgb(0 0 0 / 12%);
+}
+.selection-lens.is-pressed .selection-lens-surface {
+    scale: 1.06;
+}
+.selection-lens-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+}
+.selection-lens-refract {
+    position: absolute;
+    inset: 0;
+    rotate: 0deg;
+}
+.selection-lens-copy {
+    position: absolute;
+    top: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    height: 100%;
+}
+.selection-lens-copy .tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    color: var(--accent);
+    font-weight: 650;
+}
+.lens-definitions {
+    position: absolute;
+    pointer-events: none;
+}
+.tab-bar.is-minimized {
+    height: 52px;
+    border-radius: 26px;
+}
+.tab-bar.is-minimized .tab {
+    height: 44px;
+}
+.tab-bar.is-minimized .tab > span {
+    display: none;
+}
+.tab-bar.is-minimized .selection-lens {
     border-radius: 22px;
 }
 
-.operator-tabs,
-.keypad {
-    background: var(--glass-wash), color-mix(in srgb, var(--soft) 70%, var(--bg));
+.scroll-edge {
+    position: fixed;
+    pointer-events: none;
+    z-index: 19;
+}
+.scroll-edge-bottom {
+    inset: auto 0 0;
+    height: calc(90px + env(safe-area-inset-bottom));
+    background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 70%, transparent));
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    -webkit-mask-image: linear-gradient(transparent, #000 70%);
+    mask-image: linear-gradient(transparent, #000 70%);
+}
+.search-box {
+    border-radius: 26px;
+    height: 52px;
+}
+.search-box:focus-within {
+    box-shadow:
+        var(--glass-rim),
+        0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.operator-tabs {
+    position: relative;
+    border-radius: 26px;
+    padding: 4px;
+    isolation: isolate;
+}
+.operator-tabs button {
+    position: relative;
+    z-index: 1;
+    border-radius: 22px;
+    color: var(--ink);
+    font-weight: 550;
+}
+.operator-tabs button.selected {
+    background: var(--soft);
+    color: var(--accent);
     box-shadow: var(--glass-rim);
 }
-
-.operator-tabs {
-    border-radius: 17px;
+.keypad {
+    border-radius: 28px;
 }
-
-.operator-tabs button {
-    border-radius: 14px;
-}
-
-.operator-tabs button.selected,
-.number-keys button:not(.key-action),
+.number-keys button,
 .letter-keys button {
     background: var(--glass-wash), var(--surface);
-    box-shadow:
-        var(--glass-rim),
-        0 2px 4px color-mix(in srgb, var(--ink) 7%, transparent);
+    box-shadow: var(--glass-rim);
 }
-
-.primary,
-.secondary {
-    border-radius: 24px;
-    box-shadow:
-        var(--glass-rim),
-        0 3px 8px color-mix(in srgb, var(--ink) 8%, transparent);
-}
-
-.secondary,
-.arrival-panel,
-.round-icon,
-.near-pin,
-.stop-sequence {
+.number-keys .key-action {
     background: var(--glass-wash), var(--soft);
-    box-shadow: var(--glass-rim);
+    color: var(--accent);
 }
-
-.brand-icon,
-.theme-swatch,
-.chip.active {
-    box-shadow: var(--glass-rim);
+.number-keys button:disabled,
+.letter-keys button:disabled {
+    opacity: 0.35;
+    box-shadow: none;
 }
-
-/* Coloured optical plates: opaque ink and a soft bevel, with no per-row blur. */
-.route-badge {
-    --plate-fill: #f5e9e4;
-    --plate-ink: #894d36;
-    color: var(--plate-ink);
-    background:
-        linear-gradient(145deg, var(--glass-glint), transparent 52%),
-        linear-gradient(
-            170deg,
-            transparent 55%,
-            color-mix(in srgb, var(--plate-ink) 9%, transparent)
-        ),
-        var(--plate-fill);
-    border: 1px solid color-mix(in srgb, var(--plate-ink) 18%, var(--plate-fill));
-    box-shadow:
-        var(--glass-rim),
-        inset -1px 0 0 var(--glass-sheen),
-        0 3px 8px color-mix(in srgb, var(--plate-ink) 12%, transparent);
-}
-
-.route-badge.ctb {
-    --plate-fill: #f8f0d9;
-    --plate-ink: #785a20;
-}
-
-.route-badge.nlb {
-    --plate-fill: #e8effb;
-    --plate-ink: #43638f;
-}
-
-@media (prefers-color-scheme: dark) {
-    .route-badge {
-        --plate-fill: #523b31;
-        --plate-ink: #f0b99d;
-    }
-
-    .route-badge.ctb {
-        --plate-fill: #494126;
-        --plate-ink: #edcf80;
-    }
-
-    .route-badge.nlb {
-        --plate-fill: #2c3e56;
-        --plate-ink: #a9c8f1;
-    }
-}
-
 .save-dialog {
-    border-radius: 30px;
-    border-color: var(--glass-edge);
-    background: var(--glass-wash), var(--surface);
-    box-shadow:
-        var(--glass-rim),
-        0 24px 80px rgb(0 0 0 / 22%);
+    border-radius: 32px;
 }
-
 .save-dialog::backdrop {
     background: rgb(12 18 24 / 32%);
-    -webkit-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
-
+.save-dialog .primary,
+.save-dialog .secondary {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
 .toast {
+    color: var(--ink);
     border-radius: 26px;
+    bottom: calc(var(--nav-bottom) + 76px);
+    font-weight: 550;
+}
+.banner {
+    border-radius: 24px;
+    box-shadow: var(--glass-rim);
+}
+.theme-swatch.selected {
     box-shadow:
         var(--glass-rim),
-        0 8px 28px rgb(0 0 0 / 18%);
+        0 0 0 2px var(--accent);
+}
+.glass-settings {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 0;
+    padding: 18px;
+}
+.glass-settings legend {
+    float: left;
+    width: 100%;
+    font-weight: 650;
+    margin-bottom: 16px;
+}
+.glass-settings > label {
+    display: block;
+    clear: both;
+    font-size: 14px;
+}
+.glass-settings input[type='range'] {
+    width: 100%;
+    min-height: 44px;
+    accent-color: var(--accent);
+}
+.glass-settings .setting-row {
+    display: flex;
+    padding-inline: 0;
+}
+.glass-settings input[type='checkbox'] {
+    width: 44px;
+    height: 44px;
+    accent-color: var(--accent);
+}
+.glass-range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+}
+.glass-preview {
+    display: grid;
+    place-items: center;
+    min-height: 100px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, var(--soft), var(--accent), var(--bg));
+}
+.glass-preview .glass {
+    padding: 14px 22px;
+    color: var(--ink);
+    font-weight: 650;
+}
+.glass-degraded {
+    display: none;
+    font-size: 13px;
+    color: var(--muted);
+}
+:root[data-lens-degraded='true'] .glass-degraded {
+    display: block;
 }
 
-/* Native Liquid Glass is not a web API. Blur only the navigation layer and modal,
-   retaining solid content surfaces and avoiding a compositor layer per list row. */
-@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .app-header {
-        background: transparent;
-    }
+/* One token override handles explicit and automatically resolved reduced effects. */
+:root[data-glass-effective='reduced'] {
+    --glass-filter: none;
+    --glass-tint: var(--glass-solid);
+    --glass-wash: linear-gradient(transparent, transparent);
+    --glass-rim-image: none;
+    --glass-rim: inset 0 0 0 1px var(--muted);
+}
+:root[data-glass-effective='reduced'] .scroll-edge {
+    display: none;
+}
+:root[data-glass-effective='reduced'] .selection-lens-refract,
+:root[data-refraction='false'] .selection-lens-refract,
+:root[data-lens-degraded='true'] .selection-lens-refract {
+    filter: none !important;
+}
+:root[data-glass-effective='reduced'] .selection-lens-surface {
+    background: var(--soft);
+}
+:root[data-glass-effective='reduced'] .connection {
+    background: var(--surface);
+}
+body:has(dialog[open]) .glass:not(dialog),
+body:has(dialog[open]) .app-header::before,
+body:has(dialog[open]) .scroll-edge {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
 
-    .app-header::before,
-    .tab-bar {
-        background: var(--glass-wash), var(--glass-chrome);
-        -webkit-backdrop-filter: blur(20px) saturate(1.45);
-        backdrop-filter: blur(20px) saturate(1.45);
+@media (max-width: 700px) {
+    .tab-bar.keypad-open {
+        display: none;
     }
-
-    .save-dialog {
-        background: var(--glass-wash), var(--glass-sheet);
-        -webkit-backdrop-filter: blur(24px) saturate(1.35);
-        backdrop-filter: blur(24px) saturate(1.35);
+    .route-search-shell .scroll-edge {
+        display: none;
     }
-
-    .search-box,
+    .route-search-shell main {
+        padding-bottom: var(--nav-clearance);
+    }
+    .route-search-shell:has(.keypad) main {
+        padding-bottom: 8px;
+    }
+    .route-search-shell .search-box {
+        height: 48px;
+    }
+    .route-search-shell .keypad {
+        margin-bottom: 4px;
+    }
+    .connection {
+        font-size: 12px;
+        padding-inline: 8px;
+    }
+    .header-right {
+        gap: 6px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+    .primary,
+    .secondary,
     .language-toggle,
     .add-button,
-    .chip:not(.active),
-    .save-dialog input,
     .icon-button,
-    .operator-tabs button.selected,
-    .number-keys button:not(.key-action),
+    .number-keys button,
     .letter-keys button {
-        background: var(--glass-wash), var(--glass-control);
+        transition: none;
     }
-
-    .toast {
-        background: color-mix(in srgb, var(--ink) 88%, transparent);
-        -webkit-backdrop-filter: blur(16px);
-        backdrop-filter: blur(16px);
-    }
-}
-
-@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-    :root {
-        --glass-wash: linear-gradient(transparent, transparent);
-        --glass-panel: linear-gradient(var(--surface), var(--surface));
-        --glass-edge: var(--muted);
-        --glass-selection: var(--soft);
-        --glass-control: var(--surface);
-    }
-
-    .app-header,
-    .app-header::before,
-    .toast,
-    .tab-bar,
-    .save-dialog,
-    .save-dialog::backdrop {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-    }
-
-    .app-header,
-    .app-header::before {
-        background: var(--bg);
-    }
-
-    .tab-bar,
-    .save-dialog {
-        background: var(--surface);
-    }
-
-    .toast {
-        background: var(--ink);
-    }
-
-    .route-badge {
-        background: var(--plate-fill);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    button:active:not(:disabled) {
+    button:active:not(:disabled),
+    .selection-lens.is-pressed .selection-lens-surface {
         transform: none;
+        scale: 1;
+    }
+    .tab-bar.is-minimized {
+        height: 64px;
+        border-radius: 32px;
+    }
+    .tab-bar.is-minimized .tab {
+        height: 56px;
+    }
+    .tab-bar.is-minimized .tab > span {
+        display: block;
     }
 }
-
 @media (forced-colors: active) {
     .tab.active,
     .operator-tabs button.selected,
@@ -323,8 +547,150 @@ body {
         outline: 2px solid Highlight;
         outline-offset: -3px;
     }
-
-    .route-badge {
-        border-color: CanvasText;
+    .selection-lens {
+        display: none;
     }
+}
+/* The material and hit targets are siblings, with no nested backdrop root. */
+.tab-bar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    min-height: 0;
+}
+.operator-tabs {
+    --operator-ink: var(--accent);
+    --operator-fill: var(--soft);
+}
+.operator-tabs[data-operator='KMB'] {
+    --operator-fill: #f5e9e4;
+    --operator-ink: #894d36;
+}
+.operator-tabs[data-operator='CTB'] {
+    --operator-fill: #f8f0d9;
+    --operator-ink: #785a20;
+}
+.operator-tabs[data-operator='NLB'] {
+    --operator-fill: #e8effb;
+    --operator-ink: #43638f;
+}
+.operator-tabs .selection-lens {
+    border-radius: 22px;
+}
+.operator-tabs .selection-lens-surface {
+    background: var(--glass-wash), var(--operator-fill);
+}
+.operator-tabs .operator-label {
+    display: grid;
+    place-items: center;
+    color: var(--operator-ink);
+    font-size: 13px;
+    font-weight: 650;
+}
+.operator-tabs button.selected {
+    background: transparent;
+    color: var(--operator-ink);
+    box-shadow: none;
+}
+.route-search-shell .scroll-edge {
+    display: none;
+}
+.route-search-shell:has(.keypad) .toast {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--surface);
+}
+body:has(.toast) .glass-preview .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--surface);
+}
+.theme-option:has(input:checked) .theme-swatch {
+    box-shadow:
+        var(--glass-rim),
+        0 0 0 2px var(--accent);
+}
+@media (prefers-color-scheme: dark) {
+    .operator-tabs[data-operator='KMB'] {
+        --operator-fill: #523b31;
+        --operator-ink: #f0b99d;
+    }
+    .operator-tabs[data-operator='CTB'] {
+        --operator-fill: #494126;
+        --operator-ink: #edcf80;
+    }
+    .operator-tabs[data-operator='NLB'] {
+        --operator-fill: #2c3e56;
+        --operator-ink: #a9c8f1;
+    }
+}
+.glass-circle {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 0;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--glass-wash), var(--soft);
+    box-shadow: var(--glass-rim);
+}
+.direction-switch.glass-circle > span {
+    display: none;
+}
+.route-header-marker {
+    height: 1px;
+}
+.route-compact-header {
+    display: none;
+}
+.route-compact-header.is-visible {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: var(--header-height, 60px);
+    z-index: 14;
+    min-height: 52px;
+    padding: 4px 12px;
+    border-radius: 26px;
+}
+.route-compact-header strong {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.route-compact-surface {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+}
+body:has(.toast) .scroll-edge {
+    display: none;
+}
+body:has(.route-compact-header.is-visible) .toast {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--surface);
+}
+/* Pseudo-elements do not inherit the global universal border-box rule. */
+.app-header::before {
+    box-sizing: border-box;
+}
+body {
+    isolation: isolate;
+}
+/* Keep refracted source labels in the filter's own paint layer. */
+.selection-lens-refract {
+    transform: translate(0, 0);
+}
+.selection-lens-copy .tab {
+    position: static;
+    z-index: auto;
+}
+.selection-lens-refract {
+    overflow: hidden;
 }

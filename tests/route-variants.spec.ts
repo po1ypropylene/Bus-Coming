@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { test, expect } from './test'
 import AxeBuilder from '@axe-core/playwright'
 import { timetableFixture, variantRoute, variantStops } from '../src/services/variants/fixtures'
@@ -97,7 +98,7 @@ async function prepare(
 }
 
 async function open720(page: Page) {
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('textbox', { name: 'Route number' }).fill('720')
     await page.locator('.route-row').click()
 }
@@ -180,7 +181,7 @@ test('automatic selection advances with the clock and exposes Traditional Chines
     await expect(page.locator('.variant-name')).toHaveText('Morning · Wing Wo Street')
     await page.clock.fastForward(70 * 60 * 1000)
     await expect(page.locator('.variant-name')).toHaveText('Normal · Macao Ferry')
-    await page.getByRole('button', { name: 'Settings', exact: true }).click()
+    await navigateTab(page, 'Settings')
     await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('tc')
     await page.getByRole('button', { name: '路線', exact: true }).click()
     await page.getByRole('textbox').fill('720')

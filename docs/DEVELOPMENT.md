@@ -57,36 +57,17 @@ To add a palette, add its identifier, both translated labels, both complete CSS 
 
 ### Glass presentation
 
-`src/styles/glass.css` loads after the base, component and theme styles. It adds a CSS Liquid Glass-inspired
-finish without changing component state, layout ownership or data: a capsule tab bar, coloured route plates,
-highlighted cards and controls, and a frosted save sheet. Neutral highlight tokens adapt to system appearance;
-fills, edges and shadows derive from the selected theme. Route plates retain separate KMB, Citybus and NLB
-colour tokens in both appearances.
+`src/styles/glass.css` owns the Safari-oriented control material and shared intensity, tint, rim,
+shadow and filter tokens. Content cards, ETA panels and operator badges stay matte. The ambient
+backdrop is static and theme-derived. See [glass implementation](GLASS.md) for the rendering boundary,
+settings contract, lens implementation, verification and device checklist.
 
-The header uses one viewport-wide material, including the gutters and top safe area. The tab bar uses a
-62% light / 58% dark surface tint plus a restrained sheen, so the blurred backdrop remains visible rather than being
-covered by the previous 88% fill. Active tabs use a translucent theme selection. Shared search fields, icon/language
-buttons, chips and keypad keys use the control material; the save sheet uses a denser 82% tint. Header, tab bar, sheet
-and transient toast use literal prefixed and unprefixed backdrop filters for WebKit and other supporting browsers.
-Avoid nested filters on individual controls or repeated rows. Content cards, ETA panels and operator plates retain
-readable fills and a consistent rim; making every content surface transparent would flatten the navigation hierarchy.
-
-Opaque defaults support browsers without backdrop filters. Reduced transparency or increased contrast removes blur
-and restores solid chrome, controls, selections and flat plates; forced colours retains outlined selection, and
-reduced motion disables press scaling. Preserve navigation clearance, full-width header/divider geometry, mobile
-search layout, focus rings and touch targets.
-
-Follow Apple's current [materials guidance](https://developer.apple.com/design/human-interface-guidelines/materials)
-and [Liquid Glass adoption guidance](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass):
-glass belongs to the navigation/control layer above content. This CSS implementation is a web approximation, not the
-native iOS renderer or proof of iOS 27 visual parity. Safari supports
-[backdrop filters](https://webkit.org/blog/3632/introducing-backdrop-filters/); physical iPhone rendering and scrolling
-performance still require device validation. The browser glass regression measures actual pixel transmission through
-the tab bar over controlled backdrops in light/dark appearance, exercises all tabs and captures the sheet. Header
-checks cover gutter/safe-area geometry; accessibility scans cover all palettes. The automated WebKit runtime currently
-advertises filter support without rendering blur in screenshots, also reproduced in an isolated striped-backdrop probe.
-Do not equate computed filter declarations or transmission with proof of blur; Chromium rendering and physical Safari
-validation must be reported separately. Avoid browser sniffing or extra compositor hacks to conceal this test limitation.
+The tab bar uses an empty `.glass` surface beneath the real buttons. Its moving lens refracts only an
+inert, inaccessible highlighted copy of the four labels with `filter: url(...)`; never use SVG URLs
+in `backdrop-filter`. The operator selector reuses `SelectionLens`. Do not nest backdrop filters or
+add filters to repeated rows. Reduced effects resolve through `data-glass-effective` and shared tokens.
+Glass preferences are optional version-one user-data fields: old backups remain valid, and explicit
+preferences round-trip through the existing persistence/export/import path. Do not clear stored data.
 
 ## Verification and release workflow
 

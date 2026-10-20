@@ -1,3 +1,4 @@
+import { validGlass } from './glass'
 import type { Arrival, Bookmark, Route, Snapshot, Stop, UserData } from '../types/transit'
 import { DEFAULT_THEME, THEMES } from '../types/transit'
 
@@ -94,6 +95,7 @@ export function validateUserData(input: unknown): UserData {
     const data = input as UserData
     if (
         data.version !== 1 ||
+        (data.glass !== undefined && !validGlass(data.glass)) ||
         (data.theme !== undefined && !THEMES.includes(data.theme)) ||
         !['en', 'tc'].includes(data.language) ||
         !Array.isArray(data.bookmarks) ||

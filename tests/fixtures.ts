@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation'
 import { expect, type Page } from '@playwright/test'
 
 export const stop = {
@@ -102,7 +103,7 @@ export async function seed(page: Page, version = 2, fixture = { route, stop }, n
 }
 
 export async function openStop(page: Page) {
-    await page.getByRole('button', { name: 'Routes', exact: true }).click()
+    await navigateTab(page, 'Routes')
     await page.getByRole('button', { name: '1', exact: true }).click()
     await page.getByRole('button', { name: 'A', exact: true }).click()
     await expect(page.locator('.route-row')).toHaveCount(1)

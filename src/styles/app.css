@@ -927,10 +927,26 @@ h1 {
 }
 
 .arrival-panel {
+    position: relative;
     padding: 12px 15px;
     background: var(--soft);
     border-radius: 13px;
     container-type: inline-size;
+}
+
+.arrival-destination-toggle {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    min-height: 44px;
+    border-radius: inherit;
+}
+
+.arrival-panel .arrival-top button,
+.arrival-panel .arrival-foot button {
+    position: relative;
+    z-index: 2;
 }
 
 .arrival-top {

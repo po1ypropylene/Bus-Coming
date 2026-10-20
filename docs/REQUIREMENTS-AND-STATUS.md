@@ -40,6 +40,9 @@ are unchanged.
 - Hong Kong clocks, operator remarks and relative fetch age remain visible. All predictions use equal-width horizontal
   columns, including different destinations or remarks. Mobile countdowns shrink to fit narrow panels; clocks and
   supplied descriptions remain beneath their prediction, with longer notes wrapping within each column.
+- Mixed departure destinations appear automatically. Tap an ETA card to show or hide supplied destinations,
+  including when they are all the same. The choice lasts until the card remounts (including language changes); refresh/retry do not toggle it.
+  Keyboard activation and English/Traditional Chinese accessibility labels are supported. Missing destinations stay absent.
 - Requests run every 30 seconds only for visible cards in a focused, visible, online document. A 15-second memory cache
   and request deduplication limit repeated calls. Existing requests may finish after focus is lost. Failed, partial,
   offline or older-than-90-second results are explicitly stale; retries preserve known predictions.
@@ -177,3 +180,12 @@ are disposable; rerun the documented scripts when fresh evidence is required.
   notifications are not implemented.
 - **Deployment:** the public app address is in the README. Hosting headers, current deployed behavior, the optional
   Cloudflare publisher deployment and a current full Citybus crawl are not established by local checks.
+
+Version 1.1.0 adds a card-wide destination toggle while retaining automatic mixed-destination labels.
+Verification on 20 October 2026 passed build, lint, formatting, 72 unit tests and toolchain probes, plus
+production offline and update smoke checks in Chromium and WebKit. Destination regressions cover route details
+and saved stops, repeated taps, Enter/Space, expanded-state labels in both languages, refresh preservation and
+missing destinations. Across the suite and isolated reruns, 65 browser cases passed with the intentional
+WebKit Lighthouse skip. Slow fixture-clock assertions were stabilized; interrupted and artifact-collision runs
+were completed with isolated output and sequential reruns. The expanded mobile screenshot was reviewed.
+No new live API, deployment or physical iPhone validation was performed.

@@ -184,7 +184,10 @@ Keep provider direction/service/stop filtering in the adapters; display sorting 
 
 KMB and Citybus arrival adapters retain the selected-language `dest_en` / `dest_tc` as optional per-departure
 `destination`, alongside existing remarks. Compare only the displayed timed departures: when at least two supplied
-destinations differ, show each available destination. Identical or missing destinations add no label. All departures use equal-width horizontal columns, including mixed destinations
+destinations differ, show each available destination. Identical destinations add no label by default. Tapping the ETA card toggles all supplied departure destinations,
+including mixed destinations; refresh and retry remain separate controls. The native toggle button supports keyboard
+activation and bilingual expanded-state labels. The override lasts while that panel is mounted; missing destinations
+never fall back to the catalogue destination. All departures use equal-width horizontal columns, including mixed destinations
 or differing remarks; descriptions wrap beneath their respective countdowns. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
 Do not infer a bypass itinerary from the route number, clock time or catalogue destination.
 

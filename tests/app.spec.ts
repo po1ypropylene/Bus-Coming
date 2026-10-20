@@ -626,6 +626,7 @@ test('Citybus rush-hour ETA order is chronological in route details and saved bo
 test('Citybus imminent buses and mixed destinations survive in details and saved stops', async ({
     page,
 }, testInfo) => {
+    test.setTimeout(120000)
     const fixtureNow = Date.now()
     await page.clock.install({ time: new Date(fixtureNow) })
     const fixtureStop = { ...stop, id: 'CTB:003156', code: '003156', provider: 'CTB' }
@@ -673,6 +674,14 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     await expect(page.locator('.arrival-time').first()).toContainText(
         'Omit Taikoo Shing and Admiralty',
     )
+    const detailsToggle = page.getByRole('button', { name: 'Hide departure destinations' })
+    await detailsToggle.click()
+    await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    await expect(page.locator('.arrival-remark').first()).toHaveText(
+        'Omit Taikoo Shing and Admiralty',
+    )
+    await page.getByRole('button', { name: 'Show departure destinations' }).click()
+    await expect(page.locator('.arrival-destination')).toHaveCount(3)
     await expect(
         page.locator('.arrival-time').first().locator('.arrival-countdown > span'),
     ).toHaveCount(0)
@@ -698,6 +707,7 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     ).toBe(true)
     // Different destinations and remarks must retain horizontal predictions in both languages.
     for (const width of [320, 390, 440, 1280]) {
+        await page.clock.setSystemTime(new Date(fixtureNow))
         await page.setViewportSize({ width, height: 900 })
         for (const language of ['tc', 'en']) {
             if (language === 'en') {
@@ -727,6 +737,9 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
         await page.getByRole('button', { name: 'Language', exact: true }).click()
         await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '6', '14'])
     }
+    await page.setViewportSize({ width: 440, height: 956 })
+    // Move beyond responses cached before the geometry clock resets.
+    await page.clock.setSystemTime(new Date(fixtureNow + 10 * 60000))
     // A failed refresh must keep the operator prediction explicitly labelled as stale.
     await page.route('**/eta/**', (request) => request.abort('internetdisconnected'))
     await page.clock.fastForward(16000)
@@ -753,6 +766,62 @@ test('Citybus imminent buses and mixed destinations survive in details and saved
     await page.getByRole('button', { name: '重新整理', exact: true }).click()
     await expect(page.locator('.arrival-time strong')).toHaveText(['就到', '就到', '就到'])
     await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    const toggle = page.locator('.arrival-destination-toggle')
+    await expect(toggle).toHaveAccessibleName('顯示班次目的地')
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    // Tap the countdown through the full-card hit target, then hide with another tap.
+    const countdownBox = await page.locator('.arrival-countdown').first().boundingBox()
+    const toggleBox = await toggle.boundingBox()
+    await toggle.click({
+        position: {
+            x: countdownBox!.x - toggleBox!.x + countdownBox!.width / 2,
+            y: countdownBox!.y - toggleBox!.y + countdownBox!.height / 2,
+        },
+    })
+    await expect(page.locator('.arrival-destination')).toHaveText([
+        '往 中環（港澳碼頭）',
+        '往 中環（港澳碼頭）',
+        '往 中環（港澳碼頭）',
+    ])
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    await expect(toggle).toHaveAccessibleName('隱藏班次目的地')
+    await page.screenshot({
+        path: testInfo.outputPath('eta-destinations-expanded.png'),
+        fullPage: true,
+    })
+    await toggle.click()
+    await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    await toggle.focus()
+    await toggle.press('Enter')
+    await expect(page.locator('.arrival-destination')).toHaveCount(3)
+    await toggle.press('Space')
+    await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    await toggle.press('Enter')
+    // A refresh does not change the explicit visibility choice.
+    await page.clock.fastForward(16000)
+    await page.getByRole('button', { name: '重新整理', exact: true }).click()
+    await expect(page.getByRole('button', { name: '重新整理', exact: true })).toBeEnabled()
+    await expect(page.locator('.arrival-destination')).toHaveCount(3)
+    await page.getByRole('button', { name: '語言', exact: true }).click()
+    // Language changes remount the panel and restore its automatic default.
+    await page.getByRole('button', { name: 'Show departure destinations' }).click()
+    await expect(page.locator('.arrival-destination')).toHaveText([
+        'To Central (Macao Ferry)',
+        'To Central (Macao Ferry)',
+        'To Central (Macao Ferry)',
+    ])
+    await expect(toggle).toHaveAccessibleName('Hide departure destinations')
+    // No catalogue fallback or toggle when the response has no departure destinations.
+    await page.route('**/eta/**', (request) =>
+        request.fulfill({
+            json: { data: [{ dir: 'O', seq: 2, eta: new Date(fixtureNow).toISOString() }] },
+        }),
+    )
+    await page.clock.fastForward(16000)
+    await page.getByRole('button', { name: 'Refresh', exact: true }).click()
+    await expect(page.locator('.arrival-time')).toHaveCount(1)
+    await expect(page.locator('.arrival-destination')).toHaveCount(0)
+    await expect(toggle).toHaveCount(0)
     await expect(page.locator('.arrival-rows')).toHaveCount(0)
     await expect(page.locator('.arrival-countdown > span')).toHaveCount(0)
     expect(

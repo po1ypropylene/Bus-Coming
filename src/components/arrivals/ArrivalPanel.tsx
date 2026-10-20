@@ -1,5 +1,5 @@
 import { arrivalAge, arrivalCountdown } from '../../utils/arrivals'
-import { useMemo } from 'react'
+import { useId, useMemo, useState } from 'react'
 import { useApp } from '../../app/AppContext'
 import type { Copy } from '../../i18n'
 import { company } from '../../i18n'
@@ -29,10 +29,25 @@ export function ArrivalPanel({
     )
     const { panelRef, result, failed, loading, fetching, online, now, stale, arrivals, refresh } =
         useArrivals(route, stop, seq, lang, availableStops)
+    const destinationRegionId = useId()
+    const [destinationVisibility, setDestinationVisibility] = useState<boolean | null>(null)
     const departures = arrivals.filter((a) => a.time !== null)
-    const showDestinations = new Set(departures.map((a) => a.destination).filter(Boolean)).size > 1
+    const hasDestinations = departures.some((a) => a.destination)
+    const showDestinations =
+        destinationVisibility ??
+        new Set(departures.map((a) => a.destination).filter(Boolean)).size > 1
     return (
         <div ref={panelRef} className={`arrival-panel ${stale ? 'stale' : ''}`}>
+            {hasDestinations && (
+                <button
+                    type="button"
+                    className="arrival-destination-toggle"
+                    aria-label={showDestinations ? t.hideDestinations : t.showDestinations}
+                    aria-expanded={showDestinations}
+                    aria-controls={destinationRegionId}
+                    onClick={() => setDestinationVisibility(!showDestinations)}
+                />
+            )}
             <div className="arrival-top">
                 <span>
                     <i className={`live-dot ${stale ? 'muted' : !result ? 'waiting' : ''}`} />
@@ -48,7 +63,13 @@ export function ArrivalPanel({
                     <RefreshCw size={16} className={fetching ? 'spin' : undefined} />
                 </button>
             </div>
-            <div className="arrival-times" aria-busy={loading} role="region" aria-label={t.eta}>
+            <div
+                id={destinationRegionId}
+                className="arrival-times"
+                aria-busy={loading}
+                role="region"
+                aria-label={t.eta}
+            >
                 {loading ? (
                     <div className="arrival-skeleton" role="status" aria-label={t.loadingEta}>
                         {[0, 1, 2].map((row) => (

@@ -1,0 +1,2000 @@
+{
+    "checkedAt": "2026-10-20T09:08:43.232Z",
+    "catalog": {
+        "schema": 1,
+        "updatedAt": 1792485700921,
+        "variants": [
+            {
+                "id": "TD:1484:2587108111",
+                "number": "102",
+                "name": {
+                    "en": "SHAU KEI WAN - MEI FOO",
+                    "tc": "筲箕灣 - 美孚"
+                },
+                "stops": [
+                    "550",
+                    "747",
+                    "12458",
+                    "101",
+                    "102",
+                    "173",
+                    "748",
+                    "104",
+                    "105",
+                    "749",
+                    "108",
+                    "110",
+                    "111",
+                    "59",
+                    "228",
+                    "62",
+                    "63",
+                    "297",
+                    "658",
+                    "9015",
+                    "9011",
+                    "970",
+                    "9052",
+                    "9054",
+                    "10225",
+                    "9218",
+                    "756",
+                    "9228",
+                    "758",
+                    "760",
+                    "739"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 21600,
+                        "end": 23400,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 23400,
+                        "end": 25080,
+                        "headway": 840
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25080,
+                        "end": 26520,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 26520,
+                        "end": 27300,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27300,
+                        "end": 28020,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28020,
+                        "end": 28800,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28800,
+                        "end": 34200,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 34200,
+                        "end": 34980,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 34980,
+                        "end": 35700,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 35700,
+                        "end": 36480,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36480,
+                        "end": 40680,
+                        "headway": 840
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40680,
+                        "end": 44460,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 44460,
+                        "end": 45540,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 45540,
+                        "end": 47520,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 47520,
+                        "end": 50400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 50400,
+                        "end": 55440,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55440,
+                        "end": 55800,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55800,
+                        "end": 61200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 61200,
+                        "end": 62640,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62640,
+                        "end": 62940,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62940,
+                        "end": 63300,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63300,
+                        "end": 63600,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63600,
+                        "end": 64680,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64680,
+                        "end": 65400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 65400,
+                        "end": 66600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66600,
+                        "end": 67320,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 67320,
+                        "end": 72000,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72000,
+                        "end": 76200,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 76200,
+                        "end": 76680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 76680,
+                        "end": 77460,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 77460,
+                        "end": 79140,
+                        "headway": 840
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79140,
+                        "end": 81180,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81180,
+                        "end": 82080,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82080,
+                        "end": 84240,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 84240,
+                        "end": 85440,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 85440,
+                        "end": 86400,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21600,
+                        "end": 22680,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 22680,
+                        "end": 23700,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 23700,
+                        "end": 24780,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 24780,
+                        "end": 25800,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 25800,
+                        "end": 26880,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 26880,
+                        "end": 27900,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 27900,
+                        "end": 30600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 30600,
+                        "end": 32040,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 32040,
+                        "end": 32700,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 32700,
+                        "end": 35700,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 35700,
+                        "end": 40020,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40020,
+                        "end": 40680,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40680,
+                        "end": 42600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42600,
+                        "end": 43020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43020,
+                        "end": 45900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45900,
+                        "end": 48000,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48000,
+                        "end": 50400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50400,
+                        "end": 50760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50760,
+                        "end": 51180,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51180,
+                        "end": 51540,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51540,
+                        "end": 51960,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51960,
+                        "end": 52320,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 52320,
+                        "end": 54000,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54000,
+                        "end": 56160,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56160,
+                        "end": 61200,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61200,
+                        "end": 61680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61680,
+                        "end": 62220,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 62220,
+                        "end": 62700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 62700,
+                        "end": 63240,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 63240,
+                        "end": 66600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 66600,
+                        "end": 70200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 70200,
+                        "end": 72000,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 72000,
+                        "end": 75240,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 75240,
+                        "end": 76680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 76680,
+                        "end": 80280,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 80280,
+                        "end": 81180,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 81180,
+                        "end": 81960,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 81960,
+                        "end": 83040,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 83040,
+                        "end": 85440,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 85440,
+                        "end": 86400,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21600,
+                        "end": 22680,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 22680,
+                        "end": 23700,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 23700,
+                        "end": 24780,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 24780,
+                        "end": 25800,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 25800,
+                        "end": 29400,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29400,
+                        "end": 30300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 30300,
+                        "end": 31380,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 31380,
+                        "end": 34260,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 34260,
+                        "end": 37500,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 37500,
+                        "end": 39300,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 39300,
+                        "end": 39780,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 39780,
+                        "end": 44100,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44100,
+                        "end": 48900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 48900,
+                        "end": 49320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 49320,
+                        "end": 50760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50760,
+                        "end": 51060,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51060,
+                        "end": 51420,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51420,
+                        "end": 51720,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51720,
+                        "end": 52080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52080,
+                        "end": 52380,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52380,
+                        "end": 52740,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52740,
+                        "end": 53040,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53040,
+                        "end": 53400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53400,
+                        "end": 53700,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53700,
+                        "end": 58500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58500,
+                        "end": 62460,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 62460,
+                        "end": 63720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63720,
+                        "end": 67500,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67500,
+                        "end": 71100,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71100,
+                        "end": 72720,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72720,
+                        "end": 78180,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 78180,
+                        "end": 79980,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 79980,
+                        "end": 81900,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 81900,
+                        "end": 82920,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 82920,
+                        "end": 84000,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 84000,
+                        "end": 86400,
+                        "headway": 1200
+                    }
+                ]
+            },
+            {
+                "id": "TD:1484:1084921490",
+                "number": "102",
+                "name": {
+                    "en": "SHAU KEI WAN - MEI FOO",
+                    "tc": "筲箕灣 - 美孚"
+                },
+                "stops": [
+                    "739",
+                    "956",
+                    "740",
+                    "9225",
+                    "9226",
+                    "743",
+                    "9217",
+                    "9219",
+                    "211",
+                    "212",
+                    "7036",
+                    "744",
+                    "745",
+                    "9012",
+                    "775",
+                    "9014",
+                    "746",
+                    "137",
+                    "3178",
+                    "139",
+                    "140",
+                    "141",
+                    "143",
+                    "144",
+                    "3263",
+                    "146",
+                    "147",
+                    "148",
+                    "180",
+                    "151",
+                    "152",
+                    "3001",
+                    "12470",
+                    "550"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 21600,
+                        "end": 25800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25800,
+                        "end": 29400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 29400,
+                        "end": 30600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 30600,
+                        "end": 31140,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 31140,
+                        "end": 32340,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 32340,
+                        "end": 35640,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 35640,
+                        "end": 39420,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39420,
+                        "end": 40680,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40680,
+                        "end": 42660,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 42660,
+                        "end": 45540,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 45540,
+                        "end": 49320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 49320,
+                        "end": 50400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 50400,
+                        "end": 54000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54000,
+                        "end": 54420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54420,
+                        "end": 54900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54900,
+                        "end": 55320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55320,
+                        "end": 59160,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59160,
+                        "end": 60840,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 60840,
+                        "end": 61200,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 61200,
+                        "end": 62460,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62460,
+                        "end": 63900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63900,
+                        "end": 66600,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66600,
+                        "end": 70200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 70200,
+                        "end": 70680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 70680,
+                        "end": 71100,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 71100,
+                        "end": 71580,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 71580,
+                        "end": 72000,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72000,
+                        "end": 75600,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 75600,
+                        "end": 76680,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 76680,
+                        "end": 77580,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 77580,
+                        "end": 81180,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81180,
+                        "end": 84240,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 84240,
+                        "end": 85440,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 85440,
+                        "end": 86400,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21600,
+                        "end": 22620,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 22620,
+                        "end": 23700,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 23700,
+                        "end": 24720,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 24720,
+                        "end": 25800,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 25800,
+                        "end": 26580,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 26580,
+                        "end": 27300,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 27300,
+                        "end": 28080,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 28080,
+                        "end": 28800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 28800,
+                        "end": 30600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 30600,
+                        "end": 32940,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 32940,
+                        "end": 35640,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 35640,
+                        "end": 39480,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39480,
+                        "end": 44880,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 44880,
+                        "end": 45540,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45540,
+                        "end": 49320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49320,
+                        "end": 50760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50760,
+                        "end": 55800,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55800,
+                        "end": 61200,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61200,
+                        "end": 63720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 63720,
+                        "end": 66600,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 66600,
+                        "end": 68040,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68040,
+                        "end": 72000,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 72000,
+                        "end": 73800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 73800,
+                        "end": 76680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 76680,
+                        "end": 76980,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 76980,
+                        "end": 77340,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 77340,
+                        "end": 77640,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 77640,
+                        "end": 78000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 78000,
+                        "end": 78300,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 78300,
+                        "end": 81180,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 81180,
+                        "end": 82740,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 82740,
+                        "end": 85440,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 85440,
+                        "end": 86400,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21600,
+                        "end": 24000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 24000,
+                        "end": 30300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 30300,
+                        "end": 32640,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 32640,
+                        "end": 34800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 34800,
+                        "end": 36000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 36000,
+                        "end": 38940,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 38940,
+                        "end": 39300,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 39300,
+                        "end": 44100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44100,
+                        "end": 44940,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44940,
+                        "end": 48900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 48900,
+                        "end": 53700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53700,
+                        "end": 55500,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 55500,
+                        "end": 58500,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58500,
+                        "end": 61380,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 61380,
+                        "end": 63300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63300,
+                        "end": 67260,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67260,
+                        "end": 68100,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68100,
+                        "end": 70800,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70800,
+                        "end": 72720,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72720,
+                        "end": 75240,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 75240,
+                        "end": 77400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77400,
+                        "end": 79020,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 79020,
+                        "end": 81900,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 81900,
+                        "end": 82740,
+                        "headway": 840
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 82740,
+                        "end": 85140,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 85140,
+                        "end": 86400,
+                        "headway": 1260
+                    }
+                ]
+            },
+            {
+                "id": "TD:8774:1816146545",
+                "number": "102",
+                "name": {
+                    "en": "HUNG HOM (CROSS HARBOUR TUNNEL) - SHAU KEI WAN",
+                    "tc": "紅磡 (海底隧道) - 筲箕灣"
+                },
+                "stops": [
+                    "9014",
+                    "746",
+                    "137",
+                    "3178",
+                    "139",
+                    "140",
+                    "141",
+                    "143",
+                    "144",
+                    "3263",
+                    "146",
+                    "147",
+                    "148",
+                    "180",
+                    "151",
+                    "152",
+                    "3001",
+                    "12470",
+                    "550"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 30600,
+                        "end": 30600,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 32400,
+                        "end": 32400,
+                        "headway": 0
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "59": {
+                "id": "59",
+                "name": {
+                    "en": "METROPOLE BUILDING, KING'S ROAD",
+                    "tc": "新都城大廈, 英皇道"
+                },
+                "lat": 22.29087,
+                "lng": 114.19943
+            },
+            "62": {
+                "id": "62",
+                "name": {
+                    "en": "FORTRESS HILL STATION, KING'S ROAD",
+                    "tc": "炮台山站, 英皇道"
+                },
+                "lat": 22.28819,
+                "lng": 114.19365
+            },
+            "63": {
+                "id": "63",
+                "name": {
+                    "en": "TSING FUNG STREET, KING'S ROAD",
+                    "tc": "清風街, 英皇道"
+                },
+                "lat": 22.28483,
+                "lng": 114.19296
+            },
+            "101": {
+                "id": "101",
+                "name": {
+                    "en": "SUN SING STREET, SHAU KEI WAN ROAD",
+                    "tc": "新成街, 筲箕灣道"
+                },
+                "lat": 22.27897,
+                "lng": 114.22607
+            },
+            "102": {
+                "id": "102",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28071,
+                "lng": 114.22345
+            },
+            "104": {
+                "id": "104",
+                "name": {
+                    "en": "KORNHILL PLAZA, KORNHILL ROAD",
+                    "tc": "康怡廣場, 康山道"
+                },
+                "lat": 22.28448,
+                "lng": 114.2168
+            },
+            "105": {
+                "id": "105",
+                "name": {
+                    "en": "BO FUNG GARDENS, KING'S ROAD",
+                    "tc": "寶峰園, 英皇道"
+                },
+                "lat": 22.28458,
+                "lng": 114.2144
+            },
+            "108": {
+                "id": "108",
+                "name": {
+                    "en": "MANSION STREET, KING'S ROAD",
+                    "tc": "民新街, 英皇道"
+                },
+                "lat": 22.28991,
+                "lng": 114.2093
+            },
+            "110": {
+                "id": "110",
+                "name": {
+                    "en": "HEALTHY VILLAGE, KING'S ROAD",
+                    "tc": "健康村, 英皇道"
+                },
+                "lat": 22.29189,
+                "lng": 114.20645
+            },
+            "111": {
+                "id": "111",
+                "name": {
+                    "en": "HEALTHY GARDENS, KING'S ROAD",
+                    "tc": "健威花園, 英皇道"
+                },
+                "lat": 22.2918,
+                "lng": 114.20389
+            },
+            "137": {
+                "id": "137",
+                "name": {
+                    "en": "VICTORIA PARK, CAUSEWAY ROAD",
+                    "tc": "維多利亞公園, 高士威道"
+                },
+                "lat": 22.28088,
+                "lng": 114.18963
+            },
+            "139": {
+                "id": "139",
+                "name": {
+                    "en": "7 SEAS SHOPPING CENTRE, KING'S ROAD",
+                    "tc": "七海商業中心, 英皇道"
+                },
+                "lat": 22.28758,
+                "lng": 114.1929
+            },
+            "140": {
+                "id": "140",
+                "name": {
+                    "en": "TIN CHONG STREET, KING'S ROAD",
+                    "tc": "電廠街, 英皇道"
+                },
+                "lat": 22.29007,
+                "lng": 114.19507
+            },
+            "141": {
+                "id": "141",
+                "name": {
+                    "en": "TONG SHUI ROAD, KING'S ROAD",
+                    "tc": "糖水道, 英皇道"
+                },
+                "lat": 22.29078,
+                "lng": 114.19785
+            },
+            "143": {
+                "id": "143",
+                "name": {
+                    "en": "ISLAND PLACE, KING'S ROAD",
+                    "tc": "港運城, 英皇道"
+                },
+                "lat": 22.2917,
+                "lng": 114.20244
+            },
+            "144": {
+                "id": "144",
+                "name": {
+                    "en": "HEALTHY VILLAGE, KING'S ROAD",
+                    "tc": "健康村, 英皇道"
+                },
+                "lat": 22.29211,
+                "lng": 114.20636
+            },
+            "146": {
+                "id": "146",
+                "name": {
+                    "en": "NORTH POINT GOVERNMENT PRIMARY SCHOOL, KING'S ROAD",
+                    "tc": "北角官立小學, 英皇道"
+                },
+                "lat": 22.28902,
+                "lng": 114.20983
+            },
+            "147": {
+                "id": "147",
+                "name": {
+                    "en": "SUNWAY GARDENS, KING'S ROAD",
+                    "tc": "新威園, 英皇道"
+                },
+                "lat": 22.28562,
+                "lng": 114.21134
+            },
+            "148": {
+                "id": "148",
+                "name": {
+                    "en": "SHIPYARD LANE, KING'S ROAD",
+                    "tc": "船塢里, 英皇道"
+                },
+                "lat": 22.28479,
+                "lng": 114.21412
+            },
+            "151": {
+                "id": "151",
+                "name": {
+                    "en": "TAI ON BUILDING, SHAU KEI WAN ROAD",
+                    "tc": "太安樓, 筲箕灣道"
+                },
+                "lat": 22.2826,
+                "lng": 114.22167
+            },
+            "152": {
+                "id": "152",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28081,
+                "lng": 114.2236
+            },
+            "173": {
+                "id": "173",
+                "name": {
+                    "en": "SAI WAN HO CIVIC CENTRE, SHAU KEI WAN ROAD",
+                    "tc": "西灣河文娛中心, 筲箕灣道"
+                },
+                "lat": 22.28173,
+                "lng": 114.22207
+            },
+            "180": {
+                "id": "180",
+                "name": {
+                    "en": "CITYPLAZA, KING'S ROAD",
+                    "tc": "太古城中心, 英皇道"
+                },
+                "lat": 22.28533,
+                "lng": 114.21753
+            },
+            "211": {
+                "id": "211",
+                "name": {
+                    "en": "PRINCE EDWARD STATION, NATHAN ROAD",
+                    "tc": "太子站, 彌敦道"
+                },
+                "lat": 22.32545,
+                "lng": 114.16823
+            },
+            "212": {
+                "id": "212",
+                "name": {
+                    "en": "ALLIED PLAZA, NATHAN ROAD",
+                    "tc": "聯合廣場, 彌敦道"
+                },
+                "lat": 22.3234,
+                "lng": 114.16863
+            },
+            "228": {
+                "id": "228",
+                "name": {
+                    "en": "CHEUNG HONG STREET, KING'S ROAD",
+                    "tc": "長康街, 英皇道"
+                },
+                "lat": 22.29018,
+                "lng": 114.19606
+            },
+            "297": {
+                "id": "297",
+                "name": {
+                    "en": "HING FAT STREET",
+                    "tc": "興發街"
+                },
+                "lat": 22.28343,
+                "lng": 114.1911
+            },
+            "550": {
+                "id": "550",
+                "name": {
+                    "en": "SHAU KEI WAN",
+                    "tc": "筲箕灣"
+                },
+                "lat": 22.27842,
+                "lng": 114.22833
+            },
+            "658": {
+                "id": "658",
+                "name": {
+                    "en": "CANNON STREET, GLOUCESTER ROAD",
+                    "tc": "景隆街, 告士打道"
+                },
+                "lat": 22.28177,
+                "lng": 114.183
+            },
+            "739": {
+                "id": "739",
+                "name": {
+                    "en": "[KMB+CTB] MEI FOO BUS TERMINUS/<BR>MEI FOO|[KMB] MEI FOO BUS TERMINUS",
+                    "tc": "[KMB+CTB] 美孚巴士總站/<BR>美孚|[KMB] 美孚巴士總站"
+                },
+                "lat": 22.3371,
+                "lng": 114.14018
+            },
+            "740": {
+                "id": "740",
+                "name": {
+                    "en": "CHEUNG WAH STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "昌華街, 長沙灣道"
+                },
+                "lat": 22.33865,
+                "lng": 114.15224
+            },
+            "743": {
+                "id": "743",
+                "name": {
+                    "en": "YEN CHOW STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "欽州街, 長沙灣道"
+                },
+                "lat": 22.33234,
+                "lng": 114.16039
+            },
+            "744": {
+                "id": "744",
+                "name": {
+                    "en": "DUNDAS STREET, NATHAN ROAD",
+                    "tc": "登打士街, 彌敦道"
+                },
+                "lat": 22.31501,
+                "lng": 114.17036
+            },
+            "745": {
+                "id": "745",
+                "name": {
+                    "en": "MAN MING LANE, NATHAN ROAD",
+                    "tc": "文明里, 彌敦道"
+                },
+                "lat": 22.31235,
+                "lng": 114.17089
+            },
+            "746": {
+                "id": "746",
+                "name": {
+                    "en": "VICTORIA PARK, GLOUCESTER ROAD",
+                    "tc": "維多利亞公園, 告士打道"
+                },
+                "lat": 22.28,
+                "lng": 114.18745
+            },
+            "747": {
+                "id": "747",
+                "name": {
+                    "en": "ALDRICH GARDEN, OI YIN STREET",
+                    "tc": "愛蝶灣, 愛賢街"
+                },
+                "lat": 22.2809,
+                "lng": 114.2283
+            },
+            "748": {
+                "id": "748",
+                "name": {
+                    "en": "TAI FOO STREET, SHAU KEI WAN ROAD",
+                    "tc": "太富街, 筲箕灣道"
+                },
+                "lat": 22.28318,
+                "lng": 114.22094
+            },
+            "749": {
+                "id": "749",
+                "name": {
+                    "en": "SUNWAY GARDENS, KING'S ROAD",
+                    "tc": "新威園, 英皇道"
+                },
+                "lat": 22.28557,
+                "lng": 114.21105
+            },
+            "756": {
+                "id": "756",
+                "name": {
+                    "en": "PEI HO STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "北河街, 長沙灣道"
+                },
+                "lat": 22.33057,
+                "lng": 114.16233
+            },
+            "758": {
+                "id": "758",
+                "name": {
+                    "en": "TRADE SQUARE, CHEUNG SHA WAN ROAD",
+                    "tc": "貿易廣場, 長沙灣道"
+                },
+                "lat": 22.33687,
+                "lng": 114.15418
+            },
+            "760": {
+                "id": "760",
+                "name": {
+                    "en": "CHEUNG LAI STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "長荔街, 長沙灣道"
+                },
+                "lat": 22.3369,
+                "lng": 114.14737
+            },
+            "775": {
+                "id": "775",
+                "name": {
+                    "en": "[KMB+CTB] HONG KONG POLYTECHNIC UNIVERSITY PHASE 8/<BR>HONG KONG POLYTECHNIC UNIVERSITY PHASE 8, CHATHAM ROAD NORTH",
+                    "tc": "[KMB+CTB] 香港理工大學第八期/<BR>香港理工大學第八期, 漆咸道北"
+                },
+                "lat": 22.30645,
+                "lng": 114.18004
+            },
+            "956": {
+                "id": "956",
+                "name": {
+                    "en": "LAI CHI KOK STATION, CHEUNG SHA WAN ROAD",
+                    "tc": "荔枝角站, 長沙灣道"
+                },
+                "lat": 22.33751,
+                "lng": 114.14841
+            },
+            "970": {
+                "id": "970",
+                "name": {
+                    "en": "PUBLIC SQUARE STREET, NATHAN ROAD",
+                    "tc": "眾坊街, 彌敦道"
+                },
+                "lat": 22.3107,
+                "lng": 114.17099
+            },
+            "3001": {
+                "id": "3001",
+                "name": {
+                    "en": "ALDRICH BAY ROAD, SHAU KEI WAN ROAD",
+                    "tc": "愛秩序灣道, 筲箕灣道"
+                },
+                "lat": 22.28031,
+                "lng": 114.22532
+            },
+            "3178": {
+                "id": "3178",
+                "name": {
+                    "en": "NGAN MOK STREET, KING'S ROAD",
+                    "tc": "銀幕街, 英皇道"
+                },
+                "lat": 22.28361,
+                "lng": 114.19244
+            },
+            "3263": {
+                "id": "3263",
+                "name": {
+                    "en": "MODEL HOUSING ESTATE, KING'S ROAD",
+                    "tc": "模範邨, 英皇道"
+                },
+                "lat": 22.29164,
+                "lng": 114.20798
+            },
+            "7036": {
+                "id": "7036",
+                "name": {
+                    "en": "BANK CENTRE, NATHAN ROAD",
+                    "tc": "銀行中心, 彌敦道"
+                },
+                "lat": 22.31809,
+                "lng": 114.16972
+            },
+            "9011": {
+                "id": "9011",
+                "name": {
+                    "en": "DIOCESAN GIRLS' SCHOOL, GASCOIGNE ROAD",
+                    "tc": "拔萃女書院, 加士居道"
+                },
+                "lat": 22.30766,
+                "lng": 114.17268
+            },
+            "9012": {
+                "id": "9012",
+                "name": {
+                    "en": "LABOUR TRIBUNAL, GASCOIGNE ROAD",
+                    "tc": "勞資審裁處, 加士居道"
+                },
+                "lat": 22.30802,
+                "lng": 114.17257
+            },
+            "9014": {
+                "id": "9014",
+                "name": {
+                    "en": "CROSS HARBOUR TUNNEL BUS-BUS INTERCHANGE",
+                    "tc": "海底隧道巴士轉乘站"
+                },
+                "lat": 22.30304,
+                "lng": 114.18095
+            },
+            "9015": {
+                "id": "9015",
+                "name": {
+                    "en": "CROSS HARBOUR TUNNEL BUS-BUS INTERCHANGE",
+                    "tc": "海底隧道巴士轉乘站"
+                },
+                "lat": 22.3031,
+                "lng": 114.18026
+            },
+            "9052": {
+                "id": "9052",
+                "name": {
+                    "en": "DUNDAS STREET, NATHAN ROAD",
+                    "tc": "登打士街, 彌敦道"
+                },
+                "lat": 22.31486,
+                "lng": 114.17017
+            },
+            "9054": {
+                "id": "9054",
+                "name": {
+                    "en": "SHANTUNG STREET, NATHAN ROAD",
+                    "tc": "山東街, 彌敦道"
+                },
+                "lat": 22.31725,
+                "lng": 114.16968
+            },
+            "9217": {
+                "id": "9217",
+                "name": {
+                    "en": "PEI HO STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "北河街, 長沙灣道"
+                },
+                "lat": 22.33081,
+                "lng": 114.16236
+            },
+            "9218": {
+                "id": "9218",
+                "name": {
+                    "en": "MAPLE STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "楓樹街, 長沙灣道"
+                },
+                "lat": 22.32811,
+                "lng": 114.16551
+            },
+            "9219": {
+                "id": "9219",
+                "name": {
+                    "en": "MAPLE STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "楓樹街, 長沙灣道"
+                },
+                "lat": 22.32816,
+                "lng": 114.16579
+            },
+            "9225": {
+                "id": "9225",
+                "name": {
+                    "en": "CHEUNG SHA WAN STATION, CHEUNG SHA WAN ROAD",
+                    "tc": "長沙灣站, 長沙灣道"
+                },
+                "lat": 22.33669,
+                "lng": 114.15491
+            },
+            "9226": {
+                "id": "9226",
+                "name": {
+                    "en": "TONKIN STREET, CHEUNG SHA WAN ROAD",
+                    "tc": "東京街, 長沙灣道"
+                },
+                "lat": 22.33509,
+                "lng": 114.15689
+            },
+            "9228": {
+                "id": "9228",
+                "name": {
+                    "en": "YEE KOK COURT, CHEUNG SHA WAN ROAD",
+                    "tc": "怡閣苑, 長沙灣道"
+                },
+                "lat": 22.33348,
+                "lng": 114.1586
+            },
+            "10225": {
+                "id": "10225",
+                "name": {
+                    "en": "[KMB+CTB] ARRAN STREET, METROPARK HOTEL MONG KOK/<BR>ARRAN STREET, NATHAN ROAD",
+                    "tc": "[KMB+CTB] 鴉蘭街 維景酒店/<BR>鴉蘭街, 彌敦道"
+                },
+                "lat": 22.3232,
+                "lng": 114.16846
+            },
+            "12458": {
+                "id": "12458",
+                "name": {
+                    "en": "PERFECT MOUNT GARDENS, TUNG HEI ROAD",
+                    "tc": "峻峰花園, 東喜道"
+                },
+                "lat": 22.279,
+                "lng": 114.22878
+            },
+            "12470": {
+                "id": "12470",
+                "name": {
+                    "en": "OI YIN STREET, ALDRICH BAY ROAD",
+                    "tc": "愛賢街, 愛秩序灣道"
+                },
+                "lat": 22.27976,
+                "lng": 114.22731
+            }
+        },
+        "calendars": {
+            "287": {
+                "id": "287",
+                "days": [1, 2, 3, 4, 5],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": false,
+                    "20260217": false,
+                    "20260218": false,
+                    "20260219": false,
+                    "20260403": false,
+                    "20260406": false,
+                    "20260407": false,
+                    "20260501": false,
+                    "20260525": false,
+                    "20260619": false,
+                    "20260701": false,
+                    "20261001": false,
+                    "20261019": false,
+                    "20261225": false
+                }
+            },
+            "288": {
+                "id": "288",
+                "days": [6],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260404": false,
+                    "20260926": false,
+                    "20261226": false
+                }
+            },
+            "448": {
+                "id": "448",
+                "days": [0],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": true,
+                    "20260217": true,
+                    "20260218": true,
+                    "20260219": true,
+                    "20260403": true,
+                    "20260404": true,
+                    "20260406": true,
+                    "20260407": true,
+                    "20260501": true,
+                    "20260525": true,
+                    "20260619": true,
+                    "20260701": true,
+                    "20260926": true,
+                    "20261001": true,
+                    "20261019": true,
+                    "20261225": true,
+                    "20261226": true
+                }
+            }
+        }
+    }
+}

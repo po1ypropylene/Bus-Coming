@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { defaultVariant, nextDeparture } from '../services/variants/schedule'
-import { matchesDirection, variantEntries } from '../services/variants/matching'
+import { routeVariantOptions } from '../services/variants/matching'
 import type { VariantCatalog } from '../services/variants/types'
 import type { Route, Stop } from '../types/transit'
 
@@ -10,6 +10,7 @@ export function useRouteVariants(
     stops: Record<string, Stop>,
     catalog: VariantCatalog | null,
     selectedStop: string | null,
+    jointNumbers?: readonly string[],
 ) {
     const [manual, setManual] = useState<string | null>(null)
     const [anchor] = useState(() => selectedStop?.split(':').slice(0, 2).join(':'))
@@ -23,16 +24,10 @@ export function useRouteVariants(
             document.removeEventListener('visibilitychange', update)
         }
     }, [])
-    const options = useMemo(() => {
-        if (route.provider !== 'CTB' || !catalog) return []
-        return catalog.variants
-            .filter((v) => v.number === route.number)
-            .map((variant) => ({
-                variant,
-                entries: variantEntries(variant, catalog, family, stops),
-            }))
-            .filter(({ entries }) => matchesDirection(entries, route))
-    }, [route, family, stops, catalog])
+    const options = useMemo(
+        () => routeVariantOptions(route, family, stops, catalog, jointNumbers),
+        [route, family, stops, catalog, jointNumbers],
+    )
     const eligible = options.filter(
         ({ entries }) => !anchor || entries.some((e) => e.api?.stop.id === anchor),
     )

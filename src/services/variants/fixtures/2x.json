@@ -1,0 +1,2302 @@
+{
+    "checkedAt": "2026-10-20T09:08:37.463Z",
+    "catalog": {
+        "schema": 1,
+        "updatedAt": 1792485700921,
+        "variants": [
+            {
+                "id": "TD:1529:617638098",
+                "number": "2X",
+                "name": {
+                    "en": "GRAND PROMENADE - EXHIBITION CENTRE STATION",
+                    "tc": "嘉亨灣 - 會展站"
+                },
+                "stops": [
+                    "3000",
+                    "10229",
+                    "747",
+                    "12458",
+                    "550",
+                    "3089",
+                    "101",
+                    "102",
+                    "173",
+                    "174",
+                    "661",
+                    "64",
+                    "113",
+                    "116",
+                    "118",
+                    "10000110"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 19500,
+                        "end": 21900,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 21900,
+                        "end": 22680,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 22680,
+                        "end": 27000,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27000,
+                        "end": 28800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28800,
+                        "end": 36000,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36000,
+                        "end": 38400,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 38400,
+                        "end": 39480,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39480,
+                        "end": 39960,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39960,
+                        "end": 40500,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40500,
+                        "end": 40980,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40980,
+                        "end": 41520,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 41520,
+                        "end": 42000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 42000,
+                        "end": 43200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43200,
+                        "end": 48240,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 48240,
+                        "end": 48900,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 48900,
+                        "end": 51900,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 51900,
+                        "end": 52560,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 52560,
+                        "end": 61200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 61200,
+                        "end": 64800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64800,
+                        "end": 72000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72000,
+                        "end": 79200,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79200,
+                        "end": 86400,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 86400,
+                        "end": 87300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 19500,
+                        "end": 25800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 25800,
+                        "end": 32280,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 32280,
+                        "end": 36600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 36600,
+                        "end": 37020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37020,
+                        "end": 37500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37500,
+                        "end": 37920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37920,
+                        "end": 38400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38400,
+                        "end": 38820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38820,
+                        "end": 39300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39300,
+                        "end": 39720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39720,
+                        "end": 40200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40200,
+                        "end": 40620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40620,
+                        "end": 41100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 41100,
+                        "end": 41520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 41520,
+                        "end": 42000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42000,
+                        "end": 42420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42420,
+                        "end": 42900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42900,
+                        "end": 43320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43320,
+                        "end": 43800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43800,
+                        "end": 44220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 44220,
+                        "end": 44700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 44700,
+                        "end": 45120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45120,
+                        "end": 45600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45600,
+                        "end": 46020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46020,
+                        "end": 46500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46500,
+                        "end": 46920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46920,
+                        "end": 47400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47400,
+                        "end": 47820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47820,
+                        "end": 48300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48300,
+                        "end": 48720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48720,
+                        "end": 49200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49200,
+                        "end": 49620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49620,
+                        "end": 53460,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 53460,
+                        "end": 59400,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 59400,
+                        "end": 61200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61200,
+                        "end": 68400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68400,
+                        "end": 86400,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 86400,
+                        "end": 87300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 19500,
+                        "end": 25500,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 25500,
+                        "end": 29100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29100,
+                        "end": 33300,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 33300,
+                        "end": 33780,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 33780,
+                        "end": 34320,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 34320,
+                        "end": 34800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 34800,
+                        "end": 35340,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 35340,
+                        "end": 35820,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 35820,
+                        "end": 42540,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 42540,
+                        "end": 42900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 42900,
+                        "end": 43320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 43320,
+                        "end": 43680,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 43680,
+                        "end": 44100,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44100,
+                        "end": 44460,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44460,
+                        "end": 44880,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 44880,
+                        "end": 45240,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 45240,
+                        "end": 45660,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 45660,
+                        "end": 46020,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 46020,
+                        "end": 46440,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 46440,
+                        "end": 46800,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 46800,
+                        "end": 50160,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50160,
+                        "end": 54000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 54000,
+                        "end": 57780,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 57780,
+                        "end": 58380,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58380,
+                        "end": 58920,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58920,
+                        "end": 59520,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 59520,
+                        "end": 60060,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 60060,
+                        "end": 60660,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 60660,
+                        "end": 61200,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 61200,
+                        "end": 61800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 61800,
+                        "end": 62340,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 62340,
+                        "end": 62940,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 62940,
+                        "end": 63480,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63480,
+                        "end": 67680,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67680,
+                        "end": 68400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68400,
+                        "end": 76500,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76500,
+                        "end": 87300,
+                        "headway": 1200
+                    }
+                ]
+            },
+            {
+                "id": "TD:1529:3890796286",
+                "number": "2X",
+                "name": {
+                    "en": "GRAND PROMENADE - EXHIBITION CENTRE STATION",
+                    "tc": "嘉亨灣 - 會展站"
+                },
+                "stops": [
+                    "10000110",
+                    "133",
+                    "135",
+                    "136",
+                    "137",
+                    "297",
+                    "175",
+                    "181",
+                    "152",
+                    "3001",
+                    "1307",
+                    "550",
+                    "10226",
+                    "10227",
+                    "3000"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 21600,
+                        "end": 39600,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39600,
+                        "end": 43200,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43200,
+                        "end": 46800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 46800,
+                        "end": 54000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54000,
+                        "end": 54420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54420,
+                        "end": 54900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54900,
+                        "end": 55320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55320,
+                        "end": 55800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55800,
+                        "end": 56220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56220,
+                        "end": 56700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56700,
+                        "end": 57120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 57120,
+                        "end": 57600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 57600,
+                        "end": 58020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58020,
+                        "end": 58500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58500,
+                        "end": 58920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58920,
+                        "end": 59400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59400,
+                        "end": 59820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59820,
+                        "end": 60300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 60300,
+                        "end": 60720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 60720,
+                        "end": 63600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63600,
+                        "end": 64800,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64800,
+                        "end": 66060,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66060,
+                        "end": 67500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 67500,
+                        "end": 70500,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 70500,
+                        "end": 71040,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 71040,
+                        "end": 72000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72000,
+                        "end": 72420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72420,
+                        "end": 72900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72900,
+                        "end": 73320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 73320,
+                        "end": 73800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 73800,
+                        "end": 74220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 74220,
+                        "end": 74700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 74700,
+                        "end": 75120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 75120,
+                        "end": 75600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 75600,
+                        "end": 78540,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 78540,
+                        "end": 78900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 78900,
+                        "end": 79320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79320,
+                        "end": 79680,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79680,
+                        "end": 80100,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80100,
+                        "end": 80460,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80460,
+                        "end": 80880,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80880,
+                        "end": 81240,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81240,
+                        "end": 81660,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81660,
+                        "end": 82020,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82020,
+                        "end": 82440,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82440,
+                        "end": 82800,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82800,
+                        "end": 86400,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 86400,
+                        "end": 90000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21600,
+                        "end": 36000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 36000,
+                        "end": 39600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39600,
+                        "end": 43200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43200,
+                        "end": 43740,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43740,
+                        "end": 44340,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 44340,
+                        "end": 44880,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 44880,
+                        "end": 45480,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 45480,
+                        "end": 46020,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46020,
+                        "end": 46620,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 46620,
+                        "end": 50400,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50400,
+                        "end": 54000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54000,
+                        "end": 54540,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54540,
+                        "end": 55140,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55140,
+                        "end": 55680,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55680,
+                        "end": 56280,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56280,
+                        "end": 56820,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56820,
+                        "end": 57420,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 57420,
+                        "end": 61200,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61200,
+                        "end": 61680,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61680,
+                        "end": 68160,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68160,
+                        "end": 72000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 72000,
+                        "end": 75240,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 75240,
+                        "end": 75660,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 75660,
+                        "end": 76140,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 76140,
+                        "end": 76560,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 76560,
+                        "end": 77040,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 77040,
+                        "end": 77460,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 77460,
+                        "end": 77940,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 77940,
+                        "end": 78360,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 78360,
+                        "end": 78840,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 78840,
+                        "end": 83040,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 83040,
+                        "end": 83700,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 83700,
+                        "end": 85860,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 85860,
+                        "end": 88920,
+                        "headway": 1020
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 88920,
+                        "end": 90000,
+                        "headway": 1080
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21600,
+                        "end": 36000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 36000,
+                        "end": 42240,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 42240,
+                        "end": 42960,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 42960,
+                        "end": 43620,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 43620,
+                        "end": 50100,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50100,
+                        "end": 53940,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53940,
+                        "end": 57300,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 57300,
+                        "end": 57660,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 57660,
+                        "end": 58080,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58080,
+                        "end": 58440,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58440,
+                        "end": 58860,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 58860,
+                        "end": 59220,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 59220,
+                        "end": 59640,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 59640,
+                        "end": 60000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 60000,
+                        "end": 60420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 60420,
+                        "end": 60780,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 60780,
+                        "end": 61620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 61620,
+                        "end": 62100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 62100,
+                        "end": 62520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 62520,
+                        "end": 63000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63000,
+                        "end": 63420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63420,
+                        "end": 63900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63900,
+                        "end": 64320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 64320,
+                        "end": 64800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 64800,
+                        "end": 65220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65220,
+                        "end": 65700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65700,
+                        "end": 66120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66120,
+                        "end": 66600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66600,
+                        "end": 67020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67020,
+                        "end": 67500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67500,
+                        "end": 67920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67920,
+                        "end": 68400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68400,
+                        "end": 68820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68820,
+                        "end": 69300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69300,
+                        "end": 69720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69720,
+                        "end": 70200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70200,
+                        "end": 70620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70620,
+                        "end": 71100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71100,
+                        "end": 71520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71520,
+                        "end": 72000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72000,
+                        "end": 72420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72420,
+                        "end": 72900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72900,
+                        "end": 73320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 73320,
+                        "end": 73800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 73800,
+                        "end": 74220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 74220,
+                        "end": 74700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 74700,
+                        "end": 75120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 75120,
+                        "end": 75600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 75600,
+                        "end": 76020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76020,
+                        "end": 76500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76500,
+                        "end": 76920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76920,
+                        "end": 77400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77400,
+                        "end": 77820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77820,
+                        "end": 78300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 78300,
+                        "end": 78720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 78720,
+                        "end": 79200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 79200,
+                        "end": 80280,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 80280,
+                        "end": 82680,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 82680,
+                        "end": 83400,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 83400,
+                        "end": 88800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 88800,
+                        "end": 90000,
+                        "headway": 1200
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "64": {
+                "id": "64",
+                "name": {
+                    "en": "HONG KONG CENTRAL LIBRARY, CAUSEWAY ROAD",
+                    "tc": "香港中央圖書館, 高士威道"
+                },
+                "lat": 22.28015,
+                "lng": 114.18901
+            },
+            "101": {
+                "id": "101",
+                "name": {
+                    "en": "SUN SING STREET, SHAU KEI WAN ROAD",
+                    "tc": "新成街, 筲箕灣道"
+                },
+                "lat": 22.27897,
+                "lng": 114.22607
+            },
+            "102": {
+                "id": "102",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28071,
+                "lng": 114.22345
+            },
+            "113": {
+                "id": "113",
+                "name": {
+                    "en": "CAUSEWAY BAY - HYSAN PLACE, HENNESSY ROAD",
+                    "tc": "銅鑼灣 - 希慎廣場, 軒尼詩道"
+                },
+                "lat": 22.27999,
+                "lng": 114.18353
+            },
+            "116": {
+                "id": "116",
+                "name": {
+                    "en": "CNT TOWER, HENNESSY ROAD",
+                    "tc": "北海中心, 軒尼詩道"
+                },
+                "lat": 22.27834,
+                "lng": 114.17857
+            },
+            "118": {
+                "id": "118",
+                "name": {
+                    "en": "HENNESSY ROAD GOVERNMENT PRIMARY SCHOOL, HENNESSY ROAD",
+                    "tc": "軒尼詩道官立小學, 軒尼詩道"
+                },
+                "lat": 22.27779,
+                "lng": 114.17599
+            },
+            "133": {
+                "id": "133",
+                "name": {
+                    "en": "STEWART ROAD, HENNESSY ROAD",
+                    "tc": "史釗域道, 軒尼詩道"
+                },
+                "lat": 22.27803,
+                "lng": 114.17623
+            },
+            "135": {
+                "id": "135",
+                "name": {
+                    "en": "MARSH ROAD, HENNESSY ROAD",
+                    "tc": "馬師道, 軒尼詩道"
+                },
+                "lat": 22.2792,
+                "lng": 114.18051
+            },
+            "136": {
+                "id": "136",
+                "name": {
+                    "en": "CAUSEWAY BAY - SOGO DEPARTMENT STORE, HENNESSY ROAD",
+                    "tc": "銅鑼灣 - 崇光百貨, 軒尼詩道"
+                },
+                "lat": 22.28024,
+                "lng": 114.18444
+            },
+            "137": {
+                "id": "137",
+                "name": {
+                    "en": "VICTORIA PARK, CAUSEWAY ROAD",
+                    "tc": "維多利亞公園, 高士威道"
+                },
+                "lat": 22.28088,
+                "lng": 114.18963
+            },
+            "152": {
+                "id": "152",
+                "name": {
+                    "en": "HOI AN STREET, SHAU KEI WAN ROAD",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.28081,
+                "lng": 114.2236
+            },
+            "173": {
+                "id": "173",
+                "name": {
+                    "en": "SAI WAN HO CIVIC CENTRE, SHAU KEI WAN ROAD",
+                    "tc": "西灣河文娛中心, 筲箕灣道"
+                },
+                "lat": 22.28173,
+                "lng": 114.22207
+            },
+            "174": {
+                "id": "174",
+                "name": {
+                    "en": "TAI HONG HOUSE, TAI HONG STREET",
+                    "tc": "太康樓, 太康街"
+                },
+                "lat": 22.28331,
+                "lng": 114.22172
+            },
+            "175": {
+                "id": "175",
+                "name": {
+                    "en": "LEI KING WAN, LEI KING ROAD",
+                    "tc": "鯉景灣, 鯉景道"
+                },
+                "lat": 22.2842,
+                "lng": 114.22344
+            },
+            "181": {
+                "id": "181",
+                "name": {
+                    "en": "SAI WAN HO STATION, TAI ON STREET",
+                    "tc": "西灣河站, 太安街"
+                },
+                "lat": 22.28235,
+                "lng": 114.22249
+            },
+            "297": {
+                "id": "297",
+                "name": {
+                    "en": "HING FAT STREET",
+                    "tc": "興發街"
+                },
+                "lat": 22.28343,
+                "lng": 114.1911
+            },
+            "550": {
+                "id": "550",
+                "name": {
+                    "en": "SHAU KEI WAN",
+                    "tc": "筲箕灣"
+                },
+                "lat": 22.27842,
+                "lng": 114.22833
+            },
+            "661": {
+                "id": "661",
+                "name": {
+                    "en": "WING HING STREET",
+                    "tc": "永興街"
+                },
+                "lat": 22.28535,
+                "lng": 114.19217
+            },
+            "747": {
+                "id": "747",
+                "name": {
+                    "en": "ALDRICH GARDEN, OI YIN STREET",
+                    "tc": "愛蝶灣, 愛賢街"
+                },
+                "lat": 22.2809,
+                "lng": 114.2283
+            },
+            "1307": {
+                "id": "1307",
+                "name": {
+                    "en": "NAM HONG STREET, SHAU KEI WAN ROAD",
+                    "tc": "南康街, 筲箕灣道"
+                },
+                "lat": 22.27894,
+                "lng": 114.22627
+            },
+            "3000": {
+                "id": "3000",
+                "name": {
+                    "en": "SAI WAN HO (GRAND PROMENADE)",
+                    "tc": "西灣河 (嘉亨灣)"
+                },
+                "lat": 22.28479,
+                "lng": 114.22428
+            },
+            "3001": {
+                "id": "3001",
+                "name": {
+                    "en": "ALDRICH BAY ROAD, SHAU KEI WAN ROAD",
+                    "tc": "愛秩序灣道, 筲箕灣道"
+                },
+                "lat": 22.28031,
+                "lng": 114.22532
+            },
+            "3089": {
+                "id": "3089",
+                "name": {
+                    "en": "MARINA LODGE, SHAU KEI WAN ROAD",
+                    "tc": "海灣華庭, 筲箕灣道"
+                },
+                "lat": 22.27796,
+                "lng": 114.22669
+            },
+            "10226": {
+                "id": "10226",
+                "name": {
+                    "en": "OI TUNG SHOPPING CENTRE, OI YIN STREET",
+                    "tc": "愛東商場, 愛賢街"
+                },
+                "lat": 22.28108,
+                "lng": 114.22805
+            },
+            "10227": {
+                "id": "10227",
+                "name": {
+                    "en": "TUNG HIU HOUSE TUNG YUK COURT, OI KAN ROAD",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.28272,
+                "lng": 114.2272
+            },
+            "10229": {
+                "id": "10229",
+                "name": {
+                    "en": "TUNG HIU HOUSE TUNG YUK COURT, OI KAN ROAD",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.28288,
+                "lng": 114.22687
+            },
+            "12458": {
+                "id": "12458",
+                "name": {
+                    "en": "PERFECT MOUNT GARDENS, TUNG HEI ROAD",
+                    "tc": "峻峰花園, 東喜道"
+                },
+                "lat": 22.279,
+                "lng": 114.22878
+            },
+            "10000110": {
+                "id": "10000110",
+                "name": {
+                    "en": "EXHIBITION CENTRE STATION",
+                    "tc": "會展站"
+                },
+                "lat": 22.28161,
+                "lng": 114.17548
+            }
+        },
+        "calendars": {
+            "287": {
+                "id": "287",
+                "days": [1, 2, 3, 4, 5],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": false,
+                    "20260217": false,
+                    "20260218": false,
+                    "20260219": false,
+                    "20260403": false,
+                    "20260406": false,
+                    "20260407": false,
+                    "20260501": false,
+                    "20260525": false,
+                    "20260619": false,
+                    "20260701": false,
+                    "20261001": false,
+                    "20261019": false,
+                    "20261225": false
+                }
+            },
+            "288": {
+                "id": "288",
+                "days": [6],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260404": false,
+                    "20260926": false,
+                    "20261226": false
+                }
+            },
+            "448": {
+                "id": "448",
+                "days": [0],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": true,
+                    "20260217": true,
+                    "20260218": true,
+                    "20260219": true,
+                    "20260403": true,
+                    "20260404": true,
+                    "20260406": true,
+                    "20260407": true,
+                    "20260501": true,
+                    "20260525": true,
+                    "20260619": true,
+                    "20260701": true,
+                    "20260926": true,
+                    "20261001": true,
+                    "20261019": true,
+                    "20261225": true,
+                    "20261226": true
+                }
+            }
+        }
+    },
+    "operator": {
+        "routes": [
+            {
+                "id": "CTB:2X:O:1",
+                "number": "2X",
+                "provider": "CTB",
+                "bound": "O",
+                "service": "1",
+                "origin": {
+                    "en": "Grand Promenade",
+                    "tc": "嘉亨灣"
+                },
+                "destination": {
+                    "en": "Exhibition Centre Station",
+                    "tc": "會展站"
+                },
+                "stops": [
+                    {
+                        "id": "CTB:003155",
+                        "seq": 1
+                    },
+                    {
+                        "id": "CTB:003156",
+                        "seq": 2
+                    },
+                    {
+                        "id": "CTB:001389",
+                        "seq": 3
+                    },
+                    {
+                        "id": "CTB:002693",
+                        "seq": 4
+                    },
+                    {
+                        "id": "CTB:001207",
+                        "seq": 5
+                    },
+                    {
+                        "id": "CTB:002782",
+                        "seq": 6
+                    },
+                    {
+                        "id": "CTB:001301",
+                        "seq": 7
+                    },
+                    {
+                        "id": "CTB:001302",
+                        "seq": 8
+                    },
+                    {
+                        "id": "CTB:001303",
+                        "seq": 9
+                    },
+                    {
+                        "id": "CTB:001313",
+                        "seq": 10
+                    },
+                    {
+                        "id": "CTB:001374",
+                        "seq": 11
+                    },
+                    {
+                        "id": "CTB:001215",
+                        "seq": 12
+                    },
+                    {
+                        "id": "CTB:002439",
+                        "seq": 13
+                    },
+                    {
+                        "id": "CTB:002442",
+                        "seq": 14
+                    },
+                    {
+                        "id": "CTB:002444",
+                        "seq": 15
+                    },
+                    {
+                        "id": "CTB:003415",
+                        "seq": 16
+                    }
+                ]
+            },
+            {
+                "id": "CTB:2X:I:1",
+                "number": "2X",
+                "provider": "CTB",
+                "bound": "I",
+                "service": "1",
+                "origin": {
+                    "en": "Exhibition Centre Station",
+                    "tc": "會展站"
+                },
+                "destination": {
+                    "en": "Grand Promenade",
+                    "tc": "嘉亨灣"
+                },
+                "stops": [
+                    {
+                        "id": "CTB:003415",
+                        "seq": 1
+                    },
+                    {
+                        "id": "CTB:002434",
+                        "seq": 2
+                    },
+                    {
+                        "id": "CTB:002436",
+                        "seq": 3
+                    },
+                    {
+                        "id": "CTB:002438",
+                        "seq": 4
+                    },
+                    {
+                        "id": "CTB:001213",
+                        "seq": 5
+                    },
+                    {
+                        "id": "CTB:001251",
+                        "seq": 6
+                    },
+                    {
+                        "id": "CTB:001293",
+                        "seq": 7
+                    },
+                    {
+                        "id": "CTB:001316",
+                        "seq": 8
+                    },
+                    {
+                        "id": "CTB:001297",
+                        "seq": 9
+                    },
+                    {
+                        "id": "CTB:001298",
+                        "seq": 10
+                    },
+                    {
+                        "id": "CTB:001380",
+                        "seq": 11
+                    },
+                    {
+                        "id": "CTB:001207",
+                        "seq": 12
+                    },
+                    {
+                        "id": "CTB:001390",
+                        "seq": 13
+                    },
+                    {
+                        "id": "CTB:003157",
+                        "seq": 14
+                    },
+                    {
+                        "id": "CTB:003155",
+                        "seq": 15
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "CTB:001389": {
+                "id": "CTB:001389",
+                "code": "001389",
+                "provider": "CTB",
+                "name": {
+                    "en": "Aldrich Garden, Oi Yin Street",
+                    "tc": "愛蝶灣, 愛賢街"
+                },
+                "lat": 22.281199452091,
+                "lng": 114.22826243053
+            },
+            "CTB:002693": {
+                "id": "CTB:002693",
+                "code": "002693",
+                "provider": "CTB",
+                "name": {
+                    "en": "Perfect Mount Gardens, Tung Hei Road",
+                    "tc": "峻峰花園, 東喜道"
+                },
+                "lat": 22.279101962091,
+                "lng": 114.22878229053
+            },
+            "CTB:003156": {
+                "id": "CTB:003156",
+                "code": "003156",
+                "provider": "CTB",
+                "name": {
+                    "en": "Tung Hiu House Tung Yuk Court, Oi Kan Road",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.282842192091,
+                "lng": 114.22700325053
+            },
+            "CTB:003155": {
+                "id": "CTB:003155",
+                "code": "003155",
+                "provider": "CTB",
+                "name": {
+                    "en": "Sai Wan Ho (Grand Promenade)",
+                    "tc": "西灣河 (嘉亨灣)"
+                },
+                "lat": 22.284739002091,
+                "lng": 114.22425488053
+            },
+            "CTB:001301": {
+                "id": "CTB:001301",
+                "code": "001301",
+                "provider": "CTB",
+                "name": {
+                    "en": "Sun Sing Street, Shau Kei Wan Road",
+                    "tc": "新成街, 筲箕灣道"
+                },
+                "lat": 22.278724872091,
+                "lng": 114.22622512053
+            },
+            "CTB:001207": {
+                "id": "CTB:001207",
+                "code": "001207",
+                "provider": "CTB",
+                "name": {
+                    "en": "Shau Kei Wan",
+                    "tc": "筲箕灣"
+                },
+                "lat": 22.278421122091,
+                "lng": 114.22833128053
+            },
+            "CTB:002782": {
+                "id": "CTB:002782",
+                "code": "002782",
+                "provider": "CTB",
+                "name": {
+                    "en": "Marina Lodge, Shau Kei Wan Road",
+                    "tc": "海灣華庭, 筲箕灣道"
+                },
+                "lat": 22.277932192091,
+                "lng": 114.22670333053
+            },
+            "CTB:001302": {
+                "id": "CTB:001302",
+                "code": "001302",
+                "provider": "CTB",
+                "name": {
+                    "en": "Hoi An Street, Shau Kei Wan Road",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.280716692091,
+                "lng": 114.22345551053
+            },
+            "CTB:001215": {
+                "id": "CTB:001215",
+                "code": "001215",
+                "provider": "CTB",
+                "name": {
+                    "en": "Hong Kong Central Library, Causeway Road",
+                    "tc": "香港中央圖書館, 高士威道"
+                },
+                "lat": 22.280082042091,
+                "lng": 114.18887826053
+            },
+            "CTB:001313": {
+                "id": "CTB:001313",
+                "code": "001313",
+                "provider": "CTB",
+                "name": {
+                    "en": "Tai Hong House, Tai Hong Street",
+                    "tc": "太康樓, 太康街"
+                },
+                "lat": 22.283340892091,
+                "lng": 114.22177946053
+            },
+            "CTB:001374": {
+                "id": "CTB:001374",
+                "code": "001374",
+                "provider": "CTB",
+                "name": {
+                    "en": "Wing Hing Street",
+                    "tc": "永興街"
+                },
+                "lat": 22.285345432091,
+                "lng": 114.19236143053
+            },
+            "CTB:001303": {
+                "id": "CTB:001303",
+                "code": "001303",
+                "provider": "CTB",
+                "name": {
+                    "en": "Sai Wan Ho Civic Centre, Shau Kei Wan Road",
+                    "tc": "西灣河文娛中心, 筲箕灣道"
+                },
+                "lat": 22.281794772091,
+                "lng": 114.22202073053
+            },
+            "CTB:002439": {
+                "id": "CTB:002439",
+                "code": "002439",
+                "provider": "CTB",
+                "name": {
+                    "en": "Causeway Bay - Hysan Place, Hennessy Road",
+                    "tc": "銅鑼灣 - 希慎廣場, 軒尼詩道"
+                },
+                "lat": 22.279999772091,
+                "lng": 114.18335916053
+            },
+            "CTB:003415": {
+                "id": "CTB:003415",
+                "code": "003415",
+                "provider": "CTB",
+                "name": {
+                    "en": "Exhibition Centre Station",
+                    "tc": "會展站"
+                },
+                "lat": 22.281692412091,
+                "lng": 114.17584606053
+            },
+            "CTB:002442": {
+                "id": "CTB:002442",
+                "code": "002442",
+                "provider": "CTB",
+                "name": {
+                    "en": "CNT Tower, Hennessy Road",
+                    "tc": "北海中心, 軒尼詩道"
+                },
+                "lat": 22.278327962091,
+                "lng": 114.17845458053
+            },
+            "CTB:002444": {
+                "id": "CTB:002444",
+                "code": "002444",
+                "provider": "CTB",
+                "name": {
+                    "en": "Hennessy Road Government Primary School, Hennessy Road",
+                    "tc": "軒尼詩道官立小學, 軒尼詩道"
+                },
+                "lat": 22.277744552091,
+                "lng": 114.17543474053
+            },
+            "CTB:002436": {
+                "id": "CTB:002436",
+                "code": "002436",
+                "provider": "CTB",
+                "name": {
+                    "en": "Marsh Road, Hennessy Road",
+                    "tc": "馬師道, 軒尼詩道"
+                },
+                "lat": 22.279098672091,
+                "lng": 114.18022050053
+            },
+            "CTB:001213": {
+                "id": "CTB:001213",
+                "code": "001213",
+                "provider": "CTB",
+                "name": {
+                    "en": "Victoria Park, Causeway Road",
+                    "tc": "維多利亞公園, 高士威道"
+                },
+                "lat": 22.281133262091,
+                "lng": 114.19006592053
+            },
+            "CTB:002434": {
+                "id": "CTB:002434",
+                "code": "002434",
+                "provider": "CTB",
+                "name": {
+                    "en": "Stewart Road, Hennessy Road",
+                    "tc": "史釗域道, 軒尼詩道"
+                },
+                "lat": 22.278009642091,
+                "lng": 114.17617122053
+            },
+            "CTB:002438": {
+                "id": "CTB:002438",
+                "code": "002438",
+                "provider": "CTB",
+                "name": {
+                    "en": "Causeway Bay - Sogo Department Store, Hennessy Road",
+                    "tc": "銅鑼灣 - 崇光百貨, 軒尼詩道"
+                },
+                "lat": 22.280207632091,
+                "lng": 114.18417804053
+            },
+            "CTB:001316": {
+                "id": "CTB:001316",
+                "code": "001316",
+                "provider": "CTB",
+                "name": {
+                    "en": "Sai Wan Ho Station, Tai On Street",
+                    "tc": "西灣河站, 太安街"
+                },
+                "lat": 22.282354632091,
+                "lng": 114.22239868053
+            },
+            "CTB:001297": {
+                "id": "CTB:001297",
+                "code": "001297",
+                "provider": "CTB",
+                "name": {
+                    "en": "Hoi An Street, Shau Kei Wan Road",
+                    "tc": "海晏街, 筲箕灣道"
+                },
+                "lat": 22.280776032091,
+                "lng": 114.22363882053
+            },
+            "CTB:001293": {
+                "id": "CTB:001293",
+                "code": "001293",
+                "provider": "CTB",
+                "name": {
+                    "en": "Lei King Wan, Lei King Road",
+                    "tc": "鯉景灣, 鯉景道"
+                },
+                "lat": 22.284069312091,
+                "lng": 114.22354484053
+            },
+            "CTB:001251": {
+                "id": "CTB:001251",
+                "code": "001251",
+                "provider": "CTB",
+                "name": {
+                    "en": "Hing Fat Street",
+                    "tc": "興發街"
+                },
+                "lat": 22.283573922091,
+                "lng": 114.19109346053
+            },
+            "CTB:001380": {
+                "id": "CTB:001380",
+                "code": "001380",
+                "provider": "CTB",
+                "name": {
+                    "en": "Nam Hong Street, Shau Kei Wan Road",
+                    "tc": "南康街, 筲箕灣道"
+                },
+                "lat": 22.278882572091,
+                "lng": 114.22627158053
+            },
+            "CTB:001298": {
+                "id": "CTB:001298",
+                "code": "001298",
+                "provider": "CTB",
+                "name": {
+                    "en": "Aldrich Bay Road, Shau Kei Wan Road",
+                    "tc": "愛秩序灣道, 筲箕灣道"
+                },
+                "lat": 22.280349712091,
+                "lng": 114.22504094053
+            },
+            "CTB:003157": {
+                "id": "CTB:003157",
+                "code": "003157",
+                "provider": "CTB",
+                "name": {
+                    "en": "Tung Hiu House Tung Yuk Court, Oi Kan Road",
+                    "tc": "東旭苑東曉閣, 愛勤道"
+                },
+                "lat": 22.282753852091,
+                "lng": 114.22711622053
+            },
+            "CTB:001390": {
+                "id": "CTB:001390",
+                "code": "001390",
+                "provider": "CTB",
+                "name": {
+                    "en": "Oi Tung Shopping Centre, Oi Yin Street",
+                    "tc": "愛東商場, 愛賢街"
+                },
+                "lat": 22.281464672091,
+                "lng": 114.22809528053
+            }
+        }
+    }
+}

@@ -88,3 +88,42 @@ export function matchesDirection(entries: VariantEntry[], route: Route) {
     // evidence of its own. Shared route numbers or endpoint names are insufficient.
     return links.slice(1).filter((seq, i) => seq > links[i]).length >= (links.length - 1) * 0.75
 }
+
+export function routeVariantOptions(
+    route: Route,
+    family: Route[],
+    stops: Record<string, Stop>,
+    catalog: VariantCatalog | null,
+    jointNumbers: readonly string[] = [],
+) {
+    // TD joint patterns are not a replacement for the merged operator itinerary.
+    // Keep partner-only stops and combined arrivals even before pairing completes.
+    if (
+        route.provider !== 'CTB' ||
+        route.jointPartners?.length ||
+        jointNumbers.includes(route.number) ||
+        !catalog
+    )
+        return []
+    const patterns = new Map<string, { variant: RouteVariant; entries: VariantEntry[] }>()
+    for (const variant of catalog.variants
+        .filter((v) => v.number === route.number)
+        .sort((a, b) => a.id.localeCompare(b.id))) {
+        const entries = variantEntries(variant, catalog, family, stops)
+        if (!matchesDirection(entries, route)) continue
+        // Different TD records/calendars for an identical path do not create a
+        // routing choice. Merge their schedules without changing the saved data.
+        const key = variant.stops.join(',')
+        const previous = patterns.get(key)
+        if (previous) previous.variant.departures.push(...variant.departures)
+        else
+            patterns.set(key, {
+                variant: { ...variant, departures: [...variant.departures] },
+                entries,
+            })
+    }
+    const options = [...patterns.values()]
+    // A timetable's ordinary pattern must never replace the original screen when
+    // there is no alternative. This also preserves operator names and sequences.
+    return options.length > 1 ? options : []
+}

@@ -281,3 +281,24 @@ No timetable-to-live trip key is exposed by Citybus. Shared-stop ETAs therefore 
 operator direction/visit filtering and may include other variants; destination labels/remarks remain
 available. TD/operator stop IDs and direction codes must never be equated. Timetables can lag temporary
 diversions, and patterns without sufficient safe direction/stop matches retain the operator stop list.
+
+## Variant regressions on 2X and 102 — 20 October 2026
+
+A fresh targeted Citybus route/route-stop/stop read this afternoon returned 2X with 16 outbound and
+15 inbound stops, and 102 with 31 outbound and 36 inbound stops. Matching these against the retained
+same-day TD timetable capture found exactly one 2X pattern per direction. Applying that ordinary
+pattern was unnecessary and could replace the operator's destination wording. Both directions now
+retain the original UI and operator itinerary without a variant block.
+
+TD 102 has normal directional records under route ID 1484 and an inbound Hung Hom (Cross Harbour
+Tunnel) → Shau Kei Wan short working under 8774. The ordinary TD inbound list contains 34 stops,
+compared with the Citybus list's 36; several TD stops also remain unmapped under conservative
+operator matching. A timetable overlay is therefore not equivalent to the established joint
+KMB/Citybus itinerary and can discard partner-only stops. Known joint routes now retain their
+combined itinerary; no new ETA matching heuristic or operator direction assumption was introduced.
+
+`services/variants/fixtures/2x.json` retains the fresh 2X operator data with the dated TD subset.
+`services/variants/fixtures/102.json` retains the TD subset; its regression uses the existing
+21 September joint-operator fixture, independently of today's fresh Citybus count check. These are
+static catalogue observations, not current live ETA verification. Browser arrival responses remain
+constructed fixtures, and no physical iPhone validation was performed.

@@ -323,7 +323,19 @@ a complete valid catalogue; failed refreshes preserve the last saved timetable. 
 snapshots and on-demand Citybus details do not depend on timetable availability. Settings reports
 this download independently.
 
-`useRouteVariants` selects among safely matched Citybus patterns for the opened direction. It checks
+`routeVariantOptions` requires at least two distinct, safely matched stop patterns for the opened
+Citybus direction. Identical paths from separate TD records are grouped and their departure periods
+combined without mutating the cached catalogue. With zero or one distinct pattern, route details
+retain the original operator heading, full itinerary, arrivals and bookmark identities. Render no
+variant picker or variant loading/error footnote; timetable download failures remain visible in Settings.
+
+Known joint routes (from TD membership or derived operator partners) also retain their original
+combined itinerary and arrivals. Do not overlay a CTB-only timetable on a joint journey: this can
+remove partner-only stops and turn previously usable visits into unmatched timetable rows. Joint
+variant selection remains unavailable until it can preserve those combined journeys. This is a
+capability guard, not a route-number exception for 102.
+
+`useRouteVariants` selects among the remaining Citybus alternatives. It checks
 scheduled origin departures in the next 60 minutes, chooses the earliest when several qualify, and
 otherwise uses the next departure within its 14-day lookahead. With no eligible departure it retains
 the operator stop list. Calendars use Hong Kong time, weekday rules, holiday exceptions and GTFS

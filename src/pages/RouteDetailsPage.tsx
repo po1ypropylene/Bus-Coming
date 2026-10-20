@@ -29,6 +29,7 @@ function RouteDetails({ route }: { route: Route }) {
         selectedStop,
         stops: downloadedStops,
         variantCatalog,
+        jointCatalog,
     } = useApp()
     const {
         route: currentRoute,
@@ -53,6 +54,7 @@ function RouteDetails({ route }: { route: Route }) {
         knownStops,
         variantCatalog,
         selectedStop,
+        jointCatalog?.numbers,
     )
     const itinerary = useJointItinerary(currentRoute, stops, downloadedStops)
     const displayStops: DisplayStop[] = variants.selected

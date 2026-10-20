@@ -210,8 +210,8 @@ and WebKit. No new live API audit, deployment or physical iPhone validation was 
 
 ## Citybus route variants — 20 October 2026
 
-Citybus route details now offer an English/Traditional Chinese variant selector from the official TD
-timetable. Automatic selects the earliest scheduled origin departure within 60 minutes, or the next
+Standalone Citybus route details offer an English/Traditional Chinese variant selector from the official TD
+timetable only when at least two distinct patterns are safely matched to the selected direction. Automatic selects the earliest scheduled origin departure within 60 minutes, or the next
 scheduled variant within 14 days when none qualifies. Operating weekdays, holiday exceptions,
 after-midnight service times and frequency periods use Hong Kong time. Opening a saved/nearby stop
 restricts automatic candidates to variants serving its safely mapped operator stop. Every safely
@@ -242,3 +242,26 @@ mobile wording/heading adjustment, including axe AA checks, manual/default selec
 changes, Chinese controls, original bookmark identities and cached timetable restoration. Production
 origin-stopped offline reload (including real 720 variants) and explicit update/reload/preference/resume
 smoke checks passed in both engines. These are browser-engine checks, not physical iPhone validation.
+
+## Route variant regression fixes — 20 October 2026
+
+Version 1.2.1 restores the previous route UI when the selected direction has zero or one distinct
+routing pattern: no Automatic/Operator list/single-pattern block, no variant loading/error footnote,
+and no timetable replacement of the operator destination or stop list. Opposite directions do not
+count as alternatives. Multiple TD records with identical ordered stops count as one pattern, with
+combined schedules. The 720 multi-pattern selector and its 60-minute default rule remain available.
+
+Joint journeys keep the existing merged operator itinerary, partner-only stops, combined arrival
+panels and saved-stop identities. Timetable overlays are disabled when either TD joint membership
+or existing operator pairing establishes a joint route; this also protects details while a partner
+catalogue is still loading. Joint variants remain unsupported rather than replacing the merged
+journey with an incomplete CTB-only timetable. Existing cached timetable and user data are preserved.
+
+Verification for 1.2.1: 99 unit tests and toolchain probes, type checking/build, lint and formatting
+passed. All 26 relevant Chromium/mobile-WebKit browser cases passed, including both directions of
+real-data 2X/102 with loaded timetable caches, original destination headings and stop counts,
+partner-only stops, combined arrivals, legacy bookmarks, direction switching, zero/single/duplicate
+pattern UI in both languages, and retained 720 automatic/manual variants. Production offline and
+update/reload/preference/resume smoke checks passed in both engines. The fresh Citybus audit covered
+static route/stop data; browser ETA responses were fixtures. No deployment or physical iPhone check
+was performed.

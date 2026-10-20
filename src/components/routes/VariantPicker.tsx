@@ -3,18 +3,9 @@ import { useApp } from '../../app/AppContext'
 import type { useRouteVariants } from '../../hooks/useRouteVariants'
 
 export function VariantPicker({ state }: { state: ReturnType<typeof useRouteVariants> }) {
-    const { t, lang, variantCatalog, variantError } = useApp()
+    const { t, lang, variantError } = useApp()
     const id = useId()
-    if (!state.options.length)
-        return (
-            <p className="footnote" role="status">
-                {variantError
-                    ? t.variantLoadError
-                    : !variantCatalog
-                      ? t.variantLoading
-                      : t.variantNoMatch}
-            </p>
-        )
+    if (state.options.length < 2) return null
     return (
         <section className="variant-picker" aria-label={t.routeVariant}>
             <label htmlFor={id}>{t.routeVariant}</label>

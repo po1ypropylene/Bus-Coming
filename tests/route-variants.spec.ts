@@ -3,7 +3,16 @@ import AxeBuilder from '@axe-core/playwright'
 import { timetableFixture, variantRoute, variantStops } from '../src/services/variants/fixtures'
 import type { Page } from '@playwright/test'
 
-async function prepare(page: Page, anchor = false) {
+async function prepare(
+    page: Page,
+    anchor = false,
+    patterns: 'multiple' | 'none' | 'single' | 'duplicate' = 'multiple',
+) {
+    const catalog = timetableFixture()
+    if (patterns === 'none') catalog.variants = []
+    if (patterns === 'single') catalog.variants = catalog.variants.slice(0, 1)
+    if (patterns === 'duplicate')
+        catalog.variants = [catalog.variants[0], { ...catalog.variants[0], id: 'TD:9999:1' }]
     await page.clock.install({ time: new Date('2026-10-20T07:55:00+08:00') })
     await page.context().route('https://portal.csdi.gov.hk/**', (req) => req.abort())
     await page.context().route('**/eta/**', (req) =>
@@ -82,7 +91,7 @@ async function prepare(page: Page, anchor = false) {
                 tx.oncomplete = () => request.result.close()
             }
         },
-        { route: variantRoute, stops: variantStops, catalog: timetableFixture(), anchor },
+        { route: variantRoute, stops: variantStops, catalog, anchor },
     )
     await page.goto('/')
 }
@@ -180,3 +189,25 @@ test('automatic selection advances with the clock and exposes Traditional Chines
     await expect(page.locator('.variant-name')).toHaveText('正常 · 港澳碼頭')
     await expect(page.locator('.variant-picker')).toContainText('香港時間')
 })
+
+for (const patterns of ['none', 'single', 'duplicate'] as const) {
+    test(`preserves the previous route UI for ${patterns} timetable alternatives`, async ({
+        page,
+    }) => {
+        await prepare(page, false, patterns)
+        await open720(page)
+        await expect(page.locator('.route-heading h1')).toHaveText('To Central')
+        await expect(page.locator('.stop-main')).toHaveCount(6)
+        await expect(page.locator('.variant-picker')).toHaveCount(0)
+        await expect(page.locator('.variant-name')).toHaveCount(0)
+        await expect(
+            page.getByText('Loading route variants. The operator stop list remains available.', {
+                exact: true,
+            }),
+        ).toHaveCount(0)
+        await page.getByRole('button', { name: 'Language', exact: true }).click()
+        await expect(page.locator('.route-heading h1')).toHaveText('往 中環')
+        await expect(page.getByRole('combobox', { name: '路線班次', exact: true })).toHaveCount(0)
+        await expect(page.locator('.stop-main')).toHaveCount(6)
+    })
+}

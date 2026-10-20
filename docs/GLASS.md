@@ -13,7 +13,8 @@ and avoids the unsupported path tracked by [WebKit bug 245510](https://bugs.webk
 
 - `styles/glass.css`: shared tokens, ambient backdrop, matte content, control materials, safe areas,
   scroll edges, touch feedback and accessibility fallbacks. The observed header material provides the
-  top edge; one masked bottom layer fades content below navigation. The search shell omits that layer.
+  top edge; a short bottom fade covers only the gap below navigation, preserving the actual content
+  backdrop behind the tab capsule. The search shell omits that layer.
 - `components/glass/SelectionLens.tsx`: small cached opaque PNG displacement maps, integer filter
   regions, sRGB, transformed filter target, fresh filter identity on resize/press/selection, retirement
   of previous filters one animation frame later, a clipped source graphic, JS spring with clamped time steps and no CSS
@@ -76,3 +77,24 @@ The final production offline and update smoke checks passed in both Chromium and
 shell reload, stored bookmarks, cached route search/timetables, explicit update activation and preference
 preservation. Outputs remain in ignored `artifacts/` and `test-results/`. No live operator audit,
 physical-device validation, push or deployment was performed.
+
+### Operator colours and clearer bottom glass — 20 October 2026
+
+Version 1.3.1 restores matte operator badge fills in both appearances: KMB red, Citybus yellow and
+NLB blue. Shared fill/ink tokens also colour the operator selector; they do not follow the selected
+app accent and remain present with reduced glass effects. The original glass rewrite accidentally
+removed the badge colour declarations rather than just removing their gloss.
+
+The bottom fade now covers only the gap below the tab capsule. Its previous broad background tint
+and blur muted content before the tab material sampled it. The capsule uses a lighter intensity-based
+veil (4–26%), a shorter blur (8–16px), a quieter rim/sheen and a more transparent selection fill.
+The header material is unchanged. Reduced effects and unsupported-browser defaults remain solid.
+Browser transmission checks place their underlay at ordinary content depth, below the bottom fade,
+so they cannot bypass that layer. Badge regressions check all five app accents, both appearances,
+full/reduced modes, distinct opaque operator hues and at least 4.5:1 badge text contrast.
+
+Verification for 1.3.1: 119 unit tests, lint, formatting and production build passed. The full browser
+suite passed 99 tests with one expected WebKit Lighthouse skip; this includes the operator badge
+matrix and stronger rendered transmission checks. Production offline and update smoke checks passed
+in both engines. Physical Safari appearance, standalone safe areas and hardware performance remain
+unverified.

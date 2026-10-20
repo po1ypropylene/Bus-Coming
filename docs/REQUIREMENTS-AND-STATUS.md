@@ -286,3 +286,16 @@ browser suite passed 93 tests with one expected WebKit Lighthouse skip; after th
 correction, 16 focused glass/settings/header tests passed, including rendered label alignment in both
 engines. Final production offline and update smoke checks passed in Chromium and WebKit. Physical
 iPhone standalone rendering, bright-backdrop contrast and hardware performance remain unverified.
+
+## Operator badge and bottom glass correction — 20 October 2026
+
+Version 1.3.1 restores distinct matte KMB red, Citybus yellow and NLB blue badges in both light and
+dark appearance, independent of app theme or glass mode. The bottom capsule has a lighter tint,
+shorter blur and more transparent selection. The bottom background fade is limited to the gap below
+the capsule, so real scrolling content remains visible through it. Header glass is unchanged.
+
+Verification for this correction: formatting, lint, production build, 119 unit tests and the full
+Chromium/WebKit browser suite passed (99 passed; one expected WebKit Lighthouse skip). Operator
+badge colour/contrast and the stronger content-depth transmission checks passed in both engines.
+Production offline reload and explicit update/preference-preservation smoke checks also passed in
+both engines. No live API audit or physical iPhone verification was performed.

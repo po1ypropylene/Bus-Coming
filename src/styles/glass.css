@@ -113,6 +113,46 @@ body::before {
     }
 }
 
+/* Operator identity stays independent of the chosen app accent and glass mode. */
+:root {
+    --kmb-fill: #fce4e7;
+    --kmb-ink: #963641;
+    --ctb-fill: #fff0b8;
+    --ctb-ink: #765600;
+    --nlb-fill: #e3edff;
+    --nlb-ink: #345b94;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --kmb-fill: #652f3a;
+        --kmb-ink: #ffd0d6;
+        --ctb-fill: #625018;
+        --ctb-ink: #ffe394;
+        --nlb-fill: #263f65;
+        --nlb-ink: #c4dcff;
+    }
+}
+.route-badge.kmb,
+.operator-tabs[data-operator='KMB'] {
+    --operator-fill: var(--kmb-fill);
+    --operator-ink: var(--kmb-ink);
+}
+.route-badge.ctb,
+.operator-tabs[data-operator='CTB'] {
+    --operator-fill: var(--ctb-fill);
+    --operator-ink: var(--ctb-ink);
+}
+.route-badge.nlb,
+.operator-tabs[data-operator='NLB'] {
+    --operator-fill: var(--nlb-fill);
+    --operator-ink: var(--nlb-ink);
+}
+.route-badge {
+    background: var(--operator-fill);
+    color: var(--operator-ink);
+    border: 1px solid color-mix(in srgb, var(--operator-ink) 24%, var(--operator-fill));
+}
+
 /* Matte content surfaces retain readable, theme-aware operator colours. */
 .list-card,
 .bookmark-card,
@@ -229,6 +269,31 @@ body::before {
     inset: 0;
     border-radius: inherit;
     z-index: -1;
+    /* A lighter veil and shorter blur retain shapes/colour behind this small capsule. */
+    --glass-tint: color-mix(
+        in srgb,
+        var(--surface) calc((0.04 + 0.22 * var(--glass-intensity)) * 100%),
+        transparent
+    );
+    --glass-filter: blur(calc(8px + 8px * (1 - var(--glass-intensity)))) saturate(175%);
+    --glass-wash: radial-gradient(120% 90% at 20% 0%, rgb(255 255 255 / 6%), transparent 55%);
+    --glass-glint: rgb(255 255 255 / 32%);
+    --glass-rim-image: linear-gradient(
+        135deg,
+        rgb(255 255 255 / 48%),
+        rgb(255 255 255 / 4%) 45%,
+        rgb(255 255 255 / 18%)
+    );
+    --glass-shadow: 0 8px 24px rgb(0 0 0 / 22%), 0 2px 5px rgb(0 0 0 / 12%);
+}
+.tab-bar .selection-lens-surface {
+    background: var(--glass-wash), color-mix(in srgb, var(--soft) 60%, transparent);
+}
+:root[data-glass-effective='reduced'] .tab-bar-surface {
+    --glass-filter: none;
+    --glass-tint: var(--glass-solid);
+    --glass-wash: linear-gradient(transparent, transparent);
+    --glass-rim-image: none;
 }
 .tab {
     position: relative;
@@ -315,14 +380,12 @@ body::before {
     z-index: 19;
 }
 .scroll-edge-bottom {
+    /* Only fade the gap below the capsule. Content behind the glass stays visible. */
     inset: auto 0 0;
-    height: calc(90px + env(safe-area-inset-bottom));
-    background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 70%, transparent));
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    -webkit-mask-image: linear-gradient(transparent, #000 70%);
-    mask-image: linear-gradient(transparent, #000 70%);
+    height: var(--nav-bottom);
+    background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 80%, transparent));
 }
+
 .search-box {
     border-radius: 26px;
     height: 52px;
@@ -561,18 +624,6 @@ body:has(dialog[open]) .scroll-edge {
     --operator-ink: var(--accent);
     --operator-fill: var(--soft);
 }
-.operator-tabs[data-operator='KMB'] {
-    --operator-fill: #f5e9e4;
-    --operator-ink: #894d36;
-}
-.operator-tabs[data-operator='CTB'] {
-    --operator-fill: #f8f0d9;
-    --operator-ink: #785a20;
-}
-.operator-tabs[data-operator='NLB'] {
-    --operator-fill: #e8effb;
-    --operator-ink: #43638f;
-}
 .operator-tabs .selection-lens {
     border-radius: 22px;
 }
@@ -608,20 +659,6 @@ body:has(.toast) .glass-preview .glass {
     box-shadow:
         var(--glass-rim),
         0 0 0 2px var(--accent);
-}
-@media (prefers-color-scheme: dark) {
-    .operator-tabs[data-operator='KMB'] {
-        --operator-fill: #523b31;
-        --operator-ink: #f0b99d;
-    }
-    .operator-tabs[data-operator='CTB'] {
-        --operator-fill: #494126;
-        --operator-ink: #edcf80;
-    }
-    .operator-tabs[data-operator='NLB'] {
-        --operator-fill: #2c3e56;
-        --operator-ink: #a9c8f1;
-    }
 }
 .glass-circle {
     width: 44px;

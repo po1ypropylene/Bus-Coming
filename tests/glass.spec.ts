@@ -16,7 +16,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
             Object.assign(probe.style, {
                 position: 'fixed',
                 inset: '0',
-                zIndex: '19',
+                zIndex: '1',
                 pointerEvents: 'none',
             })
             document.body.append(probe)
@@ -30,13 +30,13 @@ for (const colorScheme of ['light', 'dark'] as const) {
                 .removeAlpha()
                 .raw()
                 .toBuffer({ resolveWithObject: true })
-            const offset = (3 * info.width + Math.floor(info.width / 2)) * info.channels
+            const offset = (12 * info.width + Math.floor(info.width / 2)) * info.channels
             return [...data.subarray(offset, offset + 3)]
         }
         const red = await sample('rgb(150, 80, 80)')
         const blue = await sample('rgb(80, 80, 150)')
-        expect(red[0] - blue[0]).toBeGreaterThan(15)
-        expect(blue[2] - red[2]).toBeGreaterThan(15)
+        expect(red[0] - blue[0]).toBeGreaterThan(40)
+        expect(blue[2] - red[2]).toBeGreaterThan(40)
         await page.locator('#glass-probe').evaluate((element) => element.remove())
         for (const tab of ['Saved', 'Nearby', 'Routes', 'Settings']) {
             await navigateTab(page, tab)

@@ -27,8 +27,9 @@ Follow the existing four-space source convention observed in `src/types/transit.
 - Vite injects `__APP_VERSION__` into the UI and derives the Workbox cache identity from that same value. The Settings footer displays the full version. The existing waiting-service-worker flow determines when a downloaded build is ready to apply; keep activation user-controlled and preserve stored user data. Never couple app versions to backup or IndexedDB schema versions.
 - Rebuild after advancing the version. Run the required checks, including `npm run test:offline` and `node scripts/update-smoke.mjs` when changing version/update wiring. A version bump does not authorize deployment.
 
-## Git commits and pushes
+## Git pulls, commits and pushes
 
+- Before starting work on every task, inspect the current branch and working tree, then run `git pull --ff-only` from its configured upstream before making changes. Preserve unrelated local work; never reset, discard, automatically stash, or overwrite it to make a pull succeed. If the pull fails, the branch has diverged, or no upstream is configured, report the issue and resolve it safely before continuing with changes; never force-pull or rewrite shared history.
 - After completing the requested changes and relevant verification, automatically commit the task's changes and push them to GitHub, including instruction-only updates such as this one. Do not wait for a separate commit or push request unless the user explicitly asks otherwise.
 - Keep commit messages generic and as short as possible while naming the change, for example `Add sort ETAs`, `Tab bar UI improvements` or `Update agent instructions`. Detailed commit bodies are unnecessary.
 - Review the diff before committing, stage only changes belonging to the task, and preserve unrelated user work. Push the current task branch to its configured remote; set its upstream when needed. Never force-push or rewrite shared history without explicit authorization.

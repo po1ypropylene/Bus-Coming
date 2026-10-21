@@ -314,3 +314,17 @@ update smoke checks passed. All 26 focused navigation/UI checks passed. The full
 less-than-0.2px grid rounding. After adding a 1px tolerance to that shared-edge assertion, both cases
 passed on targeted rerun. The new navigation/keypad overlap assertions remain strict. Synthetic
 safe-area geometry and browser emulation do not establish physical iPhone standalone validation.
+
+## Initial operator selection — 21 October 2026
+
+Version 1.3.3 fixes the missing All selection capsule on first entry to route search. The shared lens
+now measures its direct DOM parent when the host ref has not yet attached during the initial child
+layout effect. Operator changes and return visits retain the same selection behavior. No stored data
+or operator API behavior changes.
+
+Verification: lint, formatting, production build, 119 unit tests and toolchain probes passed. The new
+first-entry/operator-switch/return-visit regression passed in Chromium and mobile WebKit. Production
+offline reload and explicit update/preference-preservation smoke checks passed in both engines.
+The full browser suite passed 105 cases with one expected WebKit Lighthouse skip when run with one
+worker. Initial overlapping runs collided on trace artifacts and exhausted test-machine memory;
+the complete sequential rerun passed. Physical iPhone rendering was not tested.

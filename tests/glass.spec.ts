@@ -110,3 +110,33 @@ test('the lens paints the selected label rather than the first label', async ({ 
     for (let i = 0; i < actual.length; i++) if (Math.abs(actual[i] - reference[i]) > 20) changed++
     expect(changed / actual.length).toBeLessThan(0.02)
 })
+
+test('operator lens marks All on first entry and follows subsequent selections', async ({
+    page,
+}) => {
+    await seed(page)
+    await navigateTab(page, 'Routes')
+    const track = page.locator('.operator-tabs')
+    const lens = track.locator('.selection-lens')
+    for (const label of ['All', 'KMB/LWB', 'Citybus', 'All']) {
+        const button = track.getByRole('button', { name: label, exact: true })
+        if (label !== 'All' || (await track.getAttribute('data-operator')) !== 'all')
+            await button.click()
+        await expect(button).toHaveAttribute('aria-pressed', 'true')
+        await expect(async () => {
+            const selected = await button.boundingBox()
+            const highlight = await lens.boundingBox()
+            expect(highlight!.width).toBeGreaterThan(44)
+            expect(Math.abs(highlight!.x - selected!.x)).toBeLessThan(1)
+            expect(Math.abs(highlight!.width - selected!.width)).toBeLessThan(1)
+        }).toPass()
+    }
+    await navigateTab(page, 'Saved')
+    await navigateTab(page, 'Routes')
+    await expect(lens).toHaveJSProperty(
+        'offsetWidth',
+        await track
+            .getByRole('button', { name: 'All', exact: true })
+            .evaluate((element) => element.offsetWidth),
+    )
+})

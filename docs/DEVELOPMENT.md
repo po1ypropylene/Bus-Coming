@@ -64,7 +64,8 @@ settings contract, lens implementation, verification and device checklist.
 
 The tab bar uses an empty `.glass` surface beneath the real buttons. Its moving lens refracts only an
 inert, inaccessible highlighted copy of the four labels with `filter: url(...)`; never use SVG URLs
-in `backdrop-filter`. The operator selector reuses `SelectionLens`. Do not nest backdrop filters or
+in `backdrop-filter`. The operator selector reuses `SelectionLens`. On initial mount the child layout effect may run before
+the host ref is attached; use the lens’s direct DOM parent as the initial measurement fallback. Do not nest backdrop filters or
 add filters to repeated rows. Reduced effects resolve through `data-glass-effective` and shared tokens.
 Glass preferences are optional version-one user-data fields: old backups remain valid, and explicit
 preferences round-trip through the existing persistence/export/import path. Do not clear stored data.

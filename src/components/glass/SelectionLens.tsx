@@ -25,9 +25,11 @@ export function SelectionLens({
     const budget = useRef(new FrameBudget())
 
     useLayoutEffect(() => {
-        const track = host.current,
-            element = lens.current,
+        const element = lens.current,
             labels = copy.current
+        // A child's layout effect runs before its parent's ref is attached on mount.
+        // The lens is a direct DOM child of the track in both shared controls.
+        const track = host.current ?? element?.parentElement
         const definitions = defs.current,
             targetGraphic = graphic.current
         if (!track || !element || !labels || !definitions || !targetGraphic) return

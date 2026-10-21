@@ -686,7 +686,8 @@ body:has(.toast) .glass-preview .glass {
     display: none;
 }
 .route-compact-header.is-visible {
-    display: flex;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
     align-items: center;
     gap: 12px;
     position: sticky;
@@ -697,7 +698,7 @@ body:has(.toast) .glass-preview .glass {
     border-radius: 26px;
 }
 .route-compact-header strong {
-    flex: 1;
+    text-align: center;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;

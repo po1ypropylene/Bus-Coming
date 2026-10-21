@@ -328,3 +328,16 @@ offline reload and explicit update/preference-preservation smoke checks passed i
 The full browser suite passed 105 cases with one expected WebKit Lighthouse skip when run with one
 worker. Initial overlapping runs collided on trace artifacts and exhausted test-machine memory;
 the complete sequential rerun passed. Physical iPhone rendering was not tested.
+
+## Compact route header alignment — 21 October 2026
+
+Version 1.3.4 places the scrolled route header's back button on the left. Equal-width side columns
+keep the route number and destination centred within the capsule. Long titles retain ellipsis, and
+the back control retains its translated accessible name and 44px touch target.
+
+Verification: formatting, lint, production build, 119 unit tests and toolchain probes passed. All six
+focused header checks passed in Chromium and mobile WebKit, including English/Traditional Chinese
+alignment at 320px, 440px and 1280px, overflow and back navigation. Production offline reload and
+explicit update/preference-preservation smoke checks passed in both engines. The full browser suite
+passed 107 cases with one expected WebKit Lighthouse skip using one worker. No live API audit or
+physical iPhone validation was performed.

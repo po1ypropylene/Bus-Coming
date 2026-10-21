@@ -17,8 +17,8 @@ export function RouteStickyHeader({ children, title }: { children: ReactNode; ti
             <div ref={marker} className="route-header-marker" aria-hidden="true" />
             <div className={`route-compact-header ${visible ? 'is-visible' : ''}`}>
                 <div className="route-compact-surface glass" aria-hidden="true" />
-                <strong>{title}</strong>
                 {children}
+                <strong>{title}</strong>
             </div>
         </>
     )

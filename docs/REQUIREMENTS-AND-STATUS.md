@@ -341,3 +341,19 @@ alignment at 320px, 440px and 1280px, overflow and back navigation. Production o
 explicit update/preference-preservation smoke checks passed in both engines. The full browser suite
 passed 107 cases with one expected WebKit Lighthouse skip using one worker. No live API audit or
 physical iPhone validation was performed.
+
+## Back button follows the compact header curve — 22 October 2026
+
+Version 1.3.5 removes the compact route header's left inset. Its circular back control now spans the
+52px bar height and meets the left edge, sharing the capsule's 26px curve. Equal side columns keep
+the route number and destination centred. The control retains its translated accessible name and
+keyboard behavior; long titles still truncate without horizontal overflow.
+
+Verification: production build, formatting, lint, 119 unit tests and toolchain probes passed.
+Production offline reload and explicit update/preference-preservation smoke checks passed in
+Chromium and WebKit. Browser geometry checks cover the matching left/top edges, circular control,
+full bar height, centred title, 44px minimum target and back navigation in both languages at
+320px, 440px and 1280px. The captured mobile WebKit result was visually reviewed. An initial run
+caught a misplaced test screenshot step; it was corrected before the final browser run. A subsequent
+runner received SIGTERM before completing; the final single-worker rerun passed 107 browser tests
+with one expected WebKit Lighthouse skip. No live API audit or physical iPhone validation was performed.

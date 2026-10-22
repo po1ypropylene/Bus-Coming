@@ -687,15 +687,19 @@ body:has(.toast) .glass-preview .glass {
 }
 .route-compact-header.is-visible {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
     align-items: center;
     gap: 12px;
     position: sticky;
     top: var(--header-height, 60px);
     z-index: 14;
     min-height: 52px;
-    padding: 4px 12px;
+    padding: 0;
     border-radius: 26px;
+}
+.route-compact-header > .icon-button {
+    width: 52px;
+    height: 52px;
 }
 .route-compact-header strong {
     text-align: center;

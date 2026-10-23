@@ -103,13 +103,10 @@ bookmarks and route/ETA behavior. Lighthouse scored 100 on all five screens in b
 appearance; all-theme axe and token-contrast checks passed in both engines. Desktop Chromium and mobile WebKit
 screenshots were reviewed in light/dark appearance. Additional checks exercised opaque higher-contrast chrome
 in both engines, and reduced transparency, forced-colour selection and keyboard navigation in Chromium.
-The published README includes four framed iPhone 17 previews at 393×852 logical pixels (3×), Traditional Chinese,
+The published README includes four framed iPhone 17 previews at 402×874 logical pixels (3×), Traditional Chinese,
 blue, and both appearances. Route 8P/118 records, stops and ETAs were captured from public operator APIs on
 17 October at approximately 17:53 HKT, with official TD joint membership for 118. The renderer replays the dated
-responses; the preview ETA values are not current service predictions. All four previews were regenerated from
-the current UI and visually reviewed on 23 October 2026. Refresh verification passed formatting, lint,
-119 unit tests, toolchain probes, production build and 107 browser tests, with one intentional
-Chromium-only Lighthouse skip in WebKit. Sources and reproduction commands are in
+responses; the preview ETA values are not current service predictions. Sources and reproduction commands are in
 [development](DEVELOPMENT.md#generated-output-and-regression-fixtures).
 Production offline smoke passed in Chromium and WebKit, including cached reload, bookmark/search preservation,
 the blue default for older preferences and the blue manifest. These checks and the README previews use browser

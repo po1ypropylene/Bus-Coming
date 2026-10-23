@@ -254,7 +254,7 @@ run them only when current operator evidence is needed. Keep durable findings an
 Replace obsolete status summaries instead of appending a history of every test run; Git retains earlier versions.
 
 The intentionally published README screenshots are an exception: keep `docs/images/iphone17-*.png` under version
-control. `scripts/render-readme.mjs` renders the real UI in isolated WebKit contexts at 393×852 CSS pixels and 3×
+control. `scripts/render-readme.mjs` renders the real UI in isolated WebKit contexts at 402×874 CSS pixels and 3×
 scale, Traditional Chinese and blue, in both appearances. It substitutes 62px/34px top/bottom safe-area values only
 in intercepted development stylesheets, then renders an illustrative iPhone shell/status bar around the capture.
 The app clock is fixed to the dated capture so the original ETA timestamps remain meaningful. It never edits

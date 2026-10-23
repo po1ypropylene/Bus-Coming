@@ -4,11 +4,11 @@
         <style>
             {{STATUS_CSS}}
             * { box-sizing: border-box; }
-            body { margin: 0; width: 511px; height: 968px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-            .phone { position: relative; width: 511px; height: 968px; }
-            .screen { position: absolute; left: 59px; top: 58px; width: 393px; height: 852px; border-radius: 42px; overflow: hidden; }
-            .capture { display: block; width: 393px; height: 852px; }
-            .bezel { position: absolute; inset: 0; width: 511px; height: 968px; pointer-events: none; }
+            body { margin: 0; width: {{DEVICE_WIDTH}}px; height: {{DEVICE_HEIGHT}}px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+            .phone { position: relative; width: {{DEVICE_WIDTH}}px; height: {{DEVICE_HEIGHT}}px; }
+            .screen { position: absolute; left: {{SCREEN_X}}px; top: {{SCREEN_Y}}px; width: {{SCREEN_WIDTH}}px; height: {{SCREEN_HEIGHT}}px; border-radius: {{SCREEN_RADIUS}}px; overflow: hidden; }
+            .capture { display: block; width: {{SCREEN_WIDTH}}px; height: {{SCREEN_HEIGHT}}px; }
+            .bezel { position: absolute; inset: 0; width: {{DEVICE_WIDTH}}px; height: {{DEVICE_HEIGHT}}px; pointer-events: none; }
             .status-bar { color: {{INK}}; }
             .status-indicator-svg { filter: {{FILTER}}; }
             .home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 140px; height: 5px; border-radius: 100px; background: {{INK}}; }

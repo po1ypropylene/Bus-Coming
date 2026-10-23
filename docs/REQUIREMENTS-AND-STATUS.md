@@ -105,7 +105,13 @@ screenshots were reviewed in light/dark appearance. Additional checks exercised 
 in both engines, and reduced transparency, forced-colour selection and keyboard navigation in Chromium.
 The published README includes four framed iPhone 17 previews refreshed on 23 October 2026 with installed
 Safari 27.0.1, including the device-frame rendering. App content renders at 393×852 CSS pixels with Safari’s native
-2× backing scale; framed PNGs are normalized to 1533×2904 pixels. All four Traditional Chinese, blue, light/dark
+2× backing scale; framed PNGs are normalized to 1533×2904 pixels. The 393×852 screen is placed at (59, 58)
+in the 511×968 phone canvas. The corrected capture suppresses 17px desktop scrollbar gutters that previously
+left white right/bottom bands and asserts usable client and raster dimensions. The exterior now restores the
+original bezel alpha rather than leaving Safari’s flattened white background. Geometry/transparency regressions
+cover incorrect dimensions/aspect ratios, white edge bands, transparent corners, white app content and feathered
+frame edges. All four corrected PNGs were reviewed on white, dark and checkerboard backgrounds; their exterior
+corners have alpha zero. Four geometry/transparency regressions passed alongside the checks below. All four Traditional Chinese, blue, light/dark
 saved-stop and route views were visually reviewed after catalogue loading, fonts, finite animations and a
 three-second settling delay. Safari reported full glass effects, translucent surfaces and active backdrop blur;
 these checks do not establish physical iPhone rendering. Formatting, lint, build, 119 unit tests and toolchain

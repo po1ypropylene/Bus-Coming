@@ -24,6 +24,7 @@ Follow the existing four-space source convention observed in `src/types/transit.
 - Generate published screenshots using the installed Safari app, including any browser-rendered device frame. Do not use Chrome/Chromium or treat Playwright WebKit as Safari.
 - If a prompt requests new screenshots and Safari is unavailable (for example, on Windows), refuse to generate screenshots and explain that Safari is required; do not substitute another browser.
 - Before each capture, wait for data loading, fonts and finite UI animations to finish, then allow at least three additional seconds for transparency and blur to settle. Visually review these effects and check for clipping before publishing; do not capture immediately after loading or navigation.
+- Use `scripts/templates/iphone/source.json` as the capture geometry source: app viewport 393×852 CSS pixels, phone canvas 511×968, screen offset (59, 58), published PNG 1533×2904 at 3×. Suppress desktop scrollbar gutters in capture-only styles and verify usable client dimensions match the viewport. Keep the area outside the phone transparent using the bezel alpha; never remove white app content by colour. Review on light, dark and checkerboard backgrounds and run `node --test scripts/readme-image.test.mjs`.
 - Keep capture data isolated from user browsing data, replay dated fixtures in both the page and workers, and document capture limitations. See the development guide for the Safari screenshot workflow.
 
 ## App versioning

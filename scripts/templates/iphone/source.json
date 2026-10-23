@@ -18,7 +18,8 @@
             "width": 393,
             "height": 852,
             "radius": 42
-        }
+        },
+        "outputScale": 3
     },
-    "adaptation": "Standalone screenshot composition; original bezel and status SVG unchanged. Status foreground follows appearance; clock retains the fixture capture time. App capture supplies safe-area padding."
+    "adaptation": "Standalone Safari screenshot composition; original bezel and status SVG unchanged. Geometry is in CSS pixels; published PNGs use outputScale. Capture-only styles suppress desktop scrollbar gutters. Original exterior bezel RGBA restores transparent surroundings after Safari viewport capture, preserving white screen content and feathered frame edges. Status foreground follows appearance; clock retains the fixture capture time. App capture supplies safe-area padding."
 }

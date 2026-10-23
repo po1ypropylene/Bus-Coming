@@ -2,6 +2,12 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { createServer } from 'node:http'
 import sharp from 'sharp'
+import {
+    assertCapture,
+    assertViewport,
+    geometry,
+    restoreFrameTransparency,
+} from './readme-image.mjs'
 
 const fixture = JSON.parse(await readFile('scripts/fixtures/readme-transit.json', 'utf8'))
 const variants = JSON.parse(await readFile('scripts/fixtures/readme-variants.json', 'utf8'))
@@ -136,7 +142,7 @@ const server = createServer(async (request, response) => {
         if (request.url === '/__capture') {
             response.setHeader('Content-Type', 'text/html')
             response.end(
-                '<style>body{margin:0}iframe{border:0;width:393px;height:852px}</style>' +
+                `<style>html,body{margin:0;overflow:hidden}iframe{display:block;border:0;width:${geometry.screen.width}px;height:${geometry.screen.height}px}</style>` +
                     '<iframe src="/"></iframe>',
             )
             return
@@ -176,7 +182,7 @@ const server = createServer(async (request, response) => {
                     .toString()
                     .replace(
                         '<head>',
-                        `<head><script>const installReplay = ${installReplay.toString()}; window.captureReady = (${bootstrap.toString()})(${setup})</script>`,
+                        `<head><script>const installReplay = ${installReplay.toString()}; window.captureReady = (${bootstrap.toString()})(${setup})</script><style>html{scrollbar-width:none}::-webkit-scrollbar{display:none}</style>`,
                     )
                     .replace('src="/src/main.tsx"', 'src="/__entry"'),
             )
@@ -289,6 +295,7 @@ try {
             const rendering = await execute(`return {
                 userAgent: navigator.userAgent,
                 viewport: [innerWidth, innerHeight],
+                client: [document.documentElement.clientWidth, document.documentElement.clientHeight],
                 backingScale: devicePixelRatio,
                 glassEffective: document.documentElement.dataset.glassEffective,
                 materials: [...document.querySelectorAll('.glass')].map(element => ({
@@ -296,6 +303,7 @@ try {
                     background: getComputedStyle(element).backgroundColor,
                 })),
             }`)
+            assertViewport(rendering)
             await writeFile(
                 `artifacts/readme/rendering-${screen}-${scheme}.json`,
                 JSON.stringify(rendering, null, 4) + '\n',
@@ -304,8 +312,16 @@ try {
             if (errors.length) throw new Error(`Uncaptured requests: ${errors.join(', ')}`)
             await command(`/session/${session}/frame`, { id: null })
             const capture = await screenshot('iframe', `artifacts/readme/${screen}-${scheme}.png`)
+            await assertCapture(capture, rendering.backingScale, scheme === 'dark')
             const ink = scheme === 'light' ? '#17243a' : '#f0edf2'
             const replacements = {
+                DEVICE_WIDTH: geometry.device.width,
+                DEVICE_HEIGHT: geometry.device.height,
+                SCREEN_X: geometry.screen.x,
+                SCREEN_Y: geometry.screen.y,
+                SCREEN_WIDTH: geometry.screen.width,
+                SCREEN_HEIGHT: geometry.screen.height,
+                SCREEN_RADIUS: geometry.screen.radius,
                 STATUS_CSS: statusCss,
                 INK: ink,
                 FILTER: scheme === 'dark' ? 'invert(1)' : 'none',
@@ -333,11 +349,10 @@ try {
                 '.phone',
                 `artifacts/readme/frame-${screen}-${scheme}.png`,
             )
-            // Safari controls the native backing scale; normalize only the published PNG dimensions.
-            await sharp(framed)
-                .resize(1533, 2904)
-                .png()
-                .toFile(`docs/images/iphone17-${screen}-${scheme}.png`)
+            await writeFile(
+                `docs/images/iphone17-${screen}-${scheme}.png`,
+                await restoreFrameTransparency(framed),
+            )
             await command(`/session/${session}/window`, undefined, 'DELETE')
             await command(`/session/${session}/window`, { handle: appHandle })
             await command(`/session/${session}/frame`, { id: iframe })

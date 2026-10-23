@@ -257,8 +257,30 @@ The intentionally published README screenshots are an exception: keep `docs/imag
 control. `scripts/render-readme.mjs` uses the installed macOS Safari app through its built-in WebDriver,
 including the device-frame rendering. Chrome/Chromium and Playwright WebKit are not substitutes. If Safari is
 unavailable (for example, on Windows), refuse requests to generate new screenshots and explain the requirement.
-The app renders at 393×852 CSS pixels, Traditional Chinese and blue, in both appearances. Safari supplies the
-native backing scale (2× in the 23 October capture); Sharp normalizes the framed output to 1533×2904 pixels.
+`scripts/templates/iphone/source.json` is the authoritative geometry source, shared by the capture wrapper,
+frame template and validation helpers. These dimensions fit the actual transparent opening in `bezel.png`:
+
+| Layer                 | CSS dimensions | Position in phone canvas | Published pixels at 3× |
+| --------------------- | -------------- | ------------------------ | ---------------------- |
+| App viewport / screen | 393×852        | x=59, y=58; radius=42    | 1179×2556              |
+| Phone canvas          | 511×968        | x=0, y=0                 | 1533×2904              |
+
+Do not use the older 402×874 dimensions or change the screen size to compensate for scrollbar gutters.
+Safari supplies the native backing scale: at 2×, the raw app capture must be exactly 786×1704 and the frame
+1022×1936 before normalization to the published 3× canvas. The renderer checks both app raster dimensions and
+that `innerWidth`/`innerHeight` **and** root `clientWidth`/`clientHeight` equal 393×852. Capture-only styles hide
+desktop scrollbars in the app and prevent overflow/baseline gaps in its wrapper; scrolling still works in the app.
+The earlier right/bottom white bands were desktop scrollbar gutters, not extra phone screen area.
+
+Safari viewport screenshots flatten transparent page backgrounds to white. `scripts/readme-image.mjs`
+restores exterior RGBA from the original bezel: it flood-fills from the raster boundary through non-opaque
+bezel pixels, preserving the enclosed screen and the original feathered outer edge. This makes the area outside
+the phone transparent without colour-keying white cards or text. Run `node --test scripts/readme-image.test.mjs`:
+regressions reject scrollbar-reduced viewports, incorrect raster dimensions and white dark-screen edge bands,
+and verify transparent corners, preserved white screen content and feathering. Review all four PNGs on light,
+dark and checkerboard backgrounds, including their right and bottom screen edges at full resolution.
+
+The app uses Traditional Chinese and blue in both appearances.
 The temporary loopback proxy substitutes 62px/34px top/bottom safe areas and the selected appearance in development
 stylesheets. An isolated automation session receives dated fixture data and a fixed app clock before startup;
 worker clocks and API requests use the same replay to prevent late live-data changes.

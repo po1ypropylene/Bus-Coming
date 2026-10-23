@@ -19,6 +19,13 @@ Follow the existing four-space source convention observed in `src/types/transit.
 - Add meaningful regression coverage for behavior and persistence changes. Run build, lint, formatting, unit and relevant browser checks. Run the production offline smoke check when changing persistence, startup, service workers or offline behavior.
 - Record actual verification and remaining limits; do not equate emulated WebKit with physical iPhone validation. Do not claim current live API checks based on older evidence.
 
+## Screenshots
+
+- Generate published screenshots using the installed Safari app, including any browser-rendered device frame. Do not use Chrome/Chromium or treat Playwright WebKit as Safari.
+- If a prompt requests new screenshots and Safari is unavailable (for example, on Windows), refuse to generate screenshots and explain that Safari is required; do not substitute another browser.
+- Before each capture, wait for data loading, fonts and finite UI animations to finish, then allow at least three additional seconds for transparency and blur to settle. Visually review these effects and check for clipping before publishing; do not capture immediately after loading or navigation.
+- Keep capture data isolated from user browsing data, replay dated fixtures in both the page and workers, and document capture limitations. See the development guide for the Safari screenshot workflow.
+
 ## App versioning
 
 - Automatically advance the app version once per completed change set that changes shipped app code, behavior, assets or dependencies. Do not bump for documentation/instruction-only edits, tests alone, formatting alone, or each intermediate edit/rebuild. An explicit user version instruction takes precedence.

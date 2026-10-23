@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 20 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 23 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -103,14 +103,24 @@ bookmarks and route/ETA behavior. Lighthouse scored 100 on all five screens in b
 appearance; all-theme axe and token-contrast checks passed in both engines. Desktop Chromium and mobile WebKit
 screenshots were reviewed in light/dark appearance. Additional checks exercised opaque higher-contrast chrome
 in both engines, and reduced transparency, forced-colour selection and keyboard navigation in Chromium.
-The published README includes four framed iPhone 17 previews at 402×874 logical pixels (3×), Traditional Chinese,
-blue, and both appearances. Route 8P/118 records, stops and ETAs were captured from public operator APIs on
+The published README includes four framed iPhone 17 previews refreshed on 23 October 2026 with installed
+Safari 27.0.1, including the device-frame rendering. App content renders at 393×852 CSS pixels with Safari’s native
+2× backing scale; framed PNGs are normalized to 1533×2904 pixels. All four Traditional Chinese, blue, light/dark
+saved-stop and route views were visually reviewed after catalogue loading, fonts, finite animations and a
+three-second settling delay. Safari reported full glass effects, translucent surfaces and active backdrop blur;
+these checks do not establish physical iPhone rendering. Formatting, lint, build, 119 unit tests and toolchain
+probes passed for this refresh. These documentation changes do not change the shipped app version.
+Route 8P/118 records, stops and ETAs were captured from public operator APIs on
 17 October at approximately 17:53 HKT, with official TD joint membership for 118. The renderer replays the dated
-responses; the preview ETA values are not current service predictions. Sources and reproduction commands are in
+responses; the preview ETA values are not current service predictions. A separate public TD capture on
+23 October retained four normalized 8P timetable patterns and their referenced stops/calendars for the loaded
+variant picker. Source files reported Last-Modified 14 October. Both page and worker requests use replayed
+fixtures during rendering, preventing later live downloads from changing the images. Sources and reproduction
+commands are in
 [development](DEVELOPMENT.md#generated-output-and-regression-fixtures).
 Production offline smoke passed in Chromium and WebKit, including cached reload, bookmark/search preservation,
-the blue default for older preferences and the blue manifest. These checks and the README previews use browser
-emulation, not physical iPhone, deployment, GPU-performance or VoiceOver validation.
+the blue default for older preferences and the blue manifest. The README previews use desktop Safari at mobile
+dimensions; the other checks use browser emulation. Neither establishes physical iPhone, deployment, GPU-performance or VoiceOver validation.
 
 WebStorm formatting setup was also verified on 17 October 2026: Reformat Code followed by Save left the keypad TSX
 and application CSS byte-for-byte unchanged; Reindent followed by Save also preserved the TSX file. Project Prettier

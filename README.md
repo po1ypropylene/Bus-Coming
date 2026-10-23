@@ -18,9 +18,9 @@ Keep favourite stops together, check upcoming arrivals and browse route stops in
 | :--------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: |
 | <img src="docs/images/iphone17-saved-light.png" width="260" alt="Saved stops with arrival countdowns in light appearance" /> | <img src="docs/images/iphone17-saved-dark.png" width="260" alt="Saved stops with arrival countdowns in dark appearance" /> |
 
-|                                                Route stops and arrivals                                                 |                                                   Joint operator routes                                                    |
-| :---------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: |
-| <img src="docs/images/iphone17-route-light.png" width="260" alt="Route stop list with arrivals for an expanded stop" /> | <img src="docs/images/iphone17-route-dark.png" width="260" alt="Combined stop list for a route shared by two operators" /> |
+|                                                      Route variants and stops                                                      |                                                   Joint operator routes                                                    |
+| :--------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: |
+| <img src="docs/images/iphone17-route-light.png" width="260" alt="Citybus route variants with the stop list in light appearance" /> | <img src="docs/images/iphone17-route-dark.png" width="260" alt="Combined stop list for a route shared by two operators" /> |
 
 Screenshots show example data for demonstration.
 

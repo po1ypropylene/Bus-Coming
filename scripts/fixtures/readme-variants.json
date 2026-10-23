@@ -1,0 +1,2540 @@
+{
+    "capturedAt": "2026-10-23T11:37:27.763Z",
+    "sources": [
+        {
+            "url": "https://static.data.gov.hk/td/pt-headway-en/gtfs.zip",
+            "capturedAt": "2026-10-23T11:37:16.930Z",
+            "lastModified": "Wed, 14 Oct 2026 13:03:19 GMT"
+        },
+        {
+            "url": "https://static.data.gov.hk/td/pt-headway-tc/routes.txt",
+            "capturedAt": "2026-10-23T11:37:17.233Z",
+            "lastModified": "Wed, 14 Oct 2026 13:03:28 GMT"
+        },
+        {
+            "url": "https://static.data.gov.hk/td/pt-headway-tc/stops.txt",
+            "capturedAt": "2026-10-23T11:37:17.329Z",
+            "lastModified": "Wed, 14 Oct 2026 13:03:28 GMT"
+        }
+    ],
+    "catalog": {
+        "schema": 1,
+        "updatedAt": 1792755447714,
+        "variants": [
+            {
+                "id": "TD:1634:419735117",
+                "number": "8P",
+                "name": {
+                    "en": "SIU SAI WAN (ISLAND RESORT) - EXHIBITION CENTRE STATION",
+                    "tc": "小西灣(藍灣半島) - 會展站"
+                },
+                "stops": [
+                    "1546",
+                    "46",
+                    "159",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "48",
+                    "661",
+                    "64",
+                    "113",
+                    "116",
+                    "118",
+                    "10000110"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 29880,
+                        "end": 32580,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 32580,
+                        "end": 35520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 35520,
+                        "end": 36000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36000,
+                        "end": 36420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36420,
+                        "end": 36900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36900,
+                        "end": 37320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 37320,
+                        "end": 37800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 37800,
+                        "end": 38220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 38220,
+                        "end": 38700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 38700,
+                        "end": 39120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39120,
+                        "end": 39600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39600,
+                        "end": 40020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40020,
+                        "end": 40500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40500,
+                        "end": 40920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 40920,
+                        "end": 41400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 41400,
+                        "end": 41820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 41820,
+                        "end": 42300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 42300,
+                        "end": 42720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 42720,
+                        "end": 43200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43200,
+                        "end": 43620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43620,
+                        "end": 44100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 44100,
+                        "end": 44520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 44520,
+                        "end": 45000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 45000,
+                        "end": 45420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 45420,
+                        "end": 45900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 45900,
+                        "end": 46320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 46320,
+                        "end": 46800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 46800,
+                        "end": 47220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 47220,
+                        "end": 47700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 47700,
+                        "end": 48120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 48120,
+                        "end": 48600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 48600,
+                        "end": 49020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 49020,
+                        "end": 49500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 49500,
+                        "end": 49920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 49920,
+                        "end": 50400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 50400,
+                        "end": 50820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 50820,
+                        "end": 51300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 51300,
+                        "end": 51720,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 51720,
+                        "end": 52200,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 52200,
+                        "end": 52620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 52620,
+                        "end": 53100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 53100,
+                        "end": 53520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 53520,
+                        "end": 54480,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54480,
+                        "end": 55020,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55020,
+                        "end": 55500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55500,
+                        "end": 56040,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56040,
+                        "end": 56520,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56520,
+                        "end": 57600,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 57600,
+                        "end": 58020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58020,
+                        "end": 58500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58500,
+                        "end": 58920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 58920,
+                        "end": 59400,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59400,
+                        "end": 59820,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59820,
+                        "end": 60300,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 60300,
+                        "end": 61200,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 61200,
+                        "end": 62040,
+                        "headway": 840
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62040,
+                        "end": 63000,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63000,
+                        "end": 63720,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63720,
+                        "end": 64080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64080,
+                        "end": 64800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64800,
+                        "end": 66600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66600,
+                        "end": 67800,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 67800,
+                        "end": 68400,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 68400,
+                        "end": 69600,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 69600,
+                        "end": 70920,
+                        "headway": 1320
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 70920,
+                        "end": 73800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 73800,
+                        "end": 75600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 75600,
+                        "end": 86400,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 86400,
+                        "end": 87300,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 29880,
+                        "end": 34200,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 34200,
+                        "end": 34620,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 34620,
+                        "end": 35100,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 35100,
+                        "end": 35520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 35520,
+                        "end": 36000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 36000,
+                        "end": 36840,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 36840,
+                        "end": 37200,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37200,
+                        "end": 37500,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37500,
+                        "end": 37860,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 37860,
+                        "end": 38160,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38160,
+                        "end": 38520,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38520,
+                        "end": 38820,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38820,
+                        "end": 39180,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39180,
+                        "end": 39480,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39480,
+                        "end": 39840,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 39840,
+                        "end": 40140,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40140,
+                        "end": 40500,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40500,
+                        "end": 40800,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 40800,
+                        "end": 41160,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 41160,
+                        "end": 41460,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 41460,
+                        "end": 41820,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 41820,
+                        "end": 42120,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42120,
+                        "end": 42480,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42480,
+                        "end": 42780,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 42780,
+                        "end": 43140,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43140,
+                        "end": 43440,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43440,
+                        "end": 47400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47400,
+                        "end": 48120,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48120,
+                        "end": 48840,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 48840,
+                        "end": 49620,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49620,
+                        "end": 49980,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49980,
+                        "end": 50400,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50400,
+                        "end": 50760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 50760,
+                        "end": 51540,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51540,
+                        "end": 51960,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51960,
+                        "end": 52320,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 52320,
+                        "end": 52740,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 52740,
+                        "end": 53520,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 53520,
+                        "end": 53880,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 53880,
+                        "end": 54300,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54300,
+                        "end": 54660,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54660,
+                        "end": 55440,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55440,
+                        "end": 55860,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55860,
+                        "end": 56220,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56220,
+                        "end": 57000,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 57000,
+                        "end": 57420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 57420,
+                        "end": 57780,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 57780,
+                        "end": 58200,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 58200,
+                        "end": 58980,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 58980,
+                        "end": 59340,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 59340,
+                        "end": 59760,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 59760,
+                        "end": 60480,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 60480,
+                        "end": 60840,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 60840,
+                        "end": 61560,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61560,
+                        "end": 61920,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61920,
+                        "end": 62640,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 62640,
+                        "end": 63000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 63000,
+                        "end": 63720,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 63720,
+                        "end": 64080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 64080,
+                        "end": 64800,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 64800,
+                        "end": 65160,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 65160,
+                        "end": 65940,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 65940,
+                        "end": 66360,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 66360,
+                        "end": 67320,
+                        "headway": 960
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 67320,
+                        "end": 67800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 67800,
+                        "end": 69000,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 69000,
+                        "end": 72000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 72000,
+                        "end": 79920,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 79920,
+                        "end": 80700,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 80700,
+                        "end": 86100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 86100,
+                        "end": 87300,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 19800,
+                        "end": 21600,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21600,
+                        "end": 25200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 25200,
+                        "end": 28440,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 28440,
+                        "end": 28800,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 28800,
+                        "end": 29100,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29100,
+                        "end": 29460,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29460,
+                        "end": 29760,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 29760,
+                        "end": 30120,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 30120,
+                        "end": 30420,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 30420,
+                        "end": 30780,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 30780,
+                        "end": 31080,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 31080,
+                        "end": 31440,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 31440,
+                        "end": 31740,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 31740,
+                        "end": 32100,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 32100,
+                        "end": 32400,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 32400,
+                        "end": 36000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 36000,
+                        "end": 54000,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 54000,
+                        "end": 63000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63000,
+                        "end": 63420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63420,
+                        "end": 63900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 63900,
+                        "end": 64320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 64320,
+                        "end": 64800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 64800,
+                        "end": 65220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65220,
+                        "end": 65700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65700,
+                        "end": 66120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66120,
+                        "end": 66600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66600,
+                        "end": 67020,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67020,
+                        "end": 67500,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67500,
+                        "end": 67920,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67920,
+                        "end": 69120,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69120,
+                        "end": 72000,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72000,
+                        "end": 87300,
+                        "headway": 900
+                    }
+                ]
+            },
+            {
+                "id": "TD:1634:3196544886",
+                "number": "8P",
+                "name": {
+                    "en": "SIU SAI WAN (ISLAND RESORT) - EXHIBITION CENTRE STATION",
+                    "tc": "小西灣(藍灣半島) - 會展站"
+                },
+                "stops": [
+                    "10000110",
+                    "133",
+                    "3131",
+                    "136",
+                    "137",
+                    "297",
+                    "1563",
+                    "13038",
+                    "43",
+                    "1551",
+                    "12983",
+                    "1552",
+                    "915",
+                    "1546"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 21900,
+                        "end": 25500,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25500,
+                        "end": 31800,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 31800,
+                        "end": 36000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 36000,
+                        "end": 39600,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 39600,
+                        "end": 43200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 43200,
+                        "end": 48600,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 48600,
+                        "end": 50400,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 50400,
+                        "end": 53100,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 53100,
+                        "end": 53520,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 53520,
+                        "end": 54000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54000,
+                        "end": 54420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54420,
+                        "end": 54900,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 54900,
+                        "end": 55320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55320,
+                        "end": 55800,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 55800,
+                        "end": 56220,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56220,
+                        "end": 56700,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 56700,
+                        "end": 57120,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 57120,
+                        "end": 57600,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 57600,
+                        "end": 59400,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 59400,
+                        "end": 62640,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62640,
+                        "end": 62940,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62940,
+                        "end": 63300,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63300,
+                        "end": 63840,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63840,
+                        "end": 72000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72000,
+                        "end": 72420,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72420,
+                        "end": 72780,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 72780,
+                        "end": 73200,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 73200,
+                        "end": 75000,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 75000,
+                        "end": 79500,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79500,
+                        "end": 79860,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 79860,
+                        "end": 80160,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80160,
+                        "end": 80520,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80520,
+                        "end": 80820,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 80820,
+                        "end": 81180,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81180,
+                        "end": 81480,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81480,
+                        "end": 81840,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 81840,
+                        "end": 82140,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82140,
+                        "end": 82860,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 82860,
+                        "end": 83280,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 83280,
+                        "end": 87120,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 87120,
+                        "end": 87900,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 87900,
+                        "end": 89700,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21900,
+                        "end": 32700,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 32700,
+                        "end": 38100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38100,
+                        "end": 38880,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 38880,
+                        "end": 43200,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 43200,
+                        "end": 49140,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49140,
+                        "end": 54420,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54420,
+                        "end": 54960,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 54960,
+                        "end": 55440,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55440,
+                        "end": 56520,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56520,
+                        "end": 60840,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 60840,
+                        "end": 62940,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 62940,
+                        "end": 64380,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 64380,
+                        "end": 68580,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68580,
+                        "end": 71100,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 71100,
+                        "end": 82800,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 82800,
+                        "end": 86640,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 86640,
+                        "end": 87840,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 87840,
+                        "end": 88500,
+                        "headway": 660
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 88500,
+                        "end": 89700,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 21900,
+                        "end": 36300,
+                        "headway": 1200
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 36300,
+                        "end": 38100,
+                        "headway": 900
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 38100,
+                        "end": 38880,
+                        "headway": 780
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 38880,
+                        "end": 39600,
+                        "headway": 720
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 39600,
+                        "end": 45000,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 45000,
+                        "end": 46080,
+                        "headway": 540
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 46080,
+                        "end": 47040,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 47040,
+                        "end": 48300,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 48300,
+                        "end": 50100,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50100,
+                        "end": 50400,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50400,
+                        "end": 50760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 50760,
+                        "end": 51060,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51060,
+                        "end": 51420,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51420,
+                        "end": 51720,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 51720,
+                        "end": 52080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52080,
+                        "end": 52380,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52380,
+                        "end": 52740,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 52740,
+                        "end": 53040,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53040,
+                        "end": 53400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 53400,
+                        "end": 65100,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65100,
+                        "end": 65460,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65460,
+                        "end": 65760,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 65760,
+                        "end": 66120,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66120,
+                        "end": 66420,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66420,
+                        "end": 66780,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 66780,
+                        "end": 67080,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67080,
+                        "end": 67440,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67440,
+                        "end": 67740,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 67740,
+                        "end": 68100,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68100,
+                        "end": 68400,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68400,
+                        "end": 68760,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 68760,
+                        "end": 69060,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69060,
+                        "end": 69420,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69420,
+                        "end": 69720,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 69720,
+                        "end": 70080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70080,
+                        "end": 70380,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70380,
+                        "end": 70740,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 70740,
+                        "end": 71040,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71040,
+                        "end": 71400,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71400,
+                        "end": 71700,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 71700,
+                        "end": 72060,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72060,
+                        "end": 72360,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72360,
+                        "end": 72720,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 72720,
+                        "end": 73020,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 73020,
+                        "end": 73380,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 73380,
+                        "end": 73680,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 73680,
+                        "end": 74040,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 74040,
+                        "end": 74340,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 74340,
+                        "end": 74700,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 74700,
+                        "end": 75600,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 75600,
+                        "end": 75960,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 75960,
+                        "end": 76260,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76260,
+                        "end": 76620,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76620,
+                        "end": 76920,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 76920,
+                        "end": 77280,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77280,
+                        "end": 77580,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77580,
+                        "end": 77940,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 77940,
+                        "end": 78240,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 78240,
+                        "end": 78600,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 78600,
+                        "end": 79200,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 79200,
+                        "end": 82080,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 82080,
+                        "end": 84000,
+                        "headway": 480
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 84000,
+                        "end": 85200,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "448",
+                        "start": 85200,
+                        "end": 89700,
+                        "headway": 900
+                    }
+                ]
+            },
+            {
+                "id": "TD:1000349:2453939230",
+                "number": "8P",
+                "name": {
+                    "en": "SIU SAI WAN (ISLAND RESORT) - EXHIBITION CENTRE STATION (OMIT FULLVIEW GARDEN)",
+                    "tc": "小西灣(藍灣半島) - 會展站(不停富景花園)"
+                },
+                "stops": [
+                    "1546",
+                    "159",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "48",
+                    "661",
+                    "64",
+                    "113",
+                    "116",
+                    "118",
+                    "10000110"
+                ],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 19800,
+                        "end": 21600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 21600,
+                        "end": 21900,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 21900,
+                        "end": 22260,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 22260,
+                        "end": 22560,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 22560,
+                        "end": 22920,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 22920,
+                        "end": 23220,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 23220,
+                        "end": 23580,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 23580,
+                        "end": 23880,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 23880,
+                        "end": 24240,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 24240,
+                        "end": 24540,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 24540,
+                        "end": 24900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 24900,
+                        "end": 25200,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25200,
+                        "end": 25560,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25560,
+                        "end": 25980,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 25980,
+                        "end": 26340,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 26340,
+                        "end": 26760,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 26760,
+                        "end": 27120,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27120,
+                        "end": 27540,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27540,
+                        "end": 27900,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 27900,
+                        "end": 28320,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28320,
+                        "end": 28680,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 28680,
+                        "end": 29580,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 19800,
+                        "end": 21600,
+                        "headway": 600
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 21600,
+                        "end": 25800,
+                        "headway": 420
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 25800,
+                        "end": 26880,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 26880,
+                        "end": 27180,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 27180,
+                        "end": 27540,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 27540,
+                        "end": 27840,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 27840,
+                        "end": 28200,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 28200,
+                        "end": 28500,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 28500,
+                        "end": 28860,
+                        "headway": 360
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 28860,
+                        "end": 29160,
+                        "headway": 300
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 29160,
+                        "end": 29520,
+                        "headway": 360
+                    }
+                ]
+            },
+            {
+                "id": "TD:1000350:72460413",
+                "number": "8P",
+                "name": {
+                    "en": "SIU SAI WAN (ISLAND RESORT) - CAUSEWAY BAY (HYSAN PLACE)",
+                    "tc": "小西灣(藍灣半島) - 銅鑼灣 (希慎廣場)"
+                },
+                "stops": ["1546", "46", "159", "2", "3", "4", "5", "48", "661", "64", "113"],
+                "departures": [
+                    {
+                        "calendar": "287",
+                        "start": 60720,
+                        "end": 60720,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 61620,
+                        "end": 61620,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 62520,
+                        "end": 62520,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 63360,
+                        "end": 63360,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 64440,
+                        "end": 64440,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 65220,
+                        "end": 65220,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 66120,
+                        "end": 66120,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 67200,
+                        "end": 67200,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 69000,
+                        "end": 69000,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "287",
+                        "start": 70200,
+                        "end": 70200,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 47760,
+                        "end": 47760,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 49200,
+                        "end": 49200,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 51180,
+                        "end": 51180,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 53100,
+                        "end": 53100,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 55080,
+                        "end": 55080,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 56640,
+                        "end": 56640,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 58560,
+                        "end": 58560,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 60120,
+                        "end": 60120,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 61200,
+                        "end": 61200,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 62280,
+                        "end": 62280,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 63360,
+                        "end": 63360,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 64440,
+                        "end": 64440,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 65580,
+                        "end": 65580,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 66840,
+                        "end": 66840,
+                        "headway": 0
+                    },
+                    {
+                        "calendar": "288",
+                        "start": 68400,
+                        "end": 68400,
+                        "headway": 0
+                    }
+                ]
+            }
+        ],
+        "stops": {
+            "2": {
+                "id": "2",
+                "name": {
+                    "en": "HIU TSUI STREET, SIU SAI WAN ROAD",
+                    "tc": "曉翠街, 小西灣道"
+                },
+                "lat": 22.26436,
+                "lng": 114.24821
+            },
+            "3": {
+                "id": "3",
+                "name": {
+                    "en": "FU SHING COURT, CHAI WAN ROAD",
+                    "tc": "富城閣, 柴灣道"
+                },
+                "lat": 22.26578,
+                "lng": 114.24542
+            },
+            "4": {
+                "id": "4",
+                "name": {
+                    "en": "LOK HIN TERRACE, CHAI WAN ROAD",
+                    "tc": "樂軒臺, 柴灣道"
+                },
+                "lat": 22.26492,
+                "lng": 114.24167
+            },
+            "5": {
+                "id": "5",
+                "name": {
+                    "en": "WAN TSUI SHOPPING CENTRE, CHAI WAN ROAD",
+                    "tc": "環翠商場, 柴灣道"
+                },
+                "lat": 22.26312,
+                "lng": 114.23875
+            },
+            "43": {
+                "id": "43",
+                "name": {
+                    "en": "YUE WAN ESTATE, CHAI WAN ROAD",
+                    "tc": "漁灣邨, 柴灣道"
+                },
+                "lat": 22.26512,
+                "lng": 114.24158
+            },
+            "46": {
+                "id": "46",
+                "name": {
+                    "en": "FULLVIEW GARDEN, SIU SAI WAN ROAD",
+                    "tc": "富景花園, 小西灣道"
+                },
+                "lat": 22.26268,
+                "lng": 114.25131
+            },
+            "48": {
+                "id": "48",
+                "name": {
+                    "en": "CHONG GENE HANG COLLEGE, ISLAND EASTERN CORRIDOR",
+                    "tc": "張振興伉儷書院, 東區走廊"
+                },
+                "lat": 22.26803,
+                "lng": 114.2376
+            },
+            "64": {
+                "id": "64",
+                "name": {
+                    "en": "HONG KONG CENTRAL LIBRARY, CAUSEWAY ROAD",
+                    "tc": "香港中央圖書館, 高士威道"
+                },
+                "lat": 22.28015,
+                "lng": 114.18901
+            },
+            "113": {
+                "id": "113",
+                "name": {
+                    "en": "CAUSEWAY BAY - HYSAN PLACE, HENNESSY ROAD",
+                    "tc": "銅鑼灣 - 希慎廣場, 軒尼詩道"
+                },
+                "lat": 22.27999,
+                "lng": 114.18353
+            },
+            "116": {
+                "id": "116",
+                "name": {
+                    "en": "CNT TOWER, HENNESSY ROAD",
+                    "tc": "北海中心, 軒尼詩道"
+                },
+                "lat": 22.27834,
+                "lng": 114.17857
+            },
+            "118": {
+                "id": "118",
+                "name": {
+                    "en": "HENNESSY ROAD GOVERNMENT PRIMARY SCHOOL, HENNESSY ROAD",
+                    "tc": "軒尼詩道官立小學, 軒尼詩道"
+                },
+                "lat": 22.27779,
+                "lng": 114.17599
+            },
+            "133": {
+                "id": "133",
+                "name": {
+                    "en": "STEWART ROAD, HENNESSY ROAD",
+                    "tc": "史釗域道, 軒尼詩道"
+                },
+                "lat": 22.27803,
+                "lng": 114.17623
+            },
+            "136": {
+                "id": "136",
+                "name": {
+                    "en": "CAUSEWAY BAY - SOGO DEPARTMENT STORE, HENNESSY ROAD",
+                    "tc": "銅鑼灣 - 崇光百貨, 軒尼詩道"
+                },
+                "lat": 22.28024,
+                "lng": 114.18444
+            },
+            "137": {
+                "id": "137",
+                "name": {
+                    "en": "VICTORIA PARK, CAUSEWAY ROAD",
+                    "tc": "維多利亞公園, 高士威道"
+                },
+                "lat": 22.28088,
+                "lng": 114.18963
+            },
+            "159": {
+                "id": "159",
+                "name": {
+                    "en": "SIU SAI WAN ESTATE",
+                    "tc": "小西灣邨"
+                },
+                "lat": 22.26304,
+                "lng": 114.24905
+            },
+            "297": {
+                "id": "297",
+                "name": {
+                    "en": "HING FAT STREET",
+                    "tc": "興發街"
+                },
+                "lat": 22.28343,
+                "lng": 114.1911
+            },
+            "661": {
+                "id": "661",
+                "name": {
+                    "en": "WING HING STREET",
+                    "tc": "永興街"
+                },
+                "lat": 22.28535,
+                "lng": 114.19217
+            },
+            "915": {
+                "id": "915",
+                "name": {
+                    "en": "FULLVIEW GARDEN, SIU SAI WAN ROAD",
+                    "tc": "富景花園, 小西灣道"
+                },
+                "lat": 22.26357,
+                "lng": 114.25185
+            },
+            "1546": {
+                "id": "1546",
+                "name": {
+                    "en": "SIU SAI WAN (ISLAND RESORT)",
+                    "tc": "小西灣 (藍灣半島)"
+                },
+                "lat": 22.2661,
+                "lng": 114.25096
+            },
+            "1551": {
+                "id": "1551",
+                "name": {
+                    "en": "SHEUNG ON STREET, CHAI WAN ROAD",
+                    "tc": "常安街, 柴灣道"
+                },
+                "lat": 22.26595,
+                "lng": 114.24513
+            },
+            "1552": {
+                "id": "1552",
+                "name": {
+                    "en": "FU YEE ROAD, SIU SAI WAN ROAD",
+                    "tc": "富怡道, 小西灣道"
+                },
+                "lat": 22.26361,
+                "lng": 114.24905
+            },
+            "1563": {
+                "id": "1563",
+                "name": {
+                    "en": "CHONG GENE HANG COLLEGE, ISLAND EASTERN CORRIDOR",
+                    "tc": "張振興伉儷書院, 東區走廊"
+                },
+                "lat": 22.26783,
+                "lng": 114.23773
+            },
+            "3131": {
+                "id": "3131",
+                "name": {
+                    "en": "TONNOCHY ROAD, HENNESSY ROAD",
+                    "tc": "杜老誌道, 軒尼詩道"
+                },
+                "lat": 22.27856,
+                "lng": 114.17854
+            },
+            "12983": {
+                "id": "12983",
+                "name": {
+                    "en": "HARMONY GARDEN, SIU SAI WAN ROAD",
+                    "tc": "富欣花園, 小西灣道"
+                },
+                "lat": 22.26462,
+                "lng": 114.24824
+            },
+            "13038": {
+                "id": "13038",
+                "name": {
+                    "en": "WALTON ESTATE, CHAI WAN ROAD",
+                    "tc": "宏德居, 柴灣道"
+                },
+                "lat": 22.26397,
+                "lng": 114.24003
+            },
+            "10000110": {
+                "id": "10000110",
+                "name": {
+                    "en": "EXHIBITION CENTRE STATION",
+                    "tc": "會展站"
+                },
+                "lat": 22.28161,
+                "lng": 114.17548
+            }
+        },
+        "calendars": {
+            "287": {
+                "id": "287",
+                "days": [1, 2, 3, 4, 5],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": false,
+                    "20260217": false,
+                    "20260218": false,
+                    "20260219": false,
+                    "20260403": false,
+                    "20260406": false,
+                    "20260407": false,
+                    "20260501": false,
+                    "20260525": false,
+                    "20260619": false,
+                    "20260701": false,
+                    "20261001": false,
+                    "20261019": false,
+                    "20261225": false
+                }
+            },
+            "288": {
+                "id": "288",
+                "days": [6],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260404": false,
+                    "20260926": false,
+                    "20261226": false
+                }
+            },
+            "448": {
+                "id": "448",
+                "days": [0],
+                "start": "20200101",
+                "end": "20991231",
+                "exceptions": {
+                    "20260101": true,
+                    "20260217": true,
+                    "20260218": true,
+                    "20260219": true,
+                    "20260403": true,
+                    "20260404": true,
+                    "20260406": true,
+                    "20260407": true,
+                    "20260501": true,
+                    "20260525": true,
+                    "20260619": true,
+                    "20260701": true,
+                    "20260926": true,
+                    "20261001": true,
+                    "20261019": true,
+                    "20261225": true,
+                    "20261226": true
+                }
+            }
+        }
+    }
+}

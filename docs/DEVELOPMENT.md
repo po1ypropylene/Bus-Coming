@@ -1,6 +1,6 @@
 # Development guide
 
-Last updated: 20 October 2026.
+Last updated: 23 October 2026.
 
 ## Starting points
 
@@ -254,19 +254,40 @@ run them only when current operator evidence is needed. Keep durable findings an
 Replace obsolete status summaries instead of appending a history of every test run; Git retains earlier versions.
 
 The intentionally published README screenshots are an exception: keep `docs/images/iphone17-*.png` under version
-control. `scripts/render-readme.mjs` renders the real UI in isolated WebKit contexts at 402×874 CSS pixels and 3×
-scale, Traditional Chinese and blue, in both appearances. It substitutes 62px/34px top/bottom safe-area values only
-in intercepted development stylesheets, then renders an illustrative iPhone shell/status bar around the capture.
-The app clock is fixed to the dated capture so the original ETA timestamps remain meaningful. It never edits
-application content or a user's browser data. Raw screen captures stay under ignored `artifacts/readme/`.
+control. `scripts/render-readme.mjs` uses the installed macOS Safari app through its built-in WebDriver,
+including the device-frame rendering. Chrome/Chromium and Playwright WebKit are not substitutes. If Safari is
+unavailable (for example, on Windows), refuse requests to generate new screenshots and explain the requirement.
+The app renders at 393×852 CSS pixels, Traditional Chinese and blue, in both appearances. Safari supplies the
+native backing scale (2× in the 23 October capture); Sharp normalizes the framed output to 1533×2904 pixels.
+The temporary loopback proxy substitutes 62px/34px top/bottom safe areas and the selected appearance in development
+stylesheets. An isolated automation session receives dated fixture data and a fixed app clock before startup;
+worker clocks and API requests use the same replay to prevent late live-data changes.
+No user browsing data is changed. A second Safari tab composes the illustrative phone shell and status bar.
+Before every capture, the renderer waits for catalogue loading, fonts and finite animations, then allows
+three additional seconds
+for transparency and blur to settle. Visually review these effects and check for clipping before publishing.
+Captures crop Safari’s composed viewport to preserve its rendered materials. Computed glass styles and raw
+screen captures stay under ignored `artifacts/readme/`. This is desktop Safari at mobile dimensions, not
+physical iPhone validation or an iOS browser capture.
 
-To regenerate, run `npm run dev -- --host 127.0.0.1 --port 4174` and, separately,
-`node scripts/render-readme.mjs` (`README_BASE_URL` can override the origin). It replays
-`scripts/fixtures/readme-transit.json`, which retains normalized 8P/118 journeys, all their stops, and unmodified
-public operator/TD responses with source URLs and capture times. To deliberately refresh the public examples, run
-`node scripts/capture-readme-data.mjs` first, then regenerate and visually review all four images. The renderer fails
-on uncaptured requests instead of inventing predictions. Keep README captions focused on app features. These are
-documentation captures, not live-service promises or physical iPhone verification.
+To regenerate, enable **Safari → Settings → Developer → Allow remote automation** (labelled **Allow remote automation
+and external agents** in Safari 27), then run `/usr/bin/safaridriver -p 4444` and
+`npm run dev -- --host 127.0.0.1 --port 4174` in separate terminals. Run `node scripts/render-readme.mjs`;
+`README_BASE_URL` and `SAFARI_DRIVER_URL` override those local origins. Safari may need restarting after automation
+is enabled. Obtain permission before enabling automation and restore its previous setting afterward. The script
+fails if Safari cannot create a session; it never falls back to another browser.
+
+It replays `scripts/fixtures/readme-transit.json`, which retains normalized 8P/118 journeys, all their stops, and
+unmodified public operator/TD responses with source URLs and capture times. To deliberately refresh the public
+examples, run `node scripts/capture-readme-data.mjs` first, then regenerate and visually review all four images.
+`scripts/fixtures/readme-variants.json` retains the normalized 8P subset from the public TD timetable,
+including source URLs, capture times and Last-Modified headers. Refresh it deliberately with
+`node scripts/capture-readme-variants.mjs`. Its four patterns, referenced stops and calendars were captured on
+23 October using the app’s parser and catalogue validator. Only cache freshness metadata is aligned to the replay
+clock; the timetable fields and source timestamps remain unchanged. This allows the fully loaded variant picker
+to render reproducibly alongside the older operator examples.
+The renderer fails on uncaptured API requests instead of inventing predictions. Keep README captions focused
+on app features. These are documentation captures, not live-service promises or physical iPhone verification.
 
 Keep `tests/fixtures.ts` and `src/services/joint/fixtures/{102,106}.json`: browser tests and joint-route/direction
 regressions consume them. The JSON files are dated operator captures, not runtime data or current route guarantees.

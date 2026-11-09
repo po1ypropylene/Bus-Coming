@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 23 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 9 November 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -373,3 +373,27 @@ full bar height, centred title, 44px minimum target and back navigation in both 
 caught a misplaced test screenshot step; it was corrected before the final browser run. A subsequent
 runner received SIGTERM before completing; the final single-worker rerun passed 107 browser tests
 with one expected WebKit Lighthouse skip. No live API audit or physical iPhone validation was performed.
+
+## Premature departure disappearance recheck — 9 November 2026
+
+The 16 October fix remains in version 1.3.5: `upcomingArrivals` has no elapsed-time cutoff,
+and overdue predictions display **Due / 就到**. The adapters do not discard predictions based
+on the current time. A successful refresh replaces the previous predictions, so an operator
+response that omits a departure or sets its ETA to null still removes it. Failed refreshes retain
+the last successful result with an explicit stale/unavailable warning. Joint-provider partial
+responses can contain only the operators whose requests succeeded, with a partial warning.
+
+Added a constructed Citybus browser regression that advances a two-minute prediction to three
+minutes overdue, retains it through successful unchanged responses and failed refresh retries,
+then verifies removal only when a successful response withdraws it. ETA replacement tests now
+block background live catalogue requests so seeded snapshots cannot be replaced during the check.
+All six focused browser cases passed in Chromium and mobile WebKit, including the existing
+overdue/mixed-destination check in route details and saved stops. Production build,
+lint, formatting, 119 unit tests and toolchain probes passed. Initial sandbox subprocess failures
+were resolved by rerunning with process permissions; initial browser runs exposed fixture/retry
+timing issues and overlapping artifact directories, resolved before the isolated final rerun.
+
+No shipped behavior or version changed. The reported recurrence has not been reproduced against
+a captured operator response; route, direction, stop, event time and installed version are needed
+to distinguish source withdrawal, matching, joint-provider failure and an older installed build.
+No current live ETA audit, deployment or physical iPhone validation was performed.

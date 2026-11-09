@@ -2,6 +2,86 @@ import { navigateTab } from './navigation'
 import { expect, test } from './test'
 import { route, seed, stop } from './fixtures'
 
+test.beforeEach(async ({ context }) => {
+    // Keep background catalogue workers from replacing the seeded snapshots with
+    // live data. The page-level ETA handlers below override these context routes.
+    await context.route('https://data.etabus.gov.hk/**', (request) => request.abort())
+    await context.route('https://rt.data.gov.hk/**', (request) => request.abort())
+})
+
+test('Citybus keeps an overdue departure until a successful response withdraws it', async ({
+    page,
+}) => {
+    const now = Date.parse('2026-11-09T08:36:00+08:00')
+    await page.clock.install({ time: new Date(now) })
+    await page.clock.pauseAt(new Date(now + 1000))
+    const fixtureStop = { ...stop, id: 'CTB:003155', code: '003155', provider: 'CTB' }
+    const fixtureRoute = {
+        ...route,
+        id: 'CTB:720:O:1',
+        number: '720',
+        provider: 'CTB',
+        stops: [{ id: fixtureStop.id, seq: 1 }],
+    }
+    await seed(page, 2, { route: fixtureRoute, stop: fixtureStop })
+    let fail = false
+    let minutes = [2, 10, 20]
+    await page.route('**/eta/**', (request) =>
+        fail
+            ? request.fulfill({ status: 503, json: {} })
+            : request.fulfill({
+                  json: {
+                      data: minutes.map((minute, i) => ({
+                          co: 'CTB',
+                          route: '720',
+                          dir: 'O',
+                          stop: fixtureStop.code,
+                          seq: 1,
+                          eta_seq: i + 1,
+                          eta: new Date(now + minute * 60000).toISOString(),
+                      })),
+                  },
+              }),
+    )
+    await navigateTab(page, 'Routes')
+    await page.locator('.route-row').click()
+    await page.locator('.stop-main').click()
+    const clocks = page.locator('.arrival-clock')
+    const countdowns = page.locator('.arrival-time strong')
+    await expect(countdowns).toHaveText(['2', '10', '20'])
+
+    // Repeated successful responses still contain the same bus. Crossing the old
+    // one-minute-overdue cutoff must not discard it or promote the following bus.
+    await page.clock.fastForward(5 * 60000)
+    await expect(countdowns).toHaveText(['Due', '5', '15'])
+    await expect(clocks).toHaveText(['08:38', '08:46', '08:56'])
+    const refresh = page.getByRole('button', { name: 'Refresh', exact: true })
+    await expect(refresh).toBeEnabled()
+
+    // Failed refreshes retain the last successful predictions with a stale warning.
+    fail = true
+    await refresh.click()
+    await expect
+        .poll(
+            async () => {
+                await page.clock.runFor(1000)
+                return refresh.isEnabled()
+            },
+            { timeout: 20000 },
+        )
+        .toBe(true)
+    await expect(page.locator('.arrival-panel')).toHaveClass(/stale/)
+    await expect(countdowns).toHaveText(['Due', '5', '15'])
+    await expect(clocks).toHaveText(['08:38', '08:46', '08:56'])
+
+    // Only a successful changed response withdraws the departure.
+    fail = false
+    minutes = [10, 20]
+    await refresh.click()
+    await expect(clocks).toHaveText(['08:46', '08:56'])
+    await expect(page.locator('.arrival-panel')).not.toHaveClass(/stale/)
+})
+
 test('Citybus replaces a departed prediction and fills the third column when supplied', async ({
     page,
 }) => {

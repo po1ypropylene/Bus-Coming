@@ -1,11 +1,11 @@
-import { useRef } from 'react'
+import { useRef, type Dispatch, type SetStateAction } from 'react'
 import type { Copy } from '../i18n'
 import type { UserData } from '../types/transit'
 import { validateUserData } from '../utils/transit'
 
 export function useBackups(
     user: UserData,
-    updateUser: (next: UserData) => void,
+    updateUser: Dispatch<SetStateAction<UserData>>,
     setNotice: (message: string) => void,
     t: Copy,
 ) {
@@ -28,10 +28,11 @@ export function useBackups(
         try {
             if (file.size > 10_000_000) throw new Error('Too large')
             const imported = validateUserData(JSON.parse(await file.text()))
-            const merged = new Map(user.bookmarks.map((b) => [b.id, b]))
-            imported.bookmarks.forEach((b) => merged.set(b.id, b))
-            const next = validateUserData({ ...imported, bookmarks: [...merged.values()] })
-            updateUser(next)
+            updateUser((current) => {
+                const merged = new Map(current.bookmarks.map((b) => [b.id, b]))
+                imported.bookmarks.forEach((b) => merged.set(b.id, b))
+                return validateUserData({ ...imported, bookmarks: [...merged.values()] })
+            })
             setNotice(t.backupSuccess)
         } catch {
             setNotice(t.backupError)

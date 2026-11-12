@@ -86,3 +86,16 @@ it('preserves the previous snapshot when shared and official refreshes fail', as
     expect(stores.get('snapshots:CTB')).toBe(previous)
     expect(close).toHaveBeenCalledOnce()
 })
+it('does not commit malformed operator sequences over a previous snapshot', async () => {
+    const previous = snapshot()
+    stores.set('snapshots:CTB', previous)
+    vi.mocked(fetchCitybusSnapshot).mockRejectedValue(new Error('Unavailable'))
+    vi.mocked(downloadCitybus).mockResolvedValue({
+        routes: [{ ...route, stops: [{ id: stop.id, seq: NaN }] }],
+        stops: { [stop.id]: stop },
+    })
+    const emit = vi.fn()
+    await expect(download('CTB', true, emit)).rejects.toThrow('Invalid stop sequence')
+    expect(stores.get('snapshots:CTB')).toBe(previous)
+    expect(emit.mock.calls.some(([event]) => event.type === 'snapshot')).toBe(false)
+})

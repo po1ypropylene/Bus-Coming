@@ -36,8 +36,8 @@ const stops: Record<string, Stop> = Object.fromEntries(
 )
 const extra: Stop = {
     ...stops['CTB:2'],
-    id: 'CTB:extra',
-    code: 'extra',
+    id: 'CTB:4',
+    code: '4',
     name: { en: 'Citybus-only stop', tc: '城巴獨有車站' },
     lat: 22.3045,
 }

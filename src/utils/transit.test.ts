@@ -80,6 +80,20 @@ describe('operator correctness', () => {
     })
     it('rejects snapshots with dangling stop references', () =>
         expect(() => makeSnapshot('KMB', [route], {})).toThrow('Missing stop'))
+    it.each([0, -1, NaN, 1.5, Infinity])('rejects invalid operator sequences: %s', (seq) => {
+        expect(() =>
+            makeSnapshot('KMB', [{ ...route, stops: [{ id: stop.id, seq }] }], {
+                [stop.id]: stop,
+            }),
+        ).toThrow('Invalid stop sequence')
+    })
+    it('rejects duplicate operator sequences without rejecting repeated stop visits', () => {
+        expect(() =>
+            makeSnapshot('KMB', [{ ...route, stops: [route.stops[0], route.stops[0]] }], {
+                [stop.id]: stop,
+            }),
+        ).toThrow('Invalid stop sequence')
+    })
     it('derives actual keypad letters from prefixes and suffixes', () =>
         expect(
             routeLetters(
@@ -110,6 +124,47 @@ describe('user data protection', () => {
         })
         expect(resolveBookmark(bookmark, [snapshot]).available).toBe(false)
         expect(resolveBookmark(bookmark, []).available).toBe(true)
+    })
+    it.each([
+        [null],
+        [{}],
+        [{ id: stop.id, seq: '1' }],
+        [{ id: stop.id, seq: 0 }],
+        [{ id: stop.id, seq: 1.5 }],
+        [{ id: 'CTB:000001', seq: 1 }],
+        [{ id: 'KMB:', seq: 1 }],
+        [
+            { id: stop.id, seq: 1 },
+            { id: stop.id, seq: 1 },
+        ],
+    ])('rejects malformed nested route links: %j', (...stops) => {
+        expect(() =>
+            validateUserData({
+                version: 1,
+                language: 'en',
+                bookmarks: [{ ...bookmark, route: { ...route, stops } }],
+            }),
+        ).toThrow('Invalid route stop')
+    })
+    it.each([
+        { ...stop, lat: 91 },
+        { ...stop, lng: -181 },
+        { ...stop, id: 'wrong' },
+    ])('rejects invalid saved stop geometry or identity', (invalid) => {
+        expect(() =>
+            validateUserData({
+                version: 1,
+                language: 'en',
+                bookmarks: [{ ...bookmark, stopId: invalid.id, stop: invalid }],
+            }),
+        ).toThrow('Invalid bookmark')
+    })
+    it('discards imported joint membership without mutating or rejecting old bookmarks', () => {
+        const forged = { ...bookmark, route: { ...route, jointPartners: [route] } }
+        const data = validateUserData({ version: 1, language: 'tc', bookmarks: [forged] })
+        expect(data.bookmarks).toEqual([bookmark])
+        expect(data.bookmarks[0].route).not.toHaveProperty('jointPartners')
+        expect(forged.route.jointPartners).toEqual([route])
     })
 })
 

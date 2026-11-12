@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 9 November 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 12 November 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -200,6 +200,9 @@ are disposable; rerun the documented scripts when fresh evidence is required.
   notifications are not implemented.
 - **Deployment:** the public app address is in the README. Hosting headers, current deployed behavior, the optional
   Cloudflare publisher deployment and a current full Citybus crawl are not established by local checks.
+- **Build dependency advisory:** four low-severity npm audit reports trace to one unpatched `deepmerge` issue in the
+  PWA build toolchain. The production-only dependency audit is clean. See [project review](CODE-REVIEW.md) for
+  exposure, upstream references and the tested minimatch/glob security overrides.
 
 Version 1.1.0 adds a card-wide destination toggle while retaining automatic mixed-destination labels.
 Verification on 20 October 2026 passed build, lint, formatting, 72 unit tests and toolchain probes, plus
@@ -397,3 +400,33 @@ No shipped behavior or version changed. The reported recurrence has not been rep
 a captured operator response; route, direction, stop, event time and installed version are needed
 to distinguish source withdrawal, matching, joint-provider failure and an older installed build.
 No current live ETA audit, deployment or physical iPhone validation was performed.
+
+## Project review fixes — 12 November 2026
+
+Version 1.3.6 addresses the findings in [the project review](CODE-REVIEW.md):
+
+- Backup validation checks nested stop identities, coordinate ranges and safe positive, unique route sequences,
+  strips derived joint membership, and retains valid legacy data, repeated visits, bookmark IDs/order and preferences.
+  Imports merge against the latest session data when file reading completes, preserving concurrent bookmark changes.
+- Saved returns to All when an edited/imported group no longer exists. Routes' explicit download retry resumes
+  failed refreshes even when the previous snapshot remains fresh; automatic refreshes keep weekly freshness checks.
+- Shared HTTP retry handling fails immediately on permanent errors, respects numeric and HTTP-date Retry-After,
+  bounds transient retries and avoids sleeping after exhaustion. Publisher checkpoint failures do not repeat
+  successful HTTP requests.
+- Operator normalization rejects missing/blank/invalid coordinates and invalid/duplicate sequences before committing
+  snapshots. Explicit missing-metadata placeholders remain supported, and failed refreshes retain the last snapshot.
+- Compatible development dependency security updates and targeted minimatch/glob overrides remove all high/moderate
+  audit findings. The remaining four low reports come from one unpatched build-time deepmerge advisory; production
+  dependency audit reports zero vulnerabilities. Application and persistence schema versions remain independent.
+
+Final verification passed formatting, lint, production build, 163 unit tests, toolchain probes and 117 browser cases
+across Chromium and mobile WebKit, with the intentional WebKit skip for Chromium-only Lighthouse. Publisher fixtures,
+four README image geometry/transparency tests and clean-install lockfile resolution also passed. Production offline
+reload/search/bookmark/timetable preservation and explicit update/reload/preference/resume checks passed in both
+engines for 1.3.6. Lighthouse scored 100 on each tested screen in both languages, and all-theme contrast/axe checks
+passed. The new browser cases exercise malformed/legacy imports, a delayed import during removal, group renaming and
+failed-refresh retry/recovery. A synthetic joint-route fixture's lowercase stop identifier was corrected to satisfy
+the existing operator identity contract. A test-only error-count assertion was scoped to operator rows rather than
+including the independent timetable status.
+
+No new live operator audit, physical iPhone check, published screenshot update or deployment was performed.

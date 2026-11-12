@@ -124,7 +124,7 @@ export function useAppController() {
         setSelectedStop,
         saveItem,
         setSaveItem,
-        activeGroup,
+        activeGroup: groups.includes(activeGroup) ? activeGroup : '',
         setActiveGroup,
         notice,
         setNotice,

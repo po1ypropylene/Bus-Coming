@@ -1,36 +1,13 @@
 import type { ArrivalResult, Lang, Route, Stop } from '../types/transit'
 import { hkTime, selectArrivals, selectCitybusArrivals } from '../utils/transit'
+import { requestJson } from './http'
+
+export { requestJson as request } from './http'
 
 export const BASE = {
     KMB: 'https://data.etabus.gov.hk/v1/transport/kmb',
     CTB: 'https://rt.data.gov.hk/v2/transport/citybus',
     NLB: 'https://rt.data.gov.hk/v2/transport/nlb',
-}
-
-export async function request(url: string): Promise<unknown> {
-    for (let attempt = 0; attempt < 3; attempt++) {
-        try {
-            const response = await fetch(url, {
-                signal: AbortSignal.timeout(25000),
-                cache: 'no-store',
-            })
-            if (!response.ok) {
-                if (response.status !== 429 && response.status < 500)
-                    throw new Error(`HTTP ${response.status}`)
-                const retry = Math.min(
-                    15000,
-                    Number(response.headers.get('Retry-After')) * 1000 || 1000 * 2 ** attempt,
-                )
-                await new Promise((resolve) => setTimeout(resolve, retry))
-                throw new Error(`HTTP ${response.status}`)
-            }
-            return await response.json()
-        } catch (error) {
-            if (attempt === 2) throw error
-            await new Promise((resolve) => setTimeout(resolve, 600 * 2 ** attempt))
-        }
-    }
-    throw new Error('Network unavailable')
 }
 
 export interface ArrivalRequestOptions {
@@ -60,7 +37,7 @@ export function getArrivals(
                 : route.provider === 'CTB'
                   ? `${BASE.CTB}/eta/CTB/${stop.code}/${route.number}`
                   : `${BASE.NLB}/stop.php?action=estimatedArrivals&routeId=${route.service}&stopId=${stop.code}&language=${lang === 'tc' ? 'zh' : 'en'}`
-        const data = (await request(url)) as {
+        const data = (await requestJson(url)) as {
             data?: Record<string, unknown>[]
             estimatedArrivals?: { estimatedArrivalTime: string; routeVariantName: string }[]
             message?: string

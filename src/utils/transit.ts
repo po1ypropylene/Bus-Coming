@@ -20,6 +20,12 @@ export function makeSnapshot(
 ): Snapshot {
     const stopRoutes: Snapshot['stopRoutes'] = {}
     for (const route of routes) {
+        const sequences = new Set<number>()
+        for (const stop of route.stops) {
+            if (!stop || !Number.isSafeInteger(stop.seq) || stop.seq < 1 || sequences.has(stop.seq))
+                throw new Error('Invalid stop sequence')
+            sequences.add(stop.seq)
+        }
         route.stops.sort((a, b) => a.seq - b.seq)
         for (const stop of route.stops) {
             if (!stops[stop.id]) throw new Error(`Missing stop ${stop.id}`)
@@ -110,10 +116,12 @@ export function validateUserData(input: unknown): UserData {
             ids.has(b.id) ||
             typeof b.group !== 'string' ||
             b.group.length > 80 ||
-            !Number.isInteger(b.seq) ||
+            !Number.isSafeInteger(b.seq) ||
             b.seq < 1 ||
             !b.route ||
             !b.stop ||
+            typeof b.routeId !== 'string' ||
+            !b.routeId ||
             b.routeId !== b.route.id ||
             b.stopId !== b.stop.id ||
             !['KMB', 'CTB', 'NLB'].includes(b.route.provider) ||
@@ -125,17 +133,44 @@ export function validateUserData(input: unknown): UserData {
             !/^[0-9]+$/.test(b.route.service) ||
             typeof b.stop.code !== 'string' ||
             !/^[A-Z0-9]+$/.test(b.stop.code) ||
+            b.stop.id !== `${b.stop.provider}:${b.stop.code}` ||
             !Number.isFinite(b.stop.lat) ||
+            Math.abs(b.stop.lat) > 90 ||
             !Number.isFinite(b.stop.lng) ||
+            Math.abs(b.stop.lng) > 180 ||
+            (b.stop.metadataMissing !== undefined && typeof b.stop.metadataMissing !== 'boolean') ||
             !Array.isArray(b.route.stops)
         )
             throw new Error('Invalid bookmark')
         for (const text of [b.route.origin, b.route.destination, b.stop.name])
             if (!text || typeof text.en !== 'string' || typeof text.tc !== 'string')
                 throw new Error('Invalid name')
+        const sequences = new Set<number>()
+        for (const link of b.route.stops) {
+            if (
+                !link ||
+                typeof link.id !== 'string' ||
+                !link.id.startsWith(`${b.route.provider}:`) ||
+                !/^[A-Z0-9]+$/.test(link.id.slice(4)) ||
+                !Number.isSafeInteger(link.seq) ||
+                link.seq < 1 ||
+                sequences.has(link.seq)
+            )
+                throw new Error('Invalid route stop')
+            sequences.add(link.seq)
+        }
         ids.add(b.id)
     }
-    return { ...data, theme: data.theme ?? DEFAULT_THEME }
+    return {
+        ...data,
+        theme: data.theme ?? DEFAULT_THEME,
+        // Membership comes from the current TD catalogue, never from a backup.
+        bookmarks: data.bookmarks.map((bookmark) => {
+            const route = { ...bookmark.route }
+            delete route.jointPartners
+            return { ...bookmark, route }
+        }),
+    }
 }
 
 export function resolveBookmark(bookmark: Bookmark, snapshots: Snapshot[]) {

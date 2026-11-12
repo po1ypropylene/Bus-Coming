@@ -28,23 +28,28 @@ export async function pool<T>(items: T[], task: (item: T) => Promise<void>) {
 export function stopCollector(provider: Provider) {
     const stops: Record<string, Stop> = {}
 
+    function coordinate(value: unknown, limit: number) {
+        if (
+            (typeof value !== 'number' && (typeof value !== 'string' || !value.trim())) ||
+            !Number.isFinite(Number(value)) ||
+            Math.abs(Number(value)) > limit
+        )
+            throw new Error('Invalid stop data')
+        return Number(value)
+    }
+
     function addStop(row: Row) {
         const code = String(row.stop)
+        if (!/^[A-Z0-9]+$/.test(code)) throw new Error('Invalid stop data')
         const stop: Stop = {
             id: `${provider}:${code}`,
             code,
             provider,
             name: name(row, 'name'),
-            lat: Number(row.lat),
-            lng: Number(row.long),
+            lat: coordinate(row.lat, 90),
+            lng: coordinate(row.long, 180),
         }
-        if (
-            !Number.isFinite(stop.lat) ||
-            !Number.isFinite(stop.lng) ||
-            !stop.name.en ||
-            !stop.name.tc
-        )
-            throw new Error('Invalid stop data')
+        if (!stop.name.en || !stop.name.tc) throw new Error('Invalid stop data')
         stops[stop.id] = stop
     }
 

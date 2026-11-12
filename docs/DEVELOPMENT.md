@@ -1,6 +1,6 @@
 # Development guide
 
-Last updated: 23 October 2026.
+Last updated: 12 November 2026.
 
 ## Starting points
 
@@ -40,6 +40,13 @@ Keep `App.tsx` as an entry point. Feature logic belongs in the modules above rat
 `bus-coming-user-v1` in localStorage stores version 1 user data: language, theme and bookmarks. `validateUserData` is the boundary for both stored data and imported backups. New users and old records without `theme` use `DEFAULT_THEME` (`blue`); explicitly saved colours, including green, are preserved. All five known strings are accepted, while supplied unknown/null values are rejected. This default does not require clearing data or changing the version/key. New writes and exports include the normalized theme. If storage writes fail, the current session still updates and the app reports the save failure.
 
 Backups merge bookmarks by ID, with imported entries winning conflicts, and restore imported preferences. An older backup without a theme defaults to blue. Invalid imports do not overwrite existing data. Imports remain limited to 10 MB and 1,000 bookmarks. Keep migration coverage when adding fields.
+
+Validate nested route-stop identities and positive, unique integer sequences, saved-stop identities and coordinate
+ranges before accepting a backup. Repeated stop visits at different sequences remain valid. Strip `jointPartners`
+from restored routes; membership is derived from current TD data. Merge against the current session data after the
+file read completes, using `updateUser`'s functional form, so concurrent bookmark edits/removals are preserved.
+`useUserData` resolves those updates synchronously against its latest value and persists once per action, including
+when storage fails and the session continues in memory.
 
 IndexedDB `bus-coming-v1`, schema version 2, contains `snapshots`, `responses`, `generations`, `routeCatalogs` and `routeDetails`. Complete provider snapshots commit atomically; interrupted downloads resume checkpoints. Do not rename/delete stores or clear data to work around a migration. User bookmarks remain separate from replaceable route data.
 
@@ -154,6 +161,7 @@ list with translated 44px up/down controls, disabled boundaries and screen-reade
 uses the normal user-data persistence/error path. Editing a group preserves the bookmark's array position; new stops
 append. Export preserves array order. Import into an empty collection restores it; merging into an existing collection
 keeps existing positions and appends new IDs in imported order, as before. Do not change this silently.
+If the selected group no longer exists after an edit or import, the effective filter returns to All.
 
 ## ETA display ordering
 
@@ -161,7 +169,7 @@ All arrival panels use `utils/arrivals.ts` through `useArrivals`: retain operato
 arrival timestamp, then take the first three. Do not discard negative ETAs: an overdue estimate can still describe an
 approaching bus. Anything up to one minute away (including zero and negative intervals) displays **Due / 就到**
 without a minute suffix. Operator refreshes remove withdrawn predictions; request failures retain the explicit
-stale/unavailable state. Untimed remarks follow timed predictions; equal-time buses and their remarks
+stale/unavailable state. Untimed rows are hidden; equal-time buses and their timed remarks
 remain distinct. Never assume operator response order is chronological (rush-hour service variants may be grouped).
 Keep provider direction/service/stop filtering in the adapters; display sorting must not broaden those matches.
 
@@ -171,7 +179,7 @@ destinations differ, show each available destination. Identical destinations add
 including mixed destinations; refresh and retry remain separate controls. The native toggle button supports keyboard
 activation and bilingual expanded-state labels. The override lasts while that panel is mounted; missing destinations
 never fall back to the catalogue destination. All departures use equal-width horizontal columns, including mixed destinations
-or differing remarks; descriptions wrap beneath their respective countdowns. Preserve all operator remarks, including null-ETA status messages, and joint-provider labels.
+or differing remarks; descriptions wrap beneath their respective countdowns. Preserve timed operator remarks and joint-provider labels. Adapters retain null-ETA status messages, but panels intentionally hide them.
 Do not infer a bypass itinerary from the route number, clock time or catalogue destination.
 
 Live/scheduled departure labels must come from explicit operator data. Never approximate this status
@@ -319,11 +327,21 @@ Remove a fixture only after checking its test consumers and preserving meaningfu
 ## Catalogue refresh and nearby discovery
 
 Downloads and normalization run in a Web Worker with four concurrent requests per operator and retry/backoff.
+`services/http.ts` shares JSON retry handling between the app and Citybus publisher. Retry network/JSON failures,
+HTTP 429 and 5xx responses; fail immediately for other unsuccessful statuses. Honour numeric and HTTP-date
+`Retry-After` within the configured delay cap, and do not sleep after the final failed attempt. The app uses three
+attempts, 25-second request timeouts and a 15-second delay cap; the publisher uses five attempts, 30 seconds and
+60 seconds. Publisher checkpoint writes are outside HTTP retries, so storage failures do not repeat network requests.
 Seven-day age checks run at launch, resume, reconnection and hourly while active. Successful request checkpoints
 resume interrupted downloads; complete snapshots remain available until replacements commit atomically.
 Citybus also publishes its lightweight route index immediately and caches selected route details on demand.
+An explicit download retry forces a refresh even when an older retained snapshot is still fresh; automatic
+resume checks keep the normal weekly freshness rule. Both reuse interrupted-generation checkpoints.
 Nearby discovery uses device location only after a user action, never sends coordinates to operators, and shows up to
 40 stops within 1 km in distance order. It requires downloaded stop coordinates.
+Reject missing/blank/non-numeric or out-of-range operator coordinates instead of coercing them to zero. Snapshot
+construction rejects invalid or duplicate sequences before committing. Explicit KMB metadata-missing placeholders
+remain supported and excluded from Nearby results.
 
 ### Horizontal ETA layout
 

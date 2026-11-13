@@ -2,25 +2,25 @@ import { expect, test } from './test'
 import { seed } from './fixtures'
 
 for (const safeArea of [false, true]) {
-    test(`search retains working navigation with keypad open${safeArea ? ' and simulated safe areas' : ''}`, async ({
-        page,
-    }) => {
-        if (safeArea) {
-            // Synthetic geometry checks, not a claim of physical iPhone standalone validation.
-            await page.route('**/src/styles/*.css', async (request) => {
-                const response = await request.fetch()
-                const body = (await response.text())
-                    .replaceAll('env(safe-area-inset-top)', '62px')
-                    .replaceAll('env(safe-area-inset-bottom)', '34px')
-                await request.fulfill({ response, body })
-            })
-        }
-        await seed(page)
-        for (const viewport of [
-            { width: 320, height: 568 },
-            { width: 390, height: 844 },
-            { width: 440, height: 956 },
-        ]) {
+    for (const viewport of [
+        { width: 320, height: 568 },
+        { width: 390, height: 844 },
+        { width: 440, height: 956 },
+    ]) {
+        test(`search retains working navigation at ${viewport.width}×${viewport.height}${safeArea ? ' with simulated safe areas' : ''}`, async ({
+            page,
+        }) => {
+            if (safeArea) {
+                // Synthetic geometry checks, not a claim of physical iPhone standalone validation.
+                await page.route('**/src/styles/*.css', async (request) => {
+                    const response = await request.fetch()
+                    const body = (await response.text())
+                        .replaceAll('env(safe-area-inset-top)', '62px')
+                        .replaceAll('env(safe-area-inset-bottom)', '34px')
+                    await request.fulfill({ response, body })
+                })
+            }
+            await seed(page)
             await page.setViewportSize(viewport)
             for (let visit = 0; visit < 2; visit++) {
                 await page.getByRole('button', { name: 'Routes', exact: true }).click()
@@ -55,6 +55,6 @@ for (const safeArea of [false, true]) {
                     .click()
                 await page.getByRole('button', { name: 'Saved', exact: true }).click()
             }
-        }
-    })
+        })
+    }
 }

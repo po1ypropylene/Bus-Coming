@@ -25,8 +25,8 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 
 ## Arrival correctness and presentation
 
-The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, glossy operator-coloured
-route plates, softly highlighted content cards, translucent search/keypad controls and a frosted save sheet. Header and
+The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, matte operator-coloured
+route plates and content cards, translucent search/keypad controls and a frosted save sheet. Header and
 tab chrome use backdrop blur and a translucent tint, with a stronger material on sheets. It follows all five theme
 palettes and system light/dark appearance. Reduced-transparency and higher-contrast preferences use opaque surfaces;
 unsupported backdrop-filter browsers retain opaque defaults. Features, text, data contracts and navigation behavior
@@ -430,3 +430,43 @@ the existing operator identity contract. A test-only error-count assertion was s
 including the independent timetable status.
 
 No new live operator audit, physical iPhone check, published screenshot update or deployment was performed.
+
+## Modern web review — 13 November 2026
+
+Version 1.3.7 addresses the verified findings in [the modern web review](MODERN-WEB-REVIEW.md).
+The save sheet now has an accessible name and linked field hint, native initial focus/close handling,
+and light dismissal with a Safari pointer-boundary fallback. Sheet padding and selection drags no
+longer dismiss it. Native implicit submission remains intact for IME input. Search/filter/keypad
+semantics, Safari bookmark-list semantics and translated screen/route titles are improved.
+
+Glass materials, tokens, filter boundaries, lens animation, reduced-effects fallbacks and safe-area
+geometry remain intact. Existing user data, schemas, network matching, worker imports and update
+activation behavior are preserved. The two deterministic scan findings were cross-file dark-mode
+false positives; the root already enables `color-scheme: light dark`. The scan covers roughly 20%
+of the guidance catalogue, so findings were supplemented by manual source review.
+
+Formatting, lint, production build, 163 unit tests and toolchain probes passed. Production offline
+and explicit update/activation/preference-preservation smoke checks passed in Chromium and WebKit.
+The current production dependency audit is clean; the full audit retains the documented four
+low-severity build-tool reports from deepmerge, with no high/moderate findings.
+
+The full browser suite and isolated reruns cover 129 passing current cases in Chromium and mobile
+WebKit, plus the intentional WebKit skip for Chromium-only Lighthouse. New cases cover bilingual
+dialog names/hints, initial focus, padding/backdrop/drag dismissal, native Enter submission and
+focus return, screen titles and search/control semantics. Glass checks pass for light/dark backdrop
+transmission, selected-label pixels, filter IDs, drag navigation and reduced effects. All-theme
+contrast/axe checks pass; Lighthouse scores 100 on all tested screens in both languages. Light/dark
+sheet artifacts were visually reviewed; emulated WebKit's documented blur limitation remains.
+
+The initial full run had a Citybus status race and three WebKit timeouts. The Citybus fixture now
+holds its deliberately failing download until the early searchable state is asserted. Navigation
+cases retain both repeated visits but run each viewport separately instead of sharing one 45-second
+budget across three sizes. The all-theme matrix passed sequentially without competing browser
+contexts. Final reruns use isolated output and a single test-server lifecycle after an earlier
+overlapping run interfered with the shared server/artifact directory. No geometry, contrast or
+accessibility assertions were weakened.
+
+No current live operator audit, published screenshot refresh or deployment was performed. Automated
+WebKit remains emulation; physical Safari/iPhone blur, VoiceOver, large text, safe areas and hardware
+performance still require device validation. Hosting security headers require separate verification
+against the actual application host.

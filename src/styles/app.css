@@ -1374,9 +1374,12 @@ progress {
     box-shadow: 0 24px 100px #0002;
     max-height: calc(100dvh - 32px);
     overflow: auto;
+    overscroll-behavior: contain;
 }
 
 .save-dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
     background: #14271e55;
     backdrop-filter: blur(5px);
 }

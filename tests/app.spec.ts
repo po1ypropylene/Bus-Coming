@@ -243,11 +243,17 @@ test('Citybus is searchable and usable before its full offline download finishes
     page,
 }) => {
     // The second route fails, deliberately preventing a complete Citybus snapshot.
+    // Hold that failure until the early searchable state is observed, regardless of browser speed.
+    let releaseDownload!: () => void
+    const pendingDownload = new Promise<void>((resolve) => {
+        releaseDownload = resolve
+    })
     await page.route('https://data.etabus.gov.hk/**', (req) =>
         req.fulfill({ status: 503, body: 'Unavailable' }),
     )
-    await page.route('https://rt.data.gov.hk/**', (req) => {
+    await page.route('https://rt.data.gov.hk/**', async (req) => {
         const url = new URL(req.request().url())
+        if (url.pathname.includes('/99/')) await pendingDownload
         if (url.pathname.includes('/nlb/') || url.pathname.includes('/99/'))
             return req.fulfill({ status: 503, body: 'Unavailable' })
         const data = url.pathname.endsWith('/route/CTB')
@@ -290,6 +296,7 @@ test('Citybus is searchable and usable before its full offline download finishes
     await page.getByRole('textbox', { name: 'Route number' }).fill('2X')
     await expect(page.locator('.route-row')).toHaveCount(2)
     await expect(page.locator('.catalog-status')).toContainText('Citybus routes are searchable')
+    releaseDownload()
     await page
         .getByRole('button', { name: '2X Citybus To Star Ferry From Central', exact: true })
         .click()

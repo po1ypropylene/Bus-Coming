@@ -18,6 +18,7 @@ export function OperatorFilter() {
             ref={host}
             className="operator-tabs"
             data-operator={operator}
+            role="group"
             aria-label={t.allOperators}
         >
             {options.map((co, index) => (

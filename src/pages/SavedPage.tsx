@@ -45,6 +45,7 @@ export function SavedPage() {
                     <div className="chips">
                         <button
                             className={!activeGroup ? 'chip active' : 'chip'}
+                            aria-pressed={!activeGroup}
                             onClick={() => setActiveGroup('')}
                         >
                             {t.all}
@@ -54,6 +55,7 @@ export function SavedPage() {
                             <button
                                 key={group}
                                 className={activeGroup === group ? 'chip active' : 'chip'}
+                                aria-pressed={activeGroup === group}
                                 onClick={() => setActiveGroup(group)}
                             >
                                 {group}

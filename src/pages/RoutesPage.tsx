@@ -32,7 +32,7 @@ export function RoutesPage() {
     const operatorMissing = operator !== 'all' && !routes.some((r) => r.provider === operator)
     return (
         <div className="search-layout">
-            <section className="search-controls">
+            <search className="search-controls" aria-label={t.routeNumber}>
                 <div className="search-entry">
                     <div className="search-box">
                         <Search size={22} />
@@ -40,6 +40,8 @@ export function RoutesPage() {
                             aria-label={t.routeNumber}
                             inputMode="none"
                             autoComplete="off"
+                            autoCorrect="off"
+                            autoCapitalize="none"
                             spellCheck={false}
                             placeholder={tc ? '輸入路線號碼' : 'Enter route number'}
                             value={query}
@@ -69,6 +71,7 @@ export function RoutesPage() {
                         <button
                             className="text-button"
                             aria-label={keypad ? t.hideKeypad : t.showKeypad}
+                            aria-expanded={keypad}
                             onClick={() => setKeypad(!keypad)}
                         >
                             <Keyboard size={20} />
@@ -89,7 +92,7 @@ export function RoutesPage() {
                     <Download size={14} />
                     {snapshots.length === 3 ? t.ready : t.downloadingHint}
                 </p>
-            </section>
+            </search>
             <section
                 className="search-results"
                 ref={resultsRef}

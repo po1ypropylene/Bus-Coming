@@ -64,10 +64,14 @@ export function useAppController() {
     const search = useRouteSearch(routes, snapshots)
     const nearbyState = useNearbyStops(stops)
     const groups = [...new Set(user.bookmarks.map((b) => b.group).filter(Boolean))]
+    const currentRoute = selectedRoute ? (byRoute.get(selectedRoute.id) ?? selectedRoute) : null
     useEffect(() => {
         document.documentElement.lang = lang === 'tc' ? 'zh-Hant' : 'en'
-        document.title = t.brand
-    }, [lang, t.brand])
+        const page = currentRoute
+            ? `${currentRoute.number} · ${t.toward} ${currentRoute.destination[lang]}`
+            : t[tab]
+        document.title = `${page} | ${t.brand}`
+    }, [lang, t, tab, currentRoute])
     useEffect(() => {
         if (!notice) return
         const timer = setTimeout(() => setNotice(''), 5000)
@@ -103,7 +107,6 @@ export function useAppController() {
     }
 
     const backups = useBackups(user, updateUser, setNotice, t)
-    const currentRoute = selectedRoute ? (byRoute.get(selectedRoute.id) ?? selectedRoute) : null
     return {
         appUpdate,
         variantCatalog,

@@ -1,6 +1,6 @@
 # Development guide
 
-Last updated: 12 November 2026.
+Last updated: 13 November 2026.
 
 ## Starting points
 
@@ -133,6 +133,17 @@ build only when requested. Existing clients show their running build's version u
 Update activation never deletes localStorage or IndexedDB. The reload replaces in-memory UI state, so users choose when to apply it. An older deployed client cannot run this new updater until its existing service-worker lifecycle delivers the first new build; see [setup and deployment](SETUP.md#updating-the-installed-iphone-app) for close/reopen bootstrap and hosting cache headers. The same-origin service-worker URL and scope must remain stable.
 
 `node scripts/update-smoke.mjs` serves three simulated version/cache identities of the production shell without modifying `dist`, verifying waiting-worker detection, explicit activation/reload, preference persistence and the current-version check and simulated resume detection. Run this and the offline smoke check for registration changes; Vite dev does not install the worker. Automatic checks cannot execute while iOS suspends or closes the app.
+
+## Native control semantics
+
+Keep the save sheet's accessible heading/hint IDs and native `showModal()`/`close()` lifecycle.
+Use the DOM autofocus property on the group input so native initial focus works when opening the
+dialog after React mounts it. `closedby="any"` is enhanced by a Safari fallback that checks both
+pointer endpoints against the sheet bounds; sheet padding and selection drags are not backdrop taps.
+Do not add a custom focus trap, Escape handler or body/root scroll lock. Keep the search landmark,
+filter pressed states and the explicit role on the marker-free bookmark list (Safari list semantics).
+Navigation titles follow the active screen and language. See [modern web review](MODERN-WEB-REVIEW.md)
+for the audit scope and intentionally retained Safari rendering paths.
 
 ## Mobile route search layout
 

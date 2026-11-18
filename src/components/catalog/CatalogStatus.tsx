@@ -35,7 +35,7 @@ export function CatalogStatus() {
                 )
             })}
             {!busy && (
-                <button className="text-button" onClick={() => refresh(false)}>
+                <button className="text-button" onClick={() => refresh()}>
                     <RefreshCw size={16} />
                     {t.retry}
                 </button>

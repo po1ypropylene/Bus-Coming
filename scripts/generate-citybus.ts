@@ -6,6 +6,7 @@ import { validateCitybusSnapshot, validateManifest } from '../src/services/catal
 import type { Payload } from '../src/services/catalog/shared'
 import { makeSnapshot } from '../src/utils/transit'
 import { WEEK } from '../src/types/transit'
+import { requestJson } from '../src/services/http'
 
 const upstream = 'https://rt.data.gov.hk/v2/transport/citybus'
 const checkpointDir = '.citybus-checkpoints'
@@ -35,41 +36,15 @@ async function get(path: string): Promise<Payload> {
     } catch {
         /* Missing or corrupt checkpoints are fetched again. */
     }
-    for (let attempt = 0; attempt < 5; attempt++) {
-        try {
-            const response = await fetch(`${upstream}${path}`, {
-                signal: AbortSignal.timeout(30000),
-            })
-            if (!response.ok) {
-                if (response.status === 429 || response.status >= 500) {
-                    const header = response.headers.get('Retry-After')
-                    const seconds = Number(header)
-                    const delay =
-                        header && Number.isFinite(seconds)
-                            ? seconds * 1000
-                            : header
-                              ? Date.parse(header) - Date.now()
-                              : 0
-                    await new Promise((resolve) =>
-                        setTimeout(
-                            resolve,
-                            Math.min(60000, Math.max(1000 * 2 ** attempt, delay || 0)),
-                        ),
-                    )
-                }
-                throw new Error(`Citybus HTTP ${response.status}: ${path}`)
-            }
-            const payload = await response.json()
-            await writeFile(`${file}.tmp`, JSON.stringify(payload))
-            await rename(`${file}.tmp`, file)
-            if (++completed % 100 === 0) console.log(`Fetched ${completed} Citybus responses`)
-            return payload as Payload
-        } catch (error) {
-            if (attempt === 4) throw error
-            await new Promise((resolve) => setTimeout(resolve, 1000 * 2 ** attempt))
-        }
-    }
-    throw new Error('Citybus fetch failed')
+    const payload = await requestJson(`${upstream}${path}`, {
+        attempts: 5,
+        timeout: 30000,
+        maxRetryDelay: 60000,
+    })
+    await writeFile(`${file}.tmp`, JSON.stringify(payload))
+    await rename(`${file}.tmp`, file)
+    if (++completed % 100 === 0) console.log(`Fetched ${completed} Citybus responses`)
+    return payload as Payload
 }
 
 const { routes, stops } = await downloadCitybus(

@@ -18,7 +18,7 @@ export function BookmarkOrder({
     return (
         <>
             <p className="muted-text">{t.reorderHint}</p>
-            <ol className="bookmark-order-list">
+            <ol className="bookmark-order-list" role="list">
                 {bookmarks.map((bookmark, index) => {
                     const label = `${bookmark.route.number} · ${bookmark.stop.name[lang]} · ${bookmark.route.destination[lang]}`
                     const move = (direction: -1 | 1) => {

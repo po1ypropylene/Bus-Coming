@@ -1,6 +1,6 @@
 # Requirements and implementation status
 
-Last updated: 23 October 2026. This is the current behavior and verification scope; Git retains earlier implementation
+Last updated: 18 November 2026. This is the current behavior and verification scope; Git retains earlier implementation
 history. See [development](DEVELOPMENT.md) for architecture and invariants, [setup](SETUP.md) for local/phone testing and
 deployment, and [API research](API-RESEARCH.md) for operator contracts and dated observations.
 
@@ -25,8 +25,8 @@ deployment, and [API research](API-RESEARCH.md) for operator contracts and dated
 
 ## Arrival correctness and presentation
 
-The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, glossy operator-coloured
-route plates, softly highlighted content cards, translucent search/keypad controls and a frosted save sheet. Header and
+The interface uses a CSS Liquid Glass-inspired finish: a floating capsule navigation bar, matte operator-coloured
+route plates and content cards, translucent search/keypad controls and a frosted save sheet. Header and
 tab chrome use backdrop blur and a translucent tint, with a stronger material on sheets. It follows all five theme
 palettes and system light/dark appearance. Reduced-transparency and higher-contrast preferences use opaque surfaces;
 unsupported backdrop-filter browsers retain opaque defaults. Features, text, data contracts and navigation behavior
@@ -200,6 +200,8 @@ are disposable; rerun the documented scripts when fresh evidence is required.
   notifications are not implemented.
 - **Deployment:** the public app address is in the README. Hosting headers, current deployed behavior, the optional
   Cloudflare publisher deployment and a current full Citybus crawl are not established by local checks.
+- **Build dependency advisory:** four low-severity npm audit reports trace to one unpatched `deepmerge` issue in the
+  PWA build toolchain. The 13 November production-only dependency audit was clean.
 
 Version 1.1.0 adds a card-wide destination toggle while retaining automatic mixed-destination labels.
 Verification on 20 October 2026 passed build, lint, formatting, 72 unit tests and toolchain probes, plus
@@ -373,3 +375,49 @@ full bar height, centred title, 44px minimum target and back navigation in both 
 caught a misplaced test screenshot step; it was corrected before the final browser run. A subsequent
 runner received SIGTERM before completing; the final single-worker rerun passed 107 browser tests
 with one expected WebKit Lighthouse skip. No live API audit or physical iPhone validation was performed.
+
+## Backup and catalogue fixes
+
+Version 1.3.7 includes these backup and catalogue fixes.
+
+- Backup validation checks nested stop identities, coordinate ranges and safe positive, unique route sequences,
+  strips derived joint membership, and retains valid legacy data, repeated visits, bookmark IDs/order and preferences.
+  Imports merge against the latest session data when file reading completes, preserving concurrent bookmark changes.
+- Saved returns to All when an edited/imported group no longer exists. Routes' explicit download retry resumes
+  failed refreshes even when the previous snapshot remains fresh; automatic refreshes keep weekly freshness checks.
+- Shared HTTP retry handling fails immediately on permanent errors, respects numeric and HTTP-date Retry-After,
+  bounds transient retries and avoids sleeping after exhaustion. Publisher checkpoint failures do not repeat
+  successful HTTP requests.
+- Operator normalization rejects missing/blank/invalid coordinates and invalid/duplicate sequences before committing
+  snapshots. Explicit missing-metadata placeholders remain supported, and failed refreshes retain the last snapshot.
+- Compatible development dependency security updates and targeted minimatch/glob overrides remove all high/moderate
+  audit findings. The remaining four low reports come from one unpatched build-time deepmerge advisory; production
+  dependency audit reports zero vulnerabilities. Application and persistence schema versions remain independent.
+
+## Modern web review — 13 November 2026
+
+Version 1.3.7 addresses the verified findings in [the modern web review](MODERN-WEB-REVIEW.md).
+The save sheet now has an accessible name and linked field hint, native initial focus/close handling,
+and light dismissal with a Safari pointer-boundary fallback. Sheet padding and selection drags no
+longer dismiss it. Native implicit submission remains intact for IME input. Search/filter/keypad
+semantics, Safari bookmark-list semantics and translated screen/route titles are improved.
+
+Glass materials, tokens, filter boundaries, lens animation, reduced-effects fallbacks and safe-area
+geometry remain intact. Existing user data, schemas, network matching, worker imports and update
+activation behavior are preserved. The two deterministic scan findings were cross-file dark-mode
+false positives; the root already enables `color-scheme: light dark`. The scan covers roughly 20%
+of the guidance catalogue, so findings were supplemented by manual source review.
+
+On 18 November, formatting, lint, the production build, 163 unit tests, toolchain probes, Citybus
+publisher fixtures and four README image geometry/transparency tests passed. Production offline
+reload and explicit update, preference preservation and resume checks passed in Chromium and WebKit.
+
+The browser suite passed 127 cases in Chromium and mobile WebKit, with one expected WebKit skip for
+Chromium-only Lighthouse. It covered save-sheet names and hints, focus and dismissal, native submission,
+translated navigation titles, search controls, backup validation, catalogue recovery and all-theme
+contrast and axe checks. Lighthouse scored 100 on all ten tested screen and language combinations.
+
+No current live operator audit, published screenshot refresh or deployment was performed. Automated
+WebKit remains emulation; physical Safari/iPhone blur, VoiceOver, large text, safe areas and hardware
+performance still require device validation. Hosting security headers require separate verification
+against the actual application host.
